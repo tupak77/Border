@@ -1,0 +1,604 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · CRM Programs</title>
+<meta name="description" content="Haitam El Harchal. Application for the CRM Program Manager role at Cambly." />
+<meta property="og:title" content="Haitam El Harchal · CRM Program Manager application" />
+<meta property="og:description" content="7+ years of hands-on CRM and lifecycle across European markets. One strategy, many markets." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#FAF7F0" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%231E1B3A'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' fill='%23FFD54A' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,600;12..96,700&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #faf7f0;
+  --bg-2: #f2ede1;
+  --card: #ffffff;
+  --ink: #1e1b3a;
+  --ink-2: #3d3a5c;
+  --muted: #74718c;
+  --line: rgba(30, 27, 58, 0.12);
+  --sun: #ffd54a;
+  --teal: #1a9b7f;
+  --coral: #f2765a;
+  --sky: #6c8cff;
+  --head: "Bricolage Grotesque", "Inter", system-ui, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", "Noto Sans", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--sun); }
+.wrap { width: min(1140px, 100% - 40px); margin-inline: auto; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(250, 247, 240, 0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 600 16px/1 var(--head); }
+.mark i { width: 30px; height: 30px; border-radius: 50%; background: var(--ink); color: var(--sun); display: grid; place-items: center; font: normal 700 15px/1 var(--head); }
+.nav-links { display: flex; gap: 24px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 999px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: var(--ink-2); }
+.btn-line { color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 9vw, 120px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; width: 640px; height: 640px; right: -180px; top: -240px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 213, 74, 0.55), transparent 65%); pointer-events: none; }
+.hero::after { content: ""; position: absolute; width: 520px; height: 520px; left: -240px; bottom: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(108, 140, 255, 0.25), transparent 65%); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12.5px/1.3 var(--mono); color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 0 4px rgba(26, 155, 127, .18); }
+.hero h1 { margin-top: 26px; font: 700 clamp(42px, 6vw, 78px)/1.0 var(--head); letter-spacing: -0.035em; }
+.hero h1 span { color: var(--coral); }
+.hero .lead { margin-top: 24px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: 0 4px 14px rgba(30, 27, 58, .15); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* one moment, four markets */
+.moment { justify-self: center; width: min(430px, 100%); }
+.moment .head { display: flex; justify-content: space-between; align-items: center; font: 500 11.5px/1 var(--mono); color: var(--muted); letter-spacing: .04em; text-transform: uppercase; margin-bottom: 12px; }
+.moment .head b { color: var(--ink); font-weight: 500; }
+.msgs { display: grid; gap: 10px; }
+.msg { display: grid; grid-template-columns: 74px 1fr; gap: 12px; align-items: start; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 13px 14px; box-shadow: 0 18px 40px -30px rgba(30,27,58,.45); opacity: 0; transform: translateY(14px); animation: up .7s var(--ease) forwards; }
+.msg:nth-child(1) { animation-delay: .3s; }
+.msg:nth-child(2) { animation-delay: .8s; }
+.msg:nth-child(3) { animation-delay: 1.3s; }
+.msg:nth-child(4) { animation-delay: 1.8s; }
+.msg .mk { font: 600 12px/1.3 var(--mono); }
+.msg .mk small { display: block; margin-top: 4px; font: 500 10.5px/1.3 var(--mono); color: var(--muted); }
+.ch { display: inline-block; padding: 2px 7px; border-radius: 6px; font-size: 10px; letter-spacing: .03em; }
+.c-wa { background: #d8f5e6; color: #11663f; }
+.c-kk { background: #fff1b3; color: #6b5300; }
+.c-em { background: #e2e8ff; color: #2a3b8f; }
+.c-pu { background: #ffe1d9; color: #8a2f19; }
+.msg .tx { font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+.msg .tx[dir="rtl"] { text-align: right; font-size: 14.5px; }
+@keyframes up { to { opacity: 1; transform: none; } }
+.moment-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 128px) 0; }
+.alt { background: var(--bg-2); }
+.dark { background: var(--ink); color: var(--bg); }
+.kicker { font: 500 12.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--coral); }
+.h2 { margin-top: 14px; font: 700 clamp(32px, 4.2vw, 52px)/1.05 var(--head); letter-spacing: -0.03em; max-width: 22ch; }
+.h2 span { color: var(--coral); }
+.intro { margin-top: 18px; max-width: 62ch; color: var(--ink-2); }
+.dark .intro { color: rgba(250,247,240,.72); }
+.dark .kicker, .dark .h2 span { color: var(--sun); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* fit */
+.legend { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.fit { margin-top: 28px; border-top: 1px solid var(--line); }
+.fit li { display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 32px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.fit .ask { font: 600 19px/1.35 var(--head); letter-spacing: -.01em; }
+.fit .ans { color: var(--ink-2); }
+.fit .ans strong { color: var(--ink); font-weight: 600; }
+.tag { display: inline-block; margin-top: 10px; padding: 4px 9px; border-radius: 6px; font: 500 11px/1.2 var(--mono); letter-spacing: .03em; text-transform: uppercase; font-style: normal; }
+.legend .tag { margin-top: 0; }
+.t-direct { background: var(--sun); color: var(--ink); }
+.t-transfer { background: #e2e8ff; color: #2a3b8f; }
+.t-new { background: #ffe1d9; color: #8a2f19; }
+
+/* framework */
+.frame { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.frame > div { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 30px; }
+.frame h3 { font: 700 24px/1.15 var(--head); letter-spacing: -.02em; display: flex; align-items: center; gap: 12px; }
+.frame h3 i { width: 34px; height: 34px; border-radius: 50%; display: grid; place-items: center; font: normal 600 15px/1 var(--mono); }
+.frame .g i { background: var(--ink); color: var(--sun); }
+.frame .l i { background: var(--sun); color: var(--ink); }
+.frame p.s { margin-top: 8px; color: var(--muted); font-size: 15px; }
+.frame ul { margin-top: 20px; display: grid; gap: 12px; }
+.frame li { display: grid; grid-template-columns: 130px 1fr; gap: 14px; padding-top: 12px; border-top: 1px dashed var(--line); font-size: 15px; color: var(--ink-2); }
+.frame li b { font: 500 12px/1.6 var(--mono); text-transform: uppercase; letter-spacing: .04em; color: var(--ink); }
+.markets { margin-top: 18px; background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 26px 30px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 20px; }
+.markets div { font-size: 14.5px; color: var(--ink-2); line-height: 1.5; }
+.markets b { display: block; font: 600 17px/1.2 var(--head); color: var(--ink); margin-bottom: 6px; }
+
+/* plan */
+.plan { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.phase { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 22px; padding: 28px; }
+.phase .when { font: 500 12.5px/1 var(--mono); color: var(--sun); letter-spacing: .04em; }
+.phase h3 { margin-top: 14px; font: 700 24px/1.15 var(--head); letter-spacing: -.02em; }
+.phase ul { margin-top: 18px; display: grid; gap: 10px; }
+.phase li { position: relative; padding-left: 20px; font-size: 15px; color: rgba(250,247,240,.8); line-height: 1.5; }
+.phase li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 50%; background: var(--sun); }
+.plan-note { margin-top: 26px; font-size: 14px; color: rgba(250,247,240,.55); }
+
+/* ai */
+.flows { margin-top: 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.flow { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; }
+.flow .n { font: 500 12px/1 var(--mono); color: var(--muted); }
+.flow h3 { margin-top: 14px; font: 700 19px/1.25 var(--head); letter-spacing: -.01em; }
+.flow p { margin-top: 10px; font-size: 15px; color: var(--ink-2); line-height: 1.55; }
+.flow .io { margin-top: auto; padding-top: 16px; font: 400 12px/1.6 var(--mono); color: var(--muted); }
+.flow .io b { color: var(--teal); font-weight: 500; }
+.ai-note { margin-top: 24px; font-size: 15px; color: var(--ink-2); max-width: 70ch; }
+
+/* copy */
+.samples { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+.sample { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; box-shadow: 0 20px 40px -32px rgba(30,27,58,.4); }
+.sample .top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font: 500 11.5px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.sample .top span:last-child { text-transform: none; letter-spacing: 0; background: var(--bg-2); padding: 5px 9px; border-radius: 999px; color: var(--ink-2); }
+.sample .subj { margin-top: 16px; font: 600 18px/1.3 var(--head); letter-spacing: -.01em; }
+.sample .pre { margin-top: 4px; font-size: 14px; color: var(--muted); }
+.sample .body { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 15px; color: var(--ink-2); }
+.sample .body p + p { margin-top: 10px; }
+.bubble { background: #e9f9ef; border-radius: 14px 14px 14px 4px; padding: 12px 14px; font-size: 15px; color: var(--ink); }
+.bubble + .bubble { margin-top: 8px; }
+.qr { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+.qr span { border: 1px solid var(--line); border-radius: 999px; padding: 5px 11px; font-size: 13px; color: var(--teal); background: var(--card); }
+.sample .why { margin-top: 16px; font-size: 13px; color: var(--muted); background: var(--bg); border-radius: 12px; padding: 10px 12px; line-height: 1.5; }
+.sample .why b { color: var(--ink); }
+
+/* experience */
+.xp { margin-top: 48px; display: grid; gap: 18px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 30px; }
+.job .when { font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.job .co { margin-top: 6px; font: 700 22px/1.2 var(--head); letter-spacing: -.01em; }
+.job h3 { font: 600 18px/1.3 var(--head); }
+.job ul { margin-top: 14px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
+.side { margin-top: 18px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+.side > div { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 30px; }
+.side h3 { font: 700 20px/1.2 var(--head); }
+.chips { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { padding: 7px 13px; border-radius: 999px; background: var(--bg-2); font-size: 14px; }
+.certs { margin-top: 16px; display: grid; gap: 10px; font-size: 15px; color: var(--ink-2); }
+
+/* why */
+.why-block { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+.why-block .txt p { font: 500 clamp(19px, 1.9vw, 22px)/1.55 var(--head); letter-spacing: -.01em; color: var(--ink-2); }
+.why-block .txt p + p { margin-top: 20px; }
+
+/* contact */
+.contact { text-align: center; padding: clamp(80px, 12vw, 150px) 0; background: radial-gradient(700px 380px at 50% 0%, rgba(255,213,74,.5), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 18ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 400 14px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 1000px) {
+  .flows { grid-template-columns: repeat(2, 1fr); }
+  .markets { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 960px) {
+  .hero .wrap, .why-block, .frame { grid-template-columns: 1fr; }
+  .plan, .samples { grid-template-columns: 1fr; }
+  .side { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .fit li, .job { grid-template-columns: 1fr; gap: 10px; }
+  .job, .frame > div { padding: 24px; }
+  .flows, .markets { grid-template-columns: 1fr; }
+  .frame li { grid-template-columns: 1fr; gap: 2px; }
+  .msg { grid-template-columns: 1fr; gap: 6px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .msg, [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#fit">The fit</a>
+      <a href="#framework">Global vs local</a>
+      <a href="#plan">First 90 days</a>
+      <a href="#ai">AI</a>
+      <a href="#copy">Copy</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Application · CRM Program Manager at Cambly</span>
+      <h1>One CRM strategy. <span>Every market's language.</span></h1>
+      <p class="lead">I've spent 7+ years owning CRM and lifecycle hands-on at consumer subscription and mobile apps, and running programmes across many European markets at Entain. I set the strategy, build the journeys in Braze, Customer.io and Optimove, protect deliverability, and measure everything against retention and LTV.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>CRM &amp; Lifecycle Marketing Manager · Spain · Remote</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="moment" aria-label="Illustration: one lifecycle moment, localised for four markets">
+        <p class="head"><b>Lesson reminder · day before</b><span>1 journey · 4 markets</span></p>
+        <div class="msgs">
+          <div class="msg"><p class="mk">Brazil<small><i class="ch c-wa">WhatsApp</i></small></p><p class="tx" lang="pt-BR">Sua aula com a Emma é amanhã às 19h. Quer revisar as palavras da última conversa? 🙂</p></div>
+          <div class="msg"><p class="mk">Korea<small><i class="ch c-kk">KakaoTalk</i></small></p><p class="tx" lang="ko">내일 저녁 7시에 Emma 선생님과 수업이 있어요. 지난 수업 표현을 복습해 볼까요?</p></div>
+          <div class="msg"><p class="mk">Saudi Arabia<small><i class="ch c-wa">WhatsApp</i></small></p><p class="tx" lang="ar" dir="rtl">درسك مع إيما غدًا الساعة 7 مساءً. هل تريد مراجعة كلمات المحادثة السابقة؟</p></div>
+          <div class="msg"><p class="mk">Mexico<small><i class="ch c-pu">Push</i></small></p><p class="tx" lang="es">Mañana a las 19:00 tienes clase con Emma. ¿Repasamos lo de la última vez?</p></div>
+        </div>
+        <p class="moment-cap">Illustration with a made-up tutor. Same trigger and goal, local channel and tone.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fit">
+  <div class="wrap">
+    <p class="kicker" data-reveal>The fit</p>
+    <h2 class="h2" data-reveal>Your list, <span>point by point.</span></h2>
+    <p class="intro" data-reveal>What you're looking for, with what I've actually done and where I'd be learning.</p>
+    <div class="legend" data-reveal>
+      <span><i class="tag t-direct">Direct</i> done it, same shape</span>
+      <span><i class="tag t-transfer">Transferable</i> same skill, different tool or channel</span>
+      <span><i class="tag t-new">New for me</i> I'd be learning it here</span>
+    </div>
+    <ul class="fit">
+      <li data-reveal>
+        <div><p class="ask">5+ years in CRM, lifecycle or retention at consumer subscription or mobile</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">7+ years. At <strong>TOC-TOC</strong>, a subscription fitness app on iOS and Android, I owned mobile CRM and monetisation: onboarding, habit-building journeys, paywalls, renewals. At <strong>Entain</strong> I own lifecycle across acquisition, conversion, retention and win-back.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Hands-on with a modern CRM platform: journeys and segmentation</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">Hands-on in <strong>Braze, Customer.io and Optimove</strong>: behaviour-triggered journeys across email, push, in-app and SMS, built on RFM and scoring segments. I haven't used Iterable yet; the concepts (workflows, catalogs, experiments) map one to one.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Owned CRM strategy and roadmap with measurable impact</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I set the CRM and monetisation roadmap with Product and Analytics and report retention and revenue to leadership. Every programme gets a <strong>holdout group</strong>, so impact means incremental, not just attributed.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Multi-market, international CRM programmes</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">At Entain I run programmes across many European markets and previously led CRM operations across several European brands and time zones. One framework, local rules for consent, frequency and tone.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">WhatsApp, WeChat, KakaoTalk and other local messaging apps</p><span class="tag t-new">New for me</span></div>
+        <p class="ans">I've run <strong>SMS</strong> as a channel inside multi-channel journeys, but not the business messaging apps. I'd treat each one as a pilot: provider choice, template approvals, opt-in flow, a holdout, and a clear rule for when it graduates to rollout.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Email deliverability</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">Part of my job today: high-volume sends, working with Tech on reputation, data integrations and troubleshooting. List hygiene, suppression and warming are routine, not projects.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Analytics: dashboards, experimentation, SQL</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">I build <strong>A/B and multivariate frameworks</strong>, read cohort retention and LTV myself and work daily in BI tools. I define event taxonomies with Product and Analytics, so I know what the data can and can't answer.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Platform and vendor management: contracts, renewals, providers</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">I've worked closely with platform teams on features, integrations and issues. Owning the commercial side (contracts and renewals) would be a step up I'm ready for.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Writing, creative briefs and copy</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I write most of my own copy and test it constantly: subject lines, cadence, offers, value propositions. Samples written for Cambly are <a href="#copy">further down</a>.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">AI and automation in marketing workflows</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">This page was researched, drafted and built with AI tools. The workflows I'd build into Cambly's CRM are <a href="#ai">below</a>.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="block alt" id="framework">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Global vs local</p>
+    <h2 class="h2" data-reveal>What stays standard, <span>what each market owns.</span></h2>
+    <p class="intro" data-reveal>A first draft of the framework the role asks for. The line will move once I see the data, but there has to be a line.</p>
+    <div class="frame">
+      <div class="g" data-reveal>
+        <h3><i>G</i>Global standard</h3>
+        <p class="s">Set once, the same everywhere.</p>
+        <ul>
+          <li><b>Lifecycle stages</b>Sign-up, first lesson, habit, subscriber, at risk, lapsed.</li>
+          <li><b>Journey logic</b>Triggers, goals, exit rules and holdouts per programme.</li>
+          <li><b>KPIs</b>Activation, retention, LTV, payback. One definition, one dashboard.</li>
+          <li><b>Guardrails</b>Consent, suppression, frequency caps, deliverability.</li>
+          <li><b>Brand voice</b>The core message and what we never say.</li>
+        </ul>
+      </div>
+      <div class="l" data-reveal style="--d:.1s">
+        <h3><i>L</i>Local by market</h3>
+        <p class="s">Decided per market, inside the guardrails.</p>
+        <ul>
+          <li><b>Channel mix</b>Email-first, push-first or messaging-app-first.</li>
+          <li><b>Timing</b>Send windows, local holidays, school and work calendars.</li>
+          <li><b>Offers</b>Price points, payment methods, promo moments.</li>
+          <li><b>Tone</b>Formality, emoji, how direct a reminder can be.</li>
+          <li><b>Content</b>Localised and culturally checked, not just translated.</li>
+        </ul>
+      </div>
+    </div>
+    <div class="markets" data-reveal>
+      <div><b>Brazil · Turkey</b>WhatsApp as a core channel for reminders and win-back, with opt-in at sign-up.</div>
+      <div><b>Arabic-speaking</b>WhatsApp plus RTL-ready email and in-app templates.</div>
+      <div><b>Korea</b>KakaoTalk business channel alongside push.</div>
+      <div><b>China</b>WeChat Official Account as the main owned channel.</div>
+    </div>
+  </div>
+</section>
+
+<section class="block dark" id="plan">
+  <div class="wrap">
+    <p class="kicker" data-reveal>First 90 days</p>
+    <h2 class="h2" data-reveal>Audit, fix, <span>then expand.</span></h2>
+    <p class="intro" data-reveal>Written from the outside, so the order will change once I'm inside.</p>
+    <div class="plan">
+      <div class="phase" data-reveal>
+        <p class="when">DAYS 1–30</p>
+        <h3>Know the base</h3>
+        <ul>
+          <li>Audit every live journey in Iterable: goal, audience, results, holdout.</li>
+          <li>Deliverability health check by domain, IP and market.</li>
+          <li>Map consent, suppression and list hygiene across markets.</li>
+          <li>Agree one KPI tree and a market-by-channel WBR view with the Head of Consumer Marketing.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.1s">
+        <p class="when">DAYS 31–60</p>
+        <h3>Fix the core</h3>
+        <ul>
+          <li>Rebuild the highest-impact journeys first: first lesson, trial-to-paid, renewal.</li>
+          <li>Set experimentation standards and a shared test log.</li>
+          <li>Write the global vs local framework and the first playbooks.</li>
+          <li>Pick the first messaging-app pilot market and provider.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.2s">
+        <p class="when">DAYS 61–90</p>
+        <h3>Expand</h3>
+        <ul>
+          <li>Launch the WhatsApp pilot with a holdout and a go/no-go date.</li>
+          <li>Ship the first AI workflows: localisation and WBR reporting.</li>
+          <li>Plan WeChat and KakaoTalk evaluations.</li>
+          <li>CRM roadmap for the next two quarters.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="plan-note" data-reveal>Each programme gets a goal, a holdout and a date to decide whether to keep it.</p>
+  </div>
+</section>
+
+<section class="block" id="ai">
+  <div class="wrap">
+    <p class="kicker" data-reveal>AI &amp; automation</p>
+    <h2 class="h2" data-reveal>Less manual work, <span>more markets.</span></h2>
+    <p class="intro" data-reveal>Four workflows I'd build early. Each one has a person checking the output before it reaches a learner.</p>
+    <div class="flows">
+      <article class="flow" data-reveal>
+        <span class="n">01</span>
+        <h3>Localisation with a native check</h3>
+        <p>AI drafts each market's version from the master message and a per-market style guide. A native speaker reviews before anything ships.</p>
+        <p class="io"><b>in</b> master copy + style guides<br><b>out</b> localised variants to review</p>
+      </article>
+      <article class="flow" data-reveal style="--d:.08s">
+        <span class="n">02</span>
+        <h3>WBR on autopilot</h3>
+        <p>CRM results by market and channel pulled, compared and summarised every week, with the three things worth discussing on top.</p>
+        <p class="io"><b>in</b> Iterable + BI data<br><b>out</b> WBR section, draft</p>
+      </article>
+      <article class="flow" data-reveal style="--d:.16s">
+        <span class="n">03</span>
+        <h3>Deliverability watch</h3>
+        <p>Daily check on bounces, complaints and reputation by domain and market, with an alert before a problem becomes a block.</p>
+        <p class="io"><b>in</b> ESP + postmaster data<br><b>out</b> alert + suggested fix</p>
+      </article>
+      <article class="flow" data-reveal style="--d:.24s">
+        <span class="n">04</span>
+        <h3>Test ideas from results</h3>
+        <p>Past experiments and journey data summarised into the next hypotheses to test, ranked by likely impact.</p>
+        <p class="io"><b>in</b> test log + journey metrics<br><b>out</b> ranked test backlog</p>
+      </article>
+    </div>
+    <p class="ai-note" data-reveal>The goal isn't more messages. It's the same small team covering more markets without the quality dropping.</p>
+  </div>
+</section>
+
+<section class="block alt" id="copy">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Copy</p>
+    <h2 class="h2" data-reveal>A few drafts, <span>written for Cambly.</span></h2>
+    <p class="intro" data-reveal>My own samples, based on public information. Not real Cambly messages.</p>
+    <div class="samples">
+      <article class="sample" data-reveal>
+        <div class="top"><span>Email</span><span>Trial → paid</span></div>
+        <p class="subj">You spoke English for 25 minutes yesterday</p>
+        <p class="pre">That's the hardest part. Here's how to keep going.</p>
+        <div class="body">
+          <p>Hi Camila,</p>
+          <p>Your first lesson is done. Most learners say the second one is when it starts to feel natural.</p>
+          <p>Pick a plan that fits your week, and book your next conversation with Emma or any tutor you like.</p>
+        </div>
+        <p class="why"><b>Why:</b> celebrates what they did before asking for anything. The upgrade is framed as "keep going", not a feature list.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.1s">
+        <div class="top"><span>WhatsApp</span><span>Win-back · Brazil</span></div>
+        <div class="body" style="border-top:0;padding-top:0;margin-top:16px">
+          <p class="bubble" lang="pt-BR">Oi, Lucas! Faz um tempinho que você não pratica. Que tal 15 minutos de conversa esta semana? 😊</p>
+          <div class="qr"><span>Agendar aula</span><span>Agora não</span></div>
+        </div>
+        <p class="why"><b>Why:</b> short, friendly, one action. An easy "not now" keeps opt-outs and complaints low. Sent as an approved template, only to opted-in users.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.2s">
+        <div class="top"><span>In-app</span><span>After lesson 3</span></div>
+        <p class="subj">3 conversations done. You're building a habit.</p>
+        <div class="body">
+          <p>Learners who book a fixed weekly time keep practising much longer. Want to make Tuesday 7pm your English time?</p>
+        </div>
+        <p class="why"><b>Why:</b> turns three good sessions into a routine at the moment motivation is highest. The claim would be checked against Cambly's own data first.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Where I've done <span>this before.</span></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lead CRM monetisation and lifecycle strategy across European markets, in a high-volume environment.</li>
+            <li>Own revenue-generating campaigns across acquisition, conversion, retention and win-back.</li>
+            <li>Built and scaled A/B testing frameworks on copy, cadence, offers and channels to lift LTV.</li>
+            <li>Automated email, push, in-app and SMS workflows based on behaviour, scoring and RFM segments.</li>
+            <li>Work with Analytics, Product and Tech on deliverability and data integrations.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul>
+            <li>Ran real-time CRM operations across several European brands, above SLA targets.</li>
+            <li>Coordinated stakeholders across time zones during high-volume periods.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Led mobile CRM, monetisation and growth for a gamified family health and fitness app.</li>
+            <li>Built push, in-app and email journeys that turned daily tracking into long-term habits and grew DAU.</li>
+            <li>Timed paywalls, upsells and renewals to milestones, using RevenueCat.</li>
+            <li>Defined the event tracking taxonomy and cohorts with Product and Analytics.</li>
+            <li>Ran A/B and multivariate tests to improve trial-to-paid and reduce churn.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="side">
+      <div data-reveal>
+        <h3>Toolkit</h3>
+        <ul class="chips">
+          <li>Braze</li><li>Customer.io</li><li>Optimove</li><li>RevenueCat</li><li>HubSpot</li><li>BI tools</li>
+          <li>A/B &amp; multivariate</li><li>Holdout groups</li><li>Cohort analysis</li><li>RFM segmentation</li><li>Deliverability</li><li>Event taxonomy</li>
+        </ul>
+      </div>
+      <div data-reveal style="--d:.1s">
+        <h3>Certifications</h3>
+        <ul class="certs">
+          <li>Marketing &amp; Lifecycle · MiniMBA, 2025</li>
+          <li>Triggers &amp; Workflows · Optimove, 2025</li>
+          <li>Sales with CRM · HubSpot Academy, 2025</li>
+          <li>Lifecycles &amp; Segmentation · Optimove, 2024</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap why-block">
+    <div>
+      <p class="kicker" data-reveal>Why Cambly</p>
+      <h2 class="h2" data-reveal>The best CRM message here <span>ends in a conversation.</span></h2>
+    </div>
+    <div class="txt">
+      <p data-reveal>Learning a language is a habit problem. Most people don't quit because the lessons are bad, they quit because life gets in the way. Good CRM is how you get them back to the next conversation, and that's the work I've been doing for years.</p>
+      <p data-reveal>Doing it across Latin America, the Middle East and Asia, with channels like WhatsApp and KakaoTalk, is exactly the next step I want: the same lifecycle discipline, in more languages and more places.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Get in touch</p>
+    <h2 class="h2" data-reveal>Happy to <span>talk</span> any time.</h2>
+    <p class="intro" data-reveal>Based in Spain, used to working remotely across time zones. Available for a contract role.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=CRM%20Program%20Manager%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · CRM &amp; Lifecycle</span>
+    <span>Personal application page. Not affiliated with Cambly.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
