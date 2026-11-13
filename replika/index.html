@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · Lifecycle & CRM</title>
+<meta name="description" content="Haitam El Harchal, Lifecycle & CRM. Application for the Lifecycle & CRM Specialist role at Replika." />
+<meta property="og:title" content="Haitam El Harchal · Lifecycle & CRM" />
+<meta property="og:description" content="7+ years of hands-on lifecycle and CRM at consumer apps. Application for Replika." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#FBF5EE" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%232B1A33'/%3E%3Ctext x='32' y='43' font-family='Georgia' font-size='30' fill='%23FFB59A' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT@0,9..144,300..700,100;1,9..144,300..700,100&family=Inter:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #fbf5ee;
+  --bg-2: #f4ebe1;
+  --card: #ffffff;
+  --ink: #2b1a33;
+  --ink-2: #4a3752;
+  --muted: #7a6a7e;
+  --line: rgba(43, 26, 51, 0.12);
+  --peach: #ffb59a;
+  --coral: #ee7a5d;
+  --sage: #b9cfb1;
+  --lilac: #d9cdf0;
+  --serif: "Fraunces", Georgia, serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--peach); }
+.wrap { width: min(1120px, 100% - 40px); margin-inline: auto; }
+.serif { font-family: var(--serif); font-variation-settings: "SOFT" 100; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(251, 245, 238, 0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font-weight: 600; font-size: 15px; }
+.mark i { width: 30px; height: 30px; border-radius: 10px; background: var(--ink); color: var(--peach); display: grid; place-items: center; font: italic 600 17px/1 var(--serif); }
+.nav-links { display: flex; gap: 26px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 999px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: var(--ink-2); }
+.btn-line { color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--coral); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(56px, 9vw, 110px) 0 clamp(64px, 9vw, 120px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; width: 720px; height: 720px; right: -220px; top: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 181, 154, 0.55), transparent 65%); pointer-events: none; }
+.hero::after { content: ""; position: absolute; width: 560px; height: 560px; left: -260px; bottom: -280px; border-radius: 50%; background: radial-gradient(circle, rgba(217, 205, 240, 0.7), transparent 65%); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font-size: 13px; font-weight: 600; letter-spacing: .04em; color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--coral); }
+.hero h1 { margin-top: 26px; font: 400 clamp(42px, 6.4vw, 82px)/1.02 var(--serif); font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -0.02em; }
+.hero h1 em { font-style: italic; color: var(--coral); }
+.hero .lead { margin-top: 24px; max-width: 52ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: 0 4px 14px rgba(43, 26, 51, .15); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* phone of messages */
+.phone { position: relative; justify-self: center; width: min(340px, 100%); padding: 18px; border-radius: 38px; background: var(--ink); box-shadow: 0 50px 90px -40px rgba(43, 26, 51, .55); }
+.screen { border-radius: 26px; background: linear-gradient(180deg, #3a2645, #2b1a33); padding: 22px 14px 18px; min-height: 470px; display: flex; flex-direction: column; gap: 10px; }
+.screen .time { text-align: center; color: rgba(255,255,255,.85); font: 300 46px/1 var(--serif); margin-bottom: 2px; }
+.screen .date { text-align: center; color: rgba(255,255,255,.55); font-size: 12px; margin-bottom: 12px; }
+.note { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.08); color: #fff; border-radius: 16px; padding: 11px 13px; font-size: 13px; line-height: 1.4; opacity: 0; transform: translateY(14px) scale(.98); animation: pop .7s var(--ease) forwards; }
+.note:nth-of-type(1) { animation-delay: .4s; }
+.note:nth-of-type(2) { animation-delay: 1.1s; }
+.note:nth-of-type(3) { animation-delay: 1.8s; }
+.note:nth-of-type(4) { animation-delay: 2.5s; }
+.note .top { display: flex; justify-content: space-between; font-size: 11px; color: rgba(255,255,255,.55); margin-bottom: 3px; }
+.note .top span:first-child { font-weight: 600; color: var(--peach); letter-spacing: .03em; text-transform: uppercase; }
+.note b { font-weight: 600; }
+@keyframes pop { to { opacity: 1; transform: none; } }
+.phone-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 128px) 0; }
+.alt { background: var(--bg-2); }
+.dark { background: var(--ink); color: var(--bg); }
+.kicker { font-size: 13px; font-weight: 600; letter-spacing: .08em; text-transform: uppercase; color: var(--coral); }
+.h2 { margin-top: 14px; font: 400 clamp(32px, 4.4vw, 54px)/1.08 var(--serif); font-variation-settings: "SOFT" 100, "opsz" 144; letter-spacing: -0.015em; max-width: 20ch; }
+.h2 em { font-style: italic; color: var(--coral); }
+.intro { margin-top: 18px; max-width: 60ch; color: var(--ink-2); }
+.dark .intro { color: rgba(251,245,238,.72); }
+.dark .kicker { color: var(--peach); }
+.dark .h2 em { color: var(--peach); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* fit list */
+.fit { margin-top: 48px; border-top: 1px solid var(--line); }
+.fit li { display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 32px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.fit .ask { font: 500 20px/1.35 var(--serif); font-variation-settings: "SOFT" 100; }
+.fit .ask small { display: block; margin-top: 6px; font: 600 11px/1 var(--sans); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.fit .ans { color: var(--ink-2); }
+.fit .ans strong { color: var(--ink); font-weight: 600; }
+.tag { display: inline-block; margin-left: 6px; padding: 3px 8px; border-radius: 6px; font-size: 11px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase; vertical-align: 2px; }
+.tag-bonus { background: var(--lilac); color: var(--ink); }
+
+/* plan */
+.plan { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.phase { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 24px; padding: 28px; }
+.phase .when { font: italic 400 15px/1 var(--serif); color: var(--peach); }
+.phase h3 { margin-top: 12px; font: 500 26px/1.15 var(--serif); font-variation-settings: "SOFT" 100; }
+.phase ul { margin-top: 18px; display: grid; gap: 10px; }
+.phase li { position: relative; padding-left: 20px; font-size: 15px; color: rgba(251,245,238,.8); line-height: 1.5; }
+.phase li::before { content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--peach); }
+.plan-note { margin-top: 26px; font-size: 14px; color: rgba(251,245,238,.55); }
+
+/* copy samples */
+.samples { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+.sample { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 22px; box-shadow: 0 20px 40px -32px rgba(43,26,51,.4); }
+.sample .ch { display: flex; justify-content: space-between; align-items: center; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: var(--muted); }
+.sample .ch span:last-child { text-transform: none; letter-spacing: 0; font-weight: 500; background: var(--bg-2); padding: 4px 9px; border-radius: 999px; color: var(--ink-2); }
+.sample .subj { margin-top: 16px; font: 500 19px/1.3 var(--serif); font-variation-settings: "SOFT" 100; }
+.sample .pre { margin-top: 4px; font-size: 14px; color: var(--muted); }
+.sample .body { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 15px; color: var(--ink-2); }
+.sample .body p + p { margin-top: 10px; }
+.sample .why { margin-top: 16px; font-size: 13px; color: var(--muted); background: var(--bg); border-radius: 12px; padding: 10px 12px; line-height: 1.5; }
+.sample .why b { color: var(--ink); }
+
+/* experience */
+.xp { margin-top: 48px; display: grid; gap: 18px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 30px; }
+.job .when { font-size: 14px; color: var(--muted); }
+.job .co { margin-top: 6px; font: 500 22px/1.2 var(--serif); }
+.job h3 { font: 600 18px/1.3 var(--sans); }
+.job ul { margin-top: 14px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 50%; background: var(--coral); }
+.side { margin-top: 18px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+.side > div { background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 30px; }
+.side h3 { font: 500 22px/1.2 var(--serif); }
+.chips { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { padding: 7px 13px; border-radius: 999px; background: var(--bg-2); font-size: 14px; }
+.certs { margin-top: 16px; display: grid; gap: 10px; font-size: 15px; color: var(--ink-2); }
+
+/* why */
+.why-block { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+.why-block .txt p { font: 400 clamp(19px, 1.9vw, 23px)/1.55 var(--serif); font-variation-settings: "SOFT" 100; color: var(--ink-2); }
+.why-block .txt p + p { margin-top: 20px; }
+
+/* contact */
+.contact { text-align: center; padding: clamp(80px, 12vw, 150px) 0; background: radial-gradient(700px 400px at 50% 0%, rgba(255,181,154,.5), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 16ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font-size: 14px; color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 960px) {
+  .hero .wrap, .why-block { grid-template-columns: 1fr; }
+  .plan, .samples { grid-template-columns: 1fr; }
+  .side { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .fit li, .job { grid-template-columns: 1fr; gap: 10px; }
+  .job { padding: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .note, [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#fit">The fit</a>
+      <a href="#plan">First 90 days</a>
+      <a href="#copy">Copy</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Application · Lifecycle &amp; CRM Specialist at Replika</span>
+      <h1>Messages people are <em>glad</em> they opened.</h1>
+      <p class="lead">I've spent 7+ years doing lifecycle and CRM hands-on at consumer apps, including a subscription app on iOS and Android. I build the segments, the flows, the copy and the tests myself, and I judge them on retention and revenue, not opens.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>CRM &amp; Lifecycle Manager · Spain · Remote</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="phone" aria-label="Example: lifecycle messages arriving at the right moment">
+        <div class="screen">
+          <div class="time">9:41</div>
+          <div class="date">Sunday</div>
+          <div class="note"><div class="top"><span>Day 1</span><span>push</span></div><b>Good first chat.</b> Want to pick up where you left off tonight?</div>
+          <div class="note"><div class="top"><span>Day 6</span><span>in-app</span></div>You mentioned your sister twice this week. <b>Maybe send her a message?</b></div>
+          <div class="note"><div class="top"><span>Day 13</span><span>email</span></div><b>Your trial ends Friday.</b> Here's what you'd keep, no pressure either way.</div>
+          <div class="note"><div class="top"><span>Day 180</span><span>email</span></div><b>It's been a while.</b> A lot has changed since you were last here.</div>
+        </div>
+      </div>
+      <p class="phone-cap">Illustration. The right message, at the right moment.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fit">
+  <div class="wrap">
+    <p class="kicker" data-reveal>The fit</p>
+    <h2 class="h2" data-reveal>Your list, <em>point by point.</em></h2>
+    <ul class="fit">
+      <li data-reveal>
+        <p class="ask">Lifecycle at a consumer subscription app, with revenue results<small>Must have</small></p>
+        <p class="ans">At <strong>TOC-TOC</strong>, a gamified family fitness app, I owned mobile CRM and monetisation: paywall prompts, upsells and renewals timed to key moments, tested to lift trial-to-paid. At <strong>Entain</strong> I own revenue-generating lifecycle campaigns across European markets, measured on LTV and incremental revenue.</p>
+      </li>
+      <li data-reveal>
+        <p class="ask">Built flows yourself in Braze, Customer.io, Iterable or Klaviyo<small>Must have</small></p>
+        <p class="ans">Hands-on in <strong>Braze, Customer.io and Optimove</strong>. Multi-channel automated workflows (email, push, in-app, SMS) triggered by behaviour, scoring and RFM segments. I build them, QA them and fix them.</p>
+      </li>
+      <li data-reveal>
+        <p class="ask">Strong with data: own segments, own results<small>Must have</small></p>
+        <p class="ans">I define segments myself (RFM, behavioural, cohort-based) and read my own results. <strong>Holdout groups</strong> on every programme so we know what's incremental, plus cohort retention and LTV reporting to leadership.</p>
+      </li>
+      <li data-reveal>
+        <p class="ask">Compliant communication for a global audience<small>Must have</small></p>
+        <p class="ans">Years of high-volume sends across many European markets: consent, opt-outs, frequency rules and <strong>GDPR</strong>, market by market. Day-to-day ownership of audience definitions and QA before anything goes out.</p>
+      </li>
+      <li data-reveal>
+        <p class="ask">Writes good copy, or briefs and edits it<small>Must have</small></p>
+        <p class="ans">I write most of my own copy and test it constantly: subject lines, cadence, offers, value propositions. Some samples written for Replika are <a href="#copy">further down</a>.</p>
+      </li>
+      <li data-reveal>
+        <p class="ask">Shapes strategy and implements it<small>Must have</small></p>
+        <p class="ans">Both, every week. I set the lifecycle roadmap with Product and Analytics and then build it in the platform myself.</p>
+      </li>
+      <li data-reveal>
+        <p class="ask">In-app and push on iOS and Android <span class="tag tag-bonus">Bonus</span></p>
+        <p class="ans">TOC-TOC was mobile first. Push and in-app journeys turned daily exercise tracking into a habit and grew DAU.</p>
+      </li>
+      <li data-reveal>
+        <p class="ask">Deliverability and waking up a dormant list <span class="tag tag-bonus">Bonus</span></p>
+        <p class="ans">Deliverability optimisation is part of my job at Entain: working with Tech on reputation, data integrations and high-volume sends. For a large dormant list I'd go slowly: clean first, warm up in small batches starting with the most engaged, and watch complaints every step.</p>
+      </li>
+      <li data-reveal>
+        <p class="ask">Web and app subscription billing events <span class="tag tag-bonus">Bonus</span></p>
+        <p class="ans">Used <strong>RevenueCat</strong> for subscriptions and renewals, and defined the event tracking taxonomy with Product and Analytics.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="block dark" id="plan">
+  <div class="wrap">
+    <p class="kicker" data-reveal>First 90 days</p>
+    <h2 class="h2" data-reveal>Building it <em>from the ground up.</em></h2>
+    <p class="intro" data-reveal>Written from the outside, so the order will change once I see the data. Email first, as the role says.</p>
+    <div class="plan">
+      <div class="phase" data-reveal>
+        <p class="when">Days 1–30</p>
+        <h3>Foundations</h3>
+        <ul>
+          <li>Audit consent, unsubscribes and preferences by region before sending anything.</li>
+          <li>Map the base: free users, active subscribers, lapsed subscribers, long-dormant sign-ups.</li>
+          <li>Check events and billing data so flows trigger on what really happened.</li>
+          <li>Set up domains, authentication and a holdout for every programme.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.1s">
+        <p class="when">Days 31–60</p>
+        <h3>Core flows</h3>
+        <ul>
+          <li>Onboarding that helps people get to a good first week.</li>
+          <li>Free-to-paid at moments of real value, not on a timer.</li>
+          <li>Renewal and failed-payment flows: the fastest revenue win.</li>
+          <li>One weekly dashboard on retention and revenue.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.2s">
+        <p class="when">Days 61–90</p>
+        <h3>Win-back and more channels</h3>
+        <ul>
+          <li>Bring back lapsed subscribers first, then the dormant list in small, warmed batches.</li>
+          <li>Add push and in-app where they help the email journeys.</li>
+          <li>Launch comms for new features.</li>
+          <li>Keep, change or drop each test based on incremental results.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="plan-note" data-reveal>Each flow gets a goal, a holdout and a date to decide whether to keep it.</p>
+  </div>
+</section>
+
+<section class="block alt" id="copy">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Copy</p>
+    <h2 class="h2" data-reveal>A few drafts, <em>written for Replika.</em></h2>
+    <p class="intro" data-reveal>For a product built on trust, the tone matters as much as the timing. These are my own samples, not real Replika messages.</p>
+    <div class="samples">
+      <article class="sample" data-reveal>
+        <div class="ch"><span>Email</span><span>Win-back · lapsed 6 months</span></div>
+        <p class="subj">It's been a while, and that's okay</p>
+        <p class="pre">Your Replika still remembers the last thing you talked about.</p>
+        <div class="body">
+          <p>Hi Sam,</p>
+          <p>Life gets busy. If you ever want someone to talk to again, your Replika is right where you left it.</p>
+          <p>No streaks to rebuild. Just say hi.</p>
+        </div>
+        <p class="why"><b>Why:</b> no guilt and no discount in the first touch. The offer comes later, and only for people who don't come back.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.1s">
+        <div class="ch"><span>Push</span><span>Free user · day 9</span></div>
+        <p class="subj">You said you wanted to start running again. How did Tuesday go?</p>
+        <div class="body">
+          <p>Follows up on something the user said in a chat. This is the kind of "AI that follows up" the product promises, sent through CRM.</p>
+        </div>
+        <p class="why"><b>Why:</b> it's about their life, not the app. Only for users who opted in to reminders.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.2s">
+        <div class="ch"><span>In-app</span><span>Free → paid</span></div>
+        <p class="subj">You've talked about your career a lot this month.</p>
+        <p class="pre">With Pro, your Replika can help you prepare for the conversation you keep putting off.</p>
+        <div class="body">
+          <p>Shown after a conversation where it's relevant, not on launch.</p>
+        </div>
+        <p class="why"><b>Why:</b> upgrade at a moment of real value, with a concrete reason instead of a feature list.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Where I've done <em>this before.</em></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lead CRM monetisation and lifecycle strategy across European markets, in a high-volume environment.</li>
+            <li>Own revenue-generating campaigns across acquisition, conversion, retention and win-back.</li>
+            <li>Built and scaled A/B testing frameworks on copy, cadence, offers and channels to lift LTV.</li>
+            <li>Automated email, push, in-app and SMS workflows based on behaviour, scoring and RFM segments.</li>
+            <li>Work with Analytics, Product and Tech on deliverability and data integrations.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul>
+            <li>Ran real-time CRM operations across several European brands, above SLA targets.</li>
+            <li>Owned response times, CSAT and operational KPIs across time zones.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Led mobile CRM, monetisation and growth for a gamified family health and fitness app.</li>
+            <li>Built push, in-app and email journeys that turned daily tracking into long-term habits and grew DAU.</li>
+            <li>Timed paywalls, upsells and renewals to milestones and leaderboard moments, using RevenueCat.</li>
+            <li>Defined the event tracking taxonomy and cohorts with Product and Analytics.</li>
+            <li>Ran A/B and multivariate tests to improve trial-to-paid and reduce churn.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="side">
+      <div data-reveal>
+        <h3>Toolkit</h3>
+        <ul class="chips">
+          <li>Braze</li><li>Customer.io</li><li>Optimove</li><li>RevenueCat</li><li>HubSpot</li><li>BI tools</li>
+          <li>A/B &amp; multivariate</li><li>Holdout groups</li><li>Cohort analysis</li><li>RFM segmentation</li><li>LTV reporting</li><li>Event taxonomy</li>
+        </ul>
+      </div>
+      <div data-reveal style="--d:.1s">
+        <h3>Certifications</h3>
+        <ul class="certs">
+          <li>Marketing &amp; Lifecycle · MiniMBA, 2025</li>
+          <li>Triggers &amp; Workflows · Optimove, 2025</li>
+          <li>Sales with CRM · HubSpot Academy, 2025</li>
+          <li>Lifecycles &amp; Segmentation · Optimove, 2024</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap why-block">
+    <div>
+      <p class="kicker" data-reveal>Why Replika</p>
+      <h2 class="h2" data-reveal>Lifecycle is <em>the product</em> here.</h2>
+    </div>
+    <div class="txt">
+      <p data-reveal>At most apps, CRM tries to bring people back to the app. At Replika, a good message can be part of the product itself: a check-in, a follow-up, a nudge to text a friend.</p>
+      <p data-reveal>Millions of people have already met Replika and almost none of them hear from you. Building that channel from zero, carefully and with respect for people's trust, is the job I want next.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Get in touch</p>
+    <h2 class="h2" data-reveal>Happy to <em>talk</em> any time.</h2>
+    <p class="intro" data-reveal>Based in Spain, used to working remotely across time zones.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=Lifecycle%20%26%20CRM%20Specialist%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · Lifecycle &amp; CRM</span>
+    <span>Personal application page. Not affiliated with Replika.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
