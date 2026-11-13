@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · Messaging</title>
+<meta name="description" content="Haitam El Harchal. Application for Senior Marketing Manager, Lifecycle Marketing - Messaging Channels at Remote." />
+<meta property="og:title" content="Haitam El Harchal · Lifecycle messaging channels" />
+<meta property="og:description" content="7+ years of hands-on lifecycle and CRM. How I'd launch and scale WhatsApp and WeChat as pipeline channels." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#F6F5FB" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%2314122B'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' fill='%233DDC97' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@500;600;700;800&family=Inter:wght@400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f6f5fb;
+  --bg-2: #ecebf5;
+  --card: #ffffff;
+  --ink: #14122b;
+  --ink-2: #393654;
+  --muted: #706d8a;
+  --line: rgba(20, 18, 43, 0.12);
+  --violet: #7b5cff;
+  --mint: #3ddc97;
+  --mint-2: #dcf8ea;
+  --amber: #ffbe55;
+  --head: "Manrope", "Inter", system-ui, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "DM Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--mint); }
+.wrap { width: min(1140px, 100% - 40px); margin-inline: auto; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(246, 245, 251, 0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 700 16px/1 var(--head); }
+.mark i { width: 30px; height: 30px; border-radius: 9px; background: var(--ink); color: var(--mint); display: grid; place-items: center; font: normal 800 15px/1 var(--head); }
+.nav-links { display: flex; gap: 24px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 12px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: var(--ink-2); }
+.btn-line { color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--violet); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 9vw, 120px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; width: 680px; height: 680px; right: -200px; top: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(123, 92, 255, 0.28), transparent 65%); pointer-events: none; }
+.hero::after { content: ""; position: absolute; width: 520px; height: 520px; left: -240px; bottom: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(61, 220, 151, 0.28), transparent 65%); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12.5px/1.3 var(--mono); color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(61, 220, 151, .25); flex: none; }
+.hero h1 { margin-top: 26px; font: 800 clamp(40px, 5.8vw, 74px)/1.02 var(--head); letter-spacing: -0.04em; }
+.hero h1 span { color: var(--violet); }
+.hero .lead { margin-top: 24px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: 0 4px 14px rgba(20, 18, 43, .15); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* chat illustration */
+.chat { justify-self: center; width: min(400px, 100%); background: var(--card); border: 1px solid var(--line); border-radius: 28px; overflow: hidden; box-shadow: 0 50px 90px -40px rgba(20, 18, 43, .45); }
+.chat .top { display: flex; align-items: center; gap: 12px; padding: 16px 18px; background: var(--ink); color: #fff; }
+.chat .top i { width: 34px; height: 34px; border-radius: 50%; background: var(--mint); color: var(--ink); display: grid; place-items: center; font: normal 800 14px/1 var(--head); }
+.chat .top p { font: 600 14px/1.25 var(--sans); }
+.chat .top small { display: block; font: 400 11.5px/1.3 var(--mono); color: rgba(255,255,255,.6); }
+.thread { padding: 16px; display: grid; gap: 10px; background: linear-gradient(180deg, #f2f1f8, #fafafd); }
+.b { max-width: 86%; padding: 10px 13px; border-radius: 16px; font-size: 14px; line-height: 1.45; opacity: 0; transform: translateY(12px); animation: up .7s var(--ease) forwards; }
+.b.in { background: var(--card); border: 1px solid var(--line); border-bottom-left-radius: 4px; }
+.b.out { justify-self: end; background: var(--mint-2); border-bottom-right-radius: 4px; }
+.b .meta { display: block; margin-top: 6px; font: 400 10.5px/1.3 var(--mono); color: var(--muted); }
+.b .meta em { font-style: normal; color: var(--violet); }
+.qr { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 8px; }
+.qr span { border: 1px solid rgba(123,92,255,.35); color: var(--violet); border-radius: 999px; padding: 4px 10px; font-size: 12.5px; background: var(--card); }
+.sys { justify-self: center; font: 500 11px/1.3 var(--mono); color: var(--muted); background: var(--bg-2); padding: 5px 10px; border-radius: 999px; opacity: 0; animation: up .7s var(--ease) forwards; }
+.thread > :nth-child(1) { animation-delay: .3s; }
+.thread > :nth-child(2) { animation-delay: .9s; }
+.thread > :nth-child(3) { animation-delay: 1.5s; }
+.thread > :nth-child(4) { animation-delay: 2.1s; }
+.thread > :nth-child(5) { animation-delay: 2.7s; }
+@keyframes up { to { opacity: 1; transform: none; } }
+.chat-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 128px) 0; }
+.alt { background: var(--bg-2); }
+.dark { background: var(--ink); color: var(--bg); }
+.kicker { font: 500 12.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--violet); }
+.h2 { margin-top: 14px; font: 800 clamp(32px, 4.2vw, 52px)/1.05 var(--head); letter-spacing: -0.035em; max-width: 22ch; }
+.h2 span { color: var(--violet); }
+.intro { margin-top: 18px; max-width: 62ch; color: var(--ink-2); }
+.dark .intro { color: rgba(246,245,251,.72); }
+.dark .kicker, .dark .h2 span { color: var(--mint); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* fit */
+.legend { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.fit { margin-top: 28px; border-top: 1px solid var(--line); }
+.fit li { display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 32px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.fit .ask { font: 700 19px/1.35 var(--head); letter-spacing: -.015em; }
+.fit .ans { color: var(--ink-2); }
+.fit .ans strong { color: var(--ink); font-weight: 600; }
+.tag { display: inline-block; margin-top: 10px; padding: 4px 9px; border-radius: 6px; font: 500 11px/1.2 var(--mono); letter-spacing: .03em; text-transform: uppercase; font-style: normal; }
+.legend .tag { margin-top: 0; }
+.t-direct { background: var(--mint); color: var(--ink); }
+.t-transfer { background: #e6e0ff; color: #3c2a9e; }
+.t-new { background: #ffe8c2; color: #6e4a06; }
+
+/* launch playbook */
+.gates { margin-top: 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 0; background: var(--card); border: 1px solid var(--line); border-radius: 22px; overflow: hidden; }
+.gate { padding: 26px; border-right: 1px solid var(--line); position: relative; }
+.gate:last-child { border-right: 0; }
+.gate .n { font: 500 12px/1 var(--mono); color: var(--muted); }
+.gate h3 { margin-top: 12px; font: 800 22px/1.15 var(--head); letter-spacing: -.02em; }
+.gate ul { margin-top: 14px; display: grid; gap: 8px; }
+.gate li { position: relative; padding-left: 16px; font-size: 14.5px; color: var(--ink-2); line-height: 1.5; }
+.gate li::before { content: ""; position: absolute; left: 0; top: .6em; width: 6px; height: 6px; border-radius: 50%; background: var(--violet); }
+.gate .exit { margin-top: 16px; padding: 10px 12px; border-radius: 10px; background: var(--bg); font-size: 13px; color: var(--ink-2); line-height: 1.45; }
+.gate .exit b { display: block; font: 500 10.5px/1.4 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--violet); }
+
+/* journey matrix */
+.matrix { margin-top: 48px; overflow-x: auto; -webkit-overflow-scrolling: touch; border-radius: 18px; border: 1px solid rgba(255,255,255,.12); }
+.matrix table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 14px; }
+.matrix th, .matrix td { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid rgba(255,255,255,.1); }
+.matrix thead th { font: 500 11.5px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: rgba(246,245,251,.55); background: rgba(255,255,255,.04); }
+.matrix tbody th { font: 700 15px/1.3 var(--head); color: #fff; width: 150px; }
+.matrix td { color: rgba(246,245,251,.78); line-height: 1.5; }
+.matrix td b { color: var(--mint); font-weight: 600; }
+.matrix tr:last-child th, .matrix tr:last-child td { border-bottom: 0; }
+.mx-note { margin-top: 20px; font-size: 14px; color: rgba(246,245,251,.55); }
+
+/* ai */
+.flows { margin-top: 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.flow { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 24px; display: flex; flex-direction: column; }
+.flow .n { font: 500 12px/1 var(--mono); color: var(--muted); }
+.flow h3 { margin-top: 14px; font: 800 19px/1.25 var(--head); letter-spacing: -.015em; }
+.flow p { margin-top: 10px; font-size: 15px; color: var(--ink-2); line-height: 1.55; }
+.flow .io { margin-top: auto; padding-top: 16px; font: 400 12px/1.6 var(--mono); color: var(--muted); }
+.flow .io b { color: var(--violet); font-weight: 500; }
+.ai-note { margin-top: 24px; font-size: 15px; color: var(--ink-2); max-width: 72ch; }
+
+/* plan */
+.plan { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.phase { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 28px; }
+.phase .when { font: 500 12.5px/1 var(--mono); color: var(--violet); letter-spacing: .04em; }
+.phase h3 { margin-top: 14px; font: 800 24px/1.15 var(--head); letter-spacing: -.02em; }
+.phase ul { margin-top: 18px; display: grid; gap: 10px; }
+.phase li { position: relative; padding-left: 20px; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.phase li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 3px; background: var(--mint); }
+.plan-note { margin-top: 26px; font-size: 14px; color: var(--muted); }
+
+/* copy */
+.samples { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+.sample { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; box-shadow: 0 20px 40px -32px rgba(20,18,43,.4); }
+.sample .top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font: 500 11.5px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.sample .top span:last-child { text-transform: none; letter-spacing: 0; background: var(--bg-2); padding: 5px 9px; border-radius: 999px; color: var(--ink-2); }
+.sample .body { margin-top: 16px; }
+.bubble { background: var(--mint-2); border-radius: 14px 14px 14px 4px; padding: 12px 14px; font-size: 15px; color: var(--ink); line-height: 1.5; }
+.bubble + .bubble { margin-top: 8px; }
+.sample .qr span { font-size: 13px; }
+.sample .why { margin-top: 16px; font-size: 13px; color: var(--muted); background: var(--bg); border-radius: 12px; padding: 10px 12px; line-height: 1.5; }
+.sample .why b { color: var(--ink); }
+
+/* experience */
+.xp { margin-top: 48px; display: grid; gap: 18px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 30px; }
+.job .when { font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.job .co { margin-top: 6px; font: 800 22px/1.2 var(--head); letter-spacing: -.015em; }
+.job h3 { font: 700 18px/1.3 var(--head); }
+.job ul { margin-top: 14px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 3px; background: var(--violet); }
+.side { margin-top: 18px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+.side > div { background: var(--card); border: 1px solid var(--line); border-radius: 22px; padding: 30px; }
+.side h3 { font: 800 20px/1.2 var(--head); }
+.chips { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { padding: 7px 13px; border-radius: 10px; background: var(--bg-2); font-size: 14px; }
+.certs { margin-top: 16px; display: grid; gap: 10px; font-size: 15px; color: var(--ink-2); }
+
+/* why */
+.why-block { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+.why-block .txt p { font: 500 clamp(19px, 1.9vw, 22px)/1.55 var(--head); letter-spacing: -.015em; color: var(--ink-2); }
+.why-block .txt p + p { margin-top: 20px; }
+
+/* contact */
+.contact { text-align: center; padding: clamp(80px, 12vw, 150px) 0; background: radial-gradient(700px 380px at 50% 0%, rgba(61,220,151,.35), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 18ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 400 14px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 1000px) {
+  .flows { grid-template-columns: repeat(2, 1fr); }
+  .gates { grid-template-columns: repeat(2, 1fr); }
+  .gate:nth-child(2) { border-right: 0; }
+  .gate:nth-child(-n+2) { border-bottom: 1px solid var(--line); }
+}
+@media (max-width: 960px) {
+  .hero .wrap, .why-block { grid-template-columns: 1fr; }
+  .plan, .samples { grid-template-columns: 1fr; }
+  .side { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .fit li, .job { grid-template-columns: 1fr; gap: 10px; }
+  .job { padding: 24px; }
+  .flows, .gates { grid-template-columns: 1fr; }
+  .gate { border-right: 0; border-bottom: 1px solid var(--line); }
+  .gate:last-child { border-bottom: 0; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .b, .sys, [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#fit">The fit</a>
+      <a href="#playbook">Launch playbook</a>
+      <a href="#journeys">Journeys</a>
+      <a href="#ai">AI agents</a>
+      <a href="#copy">Copy</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Application · Senior Marketing Manager, Lifecycle - Messaging Channels at Remote</span>
+      <h1>Messaging channels that <span>move pipeline.</span></h1>
+      <p class="lead">I've spent 7+ years building lifecycle programmes hands-on across email, push, in-app and SMS, for consumer apps and across European markets at Entain. I design the journeys, run the tests, define the KPIs and own the results. Now I want to build WhatsApp and WeChat into channels that drive real business at Remote.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>CRM &amp; Lifecycle Marketing Manager · Spain · Remote-ready</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="chat" aria-label="Illustration: a WhatsApp lifecycle conversation with an AI agent and a sales handoff">
+        <div class="top"><i>B</i><p>Business account<small>WhatsApp · opted in at webinar sign-up</small></p></div>
+        <div class="thread">
+          <div class="b in">Hi Ana, thanks for joining yesterday's session on hiring in Brazil. Want the checklist we mentioned?<div class="qr"><span>Send it</span><span>Not now</span></div><span class="meta">template · <em>agent-personalised</em></span></div>
+          <div class="b out">Send it. We're hiring 3 engineers in São Paulo next quarter.</div>
+          <div class="b in">Here it is. For 3 hires, most teams compare EOR with setting up an entity. Want a 15-min call with a specialist?<span class="meta"><em>agent draft</em> · rules-checked</span></div>
+          <div class="sys">intent: hiring · BR · 3 roles → routed to AE</div>
+          <div class="b in">Done. Marta from our team will message you here today.<span class="meta">handoff · logged to CRM</span></div>
+        </div>
+      </div>
+      <p class="chat-cap">Illustration with made-up names. Opt-in, agent, guardrails, handoff to Sales.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fit">
+  <div class="wrap">
+    <p class="kicker" data-reveal>The fit</p>
+    <h2 class="h2" data-reveal>Your list, <span>point by point.</span></h2>
+    <p class="intro" data-reveal>What you're looking for, with what I've actually done and where I'd be learning.</p>
+    <div class="legend" data-reveal>
+      <span><i class="tag t-direct">Direct</i> done it, same shape</span>
+      <span><i class="tag t-transfer">Transferable</i> same skill, different channel or audience</span>
+      <span><i class="tag t-new">New for me</i> I'd be learning it here</span>
+    </div>
+    <ul class="fit">
+      <li data-reveal>
+        <div><p class="ask">Several years in lifecycle, CRM or growth marketing</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">7+ years. At <strong>Entain</strong> I own lifecycle across acquisition, conversion, retention and win-back in European markets. At <strong>TOC-TOC</strong> I owned mobile CRM, monetisation and growth end to end.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Launching or scaling a messaging or conversational channel</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">I run <strong>SMS</strong> as part of automated multi-channel journeys, alongside email, push and in-app. I haven't launched WhatsApp or WeChat yet. I'd treat each one as a gated launch: provider, templates, opt-in, pilot with a holdout, then scale. <a href="#playbook">The playbook is below.</a></p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Cross-channel judgement: roadmap, coordinated journeys, tests, scalable programmes</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I build behaviour-triggered journeys in <strong>Braze, Customer.io and Optimove</strong> where channels hand off to each other, and I set the CRM roadmap with Product and Analytics. Deciding which channel should <em>not</em> send is half the job.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Building AI agents and acting as the human in the loop</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">This page was researched, drafted and built with AI tools, with me reviewing every line. The agents I'd build for Remote, and where the human check sits, are <a href="#ai">further down</a>.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Test-and-learn, channel KPIs, turning insights into action</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I built and scaled <strong>A/B and multivariate testing frameworks</strong> on copy, cadence, offers and channels, with <strong>holdout groups</strong> so we know what's incremental. I report results to leadership and turn them into the next iteration.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Partnering with Marketing Ops and RevOps: consent, data, lead routing, automation</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">I work daily with Tech and Analytics on data integrations, deliverability and audience definitions, and I've defined event taxonomies with Product. B2B lead routing to Sales is newer for me; I've completed HubSpot Academy's <strong>Sales with CRM</strong> implementation course.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Pipeline and down-funnel impact in a B2B context</p><span class="tag t-new">New for me</span></div>
+        <p class="ans">My results so far are measured in revenue, LTV and retention for consumers, not sales pipeline. The discipline is the same (measure incrementally, tie every programme to a business number), and I'd agree the pipeline definitions with RevOps in my first weeks.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Localised, compliant experiences with Legal, Data Protection and regions</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">Years of high-volume sends across many European markets: consent, opt-outs, frequency rules and <strong>GDPR</strong>, market by market, plus coordinating stakeholders across time zones.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Fluent English, remote experience a plus</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I work in English every day with teams across Europe and time zones, remotely.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="block alt" id="playbook">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Launch playbook</p>
+    <h2 class="h2" data-reveal>How a new channel <span>earns its place.</span></h2>
+    <p class="intro" data-reveal>The same four gates for WhatsApp, WeChat and whatever comes next. A channel only moves forward when it clears the exit criteria.</p>
+    <div class="gates" data-reveal>
+      <div class="gate">
+        <span class="n">01</span>
+        <h3>Evaluate</h3>
+        <ul>
+          <li>Where do our buyers actually reply?</li>
+          <li>Provider and business account options.</li>
+          <li>Legal and data protection review.</li>
+        </ul>
+        <p class="exit"><b>Exit</b>A market, a use case and a provider, signed off by Legal.</p>
+      </div>
+      <div class="gate">
+        <span class="n">02</span>
+        <h3>Foundations</h3>
+        <ul>
+          <li>Opt-in and preference capture with Marketing Ops.</li>
+          <li>Data model, CRM sync, lead routing.</li>
+          <li>Approved templates and a tone guide.</li>
+        </ul>
+        <p class="exit"><b>Exit</b>Consent is recorded, replies reach the right owner.</p>
+      </div>
+      <div class="gate">
+        <span class="n">03</span>
+        <h3>Pilot</h3>
+        <ul>
+          <li>One or two use cases, one market.</li>
+          <li>Holdout group from day one.</li>
+          <li>Weekly read with Sales and regional team.</li>
+        </ul>
+        <p class="exit"><b>Exit</b>Incremental lift on an agreed funnel metric, low opt-outs.</p>
+      </div>
+      <div class="gate">
+        <span class="n">04</span>
+        <h3>Scale</h3>
+        <ul>
+          <li>More use cases, then more markets.</li>
+          <li>Playbooks so regions can run it.</li>
+          <li>AI agents on the repeatable parts.</li>
+        </ul>
+        <p class="exit"><b>Exit</b>Runs reliably without me in every send.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block dark" id="journeys">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Cross-channel journeys</p>
+    <h2 class="h2" data-reveal>Each channel does <span>what it's best at.</span></h2>
+    <p class="intro" data-reveal>A first sketch of where messaging fits next to email and Sales. Messaging is for moments that need a fast reply, not a copy of the newsletter.</p>
+    <div class="matrix" data-reveal>
+      <table>
+        <thead><tr><th>Stage</th><th>Messaging (WhatsApp / WeChat)</th><th>Email</th><th>Sales &amp; other touchpoints</th></tr></thead>
+        <tbody>
+          <tr><th>Acquisition</th><td><b>Click-to-chat</b> from ads and webinars; an agent qualifies and books a call.</td><td>Content follow-up and nurture for people not ready to talk.</td><td>AE picks up qualified, routed conversations.</td></tr>
+          <tr><th>Onboarding</th><td><b>Next-step nudges</b>: documents missing, first payroll date, quick answers.</td><td>Full onboarding guides and checklists.</td><td>Onboarding team steps in when stuck.</td></tr>
+          <tr><th>Retention</th><td><b>Time-sensitive alerts</b> the customer opted into, in their local channel.</td><td>Product updates and monthly value recap.</td><td>CSM check-ins on key accounts.</td></tr>
+          <tr><th>Re-engagement</th><td><b>One short, personal message</b> with an easy "not now".</td><td>Win-back sequence with new reasons to return.</td><td>Sales reaches out only if intent signals appear.</td></tr>
+          <tr><th>Expansion</th><td><b>Hiring in a new country?</b> Prompted by product signals.</td><td>Country guides and pricing.</td><td>AE handles the expansion conversation.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="mx-note" data-reveal>Written from the outside. The real version comes from Remote's funnel data and conversations with Sales and the regional teams.</p>
+  </div>
+</section>
+
+<section class="block" id="ai">
+  <div class="wrap">
+    <p class="kicker" data-reveal>AI agents</p>
+    <h2 class="h2" data-reveal>Agents do the volume. <span>People own the judgement.</span></h2>
+    <p class="intro" data-reveal>Four agents I'd build early. Each one has clear limits and a human check before anything sensitive reaches a customer.</p>
+    <div class="flows">
+      <article class="flow" data-reveal>
+        <span class="n">01</span>
+        <h3>Conversation agent</h3>
+        <p>Answers common questions in the channel, qualifies intent and hands off to Sales with a summary. Never talks pricing or legal specifics on its own.</p>
+        <p class="io"><b>check</b> rules + sampled human review<br><b>out</b> routed lead + summary</p>
+      </article>
+      <article class="flow" data-reveal style="--d:.08s">
+        <span class="n">02</span>
+        <h3>Template builder</h3>
+        <p>Drafts and localises message templates in the format each platform approves, from a master message and tone guide.</p>
+        <p class="io"><b>check</b> native + Legal review<br><b>out</b> templates ready to submit</p>
+      </article>
+      <article class="flow" data-reveal style="--d:.16s">
+        <span class="n">03</span>
+        <h3>Test analyst</h3>
+        <p>Reads every experiment against its holdout, writes the result in plain words and suggests the next test.</p>
+        <p class="io"><b>check</b> I sign off the decision<br><b>out</b> weekly test log</p>
+      </article>
+      <article class="flow" data-reveal style="--d:.24s">
+        <span class="n">04</span>
+        <h3>Channel health monitor</h3>
+        <p>Watches opt-outs, blocks, quality ratings and reply times daily, and flags a problem before the platform does.</p>
+        <p class="io"><b>check</b> alert goes to a person<br><b>out</b> alert + likely cause</p>
+      </article>
+    </div>
+    <p class="ai-note" data-reveal>Every time I have to fix the same agent mistake twice, the fix goes into the prompt, the rules or the checks, so it doesn't happen a third time.</p>
+  </div>
+</section>
+
+<section class="block alt" id="plan">
+  <div class="wrap">
+    <p class="kicker" data-reveal>First 90 days</p>
+    <h2 class="h2" data-reveal>From blank page <span>to a live pilot.</span></h2>
+    <p class="intro" data-reveal>Written from the outside, so the order will change once I'm inside.</p>
+    <div class="plan">
+      <div class="phase" data-reveal>
+        <p class="when">DAYS 1–30</p>
+        <h3>Learn and decide</h3>
+        <ul>
+          <li>Map today's lifecycle journeys, funnel data and where buyers get stuck.</li>
+          <li>Talk to Sales and regional teams: where do customers already use WhatsApp or WeChat?</li>
+          <li>Review consent, data and routing with Marketing Ops, RevOps and Legal.</li>
+          <li>Pick the first market, use case and provider.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.1s">
+        <p class="when">DAYS 31–60</p>
+        <h3>Build foundations</h3>
+        <ul>
+          <li>Opt-in, preferences and CRM sync live.</li>
+          <li>First templates approved, tone guide written.</li>
+          <li>Channel KPIs and a dashboard agreed with Analytics.</li>
+          <li>First agent in testing, internal only.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.2s">
+        <p class="when">DAYS 61–90</p>
+        <h3>Pilot and plan</h3>
+        <ul>
+          <li>WhatsApp pilot live in one market, with a holdout.</li>
+          <li>Weekly read with Sales; fix what slows handoffs.</li>
+          <li>WeChat evaluation started.</li>
+          <li>Channel roadmap and investment case for the next two quarters.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="plan-note" data-reveal>Every use case gets a goal, a holdout and a date to decide whether to keep it.</p>
+  </div>
+</section>
+
+<section class="block" id="copy">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Copy</p>
+    <h2 class="h2" data-reveal>A few drafts, <span>written for Remote.</span></h2>
+    <p class="intro" data-reveal>My own samples, based on public information. Not real Remote messages.</p>
+    <div class="samples">
+      <article class="sample" data-reveal>
+        <div class="top"><span>WhatsApp</span><span>Opt-in confirmation</span></div>
+        <div class="body">
+          <p class="bubble">Hi Ana, you're all set to get updates from Remote here. We'll only message you about your account and things you asked for. Reply STOP any time.</p>
+        </div>
+        <p class="why"><b>Why:</b> sets expectations in the first message, which protects the quality rating and opt-out rate for everything after it.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.1s">
+        <div class="top"><span>WhatsApp</span><span>Onboarding · stuck step</span></div>
+        <div class="body">
+          <p class="bubble">Hi David, Priya's contract is almost ready. We just need her tax ID to run her first payroll on the 25th.</p>
+          <div class="qr"><span>Upload now</span><span>Ask a question</span></div>
+        </div>
+        <p class="why"><b>Why:</b> a real deadline, one action, and a way to get help without leaving the chat. This is where messaging beats email.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.2s">
+        <div class="top"><span>WhatsApp</span><span>Expansion signal</span></div>
+        <div class="body">
+          <p class="bubble">Hi Ana, it looks like your team is looking at roles in Germany. Want a quick summary of what hiring there involves, or a call with a specialist?</p>
+          <div class="qr"><span>Send summary</span><span>Book a call</span><span>Not now</span></div>
+        </div>
+        <p class="why"><b>Why:</b> triggered by a product signal, not a calendar. Two levels of commitment, and an easy way out.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Where I've done <span>the work.</span></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lead CRM monetisation and lifecycle strategy across European markets, in a high-volume environment.</li>
+            <li>Own revenue-generating campaigns across acquisition, conversion, retention and win-back.</li>
+            <li>Built and scaled A/B testing frameworks on copy, cadence, offers and channels to lift LTV.</li>
+            <li>Automated email, push, in-app and SMS workflows based on behaviour, scoring and RFM segments.</li>
+            <li>Work with Analytics, Product and Tech on deliverability and data integrations.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul>
+            <li>Ran real-time CRM operations across several European brands, above SLA targets.</li>
+            <li>Coordinated stakeholders across time zones during high-volume periods.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Led mobile CRM, monetisation and growth for a gamified family health and fitness app.</li>
+            <li>Built push, in-app and email journeys that turned daily tracking into long-term habits and grew DAU.</li>
+            <li>Defined the event tracking taxonomy and cohorts with Product and Analytics.</li>
+            <li>Ran A/B and multivariate tests to improve trial-to-paid and reduce churn.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="side">
+      <div data-reveal>
+        <h3>Toolkit</h3>
+        <ul class="chips">
+          <li>Braze</li><li>Customer.io</li><li>Optimove</li><li>HubSpot</li><li>RevenueCat</li><li>BI tools</li>
+          <li>Email · Push · In-app · SMS</li><li>A/B &amp; multivariate</li><li>Holdout groups</li><li>Cohort analysis</li><li>RFM segmentation</li><li>Event taxonomy</li>
+        </ul>
+      </div>
+      <div data-reveal style="--d:.1s">
+        <h3>Certifications</h3>
+        <ul class="certs">
+          <li>Marketing &amp; Lifecycle · MiniMBA, 2025</li>
+          <li>Sales with CRM · HubSpot Academy, 2025</li>
+          <li>Triggers &amp; Workflows · Optimove, 2025</li>
+          <li>Lifecycles &amp; Segmentation · Optimove, 2024</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap why-block">
+    <div>
+      <p class="kicker" data-reveal>Why Remote</p>
+      <h2 class="h2" data-reveal>Meet customers <span>where they already talk.</span></h2>
+    </div>
+    <div class="txt">
+      <p data-reveal>Remote's customers hire across dozens of countries, and in many of them business happens on WhatsApp or WeChat, not in an inbox. Building those channels from zero, properly, with consent and data foundations that scale, is the kind of ownership I want.</p>
+      <p data-reveal>And a company built on the idea that where you live shouldn't limit your work is a place where I'd like to prove it.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Get in touch</p>
+    <h2 class="h2" data-reveal>Happy to <span>talk</span> any time.</h2>
+    <p class="intro" data-reveal>Based in Spain, used to working across time zones.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=Senior%20Marketing%20Manager%2C%20Lifecycle%20-%20Messaging%20Channels%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · Lifecycle &amp; CRM</span>
+    <span>Personal application page. Not affiliated with Remote.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
