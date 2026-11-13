@@ -1,0 +1,535 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · Marketing</title>
+<meta name="description" content="Haitam El Harchal. Application for the Senior Marketing Manager role at Enode." />
+<meta property="og:title" content="Haitam El Harchal · Senior Marketing Manager application" />
+<meta property="og:description" content="7+ years of hands-on CRM and lifecycle marketing. How I'd build Enode's demand engine." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#F3F4EE" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230F1B16'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' fill='%23C8F169' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f3f4ee;
+  --bg-2: #e9ebe2;
+  --card: #ffffff;
+  --ink: #0f1b16;
+  --ink-2: #33433b;
+  --muted: #6b7a72;
+  --line: rgba(15, 27, 22, 0.12);
+  --lime: #c8f169;
+  --green: #2f7d4f;
+  --blue: #5b7cfa;
+  --amber: #f2b33d;
+  --head: "Inter Tight", "Inter", system-ui, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--lime); }
+.wrap { width: min(1140px, 100% - 40px); margin-inline: auto; }
+.mono { font-family: var(--mono); }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(243, 244, 238, 0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 600 15px/1 var(--head); }
+.mark i { width: 30px; height: 30px; border-radius: 8px; background: var(--ink); color: var(--lime); display: grid; place-items: center; font: normal 700 16px/1 var(--head); }
+.nav-links { display: flex; gap: 26px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 10px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: var(--ink-2); }
+.btn-line { color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 9vw, 120px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 56px 56px; mask-image: radial-gradient(ellipse 70% 60% at 75% 30%, #000 20%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 70% 60% at 75% 30%, #000 20%, transparent 75%); opacity: .55; pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12.5px/1.3 var(--mono); color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--green); box-shadow: 0 0 0 4px rgba(47, 125, 79, .18); }
+.hero h1 { margin-top: 26px; font: 600 clamp(40px, 5.8vw, 74px)/1.02 var(--head); letter-spacing: -0.035em; }
+.hero h1 mark { background: linear-gradient(transparent 58%, var(--lime) 58%); color: inherit; padding: 0 .04em; -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.hero .lead { margin-top: 24px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: 0 4px 14px rgba(15, 27, 22, .15); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* account brief card */
+.brief { position: relative; justify-self: center; width: min(420px, 100%); background: var(--ink); color: #e9efe9; border-radius: 22px; padding: 22px; box-shadow: 0 50px 90px -40px rgba(15, 27, 22, .6); font-size: 13.5px; }
+.brief .bar { display: flex; justify-content: space-between; align-items: center; font: 500 11px/1 var(--mono); color: rgba(233, 239, 233, .55); letter-spacing: .04em; }
+.brief .bar span:last-child { color: var(--lime); }
+.brief h3 { margin-top: 16px; font: 600 21px/1.2 var(--head); letter-spacing: -.01em; color: #fff; }
+.brief .sub { margin-top: 4px; color: rgba(233, 239, 233, .6); font-size: 13px; }
+.rows { margin-top: 16px; display: grid; gap: 8px; }
+.row { display: grid; grid-template-columns: 92px 1fr; gap: 12px; padding: 11px 12px; border-radius: 12px; background: rgba(255,255,255,.06); border: 1px solid rgba(255,255,255,.07); opacity: 0; transform: translateY(12px); animation: up .7s var(--ease) forwards; }
+.row:nth-child(1) { animation-delay: .3s; }
+.row:nth-child(2) { animation-delay: .8s; }
+.row:nth-child(3) { animation-delay: 1.3s; }
+.row:nth-child(4) { animation-delay: 1.8s; }
+.row .k { font: 500 10.5px/1.5 var(--mono); text-transform: uppercase; letter-spacing: .06em; color: rgba(233, 239, 233, .5); }
+.row .v { line-height: 1.45; }
+.row .v b { color: #fff; font-weight: 600; }
+.pill { display: inline-block; margin: 2px 4px 2px 0; padding: 2px 8px; border-radius: 6px; font: 500 11px/1.6 var(--mono); background: rgba(200, 241, 105, .14); color: var(--lime); }
+.pill.b { background: rgba(91, 124, 250, .18); color: #b9c6ff; }
+@keyframes up { to { opacity: 1; transform: none; } }
+.brief-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 128px) 0; }
+.alt { background: var(--bg-2); }
+.dark { background: var(--ink); color: var(--bg); }
+.kicker { font: 500 12.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--green); }
+.h2 { margin-top: 14px; font: 600 clamp(32px, 4.2vw, 52px)/1.06 var(--head); letter-spacing: -0.03em; max-width: 22ch; }
+.h2 mark { background: linear-gradient(transparent 60%, var(--lime) 60%); color: inherit; }
+.intro { margin-top: 18px; max-width: 62ch; color: var(--ink-2); }
+.dark .intro { color: rgba(243,244,238,.72); }
+.dark .kicker { color: var(--lime); }
+.dark .h2 mark { background: none; color: var(--lime); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* fit */
+.legend { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.fit { margin-top: 28px; border-top: 1px solid var(--line); }
+.fit li { display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 32px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.fit .ask { font: 600 19px/1.35 var(--head); letter-spacing: -.01em; }
+.fit .ans { color: var(--ink-2); }
+.fit .ans strong { color: var(--ink); font-weight: 600; }
+.tag { display: inline-block; margin-top: 10px; padding: 4px 9px; border-radius: 6px; font: 500 11px/1.2 var(--mono); letter-spacing: .03em; text-transform: uppercase; }
+.legend .tag { margin-top: 0; }
+.t-direct { background: var(--lime); color: var(--ink); }
+.t-transfer { background: #dfe5ff; color: #23367f; }
+.t-new { background: #fbe7bf; color: #6b4a07; }
+
+/* ai */
+.flows { margin-top: 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.flow { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; }
+.flow .n { font: 500 12px/1 var(--mono); color: var(--muted); }
+.flow h3 { margin-top: 14px; font: 600 19px/1.25 var(--head); letter-spacing: -.01em; }
+.flow p { margin-top: 10px; font-size: 15px; color: var(--ink-2); line-height: 1.55; }
+.flow .io { margin-top: auto; padding-top: 16px; font: 400 12px/1.6 var(--mono); color: var(--muted); }
+.flow .io b { color: var(--green); font-weight: 500; }
+.ai-note { margin-top: 24px; font-size: 15px; color: var(--ink-2); max-width: 70ch; }
+
+/* plan */
+.plan { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.phase { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 28px; }
+.phase .when { font: 500 12.5px/1 var(--mono); color: var(--lime); letter-spacing: .04em; }
+.phase h3 { margin-top: 14px; font: 600 24px/1.15 var(--head); letter-spacing: -.02em; }
+.phase ul { margin-top: 18px; display: grid; gap: 10px; }
+.phase li { position: relative; padding-left: 20px; font-size: 15px; color: rgba(243,244,238,.8); line-height: 1.5; }
+.phase li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 2px; background: var(--lime); }
+.plan-note { margin-top: 26px; font-size: 14px; color: rgba(243,244,238,.55); }
+
+/* copy */
+.samples { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+.sample { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; box-shadow: 0 20px 40px -32px rgba(15,27,22,.4); }
+.sample .ch { display: flex; justify-content: space-between; align-items: center; gap: 10px; font: 500 11.5px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.sample .ch span:last-child { text-transform: none; letter-spacing: 0; background: var(--bg-2); padding: 5px 9px; border-radius: 999px; color: var(--ink-2); }
+.sample .subj { margin-top: 16px; font: 600 18px/1.3 var(--head); letter-spacing: -.01em; }
+.sample .body { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 15px; color: var(--ink-2); }
+.sample .body p + p { margin-top: 10px; }
+.sample .why { margin-top: 16px; font-size: 13px; color: var(--muted); background: var(--bg); border-radius: 10px; padding: 10px 12px; line-height: 1.5; }
+.sample .why b { color: var(--ink); }
+
+/* experience */
+.xp { margin-top: 48px; display: grid; gap: 18px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+.job .when { font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.job .co { margin-top: 6px; font: 600 22px/1.2 var(--head); letter-spacing: -.01em; }
+.job h3 { font: 600 18px/1.3 var(--head); }
+.job ul { margin-top: 14px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 2px; background: var(--green); }
+.side { margin-top: 18px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+.side > div { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+.side h3 { font: 600 20px/1.2 var(--head); }
+.chips { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { padding: 7px 13px; border-radius: 8px; background: var(--bg-2); font-size: 14px; }
+.certs { margin-top: 16px; display: grid; gap: 10px; font-size: 15px; color: var(--ink-2); }
+
+/* why */
+.why-block { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+.why-block .txt p { font: 400 clamp(19px, 1.9vw, 22px)/1.55 var(--head); letter-spacing: -.01em; color: var(--ink-2); }
+.why-block .txt p + p { margin-top: 20px; }
+
+/* contact */
+.contact { text-align: center; padding: clamp(80px, 12vw, 150px) 0; background: radial-gradient(700px 380px at 50% 0%, rgba(200,241,105,.45), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 18ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 400 14px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 1000px) {
+  .flows { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 960px) {
+  .hero .wrap, .why-block { grid-template-columns: 1fr; }
+  .plan, .samples { grid-template-columns: 1fr; }
+  .side { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .fit li, .job { grid-template-columns: 1fr; gap: 10px; }
+  .job { padding: 24px; }
+  .flows { grid-template-columns: 1fr; }
+  .row { grid-template-columns: 1fr; gap: 4px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .row, [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#fit">The fit</a>
+      <a href="#ai">AI workflows</a>
+      <a href="#plan">First 90 days</a>
+      <a href="#copy">Copy</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Application · Senior Marketing Manager at Enode</span>
+      <h1>A steady flow of <mark>the right conversations.</mark></h1>
+      <p class="lead">I've spent 7+ years doing CRM and lifecycle marketing hands-on: choosing who to talk to, writing what to say, picking the moment, and proving what worked. Most of it was B2C. This page is honest about what carries over to Enode, what's new for me, and how I'd build the engine anyway.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>CRM &amp; Lifecycle Marketing Manager · Spain · Remote</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="brief" aria-label="Illustration: an account brief generated by an AI research workflow">
+        <div class="bar"><span>account_brief.md</span><span>● auto-researched</span></div>
+        <h3>Mid-size retailer, Nordics</h3>
+        <p class="sub">Tier 1 account · owned with AE</p>
+        <div class="rows">
+          <div class="row"><span class="k">Signal</span><span class="v">Launched a <b>dynamic EV tariff</b> last quarter. Hiring a product lead for "smart home".</span></div>
+          <div class="row"><span class="k">Buying group</span><span class="v"><span class="pill">Head of Product</span><span class="pill">CTO</span><span class="pill b">Trading desk</span><span class="pill b">CFO</span></span></div>
+          <div class="row"><span class="k">Pressure</span><span class="v">Tariff only works if they can <b>control the charger or car</b>, across many brands.</span></div>
+          <div class="row"><span class="k">Next step</span><span class="v">Product-lead email + LinkedIn touch. Invite to roundtable on <b>EV flexibility revenue</b>.</span></div>
+        </div>
+      </div>
+      <p class="brief-cap">Illustration with a made-up account, not real data. The kind of brief I'd want before every touch.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fit">
+  <div class="wrap">
+    <p class="kicker" data-reveal>The fit</p>
+    <h2 class="h2" data-reveal>The role, <mark>line by line.</mark></h2>
+    <p class="intro" data-reveal>Every responsibility in the job post, with what I've actually done and where I'd be learning.</p>
+    <div class="legend" data-reveal>
+      <span><i class="tag t-direct">Direct</i> done it, same shape</span>
+      <span><i class="tag t-transfer">Transferable</i> same skill, different audience</span>
+      <span><i class="tag t-new">New for me</i> I'd be learning it here</span>
+    </div>
+    <ul class="fit">
+      <li data-reveal>
+        <div><p class="ask">Build the demand generation engine</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">At <strong>Entain</strong> I own revenue-generating programmes across acquisition, conversion, retention and win-back in European markets. The engine is the same: a defined audience, a sequence of touches, a goal per stage, and a test on every step. At Enode the audience is a few hundred energy companies, not millions of users, so each touch matters more.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Account-based marketing with the AEs</p><span class="tag t-new">New for me</span></div>
+        <p class="ans">I haven't run ABM alongside a sales team before. What I bring is <strong>segmentation and orchestration</strong>: I've built multi-step, multi-channel journeys triggered by behaviour and scoring, and coordinated them with Product, Analytics and Tech. I'd start by sitting in on AE calls to learn the accounts before writing anything.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Sharpen positioning for retailers, utilities and traders</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">I test value propositions constantly and let the results decide. For Enode I'd build the story from customer interviews and lost deals, with a separate angle per buyer: <strong>product</strong> (launch smart tariffs fast), <strong>tech</strong> (one API, 1,000+ device models) and <strong>trading</strong> (flexible load you can count on).</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Write the copy for campaigns, web and LinkedIn</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I write most of my own copy and test it: subject lines, offers, value propositions, cadence. Samples written for Enode are <a href="#copy">further down</a>.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Shape the 2027+ roadmap, budget, channels and events</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">I set the CRM and monetisation roadmap with Product and Analytics, and report retention and revenue to leadership. Owning a full marketing budget and an events calendar would be a step up, and one I'd plan with Fredrik from week one.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Plan and run campaigns and events, and learn fast</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">Learning fast is the core of my job: <strong>A/B and multivariate tests, holdout groups</strong> and cohort reads on every programme. On events, I've organised community tournaments from scratch (venue, format, invites, follow-up), which is a small version of the same work.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Build AI workflows to work at the scale of a larger team</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">This is the part I'm most excited about. I already work without a team underneath me, and this page was researched, drafted and built with AI tools. The specific workflows I'd build at Enode are <a href="#ai">in the next section</a>.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Measure impact on pipeline in HubSpot</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">I measure on revenue and incrementality, not opens, and report LTV and cohort results to leadership. I've completed <strong>HubSpot Academy's Sales with CRM</strong> implementation course; applying it to B2B pipeline stages and attribution is the new part.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="block alt" id="ai">
+  <div class="wrap">
+    <p class="kicker" data-reveal>AI workflows</p>
+    <h2 class="h2" data-reveal>A team of one that <mark>works like five.</mark></h2>
+    <p class="intro" data-reveal>Four workflows I'd build in the first months. Each one has a person checking the output before anything reaches a customer.</p>
+    <div class="flows">
+      <article class="flow" data-reveal>
+        <span class="n">01</span>
+        <h3>Account research</h3>
+        <p>Tariff launches, job posts, earnings calls, regulatory filings and press, summarised into one brief per target account, refreshed weekly.</p>
+        <p class="io"><b>in</b> account list<br><b>out</b> brief + signals in HubSpot</p>
+      </article>
+      <article class="flow" data-reveal style="--d:.08s">
+        <span class="n">02</span>
+        <h3>Buying-group mapping</h3>
+        <p>Who in product, tech, trading and finance is likely involved, what each one cares about, and which of them we already know.</p>
+        <p class="io"><b>in</b> brief + CRM contacts<br><b>out</b> map + gaps for the AE</p>
+      </article>
+      <article class="flow" data-reveal style="--d:.16s">
+        <span class="n">03</span>
+        <h3>Personalised outreach</h3>
+        <p>First drafts of emails and LinkedIn messages per role, built from the brief and our positioning. I edit; the AE approves.</p>
+        <p class="io"><b>in</b> brief + message house<br><b>out</b> drafts ready to review</p>
+      </article>
+      <article class="flow" data-reveal style="--d:.24s">
+        <span class="n">04</span>
+        <h3>Pipeline reporting</h3>
+        <p>A weekly read of HubSpot: which accounts moved, which touches came before, and where to put the next euro and hour.</p>
+        <p class="io"><b>in</b> HubSpot deals + activity<br><b>out</b> one-page weekly note</p>
+      </article>
+    </div>
+    <p class="ai-note" data-reveal>The point isn't more emails. It's knowing each account well enough that the few messages we send are worth a reply.</p>
+  </div>
+</section>
+
+<section class="block dark" id="plan">
+  <div class="wrap">
+    <p class="kicker" data-reveal>First 90 days</p>
+    <h2 class="h2" data-reveal>Listen, then <mark>build the engine.</mark></h2>
+    <p class="intro" data-reveal>Written from the outside, so the order will change once I'm inside. The first month is mostly listening.</p>
+    <div class="plan">
+      <div class="phase" data-reveal>
+        <p class="when">DAYS 1–30</p>
+        <h3>Learn the market</h3>
+        <ul>
+          <li>Sit in on AE, Customer Success and Partnerships calls.</li>
+          <li>Interview customers and review recent wins and losses.</li>
+          <li>Agree a target account list and tiers with Fredrik and the AEs.</li>
+          <li>Audit HubSpot: lifecycle stages, sources, what we can measure today.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.1s">
+        <p class="when">DAYS 31–60</p>
+        <h3>Story and first plays</h3>
+        <ul>
+          <li>Messaging per buyer (product, tech, trading) with Daniël and Design.</li>
+          <li>Launch the first ABM play on a small set of Tier 1 accounts.</li>
+          <li>Ship the research and outreach workflows.</li>
+          <li>Start a regular LinkedIn rhythm for Enode and its leaders.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.2s">
+        <p class="when">DAYS 61–90</p>
+        <h3>Scale what works</h3>
+        <ul>
+          <li>Read the first results and keep, change or drop each play.</li>
+          <li>Pick the events and roundtables worth showing up at.</li>
+          <li>Weekly pipeline report from HubSpot.</li>
+          <li>Draft the 2027 roadmap and budget with Fredrik.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="plan-note" data-reveal>Each play gets a target account list, a goal in pipeline terms and a date to decide whether to keep it.</p>
+  </div>
+</section>
+
+<section class="block" id="copy">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Copy</p>
+    <h2 class="h2" data-reveal>A few drafts, <mark>written for Enode.</mark></h2>
+    <p class="intro" data-reveal>My own samples, based only on public information. Not real Enode messages.</p>
+    <div class="samples">
+      <article class="sample" data-reveal>
+        <div class="ch"><span>Email</span><span>ABM · Head of Product</span></div>
+        <p class="subj">Your new EV tariff, on every charger</p>
+        <div class="body">
+          <p>Hi Anna,</p>
+          <p>Congrats on the dynamic EV tariff launch. The hard part usually comes next: supporting customers' cars and chargers across dozens of brands without building each integration yourselves.</p>
+          <p>That's what Enode does: one API for 1,000+ device models. Worth 20 minutes to see how other retailers launched faster?</p>
+        </div>
+        <p class="why"><b>Why:</b> opens on their move, not ours. One problem, one proof point, one small ask.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.1s">
+        <div class="ch"><span>LinkedIn</span><span>Company post</span></div>
+        <p class="subj">5,000+ MW is already sitting in people's driveways and basements.</p>
+        <div class="body">
+          <p>EVs, heat pumps and home batteries connected through Enode add up to more controllable load than many power plants produce.</p>
+          <p>The question for energy companies isn't whether that flexibility exists. It's who coordinates it.</p>
+        </div>
+        <p class="why"><b>Why:</b> one surprising number, a reframe, and a question the reader's team is already arguing about.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.2s">
+        <div class="ch"><span>Website</span><span>Retailer page hero</span></div>
+        <p class="subj">Launch smart tariffs in weeks, not years.</p>
+        <div class="body">
+          <p>Connect your customers' EVs, heat pumps, batteries and solar through one API. Then turn them into savings at home and flexibility on the grid.</p>
+        </div>
+        <p class="why"><b>Why:</b> leads with the retailer's outcome (time to market) before the technology that makes it possible.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Where I've done <mark>the work.</mark></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lead CRM monetisation and lifecycle strategy across European markets, in a high-volume environment.</li>
+            <li>Own revenue-generating campaigns across acquisition, conversion, retention and win-back.</li>
+            <li>Built and scaled A/B testing frameworks on copy, cadence, offers and channels to lift LTV.</li>
+            <li>Automated email, push, in-app and SMS workflows based on behaviour, scoring and RFM segments.</li>
+            <li>Work with Analytics, Product and Tech on deliverability and data integrations.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul>
+            <li>Ran real-time CRM operations across several European brands, above SLA targets.</li>
+            <li>Coordinated stakeholders across time zones during high-volume periods.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Led marketing, CRM, monetisation and growth for a gamified family health and fitness app.</li>
+            <li>Built push, in-app and email journeys that turned daily tracking into long-term habits and grew DAU.</li>
+            <li>Defined the event tracking taxonomy and cohorts with Product and Analytics.</li>
+            <li>Ran A/B and multivariate tests on value propositions and incentives to improve trial-to-paid.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="side">
+      <div data-reveal>
+        <h3>Toolkit</h3>
+        <ul class="chips">
+          <li>HubSpot</li><li>Braze</li><li>Customer.io</li><li>Optimove</li><li>BI tools</li><li>AI assistants</li>
+          <li>A/B &amp; multivariate</li><li>Holdout groups</li><li>Cohort analysis</li><li>Segmentation &amp; scoring</li><li>Revenue reporting</li><li>Copywriting</li>
+        </ul>
+      </div>
+      <div data-reveal style="--d:.1s">
+        <h3>Certifications</h3>
+        <ul class="certs">
+          <li>Marketing &amp; Lifecycle · MiniMBA, 2025</li>
+          <li>Sales with CRM · HubSpot Academy, 2025</li>
+          <li>Triggers &amp; Workflows · Optimove, 2025</li>
+          <li>Lifecycles &amp; Segmentation · Optimove, 2024</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap why-block">
+    <div>
+      <p class="kicker" data-reveal>Why Enode</p>
+      <h2 class="h2" data-reveal>Marketing that <mark>speeds up electrification.</mark></h2>
+    </div>
+    <div class="txt">
+      <p data-reveal>Millions of EVs, heat pumps and batteries are arriving on a grid that wasn't built for them. The hardware is ready. What's missing is the software to coordinate it, and Enode is already that layer for 1.7M+ homes.</p>
+      <p data-reveal>Building the marketing function from day one, hands-on and with AI as part of every workflow, at a company where each new customer means more homes running on cheaper, cleaner hours: that's the job I want next.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Get in touch</p>
+    <h2 class="h2" data-reveal>Happy to <mark>talk</mark> any time.</h2>
+    <p class="intro" data-reveal>Based in Spain, used to working remotely with teams across Europe.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=Senior%20Marketing%20Manager%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · Marketing</span>
+    <span>Personal application page. Not affiliated with Enode.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
