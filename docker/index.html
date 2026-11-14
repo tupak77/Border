@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · Lifecycle</title>
+<meta name="description" content="Haitam El Harchal. Application for Senior Lifecycle Marketing Manager at Docker." />
+<meta property="og:title" content="Haitam El Harchal · Senior Lifecycle Marketing Manager application" />
+<meta property="og:description" content="7+ years building, QA-ing and sending lifecycle programmes hands-on. How I'd help scale Docker's lifecycle engine." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#F4F6F5" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%230C1F1A'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' fill='%2339D3A0' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@500;600;700&family=Inter:wght@400;500;600&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f4f6f5;
+  --bg-2: #e8ecea;
+  --card: #ffffff;
+  --ink: #0c1f1a;
+  --ink-2: #33463f;
+  --muted: #687a73;
+  --line: rgba(12, 31, 26, 0.12);
+  --green: #12946b;
+  --mint: #39d3a0;
+  --amber: #f0a52b;
+  --red: #e2574c;
+  --term: #0f1714;
+  --term-ink: #d5e2dc;
+  --head: "Sora", "Inter", system-ui, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Fira Code", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: rgba(57, 211, 160, .4); }
+.wrap { width: min(1140px, 100% - 40px); margin-inline: auto; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(244, 246, 245, 0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 600 15px/1 var(--head); }
+.mark i { width: 30px; height: 30px; border-radius: 8px; background: var(--ink); color: var(--mint); display: grid; place-items: center; font: normal 700 14px/1 var(--head); }
+.nav-links { display: flex; gap: 24px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 10px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: var(--ink-2); }
+.btn-line { color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 9vw, 120px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; width: 700px; height: 700px; right: -220px; top: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(57, 211, 160, 0.3), transparent 65%); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12.5px/1.3 var(--mono); color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 8px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(57, 211, 160, .22); flex: none; }
+.hero h1 { margin-top: 26px; font: 700 clamp(38px, 5.4vw, 68px)/1.04 var(--head); letter-spacing: -0.035em; }
+.hero h1 span { color: var(--green); }
+.hero .lead { margin-top: 24px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: 0 4px 14px rgba(12, 31, 26, .15); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* terminal */
+.term { justify-self: center; width: min(470px, 100%); background: var(--term); color: var(--term-ink); border-radius: 14px; box-shadow: 0 50px 90px -40px rgba(12, 31, 26, .6); overflow: hidden; font: 400 13px/1.7 var(--mono); }
+.term .bar { display: flex; align-items: center; gap: 7px; padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,.08); }
+.term .bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.18); }
+.term .bar span { margin-left: 8px; font-size: 11.5px; color: rgba(213,226,220,.55); }
+.term .body { padding: 16px 18px 18px; display: grid; gap: 4px; }
+.term .cmd { color: #fff; }
+.term .cmd::before { content: "$ "; color: var(--mint); }
+.term .l { display: flex; justify-content: space-between; gap: 14px; opacity: 0; animation: up .5s var(--ease) forwards; }
+.term .l span:last-child { text-align: right; }
+.term .l:nth-child(2) { animation-delay: .35s; }
+.term .l:nth-child(3) { animation-delay: .7s; }
+.term .l:nth-child(4) { animation-delay: 1.05s; }
+.term .l:nth-child(5) { animation-delay: 1.4s; }
+.term .l:nth-child(6) { animation-delay: 1.75s; }
+.term .l:nth-child(7) { animation-delay: 2.1s; }
+.term .l:nth-child(8) { animation-delay: 2.45s; }
+.term .l:nth-child(9) { animation-delay: 2.8s; }
+.ok { color: var(--mint); }
+.warn { color: var(--amber); }
+.dim { color: rgba(213,226,220,.5); }
+.term .go { margin-top: 8px; padding-top: 10px; border-top: 1px dashed rgba(255,255,255,.12); color: #fff; }
+@keyframes up { from { opacity: 0; transform: translateY(6px); } to { opacity: 1; transform: none; } }
+.term-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 128px) 0; }
+.alt { background: var(--bg-2); }
+.dark { background: var(--ink); color: var(--bg); }
+.kicker { font: 500 12.5px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--green); }
+.h2 { margin-top: 14px; font: 700 clamp(30px, 4vw, 50px)/1.07 var(--head); letter-spacing: -0.03em; max-width: 22ch; }
+.h2 span { color: var(--green); }
+.intro { margin-top: 18px; max-width: 62ch; color: var(--ink-2); }
+.dark .intro { color: rgba(244,246,245,.72); }
+.dark .kicker, .dark .h2 span { color: var(--mint); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* fit */
+.legend { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.fit { margin-top: 28px; border-top: 1px solid var(--line); }
+.fit li { display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 32px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.fit .ask { font: 600 18.5px/1.35 var(--head); letter-spacing: -.015em; }
+.fit .ans { color: var(--ink-2); }
+.fit .ans strong { color: var(--ink); font-weight: 600; }
+.tag { display: inline-block; margin-top: 10px; padding: 4px 9px; border-radius: 6px; font: 500 11px/1.2 var(--mono); letter-spacing: .03em; text-transform: uppercase; font-style: normal; }
+.legend .tag { margin-top: 0; }
+.t-direct { background: #c9f2e2; color: #0b5c43; }
+.t-transfer { background: #fdebc8; color: #6d4705; }
+.t-new { background: #e4e8e6; color: var(--ink-2); border: 1px solid var(--line); }
+
+/* send pipeline */
+.pipe { margin-top: 48px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.st { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 20px 18px; position: relative; }
+.st .n { font: 500 11.5px/1 var(--mono); color: var(--muted); }
+.st h3 { margin-top: 10px; font: 700 17px/1.2 var(--head); letter-spacing: -.01em; }
+.st p { margin-top: 8px; font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+.st .chk { margin-top: 12px; font: 400 11.5px/1.5 var(--mono); color: var(--green); }
+.pipe-note { margin-top: 22px; font-size: 15px; color: var(--ink-2); max-width: 72ch; }
+
+/* programs */
+.progs { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.prog { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; padding: 26px; display: flex; flex-direction: column; }
+.prog .who2 { font: 500 11.5px/1 var(--mono); color: var(--mint); letter-spacing: .04em; text-transform: uppercase; }
+.prog h3 { margin-top: 12px; font: 700 22px/1.15 var(--head); letter-spacing: -.02em; }
+.prog ol { margin-top: 16px; display: grid; gap: 10px; counter-reset: s; }
+.prog ol li { position: relative; padding-left: 30px; font-size: 14.5px; color: rgba(244,246,245,.8); line-height: 1.5; counter-increment: s; }
+.prog ol li::before { content: counter(s); position: absolute; left: 0; top: 1px; width: 20px; height: 20px; border-radius: 6px; background: rgba(57,211,160,.15); color: var(--mint); font: 500 11px/20px var(--mono); text-align: center; }
+.prog .m { margin-top: auto; padding-top: 18px; font: 400 12.5px/1.5 var(--mono); color: rgba(244,246,245,.55); }
+.prog .m b { color: var(--mint); font-weight: 500; }
+
+/* queue */
+.queue { margin-top: 48px; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: 16px; background: var(--card); }
+.queue table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 14.5px; }
+.queue th, .queue td { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.queue thead th { font: 500 11.5px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); background: var(--bg); }
+.queue td { color: var(--ink-2); line-height: 1.5; }
+.queue td:first-child { font: 600 15px/1.35 var(--head); color: var(--ink); }
+.queue tr:last-child td { border-bottom: 0; }
+.pill { display: inline-block; padding: 3px 8px; border-radius: 6px; font: 500 11.5px/1.4 var(--mono); white-space: nowrap; }
+.p-h { background: #c9f2e2; color: #0b5c43; }
+.p-m { background: #fdebc8; color: #6d4705; }
+.p-l { background: #e4e8e6; color: var(--ink-2); }
+.queue-note { margin-top: 20px; font-size: 14px; color: var(--muted); }
+
+/* plan */
+.plan { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.phase { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 28px; }
+.phase .when { font: 500 12.5px/1 var(--mono); color: var(--green); letter-spacing: .04em; }
+.phase h3 { margin-top: 14px; font: 700 23px/1.15 var(--head); letter-spacing: -.02em; }
+.phase ul { margin-top: 18px; display: grid; gap: 10px; }
+.phase li { position: relative; padding-left: 20px; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.phase li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 2px; background: var(--mint); }
+.plan-note { margin-top: 26px; font-size: 14px; color: var(--muted); }
+
+/* copy */
+.samples { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+.sample { min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; box-shadow: 0 20px 40px -32px rgba(12,31,26,.4); }
+.sample .top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font: 500 11.5px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.sample .top span:last-child { text-transform: none; letter-spacing: 0; background: var(--bg-2); padding: 5px 9px; border-radius: 6px; color: var(--ink-2); }
+.sample .sig { margin-top: 14px; font: 400 12px/1.5 var(--mono); color: var(--green); background: #eef8f4; border-radius: 8px; padding: 8px 10px; }
+.sample .subj { margin-top: 14px; font: 600 18px/1.3 var(--head); letter-spacing: -.01em; }
+.sample .pre { margin-top: 4px; font-size: 14px; color: var(--muted); }
+.sample .body { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 15px; color: var(--ink-2); }
+.sample .body p + p { margin-top: 10px; }
+.sample .why { margin-top: 16px; font-size: 13px; color: var(--muted); background: var(--bg); border-radius: 10px; padding: 10px 12px; line-height: 1.5; }
+.sample .why b { color: var(--ink); }
+
+/* experience */
+.xp { margin-top: 48px; display: grid; gap: 18px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 30px; }
+.job .when { font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.job .co { margin-top: 6px; font: 700 22px/1.2 var(--head); letter-spacing: -.015em; }
+.job h3 { font: 600 18px/1.3 var(--head); }
+.job ul { margin-top: 14px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 2px; background: var(--green); }
+.side { margin-top: 18px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+.side > div { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 30px; }
+.side h3 { font: 700 20px/1.2 var(--head); }
+.chips { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { padding: 6px 12px; border-radius: 8px; background: var(--bg-2); font-size: 14px; }
+.certs { margin-top: 16px; display: grid; gap: 10px; font-size: 15px; color: var(--ink-2); }
+
+/* why */
+.why-block { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+.why-block .txt p { font: 500 clamp(18px, 1.8vw, 21px)/1.6 var(--head); letter-spacing: -.01em; color: var(--ink-2); }
+.why-block .txt p + p { margin-top: 20px; }
+
+/* contact */
+.contact { text-align: center; padding: clamp(80px, 12vw, 150px) 0; background: radial-gradient(700px 380px at 50% 0%, rgba(57,211,160,.3), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 18ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 400 14px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 1060px) {
+  .pipe { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 960px) {
+  .hero .wrap, .why-block { grid-template-columns: 1fr; }
+  .plan, .samples, .progs { grid-template-columns: 1fr; }
+  .side { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .fit li, .job { grid-template-columns: 1fr; gap: 10px; }
+  .job { padding: 24px; }
+  .pipe { grid-template-columns: 1fr 1fr; }
+  .term { font-size: 12px; }
+}
+@media (max-width: 440px) {
+  .pipe { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .term .l, [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#fit">The fit</a>
+      <a href="#ship">How I ship</a>
+      <a href="#programs">Programmes</a>
+      <a href="#queue">Build queue</a>
+      <a href="#copy">Copy</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Application · Senior Lifecycle Marketing Manager at Docker</span>
+      <h1>Every journey owned. <span>Every send checked.</span></h1>
+      <p class="lead">I've spent 7+ years doing lifecycle marketing specifically: onboarding, activation, retention, renewals and win-back, at high volume. I build the audiences, set the suppressions, QA the proofs, watch the launch and fix what breaks. Strategy, build, QA and send, myself.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>CRM &amp; Lifecycle Marketing Manager · Spain · Remote</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="term" aria-label="Illustration: a pre-send checklist for an admin renewal campaign">
+        <div class="bar"><i></i><i></i><i></i><span>pre-send · admin_renewal_60d</span></div>
+        <div class="body">
+          <p class="cmd">run pre-send checks</p>
+          <p class="l"><span>signal: renews in 60d, seats &lt; 70% used</span><span class="ok">✓</span></p>
+          <p class="l"><span>audience size vs last run</span><span class="ok">−3% ✓</span></p>
+          <p class="l"><span>spot-check 25 records by hand</span><span class="ok">25/25 ✓</span></p>
+          <p class="l"><span>suppress: unsubscribed, bounced</span><span class="ok">✓</span></p>
+          <p class="l"><span>suppress: owned by renewals rep</span><span class="ok">✓</span></p>
+          <p class="l"><span>frequency cap: 1 send / 7 days</span><span class="ok">✓</span></p>
+          <p class="l"><span>data sync freshness</span><span class="warn">26h ⚠ re-sync</span></p>
+          <p class="l"><span>live proofs to seed list</span><span class="ok">✓</span></p>
+          <p class="go"><span class="dim">→</span> hold until sync &lt; 6h, then send</p>
+        </div>
+      </div>
+      <p class="term-cap">Illustration with made-up rules. A stale sync is a reason to wait, not to hope.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fit">
+  <div class="wrap">
+    <p class="kicker" data-reveal>The fit</p>
+    <h2 class="h2" data-reveal>Your list, <span>point by point.</span></h2>
+    <p class="intro" data-reveal>What you're looking for, with what I've actually done and where I'd be learning.</p>
+    <div class="legend" data-reveal>
+      <span><i class="tag t-direct">Direct</i> done it, same shape</span>
+      <span><i class="tag t-transfer">Transferable</i> same skill, different tool or audience</span>
+      <span><i class="tag t-new">New for me</i> I'd be learning it here</span>
+    </div>
+    <ul class="fit">
+      <li data-reveal>
+        <div><p class="ask">Lifecycle marketing specifically, ideally in a self-serve motion</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">Lifecycle is all I've done for 7+ years: onboarding, activation, retention, win-back and renewals. At <strong>TOC-TOC</strong>, a self-serve subscription app with a trial, I owned the full journey including <strong>renewals</strong>. At <strong>Entain</strong> I own lifecycle across European markets at high volume.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Owning programmes end to end and moving a real metric</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I take programmes from strategy to send myself and measure them with <strong>holdout groups</strong>, so the lift is incremental. Metrics I've owned: activation and DAU, trial-to-paid, churn, LTV and incremental revenue.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Hands-on build in Marketo or equivalent: audiences, suppressions, QA, proofs, launch monitoring</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">I build hands-on in <strong>Braze, Customer.io and Optimove</strong>: audience builds, suppressions, frequency rules, pre-send QA, proofs and launch monitoring on high-volume sends. I haven't used Marketo; the mechanics are the same. With a platform transition coming in 6–12 months, having worked across several platforms is useful.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Validating audiences and signals with data teams before every send</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I own audience definitions and QA before high-volume sends today, and I work with Analytics and Tech to <strong>troubleshoot data integrations</strong>. I defined the event tracking taxonomy at TOC-TOC, so I know where a signal can go wrong.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Programmatic sends to a base in the tens of millions</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">Entain runs high-volume sends across many markets. Deliverability, suppressions and frequency caps are part of my day-to-day, not special projects.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Automated first-touch for PQLs and inbound leads, with BDR and renewals</p><span class="tag t-new">New for me</span></div>
+        <p class="ans">I haven't worked with a BDR team. I've built behaviour-scored journeys and renewal flows, which are the same building blocks. I'd start by agreeing with BDR and renewals who owns which contact and when, then automate it.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Turning technical usage signals into messaging developers and admins trust</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">Turning a usage event into a useful message is what I do; developers are a new audience for me. My rule: name the signal, say why it matters, give one concrete next step. <a href="#copy">Samples below.</a></p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Structure from ambiguity: themes, build queue, sequenced roadmap</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I set the CRM roadmap with Product and Analytics and balance always-on programmes against new requests every week. <a href="#queue">A draft build queue is below.</a></p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Naming, tracking and reporting so the team can see what's live</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I report retention and revenue results to leadership and keep test logs so learnings stick. Consistent naming is what makes that reporting possible.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="block alt" id="ship">
+  <div class="wrap">
+    <p class="kicker" data-reveal>How I ship</p>
+    <h2 class="h2" data-reveal>Six steps, <span>every send.</span></h2>
+    <p class="intro" data-reveal>The same routine for a one-off launch email and a recurring send to millions. The checks are what make it safe to go fast.</p>
+    <div class="pipe">
+      <div class="st" data-reveal><span class="n">01</span><h3>Brief</h3><p>One goal, one metric, one audience. What happens if we don't send?</p><p class="chk">✓ metric + holdout agreed</p></div>
+      <div class="st" data-reveal style="--d:.05s"><span class="n">02</span><h3>Signal</h3><p>Agree the exact usage event or threshold with data and growth engineering.</p><p class="chk">✓ definition written down</p></div>
+      <div class="st" data-reveal style="--d:.1s"><span class="n">03</span><h3>Validate</h3><p>Count vs expectation, spot-check records by hand, check edge cases.</p><p class="chk">✓ sample looks right</p></div>
+      <div class="st" data-reveal style="--d:.15s"><span class="n">04</span><h3>Build</h3><p>Audience, suppressions, frequency rules, naming, tracking.</p><p class="chk">✓ governance rules applied</p></div>
+      <div class="st" data-reveal style="--d:.2s"><span class="n">05</span><h3>QA</h3><p>Live proofs, links, personalisation fallbacks, sync freshness.</p><p class="chk">✓ proofs signed off</p></div>
+      <div class="st" data-reveal style="--d:.25s"><span class="n">06</span><h3>Monitor</h3><p>Watch the first hours: bounces, complaints, clicks, errors. Pause if needed.</p><p class="chk">✓ result logged</p></div>
+    </div>
+    <p class="pipe-note" data-reveal>When the same problem shows up twice, the check moves into the template so nobody has to remember it.</p>
+  </div>
+</section>
+
+<section class="block dark" id="programs">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Programmes</p>
+    <h2 class="h2" data-reveal>Three programmes I'd <span>want to own first.</span></h2>
+    <p class="intro" data-reveal>Sketched from the outside, using only what's in the job post. The real versions start from Docker's data and the existing lifecycle lead's plan.</p>
+    <div class="progs">
+      <article class="prog" data-reveal>
+        <p class="who2">Admins · Renewal</p>
+        <h3>Renewal automation</h3>
+        <ol>
+          <li>90 days out: value recap for the account, by usage.</li>
+          <li>60 days: low seat use or adoption → help, not a hard sell.</li>
+          <li>30 days: renewal details; high-value accounts go to the renewals rep.</li>
+          <li>After renewal: what's new since they signed.</li>
+        </ol>
+        <p class="m"><b>metric</b> renewal rate · <b>owner split</b> automated vs rep</p>
+      </article>
+      <article class="prog" data-reveal style="--d:.1s">
+        <p class="who2">PQLs · First touch</p>
+        <h3>PQL first-touch</h3>
+        <ol>
+          <li>Signal fires: usage threshold or team growth on a free plan.</li>
+          <li>Automated first touch from a named person, about their usage.</li>
+          <li>Reply or high intent → BDR, with context.</li>
+          <li>No reply → useful nurture, re-checked on new signals.</li>
+        </ol>
+        <p class="m"><b>metric</b> PQL → meeting · <b>guardrail</b> no double-touch with BDR</p>
+      </article>
+      <article class="prog" data-reveal style="--d:.2s">
+        <p class="who2">Developers · AI products</p>
+        <h3>Activation for new AI tools</h3>
+        <ol>
+          <li>Already uses Docker Desktop, hasn't tried the new capability.</li>
+          <li>One email + in-product tip: the problem it solves, one command.</li>
+          <li>Tried it once → second use case, not a sales pitch.</li>
+          <li>Repeat use → invite to give feedback or join the community.</li>
+        </ol>
+        <p class="m"><b>metric</b> first use → repeat use · <b>holdout</b> 10%</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="queue">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Build queue</p>
+    <h2 class="h2" data-reveal>A long list, <span>in the right order.</span></h2>
+    <p class="intro" data-reveal>How I'd turn a growing list of requests into a sequenced queue. Example items only; the real list comes from the team.</p>
+    <div class="queue" data-reveal>
+      <table>
+        <thead><tr><th>Item</th><th>Theme</th><th>Impact</th><th>Effort</th><th>Depends on</th></tr></thead>
+        <tbody>
+          <tr><td>Renewal outreach v1</td><td>Revenue protection</td><td><span class="pill p-h">high</span></td><td><span class="pill p-m">medium</span></td><td>Renewals team on ownership rules; renewal date sync</td></tr>
+          <tr><td>PQL first-touch sequence</td><td>Pipeline</td><td><span class="pill p-h">high</span></td><td><span class="pill p-m">medium</span></td><td>PQL definition with data; BDR handoff rules</td></tr>
+          <tr><td>Suppression &amp; governance audit</td><td>Foundations</td><td><span class="pill p-h">high</span></td><td><span class="pill p-l">low</span></td><td>Access to current lists and rules</td></tr>
+          <tr><td>Naming &amp; reporting standard</td><td>Foundations</td><td><span class="pill p-m">medium</span></td><td><span class="pill p-l">low</span></td><td>Agreement with lifecycle lead</td></tr>
+          <tr><td>Admin nurture refresh</td><td>Adoption</td><td><span class="pill p-m">medium</span></td><td><span class="pill p-m">medium</span></td><td>Design / agency capacity</td></tr>
+          <tr><td>New AI product activation</td><td>Adoption</td><td><span class="pill p-m">medium</span></td><td><span class="pill p-h">high</span></td><td>Usage events instrumented; product launch dates</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="queue-note" data-reveal>Foundations go first because they're cheap and make everything after them safer. Capacity and dependency risks get flagged the week they appear.</p>
+  </div>
+</section>
+
+<section class="block alt" id="plan">
+  <div class="wrap">
+    <p class="kicker" data-reveal>First 90 days</p>
+    <h2 class="h2" data-reveal>Following your plan, <span>with my additions.</span></h2>
+    <div class="plan">
+      <div class="phase" data-reveal>
+        <p class="when">DAYS 1–30</p>
+        <h3>Learn and audit</h3>
+        <ul>
+          <li>Learn the PLG motion and the Container and AI products by using them.</li>
+          <li>Audit nurtures, renewal automation and PQL outreach: goal, audience, results.</li>
+          <li>Audit suppressions and contact rules in Marketo and Mailgun.</li>
+          <li>Turn the priority list into themes and a build queue with the lifecycle lead.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.1s">
+        <p class="when">DAYS 31–60</p>
+        <h3>Ship the first programme</h3>
+        <ul>
+          <li>Own one full programme, e.g. PQL first touch, from build to send.</li>
+          <li>Write the pre-send checklist and make it part of every build.</li>
+          <li>Agree naming and tracking conventions.</li>
+          <li>Start notes on what the platform transition needs to keep.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.2s">
+        <p class="when">DAYS 61–90</p>
+        <h3>Renewals and reporting</h3>
+        <ul>
+          <li>First version of automated renewal outreach with the renewals team.</li>
+          <li>Reporting cadence live: what's running, what's next, what it drives.</li>
+          <li>First results read against holdouts.</li>
+          <li>Next quarter's queue, with capacity flagged early.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="plan-note" data-reveal>Each programme gets a goal, a holdout and a date to decide whether to keep it.</p>
+  </div>
+</section>
+
+<section class="block" id="copy">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Copy</p>
+    <h2 class="h2" data-reveal>From signal <span>to message.</span></h2>
+    <p class="intro" data-reveal>My own samples, based only on the job post. Not real Docker messages; product details would be checked with the product team.</p>
+    <div class="samples">
+      <article class="sample" data-reveal>
+        <div class="top"><span>Email</span><span>Admin · renewal 60d</span></div>
+        <p class="sig">signal: renews in 60d · 31 of 50 seats active</p>
+        <p class="subj">Your team's renewal is in 60 days. Here's your usage.</p>
+        <div class="body">
+          <p>Hi Priya, 31 of your 50 seats were active last month. Before you renew, it's worth checking who still needs access and who hasn't been set up yet.</p>
+          <p>We've put the list in your admin console. Questions? Reply and it reaches your account manager.</p>
+        </div>
+        <p class="why"><b>Why:</b> admins trust a renewal email that helps them get it right, even if it means fewer seats now.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.1s">
+        <div class="top"><span>Email</span><span>PQL · first touch</span></div>
+        <p class="sig">signal: 12 developers on a free plan · same company domain</p>
+        <p class="subj">12 people at Acme are building with Docker</p>
+        <div class="body">
+          <p>Hi Tom, it looks like your team has grown around Docker. At this size, most teams start asking about central admin, access control and image policies.</p>
+          <p>If that's on your list, I can share how similar teams set it up. If not, no follow-up.</p>
+        </div>
+        <p class="why"><b>Why:</b> uses the signal honestly, offers something useful, and promises not to chase. Sent from a real person.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.2s">
+        <div class="top"><span>In-product</span><span>Developer · AI</span></div>
+        <p class="sig">signal: active Desktop user · hasn't tried Sandboxes</p>
+        <p class="subj">Letting an agent run code? Give it a sandbox.</p>
+        <div class="body">
+          <p>Run your coding agent in an isolated environment, so it can build and test without touching the rest of your machine.</p>
+          <p>Try it on your current project.</p>
+        </div>
+        <p class="why"><b>Why:</b> starts from a worry developers already have, explains the benefit in one line, and points to their own work.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Where I've done <span>the work.</span></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lead CRM monetisation and lifecycle strategy across European markets, in a high-volume environment.</li>
+            <li>Own revenue-generating campaigns across acquisition, conversion, retention and win-back.</li>
+            <li>Built and scaled A/B testing frameworks on copy, cadence, offers and channels to lift LTV.</li>
+            <li>Automated email, push, in-app and SMS workflows based on behaviour, scoring and RFM segments.</li>
+            <li>Day-to-day audience definitions and QA for high-volume sends; deliverability and data integrations with Tech.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul>
+            <li>Ran real-time CRM operations across several European brands, above SLA targets.</li>
+            <li>Coordinated stakeholders across time zones during high-volume periods.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Led mobile CRM, monetisation and growth for a self-serve family health and fitness app.</li>
+            <li>Built push, in-app and email journeys that turned daily tracking into long-term habits and grew DAU.</li>
+            <li>Timed paywalls, upsells and subscription renewals to product milestones, using RevenueCat.</li>
+            <li>Defined the event tracking taxonomy and cohorts with Product and Analytics.</li>
+            <li>Ran A/B and multivariate tests to improve trial-to-paid and reduce churn.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="side">
+      <div data-reveal>
+        <h3>Toolkit</h3>
+        <ul class="chips">
+          <li>Braze</li><li>Customer.io</li><li>Optimove</li><li>HubSpot</li><li>RevenueCat</li><li>BI tools</li>
+          <li>Email · In-app · Push · SMS</li><li>Suppressions &amp; frequency rules</li><li>Pre-send QA</li><li>Deliverability</li><li>Holdout groups</li><li>Event taxonomy</li>
+        </ul>
+      </div>
+      <div data-reveal style="--d:.1s">
+        <h3>Certifications</h3>
+        <ul class="certs">
+          <li>Marketing &amp; Lifecycle · MiniMBA, 2025</li>
+          <li>Triggers &amp; Workflows · Optimove, 2025</li>
+          <li>Sales with CRM · HubSpot Academy, 2025</li>
+          <li>Lifecycles &amp; Segmentation · Optimove, 2024</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap why-block">
+    <div>
+      <p class="kicker" data-reveal>Why Docker</p>
+      <h2 class="h2" data-reveal>A huge base, <span>and a lot of new product.</span></h2>
+    </div>
+    <div class="txt">
+      <p data-reveal>Tens of millions of people already use Docker. With the Container and AI products growing at the same time, the job is making sure each of them hears about the right thing at the right moment, and nobody gets the wrong email.</p>
+      <p data-reveal>That's the work I like most: careful, hands-on lifecycle at scale, with the room to shape how it's done, not just ship someone else's plan.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Get in touch</p>
+    <h2 class="h2" data-reveal>Happy to <span>talk</span> any time.</h2>
+    <p class="intro" data-reveal>Based in Spain, used to working remotely across time zones.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=Senior%20Lifecycle%20Marketing%20Manager%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · Lifecycle &amp; CRM</span>
+    <span>Personal application page. Not affiliated with Docker.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
