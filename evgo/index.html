@@ -1,0 +1,568 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · Lifecycle</title>
+<meta name="description" content="Haitam El Harchal. Application for Lifecycle Marketing Manager at EVgo." />
+<meta property="og:title" content="Haitam El Harchal · Lifecycle Marketing Manager application" />
+<meta property="og:description" content="7+ years of mobile app lifecycle in Braze: push, email, in-app and SMS. How I'd grow subscriptions and Autocharge+ adoption." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#F4F6FA" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230D1B2A'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='30' fill='%23D9F45B' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Red+Hat+Display:wght@500;600;700;800;900&family=Inter:wght@400;500;600&family=Red+Hat+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f4f6fa;
+  --bg-2: #e8ecf3;
+  --card: #ffffff;
+  --ink: #0d1b2a;
+  --ink-2: #33445a;
+  --muted: #6a7a8f;
+  --line: rgba(13, 27, 42, 0.12);
+  --blue: #2563eb;
+  --blue-2: #e3ebff;
+  --volt: #d9f45b;
+  --head: "Red Hat Display", "Inter", system-ui, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Red Hat Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--volt); }
+.wrap { width: min(1140px, 100% - 40px); margin-inline: auto; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(244, 246, 250, 0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 700 16px/1 var(--head); }
+.mark i { width: 30px; height: 30px; border-radius: 9px; background: var(--ink); color: var(--volt); display: grid; place-items: center; font: normal 900 15px/1 var(--head); }
+.nav-links { display: flex; gap: 24px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 12px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: var(--ink-2); }
+.btn-line { color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--blue); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 9vw, 120px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; width: 680px; height: 680px; right: -200px; top: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(37, 99, 235, 0.2), transparent 65%); pointer-events: none; }
+.hero::after { content: ""; position: absolute; width: 480px; height: 480px; left: -220px; bottom: -240px; border-radius: 50%; background: radial-gradient(circle, rgba(217, 244, 91, 0.4), transparent 65%); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12.5px/1.3 var(--mono); color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--blue); flex: none; }
+.hero h1 { margin-top: 26px; font: 900 clamp(42px, 6vw, 78px)/1.0 var(--head); letter-spacing: -0.035em; }
+.hero h1 span { background: linear-gradient(transparent 60%, var(--volt) 60%); -webkit-box-decoration-break: clone; box-decoration-break: clone; }
+.hero .lead { margin-top: 24px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: 0 4px 14px rgba(13, 27, 42, .15); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* phone */
+.phone { justify-self: center; width: min(340px, 100%); padding: 16px; border-radius: 40px; background: var(--ink); box-shadow: 0 50px 90px -40px rgba(13, 27, 42, .6); }
+.screen { border-radius: 28px; background: linear-gradient(180deg, #1c3047, #0d1b2a); padding: 22px 12px 16px; min-height: 480px; display: flex; flex-direction: column; gap: 9px; }
+.screen .time { text-align: center; color: #fff; font: 300 46px/1 var(--head); }
+.screen .date { text-align: center; color: rgba(255,255,255,.55); font-size: 12px; margin-bottom: 10px; }
+.note { background: rgba(255,255,255,.12); border: 1px solid rgba(255,255,255,.08); color: #fff; border-radius: 16px; padding: 10px 12px; font-size: 13px; line-height: 1.4; opacity: 0; transform: translateY(14px); animation: up .7s var(--ease) forwards; }
+.note:nth-of-type(1) { animation-delay: .4s; }
+.note:nth-of-type(2) { animation-delay: 1.1s; }
+.note:nth-of-type(3) { animation-delay: 1.8s; }
+.note:nth-of-type(4) { animation-delay: 2.5s; }
+.note .top { display: flex; justify-content: space-between; font-size: 10.5px; color: rgba(255,255,255,.55); margin-bottom: 3px; }
+.note .top span:first-child { font-weight: 600; color: var(--volt); letter-spacing: .03em; text-transform: uppercase; }
+.note b { font-weight: 600; }
+@keyframes up { to { opacity: 1; transform: none; } }
+.phone-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 128px) 0; }
+.alt { background: var(--bg-2); }
+.dark { background: var(--ink); color: var(--bg); }
+.kicker { font: 500 12.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--blue); }
+.h2 { margin-top: 14px; font: 900 clamp(32px, 4.2vw, 52px)/1.04 var(--head); letter-spacing: -0.03em; max-width: 22ch; }
+.h2 span { background: linear-gradient(transparent 62%, var(--volt) 62%); }
+.intro { margin-top: 18px; max-width: 62ch; color: var(--ink-2); }
+.dark .intro { color: rgba(244,246,250,.72); }
+.dark .kicker { color: var(--volt); }
+.dark .h2 span { background: none; color: var(--volt); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* fit */
+.legend { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.fit { margin-top: 28px; border-top: 1px solid var(--line); }
+.fit li { display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 32px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.fit .ask { font: 700 19px/1.3 var(--head); letter-spacing: -.01em; }
+.fit .ans { color: var(--ink-2); }
+.fit .ans strong { color: var(--ink); font-weight: 600; }
+.tag { display: inline-block; margin-top: 10px; padding: 4px 9px; border-radius: 6px; font: 500 11px/1.2 var(--mono); letter-spacing: .03em; text-transform: uppercase; font-style: normal; }
+.legend .tag { margin-top: 0; }
+.t-direct { background: #ecf9c4; color: #4b5d07; }
+.t-transfer { background: var(--blue-2); color: #1d3f9a; }
+.t-new { background: var(--bg-2); color: var(--ink-2); border: 1px solid var(--line); }
+
+/* journey */
+.journey { margin-top: 48px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; }
+.js { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; padding: 22px 18px; display: flex; flex-direction: column; }
+.js .n { font: 500 11.5px/1 var(--mono); color: var(--volt); }
+.js h3 { margin-top: 10px; font: 800 20px/1.15 var(--head); }
+.js p { margin-top: 8px; font-size: 14px; color: rgba(244,246,250,.78); line-height: 1.5; }
+.js .t { margin-top: 10px; font: 400 11.5px/1.5 var(--mono); color: rgba(244,246,250,.55); }
+.js .k { margin-top: auto; padding-top: 14px; font: 400 11.5px/1.5 var(--mono); color: rgba(244,246,250,.55); }
+.js .k b { color: var(--volt); font-weight: 500; }
+.j-note { margin-top: 22px; font-size: 14.5px; color: rgba(244,246,250,.6); max-width: 72ch; }
+
+/* tests */
+.tests { margin-top: 48px; overflow-x: auto; -webkit-overflow-scrolling: touch; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+.tests table { width: 100%; min-width: 780px; border-collapse: collapse; font-size: 14.5px; }
+.tests th, .tests td { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.tests thead th { font: 500 11.5px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); background: var(--bg); }
+.tests td { color: var(--ink-2); line-height: 1.5; }
+.tests td:first-child { font: 700 15px/1.35 var(--head); color: var(--ink); width: 180px; }
+.tests td.m { font: 400 13px/1.5 var(--mono); color: var(--blue); white-space: nowrap; }
+.tests tr:last-child td { border-bottom: 0; }
+.tests-note { margin-top: 20px; font-size: 14px; color: var(--muted); }
+
+/* compliance */
+.comp { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.cp { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+.cp .lbl { font: 500 11.5px/1 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .05em; }
+.cp h3 { margin-top: 10px; font: 800 20px/1.2 var(--head); }
+.cp ul { margin-top: 12px; display: grid; gap: 8px; }
+.cp li { position: relative; padding-left: 18px; font-size: 14.5px; color: var(--ink-2); line-height: 1.5; }
+.cp li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--blue); font-weight: 700; }
+
+/* copy */
+.samples { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+.sample { min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 22px; box-shadow: 0 20px 40px -32px rgba(13,27,42,.4); }
+.sample .top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font: 500 11.5px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.sample .top span:last-child { text-transform: none; letter-spacing: 0; background: var(--bg-2); padding: 5px 9px; border-radius: 999px; color: var(--ink-2); }
+.sample .sig { margin-top: 14px; font: 400 12px/1.5 var(--mono); color: #1d3f9a; background: var(--blue-2); border-radius: 8px; padding: 8px 10px; }
+.sample .subj { margin-top: 14px; font: 800 19px/1.25 var(--head); }
+.sample .pre { margin-top: 4px; font-size: 14px; color: var(--muted); }
+.sample .body { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 15px; color: var(--ink-2); }
+.sample .body p + p { margin-top: 10px; }
+.sample .why { margin-top: 16px; font-size: 13px; color: var(--muted); background: var(--bg); border-radius: 10px; padding: 10px 12px; line-height: 1.5; }
+.sample .why b { color: var(--ink); }
+
+/* plan */
+.plan { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.phase { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 28px; }
+.phase .when { font: 500 12.5px/1 var(--mono); color: var(--blue); letter-spacing: .04em; }
+.phase h3 { margin-top: 14px; font: 900 24px/1.15 var(--head); letter-spacing: -.02em; }
+.phase ul { margin-top: 18px; display: grid; gap: 10px; }
+.phase li { position: relative; padding-left: 20px; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.phase li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 50%; background: var(--blue); }
+.plan-note { margin-top: 26px; font-size: 14px; color: var(--muted); }
+
+/* experience */
+.xp { margin-top: 48px; display: grid; gap: 18px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 30px; }
+.job .when { font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.job .co { margin-top: 6px; font: 900 22px/1.2 var(--head); letter-spacing: -.02em; }
+.job h3 { font: 700 18px/1.3 var(--head); }
+.job ul { margin-top: 14px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 50%; background: var(--blue); }
+.side { margin-top: 18px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+.side > div { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 30px; }
+.side h3 { font: 900 20px/1.2 var(--head); }
+.chips { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { padding: 6px 12px; border-radius: 999px; background: var(--bg-2); font-size: 14px; }
+.certs { margin-top: 16px; display: grid; gap: 10px; font-size: 15px; color: var(--ink-2); }
+
+/* why */
+.why-block { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+.why-block .txt p { font: 500 clamp(19px, 1.9vw, 22px)/1.55 var(--head); color: var(--ink-2); }
+.why-block .txt p + p { margin-top: 20px; }
+
+/* contact */
+.contact { text-align: center; padding: clamp(80px, 12vw, 150px) 0; background: radial-gradient(700px 380px at 50% 0%, rgba(217,244,91,.45), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 18ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 400 14px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 1060px) {
+  .journey { grid-template-columns: repeat(3, 1fr); }
+}
+@media (max-width: 960px) {
+  .hero .wrap, .why-block { grid-template-columns: 1fr; }
+  .plan, .samples, .comp { grid-template-columns: 1fr; }
+  .side { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .fit li, .job { grid-template-columns: 1fr; gap: 10px; }
+  .job { padding: 24px; }
+  .journey { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 440px) {
+  .journey { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .note, [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#fit">The fit</a>
+      <a href="#journey">Driver journey</a>
+      <a href="#tests">Testing</a>
+      <a href="#compliance">Compliance</a>
+      <a href="#copy">Copy</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Application · Lifecycle Marketing Manager at EVgo</span>
+      <h1>From first charge to <span>just plug in.</span></h1>
+      <p class="lead">I've spent 7+ years growing mobile apps through lifecycle marketing: push, email, in-app and SMS, built hands-on in Braze. I've driven subscription conversion, feature adoption and retention, always with a testing roadmap and holdouts. I'd like to do the same for EVgo's drivers.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>CRM &amp; Lifecycle Marketing Manager · Spain · Remote</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="phone" aria-label="Illustration: lifecycle notifications for an EV driver over the first month">
+        <div class="screen">
+          <div class="time">7:42</div>
+          <div class="date">Charging app · first month</div>
+          <div class="note"><div class="top"><span>Day 0</span><span>push</span></div><b>First charge done.</b> 32 kWh in 21 minutes. Save this station for next time?</div>
+          <div class="note"><div class="top"><span>Day 9</span><span>in-app</span></div>You've charged 3 times. <b>Skip the app next time:</b> set up plug-and-charge in 2 minutes.</div>
+          <div class="note"><div class="top"><span>Day 21</span><span>email</span></div>At your charging pace, <b>a subscription would have saved you money</b> this month.</div>
+          <div class="note"><div class="top"><span>Day 40</span><span>push</span></div>Road trip this weekend? <b>2 fast chargers</b> are free on your usual route.</div>
+        </div>
+      </div>
+      <p class="phone-cap">Illustration with made-up numbers. Each message is triggered by what the driver did.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fit">
+  <div class="wrap">
+    <p class="kicker" data-reveal>The fit</p>
+    <h2 class="h2" data-reveal>Your list, <span>point by point.</span></h2>
+    <p class="intro" data-reveal>What you're looking for, with what I've actually done and where I'd be learning.</p>
+    <div class="legend" data-reveal>
+      <span><i class="tag t-direct">Direct</i> done it, same shape</span>
+      <span><i class="tag t-transfer">Transferable</i> same skill, different setting</span>
+      <span><i class="tag t-new">New for me</i> I'd be learning it here</span>
+    </div>
+    <ul class="fit">
+      <li data-reveal>
+        <div><p class="ask">Direct experience with Braze or Iterable (required)</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">Hands-on in <strong>Braze</strong>: canvases, segments, triggers, A/B tests and multi-channel journeys across push, email, in-app and SMS. Also Customer.io, Klaviyo and Optimove.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Lifecycle marketing and mobile app growth</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">At <strong>TOC-TOC</strong>, an iOS and Android app, I led mobile CRM, monetisation and growth: push, in-app and email journeys that turned daily use into a habit and <strong>grew DAU</strong>. At <strong>Entain</strong> I run lifecycle for a high-volume mobile-first product across European markets.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Subscriptions and premium feature adoption</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">At TOC-TOC I timed paywalls, upsells and <strong>subscription renewals</strong> to moments of value, using RevenueCat, and tested to lift <strong>trial-to-paid</strong>. Same job as growing EVgo subscriptions and Autocharge+.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Testing roadmap and A/B testing across push, email, in-app and SMS</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I built and scaled <strong>A/B and multivariate testing frameworks</strong> on copy, cadence, offers and channel mix, with <strong>holdout groups</strong> so results are incremental. <a href="#tests">A first roadmap is below.</a></p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Strong analytics: measure, find improvements, optimise</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I read cohort retention, LTV and conversion myself in BI tools, defined the event tracking taxonomy at TOC-TOC, and report results to leadership.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Compliance: CAN-SPAM, TCPA</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">I run high-volume email and SMS under <strong>GDPR</strong> and local rules across many markets: consent, opt-outs, quiet hours, suppression. CAN-SPAM and TCPA are the US versions of the same discipline, and I'd escalate edge cases as the role describes.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Sharing best practices and building team capability</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I keep test logs so learnings stick and share results across Product, Analytics and Tech. As CRM Ops Lead I set processes for teams across several brands.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">8 years of related experience</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">I have 7+ years in CRM and lifecycle, all hands-on and all mobile-first, close to the range you describe as "typical".</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">EV charging as a category</p><span class="tag t-new">New for me</span></div>
+        <p class="ans">I'd start by charging on the network myself and listening to driver feedback. The lifecycle mechanics (habit, subscription, feature adoption) are ones I know well.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="block dark" id="journey">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Driver journey</p>
+    <h2 class="h2" data-reveal>Five stages, <span>one goal: come back.</span></h2>
+    <p class="intro" data-reveal>A first sketch from the outside. The real journey comes from EVgo's data, Product and driver research.</p>
+    <div class="journey">
+      <div class="js" data-reveal><span class="n">01</span><h3>Sign-up</h3><p>Get to a first charge fast: nearest station, how to start, what it costs.</p><p class="t">trigger: account, no charge in 7d</p><p class="k"><b>kpi</b> first charge rate</p></div>
+      <div class="js" data-reveal style="--d:.05s"><span class="n">02</span><h3>First charge</h3><p>Make it feel easy, save the station, set expectations for next time.</p><p class="t">trigger: session complete</p><p class="k"><b>kpi</b> 2nd charge in 30d</p></div>
+      <div class="js" data-reveal style="--d:.1s"><span class="n">03</span><h3>Habit</h3><p>Show plug-and-charge when they've charged a few times and it saves real friction.</p><p class="t">trigger: 3 sessions, no Autocharge+</p><p class="k"><b>kpi</b> Autocharge+ adoption</p></div>
+      <div class="js" data-reveal style="--d:.15s"><span class="n">04</span><h3>Subscribe</h3><p>Offer a plan when their own charging pattern shows it pays off.</p><p class="t">trigger: monthly spend above break-even</p><p class="k"><b>kpi</b> subscription conversion</p></div>
+      <div class="js" data-reveal style="--d:.2s"><span class="n">05</span><h3>Loyal</h3><p>Keep subscribers seeing the value; catch drift before they lapse.</p><p class="t">trigger: drop vs own baseline</p><p class="k"><b>kpi</b> retention · churn</p></div>
+    </div>
+    <p class="j-note" data-reveal>Every stage gets one trigger defined with Data, one success metric and a holdout, so we know the programme moved drivers, not the season.</p>
+  </div>
+</section>
+
+<section class="block" id="tests">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Testing roadmap</p>
+    <h2 class="h2" data-reveal>What I'd test <span>first.</span></h2>
+    <p class="intro" data-reveal>Ordered by expected impact. Each test has one metric that decides it.</p>
+    <div class="tests" data-reveal>
+      <table>
+        <thead><tr><th>Test</th><th>Hypothesis</th><th>Decides it</th></tr></thead>
+        <tbody>
+          <tr><td>Autocharge+ timing</td><td>Introducing it after the 3rd charge beats introducing it at sign-up.</td><td class="m">adoption · 30d</td></tr>
+          <tr><td>Subscription framing</td><td>"You'd have saved $X last month" converts better than a generic plan pitch.</td><td class="m">subscription rate</td></tr>
+          <tr><td>Channel for first-charge nudge</td><td>Push near a station beats email for drivers who haven't charged yet.</td><td class="m">first charge · 7d</td></tr>
+          <tr><td>In-app vs push for features</td><td>In-app after a session beats push for feature discovery.</td><td class="m">feature use</td></tr>
+          <tr><td>SMS for at-risk subscribers</td><td>A short SMS with their savings recap reduces cancellations.</td><td class="m">churn · 60d</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tests-note" data-reveal>Hypotheses written from the outside. The first month's data would reorder this list.</p>
+  </div>
+</section>
+
+<section class="block alt" id="compliance">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Compliance</p>
+    <h2 class="h2" data-reveal>Fast, <span>and safe to send.</span></h2>
+    <div class="comp">
+      <div class="cp" data-reveal><p class="lbl">SMS · TCPA</p><h3>Consent first</h3><ul><li>Express written consent recorded</li><li>STOP honoured instantly</li><li>Quiet hours by time zone</li></ul></div>
+      <div class="cp" data-reveal style="--d:.08s"><p class="lbl">Email · CAN-SPAM</p><h3>Clear and honest</h3><ul><li>Accurate sender and subject</li><li>Working unsubscribe, every send</li><li>Opt-outs processed quickly</li></ul></div>
+      <div class="cp" data-reveal style="--d:.16s"><p class="lbl">Lists · Braze</p><h3>Clean by default</h3><ul><li>Suppression lists applied to every campaign</li><li>Frequency caps across channels</li><li>Edge cases escalated, not guessed</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="copy">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Copy</p>
+    <h2 class="h2" data-reveal>Written for drivers <span>on the move.</span></h2>
+    <p class="intro" data-reveal>My own samples, based on public information. Not real EVgo messages; product details would be checked with Product.</p>
+    <div class="samples">
+      <article class="sample" data-reveal>
+        <div class="top"><span>Push</span><span>Activation</span></div>
+        <p class="sig">trigger: signed up · no charge in 5 days · near a station</p>
+        <p class="subj">A fast charger is 4 minutes away</p>
+        <div class="body"><p>Your first charge takes a few taps. Here's how it works, start to finish.</p></div>
+        <p class="why"><b>Why:</b> location and timing do the work. One action, no jargon.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.1s">
+        <div class="top"><span>In-app</span><span>Autocharge+</span></div>
+        <p class="sig">trigger: 3rd session complete · not enrolled</p>
+        <p class="subj">Next time, just plug in</p>
+        <div class="body"><p>Link your car once and charging starts on its own. No app, no card, no waiting. It takes about 2 minutes.</p></div>
+        <p class="why"><b>Why:</b> shown right after a charge, when the friction is fresh in their mind.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.2s">
+        <div class="top"><span>Email</span><span>Subscription</span></div>
+        <p class="sig">trigger: monthly spend above plan break-even</p>
+        <p class="subj">You charged 9 times last month</p>
+        <p class="pre">Here's what you'd have paid with a plan.</p>
+        <div class="body"><p>Hi Alex, at your pace a subscription would have lowered your charging costs last month. Here's the exact math, and you can cancel any time.</p></div>
+        <p class="why"><b>Why:</b> uses their own numbers. The plan is the answer to a real question, not a promotion.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="plan">
+  <div class="wrap">
+    <p class="kicker" data-reveal>First 90 days</p>
+    <h2 class="h2" data-reveal>Audit, fix, <span>then grow.</span></h2>
+    <p class="intro" data-reveal>Written from the outside, so the order will change once I'm inside.</p>
+    <div class="plan">
+      <div class="phase" data-reveal>
+        <p class="when">DAYS 1–30</p>
+        <h3>Learn</h3>
+        <ul>
+          <li>Audit every live Braze canvas and campaign: goal, audience, results.</li>
+          <li>Map the driver journey with Product and Analytics.</li>
+          <li>Review consent and list practices for SMS and email.</li>
+          <li>Charge on the network myself; read driver feedback.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.1s">
+        <p class="when">DAYS 31–60</p>
+        <h3>Fix the core</h3>
+        <ul>
+          <li>Rebuild onboarding to the first and second charge.</li>
+          <li>Launch the Autocharge+ adoption journey.</li>
+          <li>Start the testing roadmap with holdouts.</li>
+          <li>One shared lifecycle dashboard.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.2s">
+        <p class="when">DAYS 61–90</p>
+        <h3>Grow</h3>
+        <ul>
+          <li>Subscription journey based on charging patterns.</li>
+          <li>At-risk subscriber programme.</li>
+          <li>Share results and playbooks with the team.</li>
+          <li>Roadmap for the next two quarters.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="plan-note" data-reveal>Every programme gets a goal, a holdout and a date to decide whether to keep it.</p>
+  </div>
+</section>
+
+<section class="block" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Where I've <span>done the work.</span></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lead CRM monetisation and lifecycle strategy across European markets, in a high-volume environment.</li>
+            <li>Own revenue-generating campaigns across acquisition, conversion, retention and win-back.</li>
+            <li>Built and scaled A/B testing frameworks on copy, cadence, offers and channels to lift LTV.</li>
+            <li>Automated push, in-app, email and SMS workflows based on behaviour, scoring and RFM segments.</li>
+            <li>Work with Analytics, Product and Tech on deliverability and data integrations.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul>
+            <li>Ran real-time CRM operations across several European brands, above SLA targets.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Led mobile CRM, monetisation and growth for an iOS and Android subscription app.</li>
+            <li>Built push, in-app and email journeys that turned daily use into habits and grew DAU.</li>
+            <li>Timed paywalls, upsells and subscription renewals to key moments, using RevenueCat.</li>
+            <li>Defined the event tracking taxonomy and cohorts with Product and Analytics.</li>
+            <li>Ran A/B and multivariate tests to improve trial-to-paid and reduce churn.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="side">
+      <div data-reveal>
+        <h3>Toolkit</h3>
+        <ul class="chips">
+          <li>Braze</li><li>Customer.io</li><li>Klaviyo</li><li>Optimove</li><li>HubSpot</li><li>RevenueCat</li><li>BI tools</li>
+          <li>Push · Email · In-app · SMS</li><li>A/B &amp; multivariate</li><li>Holdout groups</li><li>Cohort analysis</li><li>Event taxonomy</li>
+        </ul>
+      </div>
+      <div data-reveal style="--d:.1s">
+        <h3>Certifications</h3>
+        <ul class="certs">
+          <li>Marketing &amp; Lifecycle · MiniMBA, 2025</li>
+          <li>Triggers &amp; Workflows · Optimove, 2025</li>
+          <li>Lifecycles &amp; Segmentation · Optimove, 2024</li>
+          <li>Sales with CRM · HubSpot Academy, 2025</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap why-block">
+    <div>
+      <p class="kicker" data-reveal>Why EVgo</p>
+      <h2 class="h2" data-reveal>Every habit formed <span>is a car on electric.</span></h2>
+    </div>
+    <div class="txt">
+      <p data-reveal>Making charging feel effortless is how more people stay with electric. Lifecycle marketing is a direct lever on that: the first charge, the second, and the moment it becomes routine.</p>
+      <p data-reveal>A mobile app with subscriptions and a feature like Autocharge+ to grow is exactly the work I've been doing, for a cause I'd be proud of.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Get in touch</p>
+    <h2 class="h2" data-reveal>Happy to <span>talk</span> any time.</h2>
+    <p class="intro" data-reveal>Based in Spain, used to working remotely across time zones.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=Lifecycle%20Marketing%20Manager%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · Lifecycle &amp; CRM</span>
+    <span>Personal application page. Not affiliated with EVgo.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
