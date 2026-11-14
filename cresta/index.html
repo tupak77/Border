@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · EMEA Marketing</title>
+<meta name="description" content="Haitam El Harchal. Application for EMEA Marketing Manager at Cresta, based in Spain." />
+<meta property="og:title" content="Haitam El Harchal · EMEA Marketing Manager application" />
+<meta property="og:description" content="Based in Spain. Ran contact-centre operations across Europe, then 7+ years of hands-on marketing. How I'd build Cresta's field marketing in Spain and EMEA." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#FAF6F1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='32' fill='%231C1630'/%3E%3Ctext x='32' y='44' font-family='Georgia' font-style='italic' font-size='32' fill='%23F0A93B' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #faf6f1;
+  --bg-2: #f1ebe3;
+  --card: #ffffff;
+  --ink: #1c1630;
+  --ink-2: #413a56;
+  --muted: #776f86;
+  --line: rgba(28, 22, 48, 0.12);
+  --saffron: #f0a93b;
+  --red: #d4513f;
+  --plum: #5b3f8f;
+  --serif: "Instrument Serif", Georgia, serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: rgba(240, 169, 59, .45); }
+.wrap { width: min(1140px, 100% - 40px); margin-inline: auto; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(250, 246, 241, 0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 600 15px/1 var(--sans); }
+.mark i { width: 30px; height: 30px; border-radius: 50%; background: var(--ink); color: var(--saffron); display: grid; place-items: center; font: italic 400 19px/1 var(--serif); }
+.nav-links { display: flex; gap: 24px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 999px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: var(--ink-2); }
+.btn-line { color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--red); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 9vw, 120px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; width: 680px; height: 680px; right: -200px; top: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(240, 169, 59, 0.4), transparent 65%); pointer-events: none; }
+.hero::after { content: ""; position: absolute; width: 520px; height: 520px; left: -240px; bottom: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(91, 63, 143, 0.18), transparent 65%); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12.5px/1.3 var(--mono); color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--red); flex: none; }
+.hero h1 { margin-top: 26px; font: 400 clamp(46px, 6.6vw, 88px)/0.98 var(--serif); letter-spacing: -0.015em; }
+.hero h1 em { font-style: italic; color: var(--red); }
+.hero .lead { margin-top: 24px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: 0 4px 14px rgba(28, 22, 48, .15); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* invite card */
+.invite { justify-self: center; width: min(420px, 100%); background: var(--card); border: 1px solid var(--line); border-radius: 22px; box-shadow: 0 50px 90px -40px rgba(28, 22, 48, .45); overflow: hidden; }
+.invite .band { background: var(--ink); color: #fff; padding: 22px 22px 20px; }
+.invite .band small { font: 500 11px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--saffron); }
+.invite .band h3 { margin-top: 10px; font: 400 30px/1.05 var(--serif); }
+.invite .band h3 em { color: var(--saffron); }
+.invite .band p { margin-top: 8px; font-size: 13.5px; color: rgba(255,255,255,.7); }
+.invite .ag { padding: 16px 22px 6px; display: grid; gap: 10px; }
+.invite .ag li { display: grid; grid-template-columns: 52px 1fr; gap: 10px; font-size: 14px; color: var(--ink-2); line-height: 1.4; opacity: 0; transform: translateY(10px); animation: up .6s var(--ease) forwards; }
+.invite .ag li:nth-child(1) { animation-delay: .3s; }
+.invite .ag li:nth-child(2) { animation-delay: .7s; }
+.invite .ag li:nth-child(3) { animation-delay: 1.1s; }
+.invite .ag b { font: 500 12px/1.6 var(--mono); color: var(--plum); }
+.invite .stats { margin: 12px 22px 20px; padding-top: 14px; border-top: 1px dashed var(--line); display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; opacity: 0; animation: up .6s var(--ease) 1.6s forwards; }
+.invite .stats div { font-size: 12px; color: var(--muted); line-height: 1.3; }
+.invite .stats strong { display: block; font: 400 26px/1 var(--serif); color: var(--ink); margin-bottom: 4px; }
+@keyframes up { to { opacity: 1; transform: none; } }
+.invite-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 128px) 0; }
+.alt { background: var(--bg-2); }
+.dark { background: var(--ink); color: var(--bg); }
+.kicker { font: 500 12.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--red); }
+.h2 { margin-top: 14px; font: 400 clamp(36px, 4.8vw, 60px)/1.02 var(--serif); letter-spacing: -0.01em; max-width: 20ch; }
+.h2 em { font-style: italic; color: var(--red); }
+.intro { margin-top: 18px; max-width: 62ch; color: var(--ink-2); }
+.dark .intro { color: rgba(250,246,241,.72); }
+.dark .kicker, .dark .h2 em { color: var(--saffron); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* buyer side */
+.buyer { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.buyer > div { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 28px; }
+.buyer h3 { font: 400 28px/1.1 var(--serif); }
+.buyer h3 em { color: var(--saffron); }
+.buyer ul { margin-top: 16px; display: grid; gap: 10px; }
+.buyer li { position: relative; padding-left: 20px; font-size: 15.5px; color: rgba(250,246,241,.82); line-height: 1.5; }
+.buyer li::before { content: ""; position: absolute; left: 0; top: .6em; width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid var(--saffron); }
+
+/* fit */
+.legend { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.fit { margin-top: 28px; border-top: 1px solid var(--line); }
+.fit li { display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 32px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.fit .ask { font: 400 23px/1.25 var(--serif); }
+.fit .ans { color: var(--ink-2); }
+.fit .ans strong { color: var(--ink); font-weight: 600; }
+.tag { display: inline-block; margin-top: 10px; padding: 4px 9px; border-radius: 6px; font: 500 11px/1.2 var(--mono); letter-spacing: .03em; text-transform: uppercase; font-style: normal; }
+.legend .tag { margin-top: 0; }
+.t-direct { background: #fde3b8; color: #6b4304; }
+.t-transfer { background: #e7e0f4; color: #432a73; }
+.t-new { background: #f8d9d3; color: #7c2416; }
+
+/* plan grid */
+.pillars { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.pillar { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; }
+.pillar .n { font: 500 12px/1 var(--mono); color: var(--muted); }
+.pillar h3 { margin-top: 12px; font: 400 27px/1.1 var(--serif); }
+.pillar ul { margin-top: 14px; display: grid; gap: 9px; }
+.pillar li { position: relative; padding-left: 18px; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.pillar li::before { content: ""; position: absolute; left: 0; top: .6em; width: 7px; height: 7px; border-radius: 50%; background: var(--saffron); }
+.pillar .k { margin-top: 16px; padding: 10px 12px; border-radius: 10px; background: var(--bg); font-size: 13px; color: var(--ink-2); }
+.pillar .k b { font: 500 11px/1.4 var(--mono); text-transform: uppercase; letter-spacing: .04em; color: var(--red); margin-right: 6px; }
+
+/* calendar */
+.cal { margin-top: 48px; overflow-x: auto; -webkit-overflow-scrolling: touch; background: var(--card); border: 1px solid var(--line); border-radius: 18px; }
+.cal table { width: 100%; min-width: 780px; border-collapse: collapse; font-size: 14.5px; }
+.cal th, .cal td { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.cal thead th { font: 500 11.5px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); background: var(--bg); }
+.cal tbody th { font: 400 22px/1.1 var(--serif); width: 110px; }
+.cal td { color: var(--ink-2); line-height: 1.5; }
+.cal td b { color: var(--ink); font-weight: 600; }
+.cal tr:last-child th, .cal tr:last-child td { border-bottom: 0; }
+.cal-note { margin-top: 20px; font-size: 14px; color: var(--muted); max-width: 72ch; }
+
+/* plan */
+.plan { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.phase { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px; }
+.phase .when { font: 500 12.5px/1 var(--mono); color: var(--red); letter-spacing: .04em; }
+.phase h3 { margin-top: 12px; font: 400 28px/1.1 var(--serif); }
+.phase ul { margin-top: 16px; display: grid; gap: 10px; }
+.phase li { position: relative; padding-left: 20px; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.phase li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 50%; background: var(--plum); }
+.plan-note { margin-top: 26px; font-size: 14px; color: var(--muted); }
+
+/* copy */
+.samples { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+.sample { min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; box-shadow: 0 20px 40px -32px rgba(28,22,48,.4); }
+.sample .top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font: 500 11.5px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.sample .top span:last-child { text-transform: none; letter-spacing: 0; background: var(--bg-2); padding: 5px 9px; border-radius: 999px; color: var(--ink-2); }
+.sample .subj { margin-top: 16px; font: 400 23px/1.2 var(--serif); }
+.sample .pre { margin-top: 4px; font-size: 14px; color: var(--muted); }
+.sample .body { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 15px; color: var(--ink-2); }
+.sample .body p + p { margin-top: 10px; }
+.sample .why { margin-top: 16px; font-size: 13px; color: var(--muted); background: var(--bg); border-radius: 12px; padding: 10px 12px; line-height: 1.5; }
+.sample .why b { color: var(--ink); }
+
+/* experience */
+.xp { margin-top: 48px; display: grid; gap: 18px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+.job .when { font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.job .co { margin-top: 6px; font: 400 28px/1.1 var(--serif); }
+.job h3 { font: 600 18px/1.3 var(--sans); }
+.job ul { margin-top: 14px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 50%; background: var(--red); }
+.side { margin-top: 18px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+.side > div { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+.side h3 { font: 400 26px/1.1 var(--serif); }
+.chips { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { padding: 7px 13px; border-radius: 999px; background: var(--bg-2); font-size: 14px; }
+.certs { margin-top: 16px; display: grid; gap: 10px; font-size: 15px; color: var(--ink-2); }
+
+/* why */
+.why-block { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+.why-block .txt p { font: 400 clamp(22px, 2.2vw, 27px)/1.4 var(--serif); color: var(--ink-2); }
+.why-block .txt p + p { margin-top: 20px; }
+
+/* contact */
+.contact { text-align: center; padding: clamp(80px, 12vw, 150px) 0; background: radial-gradient(700px 380px at 50% 0%, rgba(240,169,59,.38), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 16ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 400 14px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 960px) {
+  .hero .wrap, .why-block, .buyer { grid-template-columns: 1fr; }
+  .plan, .samples, .pillars { grid-template-columns: 1fr; }
+  .side { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .fit li, .job { grid-template-columns: 1fr; gap: 10px; }
+  .job { padding: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .invite .ag li, .invite .stats, [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#buyer">Buyer's side</a>
+      <a href="#fit">The fit</a>
+      <a href="#plan">EMEA plan</a>
+      <a href="#calendar">Spain calendar</a>
+      <a href="#copy">Copy</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Application · EMEA Marketing Manager at Cresta · Spain</span>
+      <h1>I've run the contact centre. <em>Now I'd like to market to it.</em></h1>
+      <p class="lead">I'm based in Spain. I led real-time CRM operations across several European brands, owning SLAs, response times and CSAT, and then spent years in hands-on marketing across European markets at Entain. That's the room Cresta sells into, and the region you're building.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>CRM &amp; Lifecycle Marketing Manager · Spain · Spanish &amp; English</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="invite" aria-label="Illustration: invitation and attendance for a CX leaders roundtable in Madrid">
+        <div class="band">
+          <small>Mesa redonda · Madrid</small>
+          <h3>IA en el contact center: <em>lo que ya funciona</em></h3>
+          <p>Desayuno privado para directores de atención al cliente · 20 plazas</p>
+        </div>
+        <ol class="ag">
+          <li><b>09:00</b><span>Café y bienvenida</span></li>
+          <li><b>09:30</b><span>Caso real: menos tiempo medio de gestión sin perder CSAT</span></li>
+          <li><b>10:15</b><span>Debate abierto entre directores de CX, sin presentaciones comerciales</span></li>
+        </ol>
+        <div class="stats">
+          <div><strong>18</strong>confirmed</div>
+          <div><strong>11</strong>target accounts</div>
+          <div><strong>6</strong>follow-up meetings</div>
+        </div>
+      </div>
+      <p class="invite-cap">Illustration with made-up numbers. Field marketing measured in meetings, not attendees.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block dark" id="buyer">
+  <div class="wrap">
+    <p class="kicker" data-reveal>The buyer's side</p>
+    <h2 class="h2" data-reveal>I know the problems <em>Cresta solves</em> because I had them.</h2>
+    <p class="intro" data-reveal>Before marketing, I ran CRM operations across several European brands at Entain. Contact-centre leaders are Cresta's buyers, and I've done a version of their job.</p>
+    <div class="buyer">
+      <div data-reveal>
+        <h3>What I owned</h3>
+        <ul>
+          <li>Real-time operations across several European brands and time zones.</li>
+          <li>SLA, resolution and response-time targets, consistently exceeded.</li>
+          <li>CSAT and operational KPIs, reported to leadership.</li>
+          <li>Peak-volume periods, where every minute of handling time matters.</li>
+        </ul>
+      </div>
+      <div data-reveal style="--d:.1s">
+        <h3>What that means <em>for Cresta's marketing</em></h3>
+        <ul>
+          <li>I can speak to a Head of Customer Service as a peer, not a vendor.</li>
+          <li>I know which claims they'll believe and which they've heard too often.</li>
+          <li>I can turn case studies into the metrics they're judged on: AHT, FCR, CSAT, cost per contact.</li>
+          <li>I'd build events they want to attend because the content is useful.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fit">
+  <div class="wrap">
+    <p class="kicker" data-reveal>The fit</p>
+    <h2 class="h2" data-reveal>Your list, <em>point by point.</em></h2>
+    <p class="intro" data-reveal>What you're looking for, with what I've actually done and where I'd be learning.</p>
+    <div class="legend" data-reveal>
+      <span><i class="tag t-direct">Direct</i> done it, same shape</span>
+      <span><i class="tag t-transfer">Transferable</i> same skill, different context</span>
+      <span><i class="tag t-new">New for me</i> I'd be learning it here</span>
+    </div>
+    <ul class="fit">
+      <li data-reveal>
+        <div><p class="ask">Based in Spain, Spanish market, fluent Spanish</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I live in Spain and work in <strong>Spanish and English</strong>. I've organised community events in Spain from scratch: venue, format, invitations, communication and follow-up.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Contact centre, CX and AI categories</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">As <strong>CRM Ops Lead Europe</strong> I ran real-time customer operations across several brands, owning SLAs, response times and CSAT. I've been the buyer Cresta is selling to.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Leading regional programmes inside a global marketing organisation</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">At <strong>Entain</strong> I run marketing programmes across many European markets inside a large global group: global frameworks, local execution, local rules and tone.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Pipeline and revenue impact, measured</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">I own revenue-generating programmes and measure them on incremental revenue and LTV, with <strong>holdout groups</strong>. Sales pipeline and CARR are a different unit; I'd agree definitions with Sales and RevOps in week one.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">5+ years of B2B SaaS marketing</p><span class="tag t-new">New for me</span></div>
+        <p class="ans">My 7+ years of marketing are mostly B2C. I'm upfront about that. What I'd bring instead is the buyer's view of the contact centre, the Spanish market, and years of running measurable programmes across Europe.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Enterprise field marketing and ABM</p><span class="tag t-new">New for me</span></div>
+        <p class="ans">I haven't run enterprise field or ABM programmes. I have run segmentation, sequencing and multi-touch programmes for years, and organised events from zero. <a href="#plan">How I'd approach it is below.</a></p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Cross-functional work and executive communication</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I work with Product, Analytics and Tech every week and report results to leadership. As Ops Lead I coordinated stakeholders across time zones during peak periods.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Autonomy in a high-growth environment</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">At TOC-TOC, an early-stage app, I owned marketing and CRM end to end without a team. Being the first marketing hire in a region is the kind of ownership I'm looking for.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="block alt" id="plan">
+  <div class="wrap">
+    <p class="kicker" data-reveal>EMEA plan</p>
+    <h2 class="h2" data-reveal>Three things, <em>done well.</em></h2>
+    <p class="intro" data-reveal>A first sketch, written from the outside. The real plan starts from the VP International Marketing's priorities and what the Spain sales team needs this quarter.</p>
+    <div class="pillars">
+      <article class="pillar" data-reveal>
+        <span class="n">01</span>
+        <h3>Field in Spain</h3>
+        <ul>
+          <li>Small executive roundtables in Madrid and Barcelona, by industry.</li>
+          <li>Speaking slots at Spanish CX and contact-centre events.</li>
+          <li>Every event built around a target account list agreed with Sales.</li>
+        </ul>
+        <p class="k"><b>Measure</b>meetings and pipeline per event</p>
+      </article>
+      <article class="pillar" data-reveal style="--d:.1s">
+        <span class="n">02</span>
+        <h3>ABM with Sales</h3>
+        <ul>
+          <li>Tier accounts with the Spain sales lead: banks, telcos, travel, utilities.</li>
+          <li>Account research and buying-group maps for Tier 1.</li>
+          <li>Localised content per industry, built with Product Marketing.</li>
+        </ul>
+        <p class="k"><b>Measure</b>engaged accounts → opportunities</p>
+      </article>
+      <article class="pillar" data-reveal style="--d:.2s">
+        <span class="n">03</span>
+        <h3>Global to local</h3>
+        <ul>
+          <li>Each global launch gets a Spanish and UK version, not a translation.</li>
+          <li>Regional insights fed back to Global Marketing every month.</li>
+          <li>One shared dashboard on pipeline contribution by programme.</li>
+        </ul>
+        <p class="k"><b>Measure</b>sourced and influenced pipeline</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="calendar">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Spain calendar</p>
+    <h2 class="h2" data-reveal>A first year, <em>quarter by quarter.</em></h2>
+    <p class="intro" data-reveal>A draft to discuss, not a commitment. Event choices would come from the sales team's target list and what the market already attends.</p>
+    <div class="cal" data-reveal>
+      <table>
+        <thead><tr><th>Quarter</th><th>Field &amp; community</th><th>ABM &amp; content</th><th>Beyond Spain</th></tr></thead>
+        <tbody>
+          <tr><th>Q1</th><td><b>First Madrid roundtable</b> with a customer story; join local CX communities.</td><td>Tier 1 list with Sales; Spanish deck and one-pagers with Product Marketing.</td><td>Learn the UK plan; agree reporting with Global.</td></tr>
+          <tr><th>Q2</th><td><b>Barcelona roundtable</b>; first speaking slot at a Spanish CX event.</td><td>Industry plays for two verticals; first ABM results read.</td><td>Localise one global launch for UK and Spain.</td></tr>
+          <tr><th>Q3</th><td>Sponsor one CX event where target accounts actually go.</td><td>Spanish case study with an early customer, if one agrees.</td><td>London roundtable using the Spain format.</td></tr>
+          <tr><th>Q4</th><td>Year-end customer and prospect dinner.</td><td>Review: which programmes made pipeline, which didn't.</td><td>Plan for next year and the case for the next EMEA hire.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="cal-note" data-reveal>Every event gets a target list, a follow-up plan agreed with Sales before the invitations go out, and a pipeline number afterwards.</p>
+  </div>
+</section>
+
+<section class="block alt" id="plan90">
+  <div class="wrap">
+    <p class="kicker" data-reveal>First 90 days</p>
+    <h2 class="h2" data-reveal>Listen to Sales, <em>then show up.</em></h2>
+    <div class="plan">
+      <div class="phase" data-reveal>
+        <p class="when">DAYS 1–30</p>
+        <h3>Learn</h3>
+        <ul>
+          <li>Learn the product, the global plan and current EMEA pipeline.</li>
+          <li>Join Spain sales calls; interview two or three customers.</li>
+          <li>Agree target accounts, KPIs and reporting with the VP and Sales.</li>
+          <li>Map Spanish CX events, communities and speaking options.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.1s">
+        <p class="when">DAYS 31–60</p>
+        <h3>Build</h3>
+        <ul>
+          <li>Spanish versions of the core deck and materials with Product Marketing.</li>
+          <li>First ABM play on a small set of Tier 1 accounts.</li>
+          <li>Invitations out for the first Madrid roundtable.</li>
+          <li>Pipeline dashboard for EMEA marketing.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.2s">
+        <p class="when">DAYS 61–90</p>
+        <h3>Run</h3>
+        <ul>
+          <li>First roundtable done, follow-ups with Sales the same week.</li>
+          <li>First speaking slot or community event secured.</li>
+          <li>First monthly insights note to Global Marketing.</li>
+          <li>Plan for the next two quarters.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="plan-note" data-reveal>Every programme gets a target account list, a pipeline goal and a date to decide whether to keep it.</p>
+  </div>
+</section>
+
+<section class="block" id="copy">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Copy</p>
+    <h2 class="h2" data-reveal>A few drafts, <em>in two languages.</em></h2>
+    <p class="intro" data-reveal>My own samples, based on public information. Not real Cresta messages.</p>
+    <div class="samples">
+      <article class="sample" data-reveal>
+        <div class="top"><span>Email · ES</span><span>Invitación · Director CX</span></div>
+        <p class="subj" lang="es">¿Desayunamos y hablamos de IA en el contact center?</p>
+        <p class="pre" lang="es">20 directores de atención al cliente, Madrid, sin presentaciones comerciales.</p>
+        <div class="body" lang="es">
+          <p>Hola Lucía:</p>
+          <p>Estamos reuniendo a un grupo pequeño de directores de CX para compartir qué está funcionando de verdad con la IA en sus equipos: tiempos de gestión, calidad, formación de agentes.</p>
+          <p>Una hora y media, un caso real y mucho debate. ¿Te guardo una plaza?</p>
+        </div>
+        <p class="why"><b>Why:</b> peer-to-peer and specific. Senior people come for the room, not for the vendor.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.1s">
+        <div class="top"><span>LinkedIn · ES</span><span>Post tras evento</span></div>
+        <p class="subj" lang="es">Lo que más se repitió esta mañana entre 18 directores de CX:</p>
+        <div class="body" lang="es">
+          <p>"La IA no nos preocupa. Nos preocupa implantarla sin que los agentes lo vivan como vigilancia."</p>
+          <p>Gracias a todos por la conversación. Compartimos las tres ideas principales en los comentarios.</p>
+        </div>
+        <p class="why"><b>Why:</b> gives attendees something to share and non-attendees a reason to come next time.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.2s">
+        <div class="top"><span>Email · EN</span><span>ABM · UK Head of Service</span></div>
+        <p class="subj">Peak season without adding headcount</p>
+        <div class="body">
+          <p>Hi James, with winter peaks coming, most service leaders I speak to are choosing between longer queues and temporary hires.</p>
+          <p>A few teams are trying a third option: AI that helps every agent handle more conversations without lowering quality. Worth 20 minutes to compare notes?</p>
+        </div>
+        <p class="why"><b>Why:</b> a dilemma the reader has this quarter, framed the way someone who has run peaks would frame it.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Where I've <em>done the work.</em></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lead CRM monetisation and lifecycle strategy across European markets, in a high-volume environment.</li>
+            <li>Own revenue-generating campaigns across acquisition, conversion, retention and win-back.</li>
+            <li>Built and scaled A/B testing frameworks to lift LTV; measure incremental impact with holdout groups.</li>
+            <li>Work with Analytics, Product and Tech; report results to leadership.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul>
+            <li>Ran real-time CRM operations across several European brands, consistently above SLA and resolution targets.</li>
+            <li>Owned response times, CSAT and operational KPIs.</li>
+            <li>Coordinated stakeholders across time zones during high-volume periods.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Owned marketing, CRM and growth end to end for an early-stage health and fitness app.</li>
+            <li>Ran A/B and multivariate tests on value propositions and incentives to improve conversion.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Side project</p><p class="co">Community events</p></div>
+        <div>
+          <h3>Padel tournaments in my city, from zero</h3>
+          <ul>
+            <li>Venue, format, invitations, communication and prizes; built an app to run registrations and results.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="side">
+      <div data-reveal>
+        <h3>Toolkit</h3>
+        <ul class="chips">
+          <li>HubSpot</li><li>Braze</li><li>Customer.io</li><li>Optimove</li><li>BI tools</li><li>Events</li>
+          <li>Segmentation</li><li>Holdout groups</li><li>A/B testing</li><li>SLA &amp; CSAT</li><li>Spanish · English</li>
+        </ul>
+      </div>
+      <div data-reveal style="--d:.1s">
+        <h3>Certifications</h3>
+        <ul class="certs">
+          <li>Marketing &amp; Lifecycle · MiniMBA, 2025</li>
+          <li>Sales with CRM · HubSpot Academy, 2025</li>
+          <li>Triggers &amp; Workflows · Optimove, 2025</li>
+          <li>Lifecycles &amp; Segmentation · Optimove, 2024</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap why-block">
+    <div>
+      <p class="kicker" data-reveal>Why Cresta</p>
+      <h2 class="h2" data-reveal>Spain is new for Cresta. <em>It isn't new for me.</em></h2>
+    </div>
+    <div class="txt">
+      <p data-reveal>I've lived the pressure of a contact centre at peak, and I've spent years making marketing work across European markets. Cresta's launch in Spain puts both of those in the same job.</p>
+      <p data-reveal>Being the first marketing hire in a region, building it from the first event to a team, is exactly the kind of ownership I want next.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Get in touch</p>
+    <h2 class="h2" data-reveal>Happy to <em>talk</em>, in Spanish or English.</h2>
+    <p class="intro" data-reveal>Based in Spain, happy to travel to Madrid, Barcelona and London.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=EMEA%20Marketing%20Manager%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · Marketing</span>
+    <span>Personal application page. Not affiliated with Cresta.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
