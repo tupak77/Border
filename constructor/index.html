@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · Lifecycle</title>
+<meta name="description" content="Haitam El Harchal, CRM and lifecycle marketer. Open application to Constructor." />
+<meta property="og:title" content="Haitam El Harchal · Open application to Constructor" />
+<meta property="og:description" content="7+ years making the right thing reach the right person at the right moment. Open to marketing roles at Constructor." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#F7F7FA" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2312142B'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' fill='%23FFC53D' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@500;600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f7f7fa;
+  --bg-2: #ececf3;
+  --card: #ffffff;
+  --ink: #12142b;
+  --ink-2: #393c58;
+  --muted: #6e7090;
+  --line: rgba(18, 20, 43, 0.12);
+  --cobalt: #3a5bff;
+  --cobalt-2: #e6ebff;
+  --sun: #ffc53d;
+  --head: "Plus Jakarta Sans", "Inter", system-ui, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--sun); }
+.wrap { width: min(1140px, 100% - 40px); margin-inline: auto; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(247, 247, 250, 0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 700 15px/1 var(--head); }
+.mark i { width: 30px; height: 30px; border-radius: 8px; background: var(--ink); color: var(--sun); display: grid; place-items: center; font: normal 800 14px/1 var(--head); }
+.nav-links { display: flex; gap: 24px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 10px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: var(--ink-2); }
+.btn-line { color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--cobalt); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 9vw, 120px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; width: 680px; height: 680px; right: -200px; top: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(58, 91, 255, 0.2), transparent 65%); pointer-events: none; }
+.hero::after { content: ""; position: absolute; width: 480px; height: 480px; left: -220px; bottom: -240px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 197, 61, 0.3), transparent 65%); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12.5px/1.3 var(--mono); color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--sun); box-shadow: 0 0 0 4px rgba(255,197,61,.3); flex: none; }
+.hero h1 { margin-top: 26px; font: 800 clamp(40px, 5.6vw, 72px)/1.03 var(--head); letter-spacing: -0.04em; }
+.hero h1 span { color: var(--cobalt); }
+.hero .lead { margin-top: 24px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: 0 4px 14px rgba(18, 20, 43, .15); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* twin panels */
+.twin { justify-self: center; width: min(440px, 100%); display: grid; gap: 14px; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; box-shadow: 0 30px 60px -40px rgba(18, 20, 43, .45); opacity: 0; transform: translateY(14px); animation: up .7s var(--ease) forwards; }
+.panel:nth-child(2) { animation-delay: .6s; }
+.panel .lbl { display: flex; justify-content: space-between; font: 500 11px/1 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--muted); }
+.panel .lbl b { color: var(--cobalt); font-weight: 500; }
+.search { margin-top: 12px; display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1.5px solid var(--cobalt); border-radius: 10px; font-size: 14.5px; }
+.search svg { flex: none; }
+.search span::after { content: "|"; margin-left: 1px; color: var(--cobalt); animation: blink 1s steps(1) infinite; }
+@keyframes blink { 50% { opacity: 0; } }
+.results { margin-top: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.res { border-radius: 10px; background: var(--bg); padding: 8px; font-size: 11.5px; line-height: 1.35; color: var(--ink-2); }
+.res i { display: block; height: 42px; border-radius: 7px; margin-bottom: 6px; background: linear-gradient(135deg, var(--cobalt-2), #d8defd); }
+.res:first-child i { background: linear-gradient(135deg, #ffe7a8, var(--sun)); }
+.res b { display: block; color: var(--ink); font-weight: 600; }
+.why-tag { margin-top: 10px; font: 400 11.5px/1.4 var(--mono); color: var(--muted); }
+.why-tag em { font-style: normal; color: var(--cobalt); }
+.msg { margin-top: 12px; display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: start; }
+.msg .av { width: 36px; height: 36px; border-radius: 10px; background: var(--ink); color: var(--sun); display: grid; place-items: center; font: 800 13px/1 var(--head); }
+.msg p { font-size: 14px; line-height: 1.45; color: var(--ink-2); }
+.msg p b { display: block; color: var(--ink); font-weight: 600; }
+@keyframes up { to { opacity: 1; transform: none; } }
+.twin-cap { margin-top: 4px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 128px) 0; }
+.alt { background: var(--bg-2); }
+.dark { background: var(--ink); color: var(--bg); }
+.kicker { font: 500 12.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--cobalt); }
+.h2 { margin-top: 14px; font: 800 clamp(30px, 4vw, 50px)/1.07 var(--head); letter-spacing: -0.035em; max-width: 22ch; }
+.h2 span { color: var(--cobalt); }
+.intro { margin-top: 18px; max-width: 62ch; color: var(--ink-2); }
+.dark .intro { color: rgba(247,247,250,.72); }
+.dark .kicker, .dark .h2 span { color: var(--sun); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* shared language */
+.lang { margin-top: 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.lg { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+.lg .n { font: 500 12px/1 var(--mono); color: var(--muted); }
+.lg h3 { margin-top: 12px; font: 700 19px/1.25 var(--head); letter-spacing: -.02em; }
+.lg p { margin-top: 10px; font-size: 15px; color: var(--ink-2); line-height: 1.55; }
+
+/* roles */
+.roles { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.role { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 20px; padding: 28px; display: flex; flex-direction: column; }
+.role .fit-lvl { font: 500 11.5px/1 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--sun); }
+.role h3 { margin-top: 12px; font: 700 23px/1.15 var(--head); letter-spacing: -.02em; }
+.role p { margin-top: 10px; font-size: 15px; color: rgba(247,247,250,.78); line-height: 1.55; }
+.role ul { margin-top: 14px; display: grid; gap: 8px; }
+.role li { position: relative; padding-left: 18px; font-size: 14.5px; color: rgba(247,247,250,.72); line-height: 1.5; }
+.role li::before { content: ""; position: absolute; left: 0; top: .6em; width: 7px; height: 7px; border-radius: 2px; background: var(--sun); }
+.roles-note { margin-top: 24px; font-size: 14.5px; color: rgba(247,247,250,.6); max-width: 72ch; }
+
+/* ideas */
+.ideas { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+.idea { min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; box-shadow: 0 20px 40px -32px rgba(18,20,43,.4); }
+.idea .top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font: 500 11.5px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.idea .top span:last-child { text-transform: none; letter-spacing: 0; background: var(--cobalt-2); color: var(--cobalt); padding: 5px 9px; border-radius: 999px; }
+.idea h3 { margin-top: 14px; font: 700 20px/1.25 var(--head); letter-spacing: -.02em; }
+.idea p { margin-top: 10px; font-size: 15px; color: var(--ink-2); line-height: 1.55; }
+.idea .ex { margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: var(--bg); font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+.idea .ex b { display: block; color: var(--ink); font-weight: 600; margin-bottom: 2px; }
+.idea .ex small { display: block; font: 500 10.5px/1.4 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); margin-bottom: 6px; }
+.ideas-note { margin-top: 22px; font-size: 14px; color: var(--muted); }
+
+/* experience */
+.xp { margin-top: 48px; display: grid; gap: 18px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 30px; }
+.job .when { font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.job .co { margin-top: 6px; font: 700 22px/1.2 var(--head); letter-spacing: -.02em; }
+.job h3 { font: 600 18px/1.3 var(--head); }
+.job ul { margin-top: 14px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 2px; background: var(--cobalt); }
+.side { margin-top: 18px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+.side > div { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 30px; }
+.side h3 { font: 700 20px/1.2 var(--head); }
+.chips { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { padding: 6px 12px; border-radius: 8px; background: var(--bg-2); font-size: 14px; }
+.certs { margin-top: 16px; display: grid; gap: 10px; font-size: 15px; color: var(--ink-2); }
+
+/* contact */
+.contact { text-align: center; padding: clamp(80px, 12vw, 150px) 0; background: radial-gradient(700px 380px at 50% 0%, rgba(58,91,255,.18), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 18ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 400 14px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 1000px) {
+  .lang { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 960px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .roles, .ideas { grid-template-columns: 1fr; }
+  .side { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .job { grid-template-columns: 1fr; gap: 10px; padding: 24px; }
+  .lang { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .panel, [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#language">Shared language</a>
+      <a href="#roles">Where I'd help</a>
+      <a href="#ideas">Ideas</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Open application · Constructor</span>
+      <h1>Right product. Right message. <span>Right moment.</span></h1>
+      <p class="lead">I'm a CRM and lifecycle marketer with 7+ years of hands-on work: behavioural data, personalisation, A/B tests with holdouts, and programmes judged on revenue. Same instincts as product discovery, applied to messages. This is an open application, for whenever the right role opens.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>CRM &amp; Lifecycle Marketing Manager · Spain · Remote</p>
+      </div>
+    </div>
+
+    <div class="twin" aria-label="Illustration: personalised search results next to a personalised lifecycle message">
+      <div class="panel">
+        <p class="lbl"><span>Your world</span><b>search</b></p>
+        <div class="search">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#3a5bff" stroke-width="2.4" stroke-linecap="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg>
+          <span>trail running shoes</span>
+        </div>
+        <div class="results">
+          <div class="res"><i></i><b>Waterproof trail</b>size 43 in stock</div>
+          <div class="res"><i></i><b>Lightweight trail</b>bought similar</div>
+          <div class="res"><i></i><b>Trail socks</b>often added</div>
+        </div>
+        <p class="why-tag">ranked by <em>this shopper's behaviour</em>, not just keywords</p>
+      </div>
+      <div class="panel">
+        <p class="lbl"><span>My world</span><b>lifecycle</b></p>
+        <div class="msg">
+          <span class="av">✉</span>
+          <p><b>Rain this weekend? Your size is back.</b>Triggered by a saved search and a restock, sent at the hour they usually open.</p>
+        </div>
+        <p class="why-tag">triggered by <em>what they did</em>, not a campaign calendar</p>
+      </div>
+      <p class="twin-cap">Illustration. Made-up products, same idea.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="language">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Shared language</p>
+    <h2 class="h2" data-reveal>I already think <span>the way your customers do.</span></h2>
+    <p class="intro" data-reveal>Ecommerce teams buy Constructor to show the right thing to the right person and prove it made money. That's been my job for years, in a different channel.</p>
+    <div class="lang">
+      <article class="lg" data-reveal><span class="n">01</span><h3>Behaviour over demographics</h3><p>Segments and triggers built on what people do: scoring, RFM, events. Not who they are on paper.</p></article>
+      <article class="lg" data-reveal style="--d:.08s"><span class="n">02</span><h3>Personalisation at scale</h3><p>High-volume programmes across many European markets, each message shaped by the person receiving it.</p></article>
+      <article class="lg" data-reveal style="--d:.16s"><span class="n">03</span><h3>Testing that holds up</h3><p>A/B and multivariate frameworks with holdout groups, so a win is a real, incremental win.</p></article>
+      <article class="lg" data-reveal style="--d:.24s"><span class="n">04</span><h3>Revenue as the scoreboard</h3><p>Programmes judged on conversion, LTV and incremental revenue, reported to leadership.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block dark" id="roles">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Where I'd help</p>
+    <h2 class="h2" data-reveal>Three kinds of roles <span>where I'd fit.</span></h2>
+    <p class="intro" data-reveal>In order of fit. I'm open to the conversation about what Constructor actually needs.</p>
+    <div class="roles">
+      <article class="role" data-reveal>
+        <p class="fit-lvl">Strongest fit</p>
+        <h3>Lifecycle &amp; CRM marketing</h3>
+        <p>Owning the journeys that help prospects, trial users or customers get value faster.</p>
+        <ul><li>Onboarding and adoption programmes</li><li>Behaviour-triggered nurture</li><li>Testing roadmap and reporting</li></ul>
+      </article>
+      <article class="role" data-reveal style="--d:.1s">
+        <p class="fit-lvl">Strong fit</p>
+        <h3>Customer &amp; growth marketing</h3>
+        <p>Helping existing customers use more of the platform and see the value in numbers.</p>
+        <ul><li>Feature launch and adoption campaigns</li><li>Value recaps for customer teams</li><li>Expansion signals for account managers</li></ul>
+      </article>
+      <article class="role" data-reveal style="--d:.2s">
+        <p class="fit-lvl">Good fit</p>
+        <h3>Marketing operations</h3>
+        <p>Making sure the data, segments and automation behind every programme are right.</p>
+        <ul><li>Audience logic and QA</li><li>Platform setup and governance</li><li>Measurement and dashboards</li></ul>
+      </article>
+    </div>
+    <p class="roles-note" data-reveal>Honest note: most of my experience is B2C. Constructor sells to businesses, so the audience would be new to me. The skills and the instincts carry over.</p>
+  </div>
+</section>
+
+<section class="block" id="ideas">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Ideas</p>
+    <h2 class="h2" data-reveal>Three things I'd <span>want to try.</span></h2>
+    <p class="intro" data-reveal>Written from the outside, using only what's public. A starting point for a conversation, not a plan.</p>
+    <div class="ideas">
+      <article class="idea" data-reveal>
+        <div class="top"><span>Onboarding</span><span>new customers</span></div>
+        <h3>First win in the first weeks</h3>
+        <p>A journey for merchandisers and ecommerce managers after go-live, built around their first measurable result, not a feature tour.</p>
+        <div class="ex"><small>example email</small><b>Your search found 1,200 more add-to-carts this week</b>Here's what drove it, and the one setting worth trying next.</div>
+      </article>
+      <article class="idea" data-reveal style="--d:.1s">
+        <div class="top"><span>Adoption</span><span>existing customers</span></div>
+        <h3>The next feature, at the right moment</h3>
+        <p>Trigger feature introductions from customer behaviour, like a spike in zero-result searches or a big catalogue update.</p>
+        <div class="ex"><small>example in-app message</small><b>Lots of searches with no results this week</b>Here's how other teams fixed the top ones in an afternoon.</div>
+      </article>
+      <article class="idea" data-reveal style="--d:.2s">
+        <div class="top"><span>Value</span><span>leadership</span></div>
+        <h3>A monthly note the CMO forwards</h3>
+        <p>A short, automated value recap for customer executives: revenue influenced, top wins, one idea. Easy to share upwards.</p>
+        <div class="ex"><small>example subject line</small><b>Your search and discovery in October, in one minute</b>Three numbers, one chart, one recommendation.</div>
+      </article>
+    </div>
+    <p class="ideas-note" data-reveal>Every idea would get a goal, a holdout and a date to decide whether to keep it.</p>
+  </div>
+</section>
+
+<section class="block alt" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Where I've <span>done the work.</span></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lead CRM monetisation and lifecycle strategy across European markets, in a high-volume environment.</li>
+            <li>Own revenue-generating campaigns across acquisition, conversion, retention and win-back.</li>
+            <li>Built and scaled A/B testing frameworks on copy, cadence, offers and channels to lift LTV.</li>
+            <li>Automated email, push, in-app and SMS workflows based on behaviour, scoring and RFM segments.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul>
+            <li>Ran real-time CRM operations across several European brands, above SLA targets.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Led mobile CRM, monetisation and growth for a self-serve subscription app.</li>
+            <li>Built journeys that turned daily tracking into habits and grew DAU; tested to lift trial-to-paid.</li>
+            <li>Defined the event tracking taxonomy with Product and Analytics.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="side">
+      <div data-reveal>
+        <h3>Toolkit</h3>
+        <ul class="chips">
+          <li>Braze</li><li>Customer.io</li><li>Optimove</li><li>HubSpot</li><li>RevenueCat</li><li>BI tools</li>
+          <li>Behavioural segmentation</li><li>Personalisation</li><li>A/B &amp; multivariate</li><li>Holdout groups</li><li>Event taxonomy</li>
+        </ul>
+      </div>
+      <div data-reveal style="--d:.1s">
+        <h3>Certifications</h3>
+        <ul class="certs">
+          <li>Marketing &amp; Lifecycle · MiniMBA, 2025</li>
+          <li>Sales with CRM · HubSpot Academy, 2025</li>
+          <li>Triggers &amp; Workflows · Optimove, 2025</li>
+          <li>Lifecycles &amp; Segmentation · Optimove, 2024</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Get in touch</p>
+    <h2 class="h2" data-reveal>When something opens, <span>I'd love to hear.</span></h2>
+    <p class="intro" data-reveal>Based in Spain, used to working remotely across time zones. Happy to talk before there's a role, too.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=Open%20application%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · Lifecycle &amp; CRM</span>
+    <span>Personal application page. Not affiliated with Constructor.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
