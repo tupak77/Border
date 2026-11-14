@@ -1,0 +1,566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · Partner Marketing</title>
+<meta name="description" content="Haitam El Harchal. Application for Senior Partner Marketing Manager - Agency at n8n." />
+<meta property="og:title" content="Haitam El Harchal · Senior Partner Marketing Manager application" />
+<meta property="og:description" content="Partners have a lifecycle too. How I'd turn n8n's agency partners into a demand engine with ready-to-run programmes." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#F5F4EF" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2316201F'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' fill='%23E9B949' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Outfit:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Martian+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f5f4ef;
+  --bg-2: #eae8e0;
+  --card: #ffffff;
+  --ink: #16201f;
+  --ink-2: #3a4644;
+  --muted: #6d7775;
+  --line: rgba(22, 32, 31, 0.13);
+  --teal: #0f8b8d;
+  --teal-2: #dcf0ef;
+  --mustard: #e9b949;
+  --red: #d9534f;
+  --head: "Outfit", "Inter", system-ui, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Martian Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--mustard); }
+.wrap { width: min(1140px, 100% - 40px); margin-inline: auto; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(245, 244, 239, 0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 700 16px/1 var(--head); }
+.mark i { width: 30px; height: 30px; border-radius: 8px; background: var(--ink); color: var(--mustard); display: grid; place-items: center; font: normal 800 15px/1 var(--head); }
+.nav-links { display: flex; gap: 24px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 10px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: var(--ink-2); }
+.btn-line { color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 9vw, 120px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(rgba(22,32,31,.14) 1.2px, transparent 1.2px); background-size: 20px 20px; mask-image: radial-gradient(ellipse 60% 60% at 78% 40%, #000 20%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 60% 60% at 78% 40%, #000 20%, transparent 75%); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 11.5px/1.3 var(--mono); color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 8px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 2px; background: var(--mustard); flex: none; }
+.hero h1 { margin-top: 26px; font: 800 clamp(42px, 6vw, 78px)/1.0 var(--head); letter-spacing: -0.035em; }
+.hero h1 span { color: var(--teal); }
+.hero .lead { margin-top: 24px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: 0 4px 14px rgba(22, 32, 31, .15); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* workflow canvas */
+.canvas { justify-self: center; width: min(460px, 100%); background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 18px; box-shadow: 0 50px 90px -40px rgba(22, 32, 31, .45); }
+.canvas .bar { display: flex; justify-content: space-between; font: 500 10.5px/1 var(--mono); color: var(--muted); letter-spacing: .02em; }
+.canvas .bar b { color: var(--teal); font-weight: 500; }
+.flow { margin-top: 16px; display: grid; gap: 0; }
+.node { display: grid; grid-template-columns: 36px 1fr; gap: 12px; align-items: center; padding: 10px 12px; border: 1.5px solid var(--line); border-radius: 12px; background: var(--bg); opacity: 0; transform: translateY(8px); animation: up .5s var(--ease) forwards; }
+.node i { width: 36px; height: 36px; border-radius: 9px; display: grid; place-items: center; font: normal 600 15px/1 var(--head); color: #fff; }
+.node b { display: block; font: 600 14px/1.25 var(--head); }
+.node span { display: block; font: 400 11px/1.4 var(--mono); color: var(--muted); margin-top: 2px; }
+.n-trig i { background: var(--mustard); color: var(--ink); }
+.n-wait i { background: #8a94a3; }
+.n-act i { background: var(--teal); }
+.n-if i { background: var(--ink); }
+.n-yes i { background: #2e9d5b; }
+.n-no i { background: var(--red); }
+.wire { height: 14px; width: 2px; background: var(--line); margin-left: 29px; }
+.branch { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.branch .node { grid-template-columns: 30px 1fr; gap: 10px; padding: 9px 10px; }
+.branch .node i { width: 30px; height: 30px; font-size: 13px; }
+.branch .lbl { font: 500 10px/1 var(--mono); color: var(--muted); margin: 0 0 6px 4px; }
+.flow > :nth-child(1) { animation-delay: .2s; }
+.flow > :nth-child(3) { animation-delay: .5s; }
+.flow > :nth-child(5) { animation-delay: .8s; }
+.flow > :nth-child(7) { animation-delay: 1.1s; }
+.flow > :nth-child(9) .node { animation-delay: 1.4s; }
+@keyframes up { to { opacity: 1; transform: none; } }
+.canvas-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 128px) 0; }
+.alt { background: var(--bg-2); }
+.dark { background: var(--ink); color: var(--bg); }
+.kicker { font: 500 11.5px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--teal); }
+.h2 { margin-top: 14px; font: 800 clamp(32px, 4.2vw, 52px)/1.04 var(--head); letter-spacing: -0.03em; max-width: 22ch; }
+.h2 span { color: var(--teal); }
+.intro { margin-top: 18px; max-width: 62ch; color: var(--ink-2); }
+.dark .intro { color: rgba(245,244,239,.72); }
+.dark .kicker, .dark .h2 span { color: var(--mustard); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* partner lifecycle funnel */
+.funnel { margin-top: 48px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.fs { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 20px 18px; display: flex; flex-direction: column; }
+.fs .n { font: 500 10.5px/1 var(--mono); color: var(--mustard); }
+.fs h3 { margin-top: 10px; font: 700 20px/1.15 var(--head); }
+.fs p { margin-top: 8px; font-size: 14px; color: rgba(245,244,239,.75); line-height: 1.5; }
+.fs .q { margin-top: auto; padding-top: 14px; font: 400 11px/1.5 var(--mono); color: rgba(245,244,239,.5); }
+.funnel-note { margin-top: 22px; font-size: 15px; color: rgba(245,244,239,.7); max-width: 72ch; }
+
+/* fit */
+.legend { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.fit { margin-top: 28px; border-top: 1px solid var(--line); }
+.fit li { display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 32px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.fit .ask { font: 700 19px/1.3 var(--head); letter-spacing: -.01em; }
+.fit .ans { color: var(--ink-2); }
+.fit .ans strong { color: var(--ink); font-weight: 600; }
+.tag { display: inline-block; margin-top: 10px; padding: 4px 9px; border-radius: 6px; font: 500 10.5px/1.2 var(--mono); letter-spacing: .02em; text-transform: uppercase; font-style: normal; }
+.legend .tag { margin-top: 0; }
+.t-direct { background: var(--teal-2); color: #0a5a5b; }
+.t-transfer { background: #f8e9c2; color: #6b4b05; }
+.t-new { background: #f6d9d7; color: #7a2522; }
+
+/* portfolio */
+.kits { margin-top: 48px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; }
+.kit { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; display: flex; flex-direction: column; }
+.kit .tp { font: 500 10.5px/1 var(--mono); text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.kit h3 { margin-top: 12px; font: 700 20px/1.2 var(--head); letter-spacing: -.015em; }
+.kit p { margin-top: 8px; font-size: 14.5px; color: var(--ink-2); line-height: 1.55; }
+.kit ul { margin-top: 12px; display: grid; gap: 6px; }
+.kit li { font-size: 13.5px; color: var(--ink-2); padding-left: 18px; position: relative; line-height: 1.45; }
+.kit li::before { content: "☐"; position: absolute; left: 0; top: 0; font-size: 12px; color: var(--teal); }
+.kit .m { margin-top: auto; padding-top: 14px; font: 400 11px/1.5 var(--mono); color: var(--muted); }
+.kit .m b { color: var(--teal); font-weight: 500; }
+
+/* rules */
+.rules { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.rule { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+.rule .n { font: 500 22px/1 var(--head); color: var(--mustard); }
+.rule h3 { margin-top: 10px; font: 700 19px/1.25 var(--head); letter-spacing: -.01em; }
+.rule p { margin-top: 8px; font-size: 15px; color: var(--ink-2); line-height: 1.55; }
+
+/* plan */
+.plan { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.phase { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 28px; }
+.phase .when { font: 500 11.5px/1 var(--mono); color: var(--teal); letter-spacing: .02em; }
+.phase h3 { margin-top: 14px; font: 800 24px/1.15 var(--head); letter-spacing: -.02em; }
+.phase ul { margin-top: 18px; display: grid; gap: 10px; }
+.phase li { position: relative; padding-left: 20px; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.phase li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 2px; background: var(--mustard); }
+.plan-note { margin-top: 26px; font-size: 14px; color: var(--muted); }
+
+/* experience */
+.xp { margin-top: 48px; display: grid; gap: 18px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 30px; }
+.job .when { font: 400 12px/1.4 var(--mono); color: var(--muted); }
+.job .co { margin-top: 6px; font: 800 22px/1.2 var(--head); letter-spacing: -.015em; }
+.job h3 { font: 700 18px/1.3 var(--head); }
+.job ul { margin-top: 14px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 2px; background: var(--teal); }
+.side { margin-top: 18px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+.side > div { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 30px; }
+.side h3 { font: 800 20px/1.2 var(--head); }
+.chips { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { padding: 6px 12px; border-radius: 8px; background: var(--bg-2); font-size: 14px; }
+.certs { margin-top: 16px; display: grid; gap: 10px; font-size: 15px; color: var(--ink-2); }
+
+/* why */
+.why-block { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+.why-block .txt p { font: 500 clamp(19px, 1.9vw, 22px)/1.55 var(--head); letter-spacing: -.01em; color: var(--ink-2); }
+.why-block .txt p + p { margin-top: 20px; }
+
+/* contact */
+.contact { text-align: center; padding: clamp(80px, 12vw, 150px) 0; background: radial-gradient(700px 380px at 50% 0%, rgba(233,185,73,.35), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 18ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 400 13px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 1060px) {
+  .funnel { grid-template-columns: repeat(3, 1fr); }
+  .kits { grid-template-columns: repeat(2, 1fr); }
+}
+@media (max-width: 960px) {
+  .hero .wrap, .why-block { grid-template-columns: 1fr; }
+  .plan, .rules { grid-template-columns: 1fr; }
+  .side { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .fit li, .job { grid-template-columns: 1fr; gap: 10px; }
+  .job { padding: 24px; }
+  .funnel { grid-template-columns: 1fr 1fr; }
+  .kits { grid-template-columns: 1fr; }
+}
+@media (max-width: 440px) {
+  .funnel, .branch { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .node, [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#lifecycle">Partner lifecycle</a>
+      <a href="#fit">The fit</a>
+      <a href="#kits">Programmes</a>
+      <a href="#plan">First 90 days</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Application · Senior Partner Marketing Manager - Agency at n8n</span>
+      <h1>Partners have <span>a lifecycle</span> too.</h1>
+      <p class="lead">I've spent 7+ years in lifecycle marketing: getting people from "signed up" to "actually using it", at scale, and measuring what really changed. An agency partner who downloads a kit and never runs it is just an inactive user. I'd build programmes that get run, and automate the operations behind them.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>CRM &amp; Lifecycle Marketing Manager · Spain · English &amp; Spanish</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="canvas" aria-label="Illustration: an automation workflow that follows up on partner kit downloads">
+        <p class="bar"><span>workflow · kit-follow-up</span><b>● active</b></p>
+        <div class="flow">
+          <div class="node n-trig"><i>⚡</i><div><b>Partner downloads a kit</b><span>trigger · webhook from partner portal</span></div></div>
+          <div class="wire"></div>
+          <div class="node n-wait"><i>⏱</i><div><b>Wait 14 days</b><span>enough time to run a workshop</span></div></div>
+          <div class="wire"></div>
+          <div class="node n-act"><i>✉</i><div><b>Ask: "Did you run it?"</b><span>one-click answer, in their language</span></div></div>
+          <div class="wire"></div>
+          <div class="node n-if"><i>?</i><div><b>Ran it?</b><span>branch on the answer</span></div></div>
+          <div class="wire"></div>
+          <div class="branch">
+            <div><p class="lbl">yes</p><div class="node n-yes"><i>✓</i><div><b>Log result</b><span>sheet + team channel</span></div></div></div>
+            <div><p class="lbl">no</p><div class="node n-no"><i>↺</i><div><b>Offer 15-min help</b><span>book a call</span></div></div></div>
+          </div>
+        </div>
+      </div>
+      <p class="canvas-cap">Illustration. The kind of workflow I'd build to measure execution, not downloads.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block dark" id="lifecycle">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Partner lifecycle</p>
+    <h2 class="h2" data-reveal>Your funnel, <span>read as a lifecycle.</span></h2>
+    <p class="intro" data-reveal>The job post lists the funnel: access, download, execution, opportunities, revenue. That's a lifecycle, and each step has a question I'd want answered every week.</p>
+    <div class="funnel">
+      <div class="fs" data-reveal><span class="n">01</span><h3>Access</h3><p>Do partners know the programme exists and find it when they need it?</p><p class="q">% of partners who visited</p></div>
+      <div class="fs" data-reveal style="--d:.05s"><span class="n">02</span><h3>Download</h3><p>Is the kit obviously useful from the first page?</p><p class="q">% who downloaded</p></div>
+      <div class="fs" data-reveal style="--d:.1s"><span class="n">03</span><h3>Execute</h3><p>Did they actually run it? This is where most programmes die.</p><p class="q">% who ran it · 30d</p></div>
+      <div class="fs" data-reveal style="--d:.15s"><span class="n">04</span><h3>Opportunity</h3><p>Did it create real conversations with their customers?</p><p class="q">opportunities per run</p></div>
+      <div class="fs" data-reveal style="--d:.2s"><span class="n">05</span><h3>Revenue</h3><p>For the partner and for n8n. The number that decides what we scale.</p><p class="q">partner-sourced ARR</p></div>
+    </div>
+    <p class="funnel-note" data-reveal>Downloads are the vanity metric. Execution is the one I'd obsess over, because it's where small consultancies run out of time.</p>
+  </div>
+</section>
+
+<section class="block" id="fit">
+  <div class="wrap">
+    <p class="kicker" data-reveal>The fit</p>
+    <h2 class="h2" data-reveal>Your list, <span>point by point.</span></h2>
+    <p class="intro" data-reveal>What you're looking for, with what I've actually done and where I'd be learning.</p>
+    <div class="legend" data-reveal>
+      <span><i class="tag t-direct">Direct</i> done it, same shape</span>
+      <span><i class="tag t-transfer">Transferable</i> same skill, different audience</span>
+      <span><i class="tag t-new">New for me</i> I'd be learning it here</span>
+    </div>
+    <ul class="fit">
+      <li data-reveal>
+        <div><p class="ask">Partner marketing at scale, with adoption numbers</p><span class="tag t-new">New for me</span></div>
+        <p class="ans">I haven't run a partner programme. What I have done is drive adoption at scale: journeys that moved large audiences from sign-up to real use, measured with <strong>holdout groups</strong> so the numbers are incremental. Partners are a new audience; adoption is my core skill.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Self-service programme design that gets used, not just downloaded</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">Designing for the moment someone actually does the thing is lifecycle work. I'd apply the same rules to kits: one clear first step, templates that work as they are, and a nudge at the moment they'd stall. <a href="#rules">My rules for that are below.</a></p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Small-business empathy</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">At <strong>TOC-TOC</strong>, an early-stage app, I was the whole marketing team. I've also organised community tournaments from scratch and built my own app to run them. I know what "no time, no budget, no designer" feels like.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Outcome-driven measurement; stopping what doesn't work</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I measure on revenue and incrementality, not opens. Every programme I run has a goal, a holdout and a date to decide whether to keep it, and I've stopped plenty that didn't earn their place.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Bias for action as a first hire</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I build, QA and ship my own programmes, then improve them with real data. Shipping a small pilot fast beats planning a big one slowly.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Programmes across several regions; localising without rebuilding</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">At <strong>Entain</strong> I run programmes across many European markets: one framework, local language, timing, rules and tone. Templates built for localisation from day one.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Hands-on with automation</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">Automation is one of the pillars of how I work. I build multi-step, behaviour-triggered workflows across email, push, in-app and SMS, and I'm certified in <strong>Optimove Triggers &amp; Workflows</strong>. I'd automate my own programme operations from week one.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Local events that others deliver</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">I've designed and run local events myself (format, invites, communication, follow-up). Packaging that into a kit someone else can run is the next step.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">A professional language beyond English</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I work in <strong>English and Spanish</strong>, which covers Spain and opens Latin America for localised kits.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="block alt" id="kits">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Programme portfolio</p>
+    <h2 class="h2" data-reveal>Ready to run, <span>by one person.</span></h2>
+    <p class="intro" data-reveal>A first sketch of the portfolio from the job post. Each kit is designed for a solo consultant first; a 50-person agency can always do more with it.</p>
+    <div class="kits">
+      <article class="kit" data-reveal>
+        <p class="tp">One to many</p>
+        <h3>Event-in-a-Box</h3>
+        <p>A local "automate your back office" workshop for SMB owners.</p>
+        <ul><li>Slides with a live demo script</li><li>Invite emails and LinkedIn posts</li><li>Run-of-show and checklist</li><li>Follow-up sequence</li></ul>
+        <p class="m"><b>success</b> workshops run · meetings booked</p>
+      </article>
+      <article class="kit" data-reveal style="--d:.08s">
+        <p class="tp">One to many</p>
+        <h3>Use-case campaign kits</h3>
+        <p>Industry-specific campaigns: e-commerce ops, finance teams, agencies' own clients.</p>
+        <ul><li>3-email sequence, editable</li><li>Social posts and visuals</li><li>A workflow template to demo</li><li>Landing page copy</li></ul>
+        <p class="m"><b>success</b> campaigns sent · replies</p>
+      </article>
+      <article class="kit" data-reveal style="--d:.16s">
+        <p class="tp">One to many</p>
+        <h3>Customer story builder</h3>
+        <p>Turn a partner's project into a reusable case study in an hour.</p>
+        <ul><li>Interview questions</li><li>Fill-in-the-blanks template</li><li>Before/after numbers guide</li><li>Co-marketing request form</li></ul>
+        <p class="m"><b>success</b> stories published · reused</p>
+      </article>
+      <article class="kit" data-reveal style="--d:.24s">
+        <p class="tp">One to one</p>
+        <h3>Strategic partner plans</h3>
+        <p>Quarter-long joint programmes with the larger agencies.</p>
+        <ul><li>Shared target list</li><li>Co-hosted events or webinars</li><li>Joint content</li><li>Monthly pipeline review</li></ul>
+        <p class="m"><b>success</b> sourced pipeline per partner</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="rules">
+  <div class="wrap">
+    <p class="kicker" data-reveal>What makes a kit get used</p>
+    <h2 class="h2" data-reveal>Six rules, <span>from lifecycle.</span></h2>
+    <div class="rules">
+      <article class="rule" data-reveal><span class="n">1</span><h3>One first step, under 10 minutes</h3><p>If the first step takes an afternoon, it never happens. Make the first win small and fast.</p></article>
+      <article class="rule" data-reveal style="--d:.06s"><span class="n">2</span><h3>Works as it is</h3><p>Every template should be usable without editing. Customising is optional, not required.</p></article>
+      <article class="rule" data-reveal style="--d:.12s"><span class="n">3</span><h3>Nudge at the stall point</h3><p>Follow up when people usually stop, with help, not a reminder that they're behind.</p></article>
+      <article class="rule" data-reveal style="--d:.18s"><span class="n">4</span><h3>Localise the 20% that matters</h3><p>Language, examples and dates change. Structure and design stay the same everywhere.</p></article>
+      <article class="rule" data-reveal style="--d:.24s"><span class="n">5</span><h3>Show what others got</h3><p>"12 partners ran this last month, 40 meetings booked" sells a kit better than any description.</p></article>
+      <article class="rule" data-reveal style="--d:.3s"><span class="n">6</span><h3>Measure execution, then stop or scale</h3><p>Each kit gets a run-rate target and a date. Below it, change it or retire it.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="plan">
+  <div class="wrap">
+    <p class="kicker" data-reveal>First 90 days</p>
+    <h2 class="h2" data-reveal>Ship a pilot, <span>then multiply.</span></h2>
+    <p class="intro" data-reveal>Written from the outside, so the order will change once I'm inside.</p>
+    <div class="plan">
+      <div class="phase" data-reveal>
+        <p class="when">DAYS 1–30</p>
+        <h3>Listen</h3>
+        <ul>
+          <li>Talk to 15+ agency partners, from solo consultants to the larger ones.</li>
+          <li>Agree strategy, markets and investments with the partner marketing managers.</li>
+          <li>Map today's funnel and what we can already measure.</li>
+          <li>Build my own n8n workflows for programme ops.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.1s">
+        <p class="when">DAYS 31–60</p>
+        <h3>Pilot</h3>
+        <ul>
+          <li>Ship Event-in-a-Box v1 with 5–10 partners in two regions.</li>
+          <li>Launch one use-case campaign kit.</li>
+          <li>Automated follow-up to measure execution, not downloads.</li>
+          <li>Start one strategic plan with a larger partner.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.2s">
+        <p class="when">DAYS 61–90</p>
+        <h3>Multiply</h3>
+        <ul>
+          <li>Read results; fix, scale or stop each kit.</li>
+          <li>Localise what works for the next regions.</li>
+          <li>Partner-sourced pipeline dashboard.</li>
+          <li>Roadmap for the next two quarters.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="plan-note" data-reveal>Every programme gets a goal, a run-rate target and a date to decide whether to keep it.</p>
+  </div>
+</section>
+
+<section class="block" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Where I've <span>done the work.</span></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lead CRM and lifecycle strategy across European markets, in a high-volume environment.</li>
+            <li>Own revenue-generating programmes across acquisition, conversion, retention and win-back.</li>
+            <li>Built and scaled A/B testing frameworks to lift LTV; measure incrementally with holdout groups.</li>
+            <li>Automated multi-channel workflows (email, push, in-app, SMS) based on behaviour, scoring and RFM segments.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul>
+            <li>Ran real-time CRM operations across several European brands, above SLA targets.</li>
+            <li>Coordinated stakeholders across time zones during high-volume periods.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Owned marketing, CRM and growth end to end for an early-stage app.</li>
+            <li>Built journeys that turned daily use into habits and grew DAU.</li>
+            <li>Ran A/B and multivariate tests to improve trial-to-paid and reduce churn.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Side project</p><p class="co">Community events</p></div>
+        <div>
+          <h3>Padel tournaments, from zero</h3>
+          <ul>
+            <li>Organised local tournaments end to end and built my own app to run registrations, draws and results.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="side">
+      <div data-reveal>
+        <h3>Toolkit</h3>
+        <ul class="chips">
+          <li>Workflow automation</li><li>Braze</li><li>Customer.io</li><li>Optimove</li><li>HubSpot</li><li>BI tools</li>
+          <li>Holdout groups</li><li>A/B testing</li><li>Localisation</li><li>Events</li><li>English · Spanish</li>
+        </ul>
+      </div>
+      <div data-reveal style="--d:.1s">
+        <h3>Certifications</h3>
+        <ul class="certs">
+          <li>Triggers &amp; Workflows · Optimove, 2025</li>
+          <li>Marketing &amp; Lifecycle · MiniMBA, 2025</li>
+          <li>Sales with CRM · HubSpot Academy, 2025</li>
+          <li>Lifecycles &amp; Segmentation · Optimove, 2024</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap why-block">
+    <div>
+      <p class="kicker" data-reveal>Why n8n</p>
+      <h2 class="h2" data-reveal>I automate things <span>for a living.</span></h2>
+    </div>
+    <div class="txt">
+      <p data-reveal>Automation is one of the pillars of my work, so marketing a platform that helps people automate feels less like a job change and more like coming home.</p>
+      <p data-reveal>And helping hundreds of small agencies win more business, with programmes simple enough to run on a busy Tuesday, is the kind of scale I want to work at.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Get in touch</p>
+    <h2 class="h2" data-reveal>Happy to <span>talk</span> any time.</h2>
+    <p class="intro" data-reveal>Based in Spain, with the right to work in the EU. Used to working remotely across Europe.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=Senior%20Partner%20Marketing%20Manager%20-%20Agency%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · Lifecycle &amp; CRM</span>
+    <span>Personal application page. Not affiliated with n8n.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
