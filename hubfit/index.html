@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · Lifecycle</title>
+<meta name="description" content="Haitam El Harchal, CRM and lifecycle marketer who built a fitness app. Open application to HubFit." />
+<meta property="og:title" content="Haitam El Harchal · Open application to HubFit" />
+<meta property="og:description" content="I built a fitness app and ran its lifecycle. What I'd want to build at HubFit." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#F6F5F1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%2311151A'/%3E%3Ctext x='32' y='45' font-family='Arial' font-weight='800' font-size='32' fill='%23FF3D7F' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f6f5f1;
+  --bg-2: #ebe9e3;
+  --card: #ffffff;
+  --ink: #11151a;
+  --ink-2: #3a4048;
+  --muted: #6e737a;
+  --line: rgba(17, 21, 26, 0.12);
+  --pink: #ff3d7f;
+  --pink-2: #ffe1ec;
+  --mint: #2fbf8f;
+  --amber: #f5a524;
+  --head: "Barlow Condensed", "Inter", system-ui, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--pink-2); }
+.wrap { width: min(1140px, 100% - 40px); margin-inline: auto; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(246, 245, 241, 0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 600 15px/1 var(--sans); }
+.mark i { width: 30px; height: 30px; border-radius: 8px; background: var(--ink); color: var(--pink); display: grid; place-items: center; font: normal 800 18px/1 var(--head); }
+.nav-links { display: flex; gap: 24px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 12px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: var(--ink-2); }
+.btn-line { color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--pink); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 9vw, 120px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; width: 680px; height: 680px; right: -200px; top: -260px; border-radius: 50%; background: radial-gradient(circle, rgba(255, 61, 127, 0.2), transparent 65%); pointer-events: none; }
+.hero::after { content: ""; position: absolute; width: 480px; height: 480px; left: -220px; bottom: -240px; border-radius: 50%; background: radial-gradient(circle, rgba(47, 191, 143, 0.2), transparent 65%); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12.5px/1.3 var(--mono); color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--pink); flex: none; }
+.hero h1 { margin-top: 26px; font: 800 clamp(52px, 7.6vw, 104px)/0.92 var(--head); letter-spacing: -0.01em; text-transform: uppercase; }
+.hero h1 span { color: var(--pink); }
+.hero .lead { margin-top: 24px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: 0 4px 14px rgba(17, 21, 26, .15); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* coach card */
+.coach { justify-self: center; width: min(420px, 100%); background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 22px; box-shadow: 0 50px 90px -40px rgba(17, 21, 26, .45); }
+.coach .head { display: flex; justify-content: space-between; font: 500 11.5px/1 var(--mono); color: var(--muted); letter-spacing: .03em; text-transform: uppercase; }
+.coach .head b { color: var(--pink); font-weight: 500; }
+.coach h3 { margin-top: 10px; font: 800 30px/1 var(--head); text-transform: uppercase; }
+.stats { margin-top: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.stat { background: var(--bg); border-radius: 12px; padding: 10px 12px; }
+.stat b { display: block; font: 800 28px/1 var(--head); }
+.stat span { font-size: 12px; color: var(--muted); }
+.alerts { margin-top: 14px; display: grid; gap: 8px; }
+.al { display: grid; grid-template-columns: 10px 1fr; gap: 10px; align-items: start; padding: 11px 12px; border-radius: 12px; border: 1px solid var(--line); font-size: 13.5px; line-height: 1.45; color: var(--ink-2); opacity: 0; transform: translateY(10px); animation: up .6s var(--ease) forwards; }
+.al:nth-child(1) { animation-delay: .4s; }
+.al:nth-child(2) { animation-delay: .9s; }
+.al:nth-child(3) { animation-delay: 1.4s; }
+.al i { width: 10px; height: 10px; border-radius: 50%; margin-top: 5px; }
+.al b { color: var(--ink); }
+.al em { display: block; margin-top: 3px; font: normal 400 11.5px/1.4 var(--mono); color: var(--mint); }
+@keyframes up { to { opacity: 1; transform: none; } }
+.coach-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 128px) 0; }
+.alt { background: var(--bg-2); }
+.dark { background: var(--ink); color: var(--bg); }
+.kicker { font: 500 12.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--pink); }
+.h2 { margin-top: 14px; font: 800 clamp(40px, 5.4vw, 68px)/0.95 var(--head); text-transform: uppercase; max-width: 18ch; }
+.h2 span { color: var(--pink); }
+.intro { margin-top: 18px; max-width: 62ch; color: var(--ink-2); }
+.dark .intro { color: rgba(246,245,241,.72); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* story */
+.story { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.st { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; }
+.st .n { font: 500 12px/1 var(--mono); color: var(--pink); }
+.st h3 { margin-top: 12px; font: 800 28px/1 var(--head); text-transform: uppercase; }
+.st p { margin-top: 12px; font-size: 15.5px; color: var(--ink-2); line-height: 1.6; }
+.st p strong { color: var(--ink); }
+
+/* build */
+.loops { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.loop { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 22px; padding: 28px; }
+.loop .lbl { font: 500 12px/1 var(--mono); letter-spacing: .05em; text-transform: uppercase; color: var(--pink); }
+.loop h3 { margin-top: 12px; font: 800 32px/1 var(--head); text-transform: uppercase; }
+.loop p.s { margin-top: 10px; font-size: 15.5px; color: rgba(246,245,241,.75); }
+.loop ol { margin-top: 18px; display: grid; gap: 12px; counter-reset: s; }
+.loop li { position: relative; padding-left: 36px; font-size: 15px; color: rgba(246,245,241,.82); line-height: 1.5; counter-increment: s; }
+.loop li::before { content: counter(s); position: absolute; left: 0; top: 0; width: 24px; height: 24px; border-radius: 7px; background: rgba(255,61,127,.18); color: var(--pink); font: 600 12px/24px var(--mono); text-align: center; }
+.loop li b { color: #fff; font-weight: 600; }
+.loop .m { margin-top: 18px; font: 400 12.5px/1.5 var(--mono); color: rgba(246,245,241,.55); }
+.loop .m b { color: var(--mint); font-weight: 500; }
+
+/* plan */
+.plan { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.phase { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 28px; }
+.phase .when { font: 500 12.5px/1 var(--mono); color: var(--pink); letter-spacing: .04em; }
+.phase h3 { margin-top: 12px; font: 800 30px/1 var(--head); text-transform: uppercase; }
+.phase ul { margin-top: 16px; display: grid; gap: 10px; }
+.phase li { position: relative; padding-left: 20px; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.phase li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 2px; background: var(--pink); }
+.plan-note { margin-top: 26px; font-size: 14px; color: var(--muted); }
+
+/* experience */
+.xp { margin-top: 48px; display: grid; gap: 18px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+.job .when { font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.job .co { margin-top: 6px; font: 800 28px/1 var(--head); text-transform: uppercase; }
+.job h3 { font: 600 18px/1.3 var(--sans); }
+.job ul { margin-top: 14px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 2px; background: var(--pink); }
+.side { margin-top: 18px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+.side > div { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+.side h3 { font: 800 26px/1 var(--head); text-transform: uppercase; }
+.chips { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { padding: 6px 12px; border-radius: 999px; background: var(--bg-2); font-size: 14px; }
+.certs { margin-top: 16px; display: grid; gap: 10px; font-size: 15px; color: var(--ink-2); }
+
+/* contact */
+.contact { text-align: center; padding: clamp(80px, 12vw, 150px) 0; background: radial-gradient(700px 380px at 50% 0%, rgba(255,61,127,.2), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 16ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 400 14px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 960px) {
+  .hero .wrap, .loops { grid-template-columns: 1fr; }
+  .plan, .story { grid-template-columns: 1fr; }
+  .side { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .job { grid-template-columns: 1fr; gap: 10px; padding: 24px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .al, [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#story">My story</a>
+      <a href="#build">What I'd build</a>
+      <a href="#plan">First 90 days</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Open application · HubFit</span>
+      <h1>I built a fitness app. <span>Then I kept people using it.</span></h1>
+      <p class="lead">I'm a CRM and lifecycle marketer with 7+ years of hands-on work. At TOC-TOC, a fitness app, I built the app with Expo and then owned how users onboarded, built habits and paid. Coaches face the same problem every day: getting clients to show up again next week. I'd love to help HubFit solve it for them, and for itself.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>CRM &amp; Lifecycle Marketing Manager · Spain · Remote</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="coach" aria-label="Illustration: a coach's weekly view with automated retention nudges">
+        <p class="head"><span>Coach · this week</span><b>illustration</b></p>
+        <h3>Sam's coaching business</h3>
+        <div class="stats">
+          <div class="stat"><b>24</b><span>active clients</span></div>
+          <div class="stat"><b>87%</b><span>workouts logged</span></div>
+          <div class="stat"><b>3</b><span>at risk</span></div>
+        </div>
+        <div class="alerts">
+          <div class="al"><i style="background:var(--amber)"></i><div><b>3 clients</b> haven't logged a workout in 7 days.<em>→ friendly check-in sent, in Sam's voice</em></div></div>
+          <div class="al"><i style="background:var(--mint)"></i><div><b>Maria</b> hit a new personal best on squats.<em>→ celebration message ready to send</em></div></div>
+          <div class="al"><i style="background:var(--pink)"></i><div><b>2 subscriptions</b> renew next week.<em>→ progress recap scheduled before renewal</em></div></div>
+        </div>
+      </div>
+      <p class="coach-cap">Illustration, made-up data. Lifecycle for coaches' clients, built into the product.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="story">
+  <div class="wrap">
+    <p class="kicker" data-reveal>My story</p>
+    <h2 class="h2" data-reveal>Fitness, apps <span>and habits.</span></h2>
+    <div class="story">
+      <article class="st" data-reveal>
+        <span class="n">01</span>
+        <h3>I built a fitness app</h3>
+        <p>At <strong>TOC-TOC</strong>, a gamified family fitness app, I built the iOS and Android app with <strong>Expo</strong>, then led its CRM, monetisation and growth.</p>
+      </article>
+      <article class="st" data-reveal style="--d:.1s">
+        <span class="n">02</span>
+        <h3>I turned workouts into habits</h3>
+        <p>Push, in-app and email journeys around milestones and leaderboards turned daily exercise tracking into a habit and <strong>grew DAU</strong>. Paywalls and renewals timed to moments of progress lifted <strong>trial-to-paid</strong>.</p>
+      </article>
+      <article class="st" data-reveal style="--d:.2s">
+        <span class="n">03</span>
+        <h3>I did it at scale</h3>
+        <p>Since 2021 at <strong>Entain</strong>, I've led CRM and lifecycle across European markets: behavioural segments, automated journeys and A/B tests with <strong>holdout groups</strong>, measured on retention and revenue.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block dark" id="build">
+  <div class="wrap">
+    <p class="kicker" data-reveal>What I'd want to build here</p>
+    <h2 class="h2" data-reveal>Two loops, <span>one goal.</span></h2>
+    <p class="intro" data-reveal>HubFit has two kinds of retention: coaches staying with HubFit, and clients staying with their coach. They feed each other. Written from the outside, as a starting point for a conversation.</p>
+    <div class="loops">
+      <article class="loop" data-reveal>
+        <p class="lbl">Loop 1 · coaches</p>
+        <h3>Coaches who stick</h3>
+        <p class="s">Lifecycle for HubFit's own customers.</p>
+        <ol>
+          <li><b>Activation:</b> get a new coach to their first client invited and first programme delivered, fast.</li>
+          <li><b>Adoption:</b> introduce the next feature when it saves them time, like check-ins or nutrition, not on a calendar.</li>
+          <li><b>Upgrade:</b> show a coach the plan they need when their client list grows.</li>
+          <li><b>Retention:</b> spot coaches who stop logging in and help before they cancel.</li>
+        </ol>
+        <p class="m"><b>measure</b> time to first client · trial-to-paid · coach churn</p>
+      </article>
+      <article class="loop" data-reveal style="--d:.1s">
+        <p class="lbl">Loop 2 · coaches' clients</p>
+        <h3>Clients who show up</h3>
+        <p class="s">Helping coaches keep their own clients.</p>
+        <ol>
+          <li><b>Ready-made journeys</b> coaches switch on: welcome, first week, missed workouts, milestones.</li>
+          <li><b>At-risk alerts</b> when a client goes quiet, with a check-in written in the coach's voice.</li>
+          <li><b>Progress moments:</b> celebrate personal bests and streaks automatically.</li>
+          <li><b>Renewal recaps:</b> show clients their progress before they pay again.</li>
+        </ol>
+        <p class="m"><b>measure</b> client retention per coach · coach revenue</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="plan">
+  <div class="wrap">
+    <p class="kicker" data-reveal>First 90 days</p>
+    <h2 class="h2" data-reveal>Listen, ship, <span>measure.</span></h2>
+    <p class="intro" data-reveal>Written from the outside, so the order will change once I'm inside.</p>
+    <div class="plan">
+      <div class="phase" data-reveal>
+        <p class="when">DAYS 1–30</p>
+        <h3>Listen</h3>
+        <ul>
+          <li>Talk to coaches who stayed and coaches who left.</li>
+          <li>Map the coach journey from sign-up to paid.</li>
+          <li>Audit every live email, push and in-app message.</li>
+          <li>Agree the key metrics and holdout rules.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.1s">
+        <p class="when">DAYS 31–60</p>
+        <h3>Ship</h3>
+        <ul>
+          <li>Rebuild coach onboarding around the first client.</li>
+          <li>Launch a feature-adoption journey triggered by behaviour.</li>
+          <li>First A/B tests on onboarding and trial conversion.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.2s">
+        <p class="when">DAYS 61–90</p>
+        <h3>Measure</h3>
+        <ul>
+          <li>Read results against holdouts; keep, change or stop.</li>
+          <li>At-risk coach programme.</li>
+          <li>Proposal for client-retention tools for coaches, with Product.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="plan-note" data-reveal>Every programme gets a goal, a holdout and a date to decide whether to keep it.</p>
+  </div>
+</section>
+
+<section class="block alt" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Where I've <span>done the work.</span></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lead CRM and lifecycle strategy across European markets, in a high-volume environment.</li>
+            <li>Own campaigns across acquisition, conversion, retention and win-back.</li>
+            <li>Built and scaled A/B testing frameworks on copy, cadence, offers and channels to lift LTV.</li>
+            <li>Automated push, in-app, email and SMS workflows based on behaviour, scoring and RFM segments.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul>
+            <li>Ran real-time CRM operations across several European brands, above SLA targets.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Built the TOC-TOC app with Expo, for iOS and Android.</li>
+            <li>Led mobile CRM, monetisation and growth for a gamified family health and fitness app.</li>
+            <li>Built journeys that turned daily exercise tracking into long-term habits and grew DAU.</li>
+            <li>Timed paywalls, upsells and renewals to milestones and leaderboard moments, using RevenueCat.</li>
+            <li>Ran A/B and multivariate tests to improve trial-to-paid and reduce churn.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Side project</p><p class="co">Padel</p></div>
+        <div>
+          <h3>Tournaments and my own app</h3>
+          <ul>
+            <li>I play padel every day, organise local tournaments and built an app to run them.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="side">
+      <div data-reveal>
+        <h3>Toolkit</h3>
+        <ul class="chips">
+          <li>Braze</li><li>Customer.io</li><li>Klaviyo</li><li>Optimove</li><li>HubSpot</li><li>RevenueCat</li><li>Expo</li>
+          <li>Push · Email · In-app · SMS</li><li>Behavioural triggers</li><li>A/B &amp; multivariate</li><li>Holdout groups</li><li>Cohort analysis</li>
+        </ul>
+      </div>
+      <div data-reveal style="--d:.1s">
+        <h3>Certifications</h3>
+        <ul class="certs">
+          <li>Marketing &amp; Lifecycle · MiniMBA, 2025</li>
+          <li>Triggers &amp; Workflows · Optimove, 2025</li>
+          <li>Lifecycles &amp; Segmentation · Optimove, 2024</li>
+          <li>Sales with CRM · HubSpot Academy, 2025</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Get in touch</p>
+    <h2 class="h2" data-reveal>Let's <span>talk.</span></h2>
+    <p class="intro" data-reveal>Based in Spain, used to working remotely across time zones.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=HubFit%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · Lifecycle &amp; CRM</span>
+    <span>Personal application page. Not affiliated with HubFit.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
