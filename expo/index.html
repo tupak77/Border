@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · Lifecycle</title>
+<meta name="description" content="Haitam El Harchal. Application for Lifecycle Marketing Manager at Expo. Lifecycle marketer who built an app with Expo." />
+<meta property="og:title" content="Haitam El Harchal · Lifecycle Marketing Manager application" />
+<meta property="og:description" content="I built an app with Expo, then ran its lifecycle marketing. How I'd own lifecycle for EAS." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#F7F7F5" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23121212'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='700' font-size='30' fill='%2338BDF8' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f7f7f5;
+  --bg-2: #ededea;
+  --card: #ffffff;
+  --ink: #121212;
+  --ink-2: #3b3b3b;
+  --muted: #6f6f6c;
+  --line: rgba(18, 18, 18, 0.12);
+  --sky: #0284c7;
+  --sky-l: #38bdf8;
+  --sky-2: #e0f2fe;
+  --lemon: #facc15;
+  --term: #111214;
+  --term-ink: #d4d4d8;
+  --head: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --sans: "Geist", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "Geist Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--sky-2); }
+.wrap { width: min(1140px, 100% - 40px); margin-inline: auto; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(247, 247, 245, 0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 600 15px/1 var(--head); }
+.mark i { width: 30px; height: 30px; border-radius: 8px; background: var(--ink); color: var(--sky-l); display: grid; place-items: center; font: normal 700 14px/1 var(--head); }
+.nav-links { display: flex; gap: 24px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 10px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: var(--ink-2); }
+.btn-line { color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--sky); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 9vw, 120px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(var(--line) 1px, transparent 1px), linear-gradient(90deg, var(--line) 1px, transparent 1px); background-size: 48px 48px; mask-image: radial-gradient(ellipse 60% 60% at 78% 35%, #000 20%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 60% 60% at 78% 35%, #000 20%, transparent 75%); opacity: .5; pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12.5px/1.3 var(--mono); color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 8px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--sky-l); box-shadow: 0 0 0 4px rgba(56,189,248,.25); flex: none; }
+.hero h1 { margin-top: 26px; font: 700 clamp(40px, 5.6vw, 72px)/1.02 var(--head); letter-spacing: -0.045em; }
+.hero h1 span { color: var(--sky); }
+.hero .lead { margin-top: 24px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: 0 4px 14px rgba(18, 18, 18, .15); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* terminal journey */
+.term { justify-self: center; width: min(470px, 100%); background: var(--term); color: var(--term-ink); border-radius: 14px; box-shadow: 0 50px 90px -40px rgba(18, 18, 18, .6); overflow: hidden; font: 400 13px/1.6 var(--mono); }
+.term .bar { display: flex; align-items: center; gap: 7px; padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,.08); }
+.term .bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.18); }
+.term .bar span { margin-left: 8px; font-size: 11.5px; color: rgba(212,212,216,.55); }
+.term .body { padding: 14px 16px 16px; display: grid; gap: 10px; }
+.st { display: grid; gap: 4px; opacity: 0; transform: translateY(8px); animation: up .55s var(--ease) forwards; }
+.st:nth-child(1) { animation-delay: .3s; }
+.st:nth-child(2) { animation-delay: .8s; }
+.st:nth-child(3) { animation-delay: 1.3s; }
+.st:nth-child(4) { animation-delay: 1.8s; }
+.st .cmd { color: #fff; overflow-wrap: anywhere; }
+.st .cmd::before { content: "$ "; color: var(--sky-l); }
+.st .stage { display: flex; justify-content: space-between; gap: 10px; font-size: 11.5px; color: rgba(212,212,216,.55); }
+.st .stage b { color: var(--lemon); font-weight: 500; text-transform: uppercase; letter-spacing: .04em; }
+.st .msg { font-size: 12px; color: rgba(212,212,216,.85); padding-left: 12px; border-left: 2px solid rgba(56,189,248,.5); font-family: var(--sans); line-height: 1.45; }
+@keyframes up { to { opacity: 1; transform: none; } }
+.term-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 128px) 0; }
+.alt { background: var(--bg-2); }
+.dark { background: var(--ink); color: var(--bg); }
+.kicker { font: 500 12.5px/1 var(--mono); letter-spacing: .04em; color: var(--sky); }
+.h2 { margin-top: 14px; font: 700 clamp(30px, 4vw, 50px)/1.06 var(--head); letter-spacing: -0.04em; max-width: 22ch; }
+.h2 span { color: var(--sky); }
+.intro { margin-top: 18px; max-width: 62ch; color: var(--ink-2); }
+.dark .intro { color: rgba(247,247,245,.72); }
+.dark .kicker, .dark .h2 span { color: var(--sky-l); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* user story */
+.story { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.story > div { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; padding: 26px; }
+.story .n { font: 500 12px/1 var(--mono); color: var(--lemon); }
+.story h3 { margin-top: 12px; font: 600 21px/1.2 var(--head); letter-spacing: -.02em; }
+.story p { margin-top: 10px; font-size: 15px; color: rgba(247,247,245,.78); line-height: 1.55; }
+
+/* fit */
+.legend { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.fit { margin-top: 28px; border-top: 1px solid var(--line); }
+.fit li { display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 32px; padding: 24px 0; border-bottom: 1px solid var(--line); }
+.fit .ask { font: 600 18.5px/1.35 var(--head); letter-spacing: -.02em; }
+.fit .ans { color: var(--ink-2); }
+.fit .ans strong { color: var(--ink); font-weight: 600; }
+.tag { display: inline-block; margin-top: 10px; padding: 4px 9px; border-radius: 6px; font: 500 11px/1.2 var(--mono); letter-spacing: .02em; text-transform: uppercase; font-style: normal; }
+.legend .tag { margin-top: 0; }
+.t-direct { background: var(--sky-2); color: #075985; }
+.t-transfer { background: #fef3c7; color: #854d0e; }
+.t-new { background: var(--bg-2); color: var(--ink-2); border: 1px solid var(--line); }
+
+/* map */
+.map { margin-top: 48px; overflow-x: auto; -webkit-overflow-scrolling: touch; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+.map table { width: 100%; min-width: 820px; border-collapse: collapse; font-size: 14.5px; }
+.map th, .map td { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.map thead th { font: 500 11.5px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .04em; color: var(--muted); background: var(--bg); }
+.map tbody th { font: 600 15px/1.3 var(--head); width: 130px; }
+.map td { color: var(--ink-2); line-height: 1.5; }
+.map td code { font: 400 12.5px/1.4 var(--mono); background: var(--sky-2); color: #075985; padding: 1px 6px; border-radius: 4px; }
+.map tr:last-child th, .map tr:last-child td { border-bottom: 0; }
+.map-note { margin-top: 20px; font-size: 14px; color: var(--muted); max-width: 72ch; }
+
+/* hubspot + ai */
+.two { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 28px; }
+.panel .lbl { font: 500 12px/1 var(--mono); color: var(--muted); }
+.panel h3 { margin-top: 10px; font: 700 24px/1.15 var(--head); letter-spacing: -.03em; }
+.panel ul { margin-top: 16px; display: grid; gap: 10px; }
+.panel li { position: relative; padding-left: 20px; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.panel li::before { content: "→"; position: absolute; left: 0; top: 0; color: var(--sky); font-family: var(--mono); }
+.panel li b { color: var(--ink); font-weight: 600; }
+
+/* plan */
+.plan { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.phase { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 18px; padding: 28px; }
+.phase .when { font: 500 12.5px/1 var(--mono); color: var(--lemon); }
+.phase h3 { margin-top: 14px; font: 700 24px/1.15 var(--head); letter-spacing: -.03em; }
+.phase ul { margin-top: 18px; display: grid; gap: 10px; }
+.phase li { position: relative; padding-left: 20px; font-size: 15px; color: rgba(247,247,245,.8); line-height: 1.5; }
+.phase li::before { content: ""; position: absolute; left: 0; top: .55em; width: 8px; height: 8px; border-radius: 2px; background: var(--sky-l); }
+.plan-note { margin-top: 26px; font-size: 14px; color: rgba(247,247,245,.55); }
+
+/* copy */
+.samples { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+.sample { min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; box-shadow: 0 20px 40px -32px rgba(18,18,18,.4); }
+.sample .top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font: 500 11.5px/1 var(--mono); letter-spacing: .02em; text-transform: uppercase; color: var(--muted); }
+.sample .top span:last-child { text-transform: none; letter-spacing: 0; background: var(--bg-2); padding: 5px 9px; border-radius: 6px; color: var(--ink-2); }
+.sample .sig { margin-top: 14px; font: 400 12px/1.5 var(--mono); color: #075985; background: var(--sky-2); border-radius: 8px; padding: 8px 10px; }
+.sample .subj { margin-top: 14px; font: 600 19px/1.3 var(--head); letter-spacing: -.02em; }
+.sample .pre { margin-top: 4px; font-size: 14px; color: var(--muted); }
+.sample .body { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 15px; color: var(--ink-2); }
+.sample .body p + p { margin-top: 10px; }
+.sample .body code, .snip { font-family: var(--mono); }
+.snip { display: block; margin-top: 10px; background: var(--term); color: var(--term-ink); border-radius: 8px; padding: 10px 12px; font-size: 12.5px; overflow-x: auto; white-space: pre; }
+.sample .why { margin-top: 16px; font-size: 13px; color: var(--muted); background: var(--bg); border-radius: 10px; padding: 10px 12px; line-height: 1.5; }
+.sample .why b { color: var(--ink); }
+
+/* experience */
+.xp { margin-top: 48px; display: grid; gap: 18px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 30px; }
+.job .when { font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.job .co { margin-top: 6px; font: 700 22px/1.2 var(--head); letter-spacing: -.03em; }
+.job h3 { font: 600 18px/1.3 var(--head); }
+.job ul { margin-top: 14px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 2px; background: var(--sky); }
+.side { margin-top: 18px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+.side > div { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 30px; }
+.side h3 { font: 700 20px/1.2 var(--head); letter-spacing: -.02em; }
+.chips { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { padding: 6px 12px; border-radius: 8px; background: var(--bg-2); font-size: 14px; }
+.certs { margin-top: 16px; display: grid; gap: 10px; font-size: 15px; color: var(--ink-2); }
+
+/* why */
+.why-block { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+.why-block .txt p { font: 500 clamp(19px, 1.9vw, 22px)/1.55 var(--head); letter-spacing: -.02em; color: var(--ink-2); }
+.why-block .txt p + p { margin-top: 20px; }
+
+/* contact */
+.contact { text-align: center; padding: clamp(80px, 12vw, 150px) 0; background: radial-gradient(700px 380px at 50% 0%, rgba(56,189,248,.25), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 18ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 400 14px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 960px) {
+  .hero .wrap, .why-block, .two { grid-template-columns: 1fr; }
+  .plan, .samples, .story { grid-template-columns: 1fr; }
+  .side { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .fit li, .job { grid-template-columns: 1fr; gap: 10px; }
+  .job, .panel { padding: 24px; }
+  .term { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .st, [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#user">I've been your user</a>
+      <a href="#fit">The fit</a>
+      <a href="#map">Lifecycle map</a>
+      <a href="#copy">Copy</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Application · Lifecycle Marketing Manager at Expo</span>
+      <h1>I built an app with Expo. <span>Then I ran its lifecycle.</span></h1>
+      <p class="lead">At TOC-TOC I built our mobile app with Expo, and then owned its CRM and lifecycle marketing: onboarding, activation, trial-to-paid and retention. With 7+ years in lifecycle, I'd now like to do it for the tool I shipped with, for developers I understand because I've been one of them.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>CRM &amp; Lifecycle Marketing Manager · Spain · Remote</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="term" aria-label="Illustration: the developer journey from a new project to production, with the lifecycle message at each step">
+        <div class="bar"><i></i><i></i><i></i><span>a developer's first month, and the message that helps</span></div>
+        <div class="body">
+          <div class="st"><p class="stage"><b>signup</b><span>day 0</span></p><p class="cmd">npx create-expo-app@latest</p><p class="msg">"Your app runs. Here's how to get it on a real phone today."</p></div>
+          <div class="st"><p class="stage"><b>activation</b><span>day 3</span></p><p class="cmd">eas build --platform all</p><p class="msg">First build failed? A short fix guide for the most common errors.</p></div>
+          <div class="st"><p class="stage"><b>value</b><span>day 10</span></p><p class="cmd">eas submit</p><p class="msg">"You're in the stores. Next: ship fixes without a new review."</p></div>
+          <div class="st"><p class="stage"><b>upgrade</b><span>day 30</span></p><p class="cmd">eas update</p><p class="msg">Hitting limits as the team grows? What a paid plan changes.</p></div>
+        </div>
+      </div>
+      <p class="term-cap">Illustration. Real CLI commands, made-up timing and triggers.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block dark" id="user">
+  <div class="wrap">
+    <p class="kicker" data-reveal>// I've been your user</p>
+    <h2 class="h2" data-reveal>Developer on Monday, <span>marketer on Tuesday.</span></h2>
+    <p class="intro" data-reveal>Most lifecycle marketers learn the developer journey from a slide. I learned it by shipping an app.</p>
+    <div class="story">
+      <div data-reveal><span class="n">01</span><h3>I know where it gets hard</h3><p>The moments where developers stall are the moments lifecycle should show up: the first build, the first store submission, the first production bug.</p></div>
+      <div data-reveal style="--d:.1s"><span class="n">02</span><h3>I know what reads as fluff</h3><p>As a developer, I deleted most marketing emails unread. The ones I kept had a command, a fix or a number. That's how I'd write.</p></div>
+      <div data-reveal style="--d:.2s"><span class="n">03</span><h3>I know both sides of the funnel</h3><p>I built the app, then owned how its users onboarded, activated and paid. Expo's job is the same, one level down: helping developers get their apps to production.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fit">
+  <div class="wrap">
+    <p class="kicker" data-reveal>// the fit</p>
+    <h2 class="h2" data-reveal>Your list, <span>point by point.</span></h2>
+    <p class="intro" data-reveal>What you're looking for, with what I've actually done and where I'd be learning.</p>
+    <div class="legend" data-reveal>
+      <span><i class="tag t-direct">Direct</i> done it, same shape</span>
+      <span><i class="tag t-transfer">Transferable</i> same skill, different tool or setting</span>
+      <span><i class="tag t-new">New for me</i> I'd be learning it here</span>
+    </div>
+    <ul class="fit">
+      <li data-reveal>
+        <div><p class="ask">4–7+ years in lifecycle, email, content or growth marketing</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">7+ years. At <strong>Entain</strong> I own lifecycle across European markets; at <strong>TOC-TOC</strong> I owned onboarding, activation, trial-to-paid and retention end to end.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Building email journeys end to end: segmentation, personalisation, triggers</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I build, QA, launch and optimise behaviour-triggered journeys myself in <strong>Braze, Customer.io, Optimove and Klaviyo</strong>, with segmentation by behaviour, scoring and RFM.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Admin-level marketing automation; HubSpot a strong plus</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">I've worked with <strong>HubSpot</strong> and completed HubSpot Academy's <strong>Sales with CRM</strong> implementation course. My deepest admin experience is in Braze, Customer.io and Optimove; HubSpot's workflows, lists and lifecycle stages use the same logic.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Developers and product-led growth</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I built the TOC-TOC app with <strong>Expo</strong>, and TOC-TOC itself was self-serve with a trial: activation and trial-to-paid were my metrics.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">B2B SaaS or developer tools startup, Series B–C</p><span class="tag t-new">New for me</span></div>
+        <p class="ans">My lifecycle work has been B2C, at an early-stage startup and at a large group. Selling to developers and teams, with Sales and RevOps in the loop, would be new. The building blocks (stages, triggers, scoring, conversion) are the same.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Testing and measuring what content does</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I built and scaled <strong>A/B and multivariate testing frameworks</strong> on copy, subject lines, cadence and channels, with <strong>holdout groups</strong> so results are incremental.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Privacy and consent: CAN-SPAM, GDPR, CCPA</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">Years of high-volume sends across many European markets: consent, opt-outs, suppression and <strong>GDPR</strong> market by market.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Working with Marketing Ops, Product Marketing and Growth</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I work with Product, Analytics and Tech every week, and defined the event tracking taxonomy at TOC-TOC, so I know how to get the product signals lifecycle needs.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">AI and agentic tools to ship faster</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I use AI daily to research, draft and analyse. Automation is one of the pillars of how I work. This page was built with AI tools, with me reviewing every line.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="block alt" id="map">
+  <div class="wrap">
+    <p class="kicker" data-reveal>// lifecycle map</p>
+    <h2 class="h2" data-reveal>One strategy, <span>three audiences.</span></h2>
+    <p class="intro" data-reveal>A first sketch from the outside: same stages, different job for each audience. The real map would come from Expo's data and Growth, Product Marketing and Sales.</p>
+    <div class="map" data-reveal>
+      <table>
+        <thead><tr><th>Stage</th><th>Solo developer</th><th>Startup team</th><th>Enterprise engineering</th></tr></thead>
+        <tbody>
+          <tr><th>Nurture</th><td>Guides and templates by use case.</td><td>How teams ship faster with fewer native headaches.</td><td>Case studies, security, scale. Hand off to Sales on intent.</td></tr>
+          <tr><th>Onboarding</th><td>First app on a real device, fast.</td><td>Invite the team, set up projects.</td><td>Guided setup with Sales and solutions support.</td></tr>
+          <tr><th>Activation</th><td>First successful <code>eas build</code>.</td><td>First store submission.</td><td>First production release on EAS.</td></tr>
+          <tr><th>Upgrade</th><td>Hitting free limits, shown in context.</td><td>Faster builds and collaboration value.</td><td>Plan fit reviewed with the account owner.</td></tr>
+          <tr><th>Expansion</th><td>Discover <code>eas update</code> and Workflows.</td><td>More services: Workflows, Update, Hosting.</td><td>More teams and apps on Expo.</td></tr>
+          <tr><th>Retention</th><td>Changelog that's actually useful.</td><td>Usage recap: builds, updates, time saved.</td><td>Quarterly value summary for engineering leaders.</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="map-note">Every journey gets a trigger from product data, one success metric and a holdout, so we know which messages actually moved developers forward.</p>
+  </div>
+</section>
+
+<section class="block" id="build">
+  <div class="wrap">
+    <p class="kicker" data-reveal>// how I'd build it</p>
+    <h2 class="h2" data-reveal>In HubSpot, <span>with AI in the loop.</span></h2>
+    <div class="two">
+      <div class="panel" data-reveal>
+        <p class="lbl">HubSpot foundations</p>
+        <h3>Get the plumbing right first</h3>
+        <ul>
+          <li><b>Lifecycle stages</b> agreed with RevOps: what makes a lead, a PQL, a customer.</li>
+          <li><b>Product events</b> synced in (signup, first build, submit, plan limits) so journeys trigger on behaviour.</li>
+          <li><b>Lists and suppressions</b> that respect consent by region.</li>
+          <li><b>Naming and reporting</b> so everyone can see what's live and what it drives.</li>
+        </ul>
+      </div>
+      <div class="panel" data-reveal style="--d:.1s">
+        <p class="lbl">Agentic workflows</p>
+        <h3>From insight to journey, faster</h3>
+        <ul>
+          <li><b>Drafting:</b> AI writes first versions by audience and stage from a message brief; I edit for accuracy and tone.</li>
+          <li><b>Docs to emails:</b> turn new docs and changelogs into lifecycle content without starting from zero.</li>
+          <li><b>Analysis:</b> weekly read of journey results with suggested next tests.</li>
+          <li><b>QA:</b> automated checks for links, tokens and suppressions before every send.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block dark" id="plan">
+  <div class="wrap">
+    <p class="kicker" data-reveal>// first 90 days</p>
+    <h2 class="h2" data-reveal>Map it, fix onboarding, <span>then scale.</span></h2>
+    <p class="intro" data-reveal>Written from the outside, so the order will change once I'm inside.</p>
+    <div class="plan">
+      <div class="phase" data-reveal>
+        <p class="when">DAYS 1–30</p>
+        <h3>Learn</h3>
+        <ul>
+          <li>Audit every live email and HubSpot workflow.</li>
+          <li>Map the funnel from signup to paid with Growth and RevOps.</li>
+          <li>Agree lifecycle stages, key moments and KPIs.</li>
+          <li>Talk to developers who upgraded and who didn't.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.1s">
+        <p class="when">DAYS 31–60</p>
+        <h3>Fix onboarding</h3>
+        <ul>
+          <li>Rebuild onboarding around the first successful build.</li>
+          <li>Add a failed-build help journey.</li>
+          <li>First A/B tests on subject lines and CTAs.</li>
+          <li>Set up agentic drafting and QA workflows.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.2s">
+        <p class="when">DAYS 61–90</p>
+        <h3>Upgrade and expand</h3>
+        <ul>
+          <li>Upgrade journeys triggered by usage limits.</li>
+          <li>Expansion journeys for Workflows and Update.</li>
+          <li>Lifecycle dashboard shared with the team.</li>
+          <li>Roadmap for the next two quarters.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="plan-note" data-reveal>Every journey gets a goal, a holdout and a date to decide whether to keep it.</p>
+  </div>
+</section>
+
+<section class="block" id="copy">
+  <div class="wrap">
+    <p class="kicker" data-reveal>// copy</p>
+    <h2 class="h2" data-reveal>Written for people <span>who skip marketing emails.</span></h2>
+    <p class="intro" data-reveal>My own samples, based on public information. Not real Expo emails; product details would be checked with Product Marketing.</p>
+    <div class="samples">
+      <article class="sample" data-reveal>
+        <div class="top"><span>Email</span><span>Activation</span></div>
+        <p class="sig">trigger: first EAS build failed · no retry in 24h</p>
+        <p class="subj">Your first build didn't finish. Here's the usual fix.</p>
+        <div class="body">
+          <p>Most first builds fail for one of three reasons: credentials, a native dependency, or the build profile. Your log points to credentials.</p>
+          <span class="snip">eas credentials</span>
+          <p>Run that, then try again. If it still fails, reply with your build ID and a human will look.</p>
+        </div>
+        <p class="why"><b>Why:</b> helps at the exact moment people give up. Specific, one command, a real person as backup.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.1s">
+        <div class="top"><span>Email</span><span>Expansion</span></div>
+        <p class="sig">trigger: 3+ store submissions · never used eas update</p>
+        <p class="subj">You've submitted 3 times this month</p>
+        <div class="body">
+          <p>If some of those were small fixes, you can skip the store review for them. Push JavaScript updates straight to users with EAS Update.</p>
+          <p>Setup takes about ten minutes.</p>
+        </div>
+        <p class="why"><b>Why:</b> starts from their own behaviour and saves them time. The feature is the answer, not the headline.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.2s">
+        <div class="top"><span>Email</span><span>Upgrade</span></div>
+        <p class="sig">trigger: team of 4+ · near free plan limits</p>
+        <p class="subj">Your team is growing faster than your plan</p>
+        <div class="body">
+          <p>Four people are building on this project, and you're close to this month's limits. Here's exactly what changes on a paid plan, and what doesn't.</p>
+        </div>
+        <p class="why"><b>Why:</b> honest about the trade-off. Developers upgrade when the reason is clear, not when the email is loud.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>// experience</p>
+    <h2 class="h2" data-reveal>Where I've <span>done the work.</span></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lead CRM and lifecycle strategy across European markets, in a high-volume environment.</li>
+            <li>Own campaigns across acquisition, conversion, retention and win-back.</li>
+            <li>Built and scaled A/B testing frameworks on copy, cadence, offers and channels to lift LTV.</li>
+            <li>Automated email, push, in-app and SMS workflows based on behaviour, scoring and RFM segments.</li>
+            <li>Work with Analytics, Product and Tech on deliverability and data integrations.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul>
+            <li>Ran real-time CRM operations across several European brands, above SLA targets.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Built the TOC-TOC app with Expo, for iOS and Android.</li>
+            <li>Led mobile CRM, monetisation and growth for the app, self-serve with a trial.</li>
+            <li>Built push, in-app and email journeys that turned daily use into habits and grew DAU.</li>
+            <li>Defined the event tracking taxonomy and cohorts with Product and Analytics.</li>
+            <li>Ran A/B and multivariate tests to improve trial-to-paid and reduce churn.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="side">
+      <div data-reveal>
+        <h3>Toolkit</h3>
+        <ul class="chips">
+          <li>Expo</li><li>HubSpot</li><li>Braze</li><li>Customer.io</li><li>Klaviyo</li><li>Optimove</li><li>RevenueCat</li>
+          <li>Behavioural triggers</li><li>A/B &amp; multivariate</li><li>Holdout groups</li><li>Event taxonomy</li><li>GDPR &amp; consent</li><li>AI workflows</li>
+        </ul>
+      </div>
+      <div data-reveal style="--d:.1s">
+        <h3>Certifications</h3>
+        <ul class="certs">
+          <li>Sales with CRM · HubSpot Academy, 2025</li>
+          <li>Marketing &amp; Lifecycle · MiniMBA, 2025</li>
+          <li>Triggers &amp; Workflows · Optimove, 2025</li>
+          <li>Lifecycles &amp; Segmentation · Optimove, 2024</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block">
+  <div class="wrap why-block">
+    <div>
+      <p class="kicker" data-reveal>// why expo</p>
+      <h2 class="h2" data-reveal>The tool I shipped with, <span>from the other side.</span></h2>
+    </div>
+    <div class="txt">
+      <p data-reveal>Expo made it possible for me to ship a real app on iOS and Android. Helping more developers get to that moment, and stay, is lifecycle work I'd believe in every day.</p>
+      <p data-reveal>Building lifecycle from the ground up, hands-on in HubSpot, with real ownership in a small team: that's exactly the role I want next.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>// get in touch</p>
+    <h2 class="h2" data-reveal>Happy to <span>talk</span> any time.</h2>
+    <p class="intro" data-reveal>Based in Spain, used to working remotely across time zones.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=Lifecycle%20Marketing%20Manager%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · Lifecycle &amp; CRM</span>
+    <span>Personal application page. Not affiliated with Expo.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
