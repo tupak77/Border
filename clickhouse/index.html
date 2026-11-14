@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · Lifecycle</title>
+<meta name="description" content="Haitam El Harchal. Application for Senior Lifecycle Marketing Manager at ClickHouse." />
+<meta property="og:title" content="Haitam El Harchal · Senior Lifecycle Marketing Manager application" />
+<meta property="og:description" content="7+ years building behaviour-triggered lifecycle programmes. How I'd build ClickHouse's nurture engine for PLG and sales-led." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#F6F6F2" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23111315'/%3E%3Ctext x='32' y='43' font-family='Courier New' font-weight='700' font-size='30' fill='%23FF6A3D' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f6f6f2;
+  --bg-2: #ecece6;
+  --card: #ffffff;
+  --ink: #111315;
+  --ink-2: #363a3f;
+  --muted: #6c7177;
+  --line: rgba(17, 19, 21, 0.12);
+  --orange: #ff6a3d;
+  --cyan: #12a4b6;
+  --code-bg: #15181c;
+  --code-ink: #d9dee4;
+  --head: "Space Grotesk", "Inter", system-ui, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: rgba(255, 106, 61, .3); }
+.wrap { width: min(1140px, 100% - 40px); margin-inline: auto; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(246, 246, 242, 0.86); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 600 16px/1 var(--head); }
+.mark i { width: 30px; height: 30px; border-radius: 7px; background: var(--ink); color: var(--orange); display: grid; place-items: center; font: normal 600 15px/1 var(--mono); }
+.nav-links { display: flex; gap: 24px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 8px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-ink:hover { background: var(--ink-2); }
+.btn-line { color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 9vw, 120px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: radial-gradient(var(--line) 1.2px, transparent 1.2px); background-size: 22px 22px; mask-image: radial-gradient(ellipse 65% 60% at 78% 35%, #000 25%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 65% 60% at 78% 35%, #000 25%, transparent 75%); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12.5px/1.3 var(--mono); color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 6px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 2px; background: var(--orange); flex: none; }
+.hero h1 { margin-top: 26px; font: 700 clamp(40px, 5.6vw, 72px)/1.02 var(--head); letter-spacing: -0.035em; }
+.hero h1 span { color: var(--orange); }
+.hero .lead { margin-top: 24px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: 0 4px 14px rgba(17, 19, 21, .15); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* code card */
+.code { justify-self: center; width: min(470px, 100%); background: var(--code-bg); color: var(--code-ink); border-radius: 14px; box-shadow: 0 50px 90px -40px rgba(17, 19, 21, .6); overflow: hidden; font: 400 13px/1.7 var(--mono); }
+.code .bar { display: flex; align-items: center; gap: 7px; padding: 12px 14px; border-bottom: 1px solid rgba(255,255,255,.08); }
+.code .bar i { width: 10px; height: 10px; border-radius: 50%; background: rgba(255,255,255,.18); }
+.code .bar span { margin-left: 8px; font-size: 11.5px; color: rgba(217,222,228,.55); }
+.code pre { margin: 0; padding: 16px 18px; overflow-x: auto; white-space: pre; }
+.k { color: #ff8a65; }
+.f { color: #7fd4e0; }
+.s { color: #b8e08a; }
+.c { color: rgba(217,222,228,.42); }
+.n { color: #f3c178; }
+.code .out { border-top: 1px solid rgba(255,255,255,.08); padding: 14px 18px 16px; display: grid; gap: 8px; }
+.code .row { display: flex; justify-content: space-between; gap: 12px; font-size: 12px; opacity: 0; transform: translateY(8px); animation: up .6s var(--ease) forwards; }
+.code .row:nth-child(1) { animation-delay: .5s; }
+.code .row:nth-child(2) { animation-delay: 1s; }
+.code .row:nth-child(3) { animation-delay: 1.5s; }
+.code .row b { font-weight: 500; color: #fff; }
+.code .row em { font-style: normal; color: var(--orange); }
+@keyframes up { to { opacity: 1; transform: none; } }
+.code-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 128px) 0; }
+.alt { background: var(--bg-2); }
+.dark { background: var(--ink); color: var(--bg); }
+.kicker { font: 500 12.5px/1 var(--mono); letter-spacing: .04em; color: var(--orange); }
+.kicker::before { content: "// "; opacity: .6; }
+.h2 { margin-top: 14px; font: 700 clamp(32px, 4.2vw, 52px)/1.05 var(--head); letter-spacing: -0.03em; max-width: 22ch; }
+.h2 span { color: var(--orange); }
+.intro { margin-top: 18px; max-width: 62ch; color: var(--ink-2); }
+.dark .intro { color: rgba(246,246,242,.72); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* fit */
+.legend { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.fit { margin-top: 28px; border-top: 1px solid var(--line); }
+.fit li { display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 32px; padding: 26px 0; border-bottom: 1px solid var(--line); }
+.fit .ask { font: 600 19px/1.35 var(--head); letter-spacing: -.01em; }
+.fit .ans { color: var(--ink-2); }
+.fit .ans strong { color: var(--ink); font-weight: 600; }
+.tag { display: inline-block; margin-top: 10px; padding: 4px 9px; border-radius: 5px; font: 500 11px/1.2 var(--mono); letter-spacing: .03em; text-transform: uppercase; font-style: normal; }
+.legend .tag { margin-top: 0; }
+.t-direct { background: #ffd9cc; color: #8a2a0c; }
+.t-transfer { background: #d3f0f4; color: #0b5a64; }
+.t-new { background: #e7e7e1; color: var(--ink-2); border: 1px solid var(--line); }
+
+/* engine */
+.engine { margin-top: 48px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.track { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
+.track .lbl { font: 500 12px/1 var(--mono); color: var(--muted); }
+.track h3 { margin-top: 10px; font: 700 24px/1.15 var(--head); letter-spacing: -.02em; }
+.track p.s { margin-top: 6px; font-size: 15px; color: var(--muted); }
+.steps { margin-top: 20px; display: grid; gap: 0; }
+.step { display: grid; grid-template-columns: 26px 1fr; gap: 14px; position: relative; padding-bottom: 16px; }
+.step:last-child { padding-bottom: 0; }
+.step::before { content: ""; position: absolute; left: 12px; top: 26px; bottom: 0; width: 2px; background: var(--bg-2); }
+.step:last-child::before { display: none; }
+.step i { width: 26px; height: 26px; border-radius: 6px; display: grid; place-items: center; font: normal 500 11px/1 var(--mono); background: var(--ink); color: var(--orange); z-index: 1; }
+.track.slg .step i { color: #7fd4e0; }
+.step b { display: block; font: 600 16px/1.3 var(--head); }
+.step span { display: block; font-size: 14.5px; color: var(--ink-2); line-height: 1.5; margin-top: 2px; }
+.step code { font: 400 12.5px/1.4 var(--mono); background: var(--bg-2); padding: 1px 6px; border-radius: 4px; color: var(--ink); }
+.signals { margin-top: 18px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.signals > div { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px 24px; }
+.signals b { display: block; font: 600 17px/1.2 var(--head); }
+.signals p { margin-top: 8px; font-size: 14.5px; color: var(--ink-2); line-height: 1.55; }
+
+/* tests */
+.tests { margin-top: 48px; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid rgba(255,255,255,.12); border-radius: 14px; }
+.tests table { width: 100%; min-width: 760px; border-collapse: collapse; font-size: 14.5px; }
+.tests th, .tests td { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid rgba(255,255,255,.1); }
+.tests thead th { font: 500 11.5px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: rgba(246,246,242,.55); background: rgba(255,255,255,.04); }
+.tests td { color: rgba(246,246,242,.8); line-height: 1.5; }
+.tests td:first-child { font: 600 15px/1.35 var(--head); color: #fff; width: 170px; }
+.tests td.m { font: 400 13px/1.5 var(--mono); color: var(--orange); white-space: nowrap; }
+.tests tr:last-child td { border-bottom: 0; }
+.tests-note { margin-top: 20px; font-size: 14px; color: rgba(246,246,242,.55); }
+
+/* plan */
+.plan { margin-top: 52px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.phase { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
+.phase .when { font: 500 12.5px/1 var(--mono); color: var(--orange); letter-spacing: .04em; }
+.phase h3 { margin-top: 14px; font: 700 24px/1.15 var(--head); letter-spacing: -.02em; }
+.phase ul { margin-top: 18px; display: grid; gap: 10px; }
+.phase li { position: relative; padding-left: 20px; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.phase li::before { content: "›"; position: absolute; left: 2px; top: -1px; font: 600 16px/1.5 var(--mono); color: var(--orange); }
+.plan-note { margin-top: 26px; font-size: 14px; color: var(--muted); }
+
+/* copy */
+.samples { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; align-items: start; }
+.sample { min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; box-shadow: 0 20px 40px -32px rgba(17,19,21,.4); }
+.sample .top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font: 500 11.5px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.sample .top span:last-child { text-transform: none; letter-spacing: 0; background: var(--bg-2); padding: 5px 9px; border-radius: 5px; color: var(--ink-2); }
+.sample .subj { margin-top: 16px; font: 600 18px/1.3 var(--head); letter-spacing: -.01em; }
+.sample .pre { margin-top: 4px; font-size: 14px; color: var(--muted); }
+.sample .body { margin-top: 14px; padding-top: 14px; border-top: 1px dashed var(--line); font-size: 15px; color: var(--ink-2); }
+.sample .body p + p { margin-top: 10px; }
+.snip { margin-top: 10px; background: var(--code-bg); color: var(--code-ink); border-radius: 8px; padding: 10px 12px; font: 400 12px/1.6 var(--mono); overflow-x: auto; white-space: pre; }
+.sample .why { margin-top: 16px; font-size: 13px; color: var(--muted); background: var(--bg); border-radius: 8px; padding: 10px 12px; line-height: 1.5; }
+.sample .why b { color: var(--ink); }
+
+/* experience */
+.xp { margin-top: 48px; display: grid; gap: 18px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 30px; }
+.job .when { font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.job .co { margin-top: 6px; font: 700 22px/1.2 var(--head); letter-spacing: -.015em; }
+.job h3 { font: 600 18px/1.3 var(--head); }
+.job ul { margin-top: 14px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 2px; background: var(--orange); }
+.side { margin-top: 18px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 18px; }
+.side > div { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 30px; }
+.side h3 { font: 700 20px/1.2 var(--head); }
+.chips { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { padding: 6px 12px; border-radius: 6px; background: var(--bg-2); font-size: 14px; }
+.certs { margin-top: 16px; display: grid; gap: 10px; font-size: 15px; color: var(--ink-2); }
+
+/* why */
+.why-block { display: grid; grid-template-columns: 0.8fr 1.2fr; gap: 56px; align-items: start; }
+.why-block .txt p { font: 500 clamp(19px, 1.9vw, 22px)/1.55 var(--head); letter-spacing: -.01em; color: var(--ink-2); }
+.why-block .txt p + p { margin-top: 20px; }
+
+/* contact */
+.contact { text-align: center; padding: clamp(80px, 12vw, 150px) 0; background: radial-gradient(700px 380px at 50% 0%, rgba(255,106,61,.22), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 18ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 400 14px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 960px) {
+  .hero .wrap, .why-block, .engine { grid-template-columns: 1fr; }
+  .plan, .samples, .signals { grid-template-columns: 1fr; }
+  .side { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .fit li, .job { grid-template-columns: 1fr; gap: 10px; }
+  .job, .track { padding: 24px; }
+  .code { font-size: 12px; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .code .row, [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#fit">The fit</a>
+      <a href="#engine">Nurture engine</a>
+      <a href="#tests">Testing</a>
+      <a href="#plan">First 90 days</a>
+      <a href="#copy">Copy</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Application · Senior Lifecycle Marketing Manager at ClickHouse</span>
+      <h1>From signup to <span>first fast query,</span> then to paid.</h1>
+      <p class="lead">I've spent 7+ years building behaviour-triggered lifecycle programmes hands-on: onboarding, activation, trial-to-paid, retention and win-back. I design the journeys, write the copy, run the tests and own the numbers. I'd like to be ClickHouse's first lifecycle marketer and build the engine from zero.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>CRM &amp; Lifecycle Marketing Manager · Spain · Remote</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="code" aria-label="Illustration: a behaviour-based audience written as SQL, feeding three lifecycle messages">
+        <div class="bar"><i></i><i></i><i></i><span>stalled_after_signup.sql</span></div>
+<pre><span class="c">-- Cloud signups who created a service</span>
+<span class="c">-- but haven't loaded data in 48h</span>
+<span class="k">SELECT</span> user_id, <span class="f">any</span>(persona) <span class="k">AS</span> persona
+<span class="k">FROM</span> product_events
+<span class="k">WHERE</span> signup_at &gt;= <span class="f">now</span>() - <span class="k">INTERVAL</span> <span class="n">7</span> <span class="k">DAY</span>
+<span class="k">GROUP BY</span> user_id
+<span class="k">HAVING</span> <span class="f">countIf</span>(event = <span class="s">'service_created'</span>) &gt; <span class="n">0</span>
+   <span class="k">AND</span> <span class="f">countIf</span>(event = <span class="s">'data_inserted'</span>) = <span class="n">0</span>
+   <span class="k">AND</span> <span class="f">max</span>(ts) &lt; <span class="f">now</span>() - <span class="k">INTERVAL</span> <span class="n">48</span> <span class="k">HOUR</span></pre>
+        <div class="out">
+          <p class="row"><b>→ email</b><span>"Load a sample dataset in one command"</span></p>
+          <p class="row"><b>→ in-product</b><span>Import guide pinned in the console</span></p>
+          <p class="row"><b>→ if company &gt; 200</b><em>flag for sales-assist</em></p>
+        </div>
+      </div>
+      <p class="code-cap">Illustration with a made-up schema. One behaviour signal, three coordinated actions.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fit">
+  <div class="wrap">
+    <p class="kicker" data-reveal>the fit</p>
+    <h2 class="h2" data-reveal>Your list, <span>point by point.</span></h2>
+    <p class="intro" data-reveal>What you're looking for, with what I've actually done and where I'd be learning.</p>
+    <div class="legend" data-reveal>
+      <span><i class="tag t-direct">Direct</i> done it, same shape</span>
+      <span><i class="tag t-transfer">Transferable</i> same skill, different audience</span>
+      <span><i class="tag t-new">New for me</i> I'd be learning it here</span>
+    </div>
+    <ul class="fit">
+      <li data-reveal>
+        <div><p class="ask">6+ years owning lifecycle: onboarding, activation, nurture, retention</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">7+ years. At <strong>Entain</strong> I own lifecycle across acquisition, conversion, retention and win-back in European markets. At <strong>TOC-TOC</strong> I owned onboarding, activation and monetisation end to end.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Behaviour-triggered programmes that improved activation and conversion at a self-serve company with a free trial</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">TOC-TOC was self-serve with a trial. I built push, in-app and email journeys triggered by product events and milestones, timed paywalls and upsells to moments of value, and ran tests to lift <strong>trial-to-paid</strong> and reduce churn. Same mechanics: the event changes, the logic doesn't.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Aligning email with in-product experiences, with Growth PMs</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I defined the <strong>event tracking taxonomy</strong> and cohorts with Product and Analytics, and coordinated email with in-app messages so they didn't repeat or contradict each other.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Testing roadmap and funnel reporting</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">I built and scaled <strong>A/B and multivariate testing frameworks</strong> on copy, cadence, offers and channel mix, with <strong>holdout groups</strong> on every programme. I read funnels and cohorts myself and report to leadership.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Nurture for the sales-led funnel: MQLs and influenced pipeline</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">Segmenting by stage and intent, and sequencing touches, is my daily work. Feeding a sales team with MQLs is newer for me. I've completed HubSpot Academy's <strong>Sales with CRM</strong> implementation course and would agree MQL and pipeline definitions with Sales and RevOps first.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">3+ years at a database, data infrastructure or developer tools company</p><span class="tag t-new">New for me</span></div>
+        <p class="ans">I haven't worked at a developer-focused company. What I'd bring: I'm comfortable reading data and working closely with engineers on events and integrations, and I'd learn the product the way users do, by signing up and getting to a first query. <a href="#copy">The copy samples</a> show how I'd talk to developers.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Clear writing for developers; working with engineers and product</p><span class="tag t-transfer">Transferable</span></div>
+        <p class="ans">I write most of my own copy and test it constantly. For developers the rules are clear: be specific, show the command, skip the hype. I've worked with Tech and Analytics on data integrations and deliverability for years.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Managing many programmes at once</p><span class="tag t-direct">Direct</span></div>
+        <p class="ans">High-volume, multi-market programmes running in parallel at Entain, plus CRM operations across several brands and time zones before that.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="block alt" id="engine">
+  <div class="wrap">
+    <p class="kicker" data-reveal>nurture engine</p>
+    <h2 class="h2" data-reveal>One engine, <span>two motions.</span></h2>
+    <p class="intro" data-reveal>A first sketch of how PLG and sales-led lifecycle would work side by side. The real version comes from ClickHouse's activation data and conversations with Growth, Product and Sales.</p>
+    <div class="engine">
+      <div class="track" data-reveal>
+        <p class="lbl">PLG · Cloud signups</p>
+        <h3>Get to value, then to paid</h3>
+        <p class="s">Triggered by what the user does in the product.</p>
+        <div class="steps">
+          <div class="step"><i>01</i><div><b>Signup</b><span>Welcome by use case: analytics, observability, real-time apps.</span></div></div>
+          <div class="step"><i>02</i><div><b>First service</b><span>Nudge only if stalled: <code>service_created</code>, no data yet.</span></div></div>
+          <div class="step"><i>03</i><div><b>Data loaded</b><span>Next step: a first query on their own data, with examples.</span></div></div>
+          <div class="step"><i>04</i><div><b>Active</b><span>Show value: speed, cost, integrations they haven't tried.</span></div></div>
+          <div class="step"><i>05</i><div><b>Trial ending</b><span>Convert on their usage, not a countdown. Sales-assist for high-fit accounts.</span></div></div>
+        </div>
+      </div>
+      <div class="track slg" data-reveal style="--d:.1s">
+        <p class="lbl">SLG · Prospects and open opportunities</p>
+        <h3>Warm up, then speed up</h3>
+        <p class="s">Segmented by persona, use case and stage.</p>
+        <div class="steps">
+          <div class="step"><i>01</i><div><b>New lead</b><span>Content stream by persona: data engineer, platform lead, CTO.</span></div></div>
+          <div class="step"><i>02</i><div><b>Engaged</b><span>Go deeper on their use case: benchmarks, migrations, case studies.</span></div></div>
+          <div class="step"><i>03</i><div><b>Intent</b><span>Pricing visits, docs depth, trial signup → MQL to Sales.</span></div></div>
+          <div class="step"><i>04</i><div><b>Open opportunity</b><span>Proof that answers the usual objections, timed with the AE.</span></div></div>
+          <div class="step"><i>05</i><div><b>Closed lost</b><span>Quiet, useful nurture. Re-open on new intent signals.</span></div></div>
+        </div>
+      </div>
+    </div>
+    <div class="signals">
+      <div data-reveal><b>Product usage</b><p>Service created, data loaded, queries run, integrations connected, team invites.</p></div>
+      <div data-reveal style="--d:.08s"><b>Content engagement</b><p>Docs, blog, webinars and community activity, read as interest by topic.</p></div>
+      <div data-reveal style="--d:.16s"><b>Intent</b><p>Pricing page, comparison pages, trial signup from a target account.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block dark" id="tests">
+  <div class="wrap">
+    <p class="kicker" data-reveal>testing roadmap</p>
+    <h2 class="h2" data-reveal>What I'd test <span>first.</span></h2>
+    <p class="intro" data-reveal>Ordered by expected impact on activation and conversion. Every test has one metric that decides it and a holdout where it matters.</p>
+    <div class="tests" data-reveal>
+      <table>
+        <thead><tr><th>Test</th><th>Hypothesis</th><th>Decides it</th></tr></thead>
+        <tbody>
+          <tr><td>Onboarding by use case</td><td>A welcome tailored to analytics, observability or real-time apps gets more users to load data than a generic one.</td><td class="m">% data loaded · 72h</td></tr>
+          <tr><td>Stalled-user nudge</td><td>A one-command sample dataset email unblocks users who created a service but loaded nothing.</td><td class="m">% first query · 7d</td></tr>
+          <tr><td>Email vs in-product</td><td>For users active in the console, an in-product tip beats an email for the same message.</td><td class="m">feature adoption</td></tr>
+          <tr><td>Trial-end framing</td><td>Showing what they built and what it would cost converts better than a deadline.</td><td class="m">trial-to-paid</td></tr>
+          <tr><td>Cadence for SLG nurture</td><td>Fewer, deeper emails per persona move more leads to MQL than a weekly newsletter.</td><td class="m">MQL rate · 30d</td></tr>
+          <tr><td>Content format</td><td>Short technical walkthroughs beat long-form for developers in nurture.</td><td class="m">click-to-trial</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="tests-note" data-reveal>Hypotheses written from the outside. The first month's data would reorder this list.</p>
+  </div>
+</section>
+
+<section class="block" id="plan">
+  <div class="wrap">
+    <p class="kicker" data-reveal>first 90 days</p>
+    <h2 class="h2" data-reveal>Measure, fix the leak, <span>then build.</span></h2>
+    <p class="intro" data-reveal>Written from the outside, so the order will change once I'm inside.</p>
+    <div class="plan">
+      <div class="phase" data-reveal>
+        <p class="when">DAYS 1–30</p>
+        <h3>Learn the funnel</h3>
+        <ul>
+          <li>Sign up for ClickHouse Cloud and go through every step a new user sees.</li>
+          <li>Map the funnel with Growth PMs: signup → service → data → query → paid.</li>
+          <li>Find the biggest drop-off and agree the activation metric.</li>
+          <li>Agree MQL and pipeline definitions with Sales and RevOps.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.1s">
+        <p class="when">DAYS 31–60</p>
+        <h3>Fix onboarding</h3>
+        <ul>
+          <li>Launch use-case onboarding and the stalled-user nudge, with a holdout.</li>
+          <li>Align emails with in-product messages so they don't overlap.</li>
+          <li>Set up the lifecycle dashboard for PLG and SLG.</li>
+          <li>Start the testing roadmap.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.2s">
+        <p class="when">DAYS 61–90</p>
+        <h3>Build nurture</h3>
+        <ul>
+          <li>Launch persona streams for the sales-led funnel.</li>
+          <li>Trial-end and conversion journeys based on usage.</li>
+          <li>First monthly lifecycle report: what worked, what's next.</li>
+          <li>Roadmap for the next two quarters.</li>
+        </ul>
+      </div>
+    </div>
+    <p class="plan-note" data-reveal>Every programme gets a goal, a holdout and a date to decide whether to keep it.</p>
+  </div>
+</section>
+
+<section class="block alt" id="copy">
+  <div class="wrap">
+    <p class="kicker" data-reveal>copy</p>
+    <h2 class="h2" data-reveal>A few drafts, <span>written for developers.</span></h2>
+    <p class="intro" data-reveal>My own samples, based on public information. Not real ClickHouse messages.</p>
+    <div class="samples">
+      <article class="sample" data-reveal>
+        <div class="top"><span>Email</span><span>Stalled after signup</span></div>
+        <p class="subj">Your service is up. It just needs data.</p>
+        <p class="pre">Load a sample dataset and run your first query in a few minutes.</p>
+        <div class="body">
+          <p>Hi Sam, you created a service but haven't loaded anything yet. Easiest way to see what it can do: insert a public dataset straight from S3.</p>
+          <p class="snip">INSERT INTO my_table
+SELECT * FROM s3('https://…/data.parquet');</p>
+          <p>Then try a <code>GROUP BY</code> on a few million rows and see how long it takes.</p>
+        </div>
+        <p class="why"><b>Why:</b> one blocker, one command, one reason to come back. No feature list.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.1s">
+        <div class="top"><span>Email</span><span>SLG nurture · data engineer</span></div>
+        <p class="subj">How teams move analytics off Postgres without a rewrite</p>
+        <p class="pre">A practical walkthrough, not a sales pitch.</p>
+        <div class="body">
+          <p>When dashboards start timing out, most teams look at their database before their queries. Here's how other data teams moved heavy analytics to ClickHouse and kept Postgres for what it does best.</p>
+          <p>15-minute read, with the schema changes and the gotchas.</p>
+        </div>
+        <p class="why"><b>Why:</b> starts from a pain they feel this week. Useful even if they never talk to Sales.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.2s">
+        <div class="top"><span>In-product</span><span>Trial ending · active user</span></div>
+        <p class="subj">You've run 1,240 queries this trial.</p>
+        <div class="body">
+          <p>Keep your service and data running. Based on your usage, here's what it would cost per month.</p>
+          <p>Questions about sizing? Talk to an engineer.</p>
+        </div>
+        <p class="why"><b>Why:</b> converts on what they built, shows a real number, and offers a human for bigger accounts.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>experience</p>
+    <h2 class="h2" data-reveal>Where I've done <span>the work.</span></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lead CRM monetisation and lifecycle strategy across European markets, in a high-volume environment.</li>
+            <li>Own revenue-generating campaigns across acquisition, conversion, retention and win-back.</li>
+            <li>Built and scaled A/B testing frameworks on copy, cadence, offers and channels to lift LTV.</li>
+            <li>Automated email, push, in-app and SMS workflows based on behaviour, scoring and RFM segments.</li>
+            <li>Work with Analytics, Product and Tech on deliverability and data integrations.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul>
+            <li>Ran real-time CRM operations across several European brands, above SLA targets.</li>
+            <li>Coordinated stakeholders across time zones during high-volume periods.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Led mobile CRM, monetisation and growth for a gamified family health and fitness app.</li>
+            <li>Built push, in-app and email journeys that turned daily tracking into long-term habits and grew DAU.</li>
+            <li>Timed paywalls, upsells and renewals to product milestones, using RevenueCat.</li>
+            <li>Defined the event tracking taxonomy and cohorts with Product and Analytics.</li>
+            <li>Ran A/B and multivariate tests to improve trial-to-paid and reduce churn.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="side">
+      <div data-reveal>
+        <h3>Toolkit</h3>
+        <ul class="chips">
+          <li>Braze</li><li>Customer.io</li><li>Optimove</li><li>HubSpot</li><li>RevenueCat</li><li>BI tools</li>
+          <li>Email · In-app · Push · SMS</li><li>A/B &amp; multivariate</li><li>Holdout groups</li><li>Funnel &amp; cohort analysis</li><li>Event taxonomy</li><li>Deliverability</li>
+        </ul>
+      </div>
+      <div data-reveal style="--d:.1s">
+        <h3>Certifications</h3>
+        <ul class="certs">
+          <li>Marketing &amp; Lifecycle · MiniMBA, 2025</li>
+          <li>Sales with CRM · HubSpot Academy, 2025</li>
+          <li>Triggers &amp; Workflows · Optimove, 2025</li>
+          <li>Lifecycles &amp; Segmentation · Optimove, 2024</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt">
+  <div class="wrap why-block">
+    <div>
+      <p class="kicker" data-reveal>why clickhouse</p>
+      <h2 class="h2" data-reveal>A product people love, <span>and no lifecycle yet.</span></h2>
+    </div>
+    <div class="txt">
+      <p data-reveal>ClickHouse has the hardest part already: a fast, open-source product with a community that genuinely cares about it. What's missing is the system that helps every new Cloud signup get to that "this is fast" moment, and then helps the right ones talk to Sales.</p>
+      <p data-reveal>Being the first lifecycle marketer, hands-on, with the freedom to build it properly from day one, is the role I want next.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>get in touch</p>
+    <h2 class="h2" data-reveal>Happy to <span>talk</span> any time.</h2>
+    <p class="intro" data-reveal>Based in Spain, used to working remotely across time zones.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=Senior%20Lifecycle%20Marketing%20Manager%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · Lifecycle &amp; CRM</span>
+    <span>Personal application page. Not affiliated with ClickHouse.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
