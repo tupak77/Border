@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · Lifecycle</title>
+<meta name="description" content="Haitam El Harchal, CRM and lifecycle marketer with a fitness subscription app background. Open application to Symmetry." />
+<meta property="og:title" content="Haitam El Harchal · Open application to Symmetry" />
+<meta property="og:description" content="I ran CRM and growth for a fitness subscription app. What I'd build for Symmetry: from first workout to Pro, and staying." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#0B0C10" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%238B7BFF'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='800' font-size='32' fill='%230B0C10' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@600;700;800&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #0b0c10;
+  --bg-2: #12141b;
+  --card: #171a23;
+  --ink: #f2f3f7;
+  --ink-2: #c3c6d1;
+  --muted: #8a8fa0;
+  --line: rgba(242, 243, 247, 0.12);
+  --violet: #8b7bff;
+  --mint: #5ef2b0;
+  --head: "Syne", "Inter", system-ui, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--violet); color: #fff; }
+.wrap { width: min(1140px, 100% - 40px); margin-inline: auto; }
+
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(11, 12, 16, 0.82); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 600 15px/1 var(--sans); }
+.mark i { width: 30px; height: 30px; border-radius: 9px; background: var(--violet); color: var(--bg); display: grid; place-items: center; font: normal 800 15px/1 var(--head); }
+.nav-links { display: flex; gap: 24px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 999px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--mint); border-color: var(--mint); color: var(--bg); }
+.btn-line { color: var(--ink); border-color: var(--line); }
+.btn-line:hover { border-color: var(--ink); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--mint); outline-offset: 3px; }
+
+.hero { position: relative; padding: clamp(56px, 8vw, 104px) 0 clamp(64px, 9vw, 120px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; width: 760px; height: 760px; right: -240px; top: -300px; border-radius: 50%; background: radial-gradient(circle, rgba(139, 123, 255, 0.32), transparent 65%); pointer-events: none; }
+.hero::after { content: ""; position: absolute; width: 520px; height: 520px; left: -260px; bottom: -280px; border-radius: 50%; background: radial-gradient(circle, rgba(94, 242, 176, 0.14), transparent 65%); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12.5px/1.3 var(--mono); color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(94,242,176,.2); flex: none; }
+.hero h1 { margin-top: 26px; font: 800 clamp(32px, 4.2vw, 54px)/1.08 var(--head); letter-spacing: -0.03em; }
+.hero h1 span { color: var(--violet); }
+.hero .lead { margin-top: 24px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 36px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+.chart { justify-self: center; width: min(460px, 100%); background: var(--card); border: 1px solid var(--line); border-radius: 24px; padding: 22px; box-shadow: 0 50px 90px -40px rgba(0, 0, 0, .8); }
+.chart .head { display: flex; justify-content: space-between; gap: 10px; font: 500 11.5px/1 var(--mono); color: var(--muted); text-transform: uppercase; letter-spacing: .04em; }
+.chart .head b { color: var(--violet); font-weight: 500; }
+.chart h3 { margin-top: 10px; font: 700 22px/1.15 var(--head); }
+.chart svg { display: block; width: 100%; height: auto; margin-top: 12px; }
+.chart .with { stroke-dasharray: 520; stroke-dashoffset: 520; animation: draw 1.8s var(--ease) .4s forwards; }
+@keyframes draw { to { stroke-dashoffset: 0; } }
+.keys { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 14px; font-size: 12.5px; color: var(--ink-2); }
+.keys span { display: inline-flex; align-items: center; gap: 7px; }
+.keys i { width: 14px; height: 3px; border-radius: 2px; }
+.pts { margin-top: 14px; display: grid; gap: 8px; }
+.pt { display: grid; grid-template-columns: 56px 1fr; gap: 10px; padding: 9px 12px; border-radius: 12px; background: var(--bg-2); font-size: 13.5px; line-height: 1.4; color: var(--ink-2); }
+.pt b { font: 500 11.5px/1.7 var(--mono); color: var(--mint); }
+.chart-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+section.block { padding: clamp(72px, 10vw, 128px) 0; }
+.alt { background: var(--bg-2); }
+.kicker { font: 500 12.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--mint); }
+.h2 { margin-top: 14px; font: 800 clamp(30px, 4vw, 50px)/1.06 var(--head); letter-spacing: -0.025em; max-width: 20ch; }
+.h2 span { color: var(--violet); }
+.intro { margin-top: 18px; max-width: 62ch; color: var(--ink-2); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+.grid3 { margin-top: 48px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.c { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 26px; }
+.c .n { font: 500 12px/1 var(--mono); color: var(--violet); }
+.c h3 { margin-top: 12px; font: 700 21px/1.2 var(--head); }
+.c p { margin-top: 10px; font-size: 15.5px; color: var(--ink-2); line-height: 1.6; }
+.c p strong { color: var(--ink); }
+
+.rail { margin-top: 48px; display: grid; grid-template-columns: repeat(6, 1fr); gap: 12px; }
+.rs { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 20px 16px; display: flex; flex-direction: column; }
+.rs .n { font: 500 11.5px/1 var(--mono); color: var(--mint); }
+.rs h3 { margin-top: 10px; font: 700 18px/1.2 var(--head); }
+.rs p { margin-top: 8px; font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+.rs .k { margin-top: auto; padding-top: 14px; font: 400 11.5px/1.5 var(--mono); color: var(--muted); }
+.rs .k b { color: var(--violet); font-weight: 500; }
+.note { margin-top: 22px; font-size: 14px; color: var(--muted); max-width: 72ch; }
+
+.sample { min-width: 0; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 22px; }
+.sample .top { display: flex; justify-content: space-between; align-items: center; gap: 10px; font: 500 11.5px/1 var(--mono); letter-spacing: .04em; text-transform: uppercase; color: var(--muted); }
+.sample .top span:last-child { text-transform: none; letter-spacing: 0; background: var(--bg-2); padding: 5px 9px; border-radius: 999px; color: var(--ink-2); }
+.sample .sig { margin-top: 14px; font: 400 12px/1.5 var(--mono); color: var(--mint); background: rgba(94,242,176,.08); border-radius: 8px; padding: 8px 10px; }
+.sample .subj { margin-top: 14px; font: 700 19px/1.25 var(--head); }
+.sample .body { margin-top: 12px; font-size: 15px; color: var(--ink-2); }
+.sample .why { margin-top: 16px; font-size: 13px; color: var(--muted); background: var(--bg-2); border-radius: 12px; padding: 10px 12px; line-height: 1.5; }
+.sample .why b { color: var(--ink); }
+
+.xp { margin-top: 48px; display: grid; gap: 18px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 30px; }
+.job .when { font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.job .co { margin-top: 6px; font: 800 22px/1.2 var(--head); }
+.job h3 { font: 600 18px/1.3 var(--sans); }
+.job ul { margin-top: 14px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 50%; background: var(--violet); }
+.chips { margin-top: 18px; display: flex; flex-wrap: wrap; gap: 8px; }
+.chips li { padding: 6px 12px; border-radius: 999px; background: var(--card); border: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
+
+.contact { text-align: center; padding: clamp(80px, 12vw, 150px) 0; background: radial-gradient(700px 380px at 50% 0%, rgba(139,123,255,.28), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 16ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 400 14px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 1060px) { .rail { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 960px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .grid3 { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .job { grid-template-columns: 1fr; gap: 10px; padding: 24px; }
+  .rail { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 440px) { .rail { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .chart .with { stroke-dashoffset: 0; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#why">Why me</a>
+      <a href="#journey">What I'd build</a>
+      <a href="#copy">Messages</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Open application · Symmetry</span>
+      <h1>The plan gets them started. <span>Lifecycle keeps them lifting.</span></h1>
+      <p class="lead">I'm a CRM and lifecycle marketer with 7+ years of hands-on work, including two years running CRM, monetisation and growth for a fitness subscription app. I know there's no CRM role open right now. This page is what I'd build for Symmetry if there were.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>CRM &amp; Lifecycle Marketing Manager · Spain · Remote</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="chart" aria-label="Illustration: retention curve with and without lifecycle messages">
+        <p class="head"><span>Users still training</span><b>illustration</b></p>
+        <h3>Where a fitness app wins or loses</h3>
+        <svg viewBox="0 0 400 190" role="img" aria-hidden="true">
+          <g stroke="rgba(242,243,247,.1)" stroke-width="1"><path d="M20 30H380M20 80H380M20 130H380M20 170H380"/></g>
+          <path d="M20 30 C70 120 160 158 380 166" fill="none" stroke="#8a8fa0" stroke-width="2.5" stroke-dasharray="5 6"/>
+          <path class="with" d="M20 30 C70 84 160 108 380 120" fill="none" stroke="#5ef2b0" stroke-width="3.5" stroke-linecap="round"/>
+          <g fill="#0b0c10" stroke="#8b7bff" stroke-width="3"><circle cx="52" cy="60" r="6"/><circle cx="140" cy="95" r="6"/><circle cx="290" cy="116" r="6"/></g>
+          <g fill="#8a8fa0" font-family="JetBrains Mono, monospace" font-size="11"><text x="40" y="186">day 1</text><text x="126" y="186">day 7</text><text x="272" y="186">day 30</text></g>
+        </svg>
+        <div class="keys"><span><i style="background:var(--mint)"></i>with lifecycle</span><span><i style="background:#8a8fa0"></i>without</span></div>
+        <div class="pts">
+          <p class="pt"><b>day 1</b><span>First workout logged, not just a plan generated.</span></p>
+          <p class="pt"><b>day 7</b><span>Third session done: the habit starts here.</span></p>
+          <p class="pt"><b>day 30</b><span>Progress they can see, and a reason to go Pro.</span></p>
+        </div>
+      </div>
+      <p class="chart-cap">Illustration, not real data. The three moments I'd build around.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="why">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Why me</p>
+    <h2 class="h2" data-reveal>I've done this <span>for a fitness app.</span></h2>
+    <div class="grid3">
+      <article class="c" data-reveal><span class="n">01</span><h3>Same product shape</h3><p>At <strong>TOC-TOC</strong>, a gamified fitness app on iOS and Android with a subscription, I led mobile CRM, monetisation and growth end to end.</p></article>
+      <article class="c" data-reveal style="--d:.1s"><span class="n">02</span><h3>Habits and paywalls</h3><p>I built push, in-app and email journeys around milestones that turned daily exercise into a habit and <strong>grew DAU</strong>, and timed paywalls and renewals to moments of progress to lift <strong>trial-to-paid</strong>.</p></article>
+      <article class="c" data-reveal style="--d:.2s"><span class="n">03</span><h3>Then at scale</h3><p>At <strong>Entain</strong> I lead CRM and lifecycle across European markets: behavioural segments, automated journeys and A/B tests with <strong>holdout groups</strong>, judged on retention and revenue.</p></article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="journey">
+  <div class="wrap">
+    <p class="kicker" data-reveal>What I'd build</p>
+    <h2 class="h2" data-reveal>From install <span>to year two.</span></h2>
+    <p class="intro" data-reveal>A first sketch from the outside, based on what's public about Symmetry: AI-built workout plans, a workout log and a Pro subscription. The real version would start from your data.</p>
+    <div class="rail">
+      <div class="rs" data-reveal><span class="n">01</span><h3>Onboard</h3><p>Finish setup and get a plan they believe in.</p><p class="k"><b>kpi</b> plan created</p></div>
+      <div class="rs" data-reveal style="--d:.05s"><span class="n">02</span><h3>First workout</h3><p>Nudge on their chosen training day, not at random.</p><p class="k"><b>kpi</b> workout in 48h</p></div>
+      <div class="rs" data-reveal style="--d:.1s"><span class="n">03</span><h3>Week one</h3><p>Three sessions logged. Celebrate each, recover a missed one.</p><p class="k"><b>kpi</b> week-1 retention</p></div>
+      <div class="rs" data-reveal style="--d:.15s"><span class="n">04</span><h3>Go Pro</h3><p>Show the paywall after a win, like a PR or a full week.</p><p class="k"><b>kpi</b> free → Pro</p></div>
+      <div class="rs" data-reveal style="--d:.2s"><span class="n">05</span><h3>Renew</h3><p>Progress recap before each renewal; annual offer to quarterly users.</p><p class="k"><b>kpi</b> renewal rate</p></div>
+      <div class="rs" data-reveal style="--d:.25s"><span class="n">06</span><h3>Win back</h3><p>A lighter plan to restart after a break. No guilt.</p><p class="k"><b>kpi</b> reactivation</p></div>
+    </div>
+    <p class="note" data-reveal>Every stage gets one trigger from product data, one success metric and a holdout, so we know which messages really kept people training.</p>
+  </div>
+</section>
+
+<section class="block alt" id="copy">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Messages</p>
+    <h2 class="h2" data-reveal>Short, specific, <span>about their training.</span></h2>
+    <p class="intro" data-reveal>My own samples, not real Symmetry messages.</p>
+    <div class="grid3">
+      <article class="sample" data-reveal>
+        <div class="top"><span>Push</span><span>Week one</span></div>
+        <p class="sig">trigger: planned session missed · day 4</p>
+        <p class="subj">Missed leg day? Do the 25-minute version.</p>
+        <p class="body">Same muscles, half the time. Your week still counts.</p>
+        <p class="why"><b>Why:</b> a missed session is where most people quit. Make the comeback easy.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.1s">
+        <div class="top"><span>In-app</span><span>Free → Pro</span></div>
+        <p class="sig">trigger: new personal record logged</p>
+        <p class="subj">New PR on bench. Nice.</p>
+        <p class="body">You've added weight three weeks in a row. Pro adapts your plan to keep that going.</p>
+        <p class="why"><b>Why:</b> ask for the upgrade at a moment of progress, with a reason tied to it.</p>
+      </article>
+      <article class="sample" data-reveal style="--d:.2s">
+        <div class="top"><span>Email</span><span>Renewal</span></div>
+        <p class="sig">trigger: 7 days before renewal</p>
+        <p class="subj">Your last 3 months, in numbers</p>
+        <p class="body">31 workouts, 4 new PRs, and your most consistent month yet. Here's what's planned next.</p>
+        <p class="why"><b>Why:</b> people renew what they can see working.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Where I've <span>done the work.</span></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lead CRM and lifecycle strategy across European markets, in a high-volume environment.</li>
+            <li>Own campaigns across acquisition, conversion, retention and win-back.</li>
+            <li>Built and scaled A/B testing frameworks on copy, cadence, offers and channels to lift LTV.</li>
+            <li>Automated push, in-app, email and SMS workflows based on behaviour, scoring and RFM segments.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul><li>Ran real-time CRM operations across several European brands, above SLA targets.</li></ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Led mobile CRM, monetisation and growth for a gamified family health and fitness app.</li>
+            <li>Built journeys that turned daily exercise tracking into long-term habits and grew DAU.</li>
+            <li>Timed paywalls, upsells and renewals to milestones and leaderboard moments, using RevenueCat.</li>
+            <li>Defined the event tracking taxonomy and cohorts with Product and Analytics.</li>
+            <li>Ran A/B and multivariate tests to improve trial-to-paid and reduce churn.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <ul class="chips" data-reveal>
+      <li>Braze</li><li>Customer.io</li><li>Klaviyo</li><li>Optimove</li><li>RevenueCat</li><li>Push · In-app · Email · SMS</li><li>A/B &amp; multivariate</li><li>Holdout groups</li><li>Cohort analysis</li><li>Event taxonomy</li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Get in touch</p>
+    <h2 class="h2" data-reveal>If this is useful, <span>let's talk.</span></h2>
+    <p class="intro" data-reveal>Based in Spain, used to working remotely across time zones. Open to full-time or a first project.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=Symmetry%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · Lifecycle &amp; CRM</span>
+    <span>Personal application page. Not affiliated with Symmetry.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
