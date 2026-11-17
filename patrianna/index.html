@@ -1,0 +1,645 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · CRM &amp; Economy</title>
+<meta name="description" content="Haitam El Harchal. Application for CRM & Economy Manager, Mobile Gaming at Patrianna." />
+<meta property="og:title" content="Haitam El Harchal · CRM & Economy Manager application" />
+<meta property="og:description" content="iGaming CRM, judged on NGR. Gamified app background. Based in Ceuta, across the Strait from Gibraltar." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#0D0E12" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230D0E12'/%3E%3Crect x='6' y='6' width='52' height='52' rx='8' fill='none' stroke='%23F5C542' stroke-width='4'/%3E%3Ctext x='32' y='43' font-family='Arial' font-weight='800' font-size='28' fill='%23F5C542' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Inter+Tight:wght@500;600;700;800&family=Inter:wght@400;500;600&family=Chakra+Petch:wght@500;600;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #0d0e12;
+  --bg-2: #13151b;
+  --panel: #181b23;
+  --panel-2: #1f232d;
+  --ink: #f1f2f6;
+  --ink-2: #c1c5d0;
+  --muted: #858b9b;
+  --line: rgba(241, 242, 246, 0.1);
+  --gold: #f5c542;
+  --teal: #19d3c5;
+  --red: #ff5d5d;
+  --violet: #9b87ff;
+  --head: "Inter Tight", "Inter", system-ui, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --hud: "Chakra Petch", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol, dl, dd { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--gold); color: var(--bg); }
+.wrap { width: min(1160px, 100% - 40px); margin-inline: auto; }
+.hud { font-family: var(--hud); text-transform: uppercase; letter-spacing: .08em; }
+
+/* nav */
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(13, 14, 18, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 600 15px/1 var(--sans); white-space: nowrap; }
+.mark i { width: 30px; height: 30px; border-radius: 6px; border: 2px solid var(--gold); color: var(--gold); display: grid; place-items: center; font: normal 700 14px/1 var(--hud); }
+.mark small { font: 600 11px/1 var(--hud); color: var(--gold); letter-spacing: .1em; margin-left: 4px; }
+.nav-links { display: flex; gap: 22px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 8px; font: 700 14px/1 var(--hud); letter-spacing: .08em; text-transform: uppercase; text-decoration: none; border: 1.5px solid var(--gold); transition: transform .25s var(--ease), background .25s, color .25s, box-shadow .25s; white-space: nowrap; }
+.btn:hover { transform: translateY(-2px); }
+.btn-gold { background: var(--gold); color: var(--bg); box-shadow: 0 10px 30px -12px rgba(245,197,66,.6); }
+.btn-line { color: var(--ink); border-color: var(--line); }
+.btn-line:hover { border-color: var(--ink); }
+.btn-sm { padding: 10px 14px; font-size: 12px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(48px, 7vw, 96px) 0 clamp(64px, 9vw, 112px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: linear-gradient(rgba(241,242,246,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(241,242,246,.035) 1px, transparent 1px); background-size: 40px 40px; mask-image: linear-gradient(180deg, #000 40%, transparent); -webkit-mask-image: linear-gradient(180deg, #000 40%, transparent); pointer-events: none; }
+.hero::after { content: ""; position: absolute; width: 700px; height: 700px; right: -220px; top: -280px; border-radius: 50%; background: radial-gradient(circle, rgba(245,197,66,.16), transparent 65%); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.08fr 0.92fr; gap: 56px; align-items: center; }
+.tagrow { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip { display: inline-flex; align-items: center; gap: 8px; font: 600 11.5px/1 var(--hud); letter-spacing: .08em; text-transform: uppercase; color: var(--ink-2); background: var(--panel); border: 1px solid var(--line); padding: 8px 12px; border-radius: 6px; }
+.chip b { width: 7px; height: 7px; border-radius: 50%; background: var(--teal); box-shadow: 0 0 10px var(--teal); }
+.chip.gold { color: var(--gold); border-color: rgba(245,197,66,.35); }
+.hero h1 { margin-top: 24px; font: 800 clamp(40px, 5.6vw, 74px)/1.0 var(--head); letter-spacing: -0.035em; }
+.hero h1 span { color: var(--gold); }
+.hero .lead { margin-top: 22px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 34px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 10px; object-fit: cover; border: 2px solid var(--gold); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* player card */
+.card { justify-self: center; width: min(440px, 100%); background: linear-gradient(180deg, var(--panel-2), var(--panel)); border: 1px solid rgba(245,197,66,.25); border-radius: 18px; padding: 20px; box-shadow: 0 50px 90px -40px rgba(0,0,0,.9), 0 0 0 1px rgba(0,0,0,.4) inset; position: relative; }
+.card::before { content: ""; position: absolute; inset: 0; border-radius: 18px; background: linear-gradient(135deg, rgba(245,197,66,.12), transparent 40%); pointer-events: none; }
+.card .top { display: flex; justify-content: space-between; align-items: center; font: 600 11px/1 var(--hud); letter-spacing: .1em; color: var(--muted); }
+.card .top b { color: var(--gold); font-weight: 600; }
+.pid { margin-top: 14px; display: flex; align-items: center; gap: 14px; }
+.avatar { width: 52px; height: 52px; border-radius: 12px; background: linear-gradient(135deg, var(--violet), var(--teal)); display: grid; place-items: center; font: 700 18px/1 var(--hud); color: var(--bg); flex: none; }
+.pid h3 { font: 700 20px/1.1 var(--head); }
+.pid p { margin-top: 4px; font: 500 12px/1.3 var(--hud); letter-spacing: .06em; color: var(--muted); text-transform: uppercase; }
+.meters { margin-top: 16px; display: grid; gap: 10px; }
+.meter { display: grid; grid-template-columns: 112px 1fr 48px; align-items: center; gap: 10px; font: 600 11px/1 var(--hud); letter-spacing: .06em; text-transform: uppercase; color: var(--ink-2); }
+.meter .bar { height: 8px; border-radius: 4px; background: rgba(241,242,246,.08); overflow: hidden; }
+.meter .bar i { display: block; height: 100%; width: 0; border-radius: 4px; animation: fill 1.2s var(--ease) forwards; }
+.meter span:last-child { text-align: right; color: var(--ink); }
+@keyframes fill { to { width: var(--w); } }
+.nbo { margin-top: 16px; border-radius: 12px; background: rgba(0,0,0,.25); border: 1px solid var(--line); padding: 14px; }
+.nbo .lbl { font: 600 11px/1 var(--hud); letter-spacing: .1em; color: var(--teal); }
+.nbo h4 { margin: 8px 0 0; font: 700 17px/1.25 var(--head); }
+.nbo .row { margin-top: 10px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.nbo .row div { background: var(--panel-2); border-radius: 8px; padding: 8px 10px; }
+.nbo .row b { display: block; font: 700 15px/1.1 var(--hud); color: var(--ink); }
+.nbo .row small { font-size: 11px; color: var(--muted); }
+.nbo .row .pos b { color: var(--teal); }
+.nbo .row .neg b { color: var(--red); }
+.card-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 124px) 0; }
+.alt { background: var(--bg-2); }
+.kicker { display: inline-flex; align-items: center; gap: 10px; font: 600 12px/1 var(--hud); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.kicker::before { content: ""; width: 18px; height: 2px; background: var(--gold); }
+.h2 { margin-top: 14px; font: 800 clamp(30px, 4vw, 50px)/1.05 var(--head); letter-spacing: -0.03em; max-width: 22ch; }
+.h2 span { color: var(--gold); }
+.intro { margin-top: 18px; max-width: 64ch; color: var(--ink-2); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* stats strip */
+.stats { margin-top: 44px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 1px; background: var(--line); border: 1px solid var(--line); border-radius: 14px; overflow: hidden; }
+.stats div { background: var(--panel); padding: 22px; }
+.stats b { display: block; font: 700 30px/1 var(--hud); color: var(--gold); }
+.stats span { display: block; margin-top: 8px; font-size: 14px; color: var(--ink-2); line-height: 1.45; }
+
+/* skill tree */
+.skills { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+.sk { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 20px 22px; }
+.sk .hd { display: flex; justify-content: space-between; align-items: baseline; gap: 12px; }
+.sk h3 { font: 700 18px/1.25 var(--head); }
+.sk .lv { font: 700 12px/1 var(--hud); letter-spacing: .08em; padding: 5px 8px; border-radius: 5px; white-space: nowrap; }
+.lv.max { background: rgba(245,197,66,.14); color: var(--gold); }
+.lv.hi { background: rgba(25,211,197,.12); color: var(--teal); }
+.lv.up { background: rgba(155,135,255,.14); color: var(--violet); }
+.sk .xp { margin-top: 12px; height: 6px; border-radius: 3px; background: rgba(241,242,246,.07); overflow: hidden; }
+.sk .xp i { display: block; height: 100%; border-radius: 3px; }
+.sk p { margin-top: 12px; font-size: 15px; color: var(--ink-2); line-height: 1.55; }
+.sk p strong { color: var(--ink); font-weight: 600; }
+.legend { margin-top: 22px; display: flex; flex-wrap: wrap; gap: 18px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+
+/* economy */
+.eco { margin-top: 44px; display: grid; grid-template-columns: 1.15fr 0.85fr; gap: 18px; align-items: start; }
+.flow { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+.flow svg { display: block; width: 100%; height: auto; }
+.flow .cap { margin-top: 10px; font-size: 12.5px; color: var(--muted); }
+.rules { display: grid; gap: 12px; }
+.rule { background: var(--panel); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; }
+.rule b { display: block; font: 700 12px/1 var(--hud); letter-spacing: .1em; color: var(--teal); text-transform: uppercase; }
+.rule p { margin-top: 8px; font-size: 15px; color: var(--ink-2); line-height: 1.55; }
+
+/* ladder */
+.ladder { margin-top: 18px; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+.ladder .hd { display: flex; justify-content: space-between; gap: 12px; flex-wrap: wrap; font: 600 12px/1 var(--hud); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ladder .hd b { color: var(--gold); font-weight: 600; }
+.steps { margin-top: 18px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 10px; align-items: end; }
+.step { border-radius: 12px; padding: 14px; background: var(--panel-2); border: 1px solid var(--line); }
+.step:nth-child(1) { min-height: 110px; }
+.step:nth-child(2) { min-height: 140px; }
+.step:nth-child(3) { min-height: 170px; border-color: rgba(245,197,66,.45); box-shadow: 0 0 0 1px rgba(245,197,66,.2) inset; }
+.step:nth-child(4) { min-height: 200px; }
+.step small { font: 600 11px/1 var(--hud); letter-spacing: .1em; color: var(--muted); }
+.step b { display: block; margin-top: 8px; font: 700 22px/1 var(--hud); }
+.step span { display: block; margin-top: 8px; font-size: 13px; color: var(--ink-2); line-height: 1.4; }
+.step em { display: inline-block; margin-top: 10px; font: normal 600 10.5px/1 var(--hud); letter-spacing: .08em; padding: 4px 7px; border-radius: 4px; background: rgba(245,197,66,.14); color: var(--gold); }
+
+/* lifecycle */
+.life { margin-top: 44px; overflow-x: auto; -webkit-overflow-scrolling: touch; border: 1px solid var(--line); border-radius: 14px; background: var(--panel); }
+.life table { width: 100%; min-width: 820px; border-collapse: collapse; font-size: 14.5px; }
+.life th, .life td { padding: 14px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.life thead th { font: 600 11.5px/1.3 var(--hud); text-transform: uppercase; letter-spacing: .1em; color: var(--muted); background: var(--panel-2); }
+.life tbody th { font: 700 15px/1.3 var(--head); width: 150px; color: var(--ink); }
+.life td { color: var(--ink-2); line-height: 1.5; }
+.life td.k { font: 600 12.5px/1.5 var(--hud); letter-spacing: .04em; color: var(--gold); white-space: nowrap; }
+.life tr:last-child th, .life tr:last-child td { border-bottom: 0; }
+
+/* readout */
+.readout { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.ro { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+.ro .lbl { font: 600 11.5px/1 var(--hud); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.ro h3 { margin-top: 10px; font: 700 21px/1.2 var(--head); }
+.ro dl { margin-top: 14px; display: grid; grid-template-columns: 120px 1fr; gap: 10px 14px; font-size: 14.5px; }
+.ro dt { font: 600 11.5px/1.6 var(--hud); letter-spacing: .08em; text-transform: uppercase; color: var(--teal); }
+.ro dd { color: var(--ink-2); line-height: 1.5; }
+.ro dd b { color: var(--ink); }
+.ro.auto ul { margin-top: 14px; display: grid; gap: 10px; }
+.ro.auto li { display: grid; grid-template-columns: 24px 1fr; gap: 10px; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.ro.auto li i { width: 24px; height: 24px; border-radius: 6px; background: rgba(25,211,197,.12); color: var(--teal); display: grid; place-items: center; font: normal 700 12px/1 var(--hud); }
+.ro.auto li b { color: var(--ink); }
+
+/* quests */
+.quests { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.q { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+.q .lv { font: 700 12px/1 var(--hud); letter-spacing: .1em; color: var(--gold); }
+.q h3 { margin-top: 10px; font: 800 24px/1.1 var(--head); letter-spacing: -.02em; }
+.q ul { margin-top: 16px; display: grid; gap: 10px; }
+.q li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.q li::before { content: ""; width: 14px; height: 14px; margin-top: 4px; border-radius: 4px; border: 2px solid rgba(245,197,66,.6); }
+.q .rw { margin-top: 18px; padding-top: 14px; border-top: 1px dashed var(--line); font: 600 12px/1.5 var(--hud); letter-spacing: .06em; text-transform: uppercase; color: var(--teal); }
+
+/* experience */
+.xp { margin-top: 44px; display: grid; gap: 14px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 28px; }
+.job .when { font: 600 12px/1.4 var(--hud); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.job .co { margin-top: 8px; font: 800 24px/1.1 var(--head); letter-spacing: -.02em; }
+.job .co small { display: block; margin-top: 6px; font: 600 11px/1 var(--hud); letter-spacing: .1em; color: var(--gold); text-transform: uppercase; }
+.job h3 { font: 700 18px/1.3 var(--head); }
+.job ul { margin-top: 12px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .65em; width: 7px; height: 7px; transform: rotate(45deg); background: var(--gold); }
+.loadout { margin-top: 14px; display: grid; grid-template-columns: 1.4fr 1fr; gap: 14px; }
+.loadout > div { background: var(--panel); border: 1px solid var(--line); border-radius: 16px; padding: 26px; }
+.loadout h3 { font: 700 12px/1 var(--hud); letter-spacing: .14em; text-transform: uppercase; color: var(--gold); }
+.inv { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.inv li { padding: 7px 12px; border-radius: 6px; background: var(--panel-2); border: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
+.certs { margin-top: 14px; display: grid; gap: 10px; font-size: 15px; color: var(--ink-2); }
+
+/* location */
+.loc { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; align-items: center; }
+.strait { background: var(--panel); border: 1px solid var(--line); border-radius: 18px; padding: 22px; }
+.strait svg { display: block; width: 100%; height: auto; }
+.loc .txt p:not(.kicker) { margin-top: 16px; color: var(--ink-2); font-size: 18px; line-height: 1.6; }
+
+/* contact */
+.contact { text-align: center; padding: clamp(80px, 12vw, 140px) 0; background: radial-gradient(700px 360px at 50% 0%, rgba(245,197,66,.16), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 18ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 600 13px/1 var(--hud); letter-spacing: .08em; color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 1000px) {
+  .stats { grid-template-columns: repeat(2, 1fr); }
+  .eco, .readout, .loc { grid-template-columns: 1fr; }
+}
+@media (max-width: 960px) {
+  .hero .wrap { grid-template-columns: 1fr; }
+  .quests { grid-template-columns: 1fr; }
+  .loadout { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .skills { grid-template-columns: 1fr; }
+  .job { grid-template-columns: 1fr; gap: 10px; padding: 22px; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  .step { min-height: 0 !important; }
+  .meter { grid-template-columns: 96px 1fr 40px; }
+  .ro dl { grid-template-columns: 1fr; gap: 4px; }
+  .ro dd { margin-bottom: 8px; }
+}
+@media (max-width: 420px) {
+  .stats { grid-template-columns: 1fr; }
+  .nbo .row { grid-template-columns: 1fr; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .meter .bar i { width: var(--w); }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal<small>P1</small></a>
+    <nav class="nav-links">
+      <a href="#skills">Skill tree</a>
+      <a href="#economy">Economy</a>
+      <a href="#lifecycle">Lifecycle</a>
+      <a href="#quests">First 90 days</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-gold btn-sm" href="#contact">Press start</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <div class="tagrow">
+        <span class="chip"><b></b>Application · CRM &amp; Economy Manager</span>
+        <span class="chip gold">Ceuta ⇄ Gibraltar</span>
+      </div>
+      <h1>Every free coin has a cost. <span>I price it before I give it.</span></h1>
+      <p class="lead">I run CRM for an iGaming brand at Entain, judged on NGR, bonus cost and LTV: segmentation by value and behaviour, bonus-funded journeys, holdouts on everything, and responsible gaming built in. Before that I ran monetisation for a gamified app built on progression, leaderboards and paywalls. I live in Ceuta, right across the Strait.</p>
+      <div class="ctas">
+        <a class="btn btn-gold" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>CRM &amp; Lifecycle Marketing Manager · iGaming · Ceuta</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="card" aria-label="Illustration: a player profile with value, churn risk and the next best offer">
+        <p class="top"><span>Player profile · made-up</span><b>Next best offer</b></p>
+        <div class="pid">
+          <span class="avatar">MV</span>
+          <div><h3>Mid-value, slowing down</h3><p>Lifecycle: active → at risk</p></div>
+        </div>
+        <div class="meters">
+          <div class="meter"><span>Value tier</span><span class="bar"><i style="--w:68%;background:var(--gold)"></i></span><span>T3</span></div>
+          <div class="meter"><span>Churn risk</span><span class="bar"><i style="--w:72%;background:var(--red);animation-delay:.2s"></i></span><span>72%</span></div>
+          <div class="meter"><span>Buy propensity</span><span class="bar"><i style="--w:41%;background:var(--teal);animation-delay:.4s"></i></span><span>41%</span></div>
+          <div class="meter"><span>Bonus sensitivity</span><span class="bar"><i style="--w:28%;background:var(--violet);animation-delay:.6s"></i></span><span>low</span></div>
+        </div>
+        <div class="nbo">
+          <p class="lbl">Assigned · rule 14b</p>
+          <h4>Mission chain, not a discount. Low bonus sensitivity means a deal won't change much.</h4>
+          <div class="row">
+            <div class="pos"><b>+€4.10</b><small>exp. NGR</small></div>
+            <div class="neg"><b>−€0.90</b><small>bonus cost</small></div>
+            <div><b>10%</b><small>holdout</small></div>
+          </div>
+        </div>
+      </div>
+      <p class="card-cap">Illustration with made-up numbers. Value, risk and price decided before the offer goes out.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="skills">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Skill tree</p>
+    <h2 class="h2" data-reveal>Your list, <span>as a skill tree.</span></h2>
+    <p class="intro" data-reveal>Each requirement from the job post, levelled honestly. Max means I do it today. Levelling up means I know the mechanics and would be learning them on your product.</p>
+    <div class="stats" data-reveal>
+      <div><b>7+</b><span>years hands-on in CRM, lifecycle and monetisation</span></div>
+      <div><b>NGR</b><span>the number my iGaming programmes are judged on</span></div>
+      <div><b>100%</b><span>of programmes with a control group and a read-out</span></div>
+      <div><b>2 / 2</b><span>of the CRM platforms on your list I use hands-on: Optimove and Braze</span></div>
+    </div>
+    <div class="skills">
+      <article class="sk" data-reveal>
+        <div class="hd"><h3>CRM &amp; retention, end to end</h3><span class="lv max">MAX</span></div>
+        <div class="xp"><i style="width:100%;background:var(--gold)"></i></div>
+        <p>Onboarding, activation, first deposit, reactivation, churn prevention and VIP journeys for an <strong>iGaming brand at Entain</strong>, across European markets.</p>
+      </article>
+      <article class="sk" data-reveal style="--d:.05s">
+        <div class="hd"><h3>Segmentation &amp; commercial fluency</h3><span class="lv max">MAX</span></div>
+        <div class="xp"><i style="width:100%;background:var(--gold)"></i></div>
+        <p>Value, behaviour and lifecycle segments (<strong>RFM, behavioural scoring</strong>), with bonus cost, NGR, payback and LTV as the scoreboard. I defend the number, not the open rate.</p>
+      </article>
+      <article class="sk" data-reveal style="--d:.1s">
+        <div class="hd"><h3>Experimentation discipline</h3><span class="lv max">MAX</span></div>
+        <div class="xp"><i style="width:100%;background:var(--gold)"></i></div>
+        <p>A/B and multivariate frameworks, <strong>holdouts, incrementality</strong> and sample sizes agreed before launch. Every campaign ends in a read-out and a decision.</p>
+      </article>
+      <article class="sk" data-reveal style="--d:.15s">
+        <div class="hd"><h3>Compliance &amp; responsible gaming</h3><span class="lv max">MAX</span></div>
+        <div class="xp"><i style="width:100%;background:var(--gold)"></i></div>
+        <p>Real-money product, many markets: consent, exclusions, RG flags and frequency rules are part of every audience build, not an afterthought.</p>
+      </article>
+      <article class="sk" data-reveal style="--d:.2s">
+        <div class="hd"><h3>Offers, pricing &amp; progression</h3><span class="lv hi">HIGH</span></div>
+        <div class="xp"><i style="width:82%;background:var(--teal)"></i></div>
+        <p>Bonus offers priced by segment in iGaming. At <strong>TOC-TOC</strong>, a gamified app, I timed paywalls, upsells and renewals to milestones and leaderboard moments, with RevenueCat.</p>
+      </article>
+      <article class="sk" data-reveal style="--d:.25s">
+        <div class="hd"><h3>Model specs &amp; automated decisioning</h3><span class="lv hi">HIGH</span></div>
+        <div class="xp"><i style="width:78%;background:var(--teal)"></i></div>
+        <p>I've specified scoring and segment logic with BI and Analytics, and defined the event taxonomy at TOC-TOC. I know what a model needs to be useful, and how to check if it is.</p>
+      </article>
+      <article class="sk" data-reveal style="--d:.3s">
+        <div class="hd"><h3>Platforms &amp; automation</h3><span class="lv hi">HIGH</span></div>
+        <div class="xp"><i style="width:86%;background:var(--teal)"></i></div>
+        <p>Hands-on in <strong>Optimove and Braze</strong> (both on your list), plus Customer.io and Klaviyo. Journeys, segments, event mapping, and automating my own work by habit.</p>
+      </article>
+      <article class="sk" data-reveal style="--d:.35s">
+        <div class="hd"><h3>Game economy &amp; liquidity</h3><span class="lv up">LEVELLING UP</span></div>
+        <div class="xp"><i style="width:58%;background:var(--violet)"></i></div>
+        <p>Bonus liability and offer ladders I know well. Contest fill, matchmaking depth and prize pool health in skill games would be new for me, and the part of this role I'm most curious about.</p>
+      </article>
+    </div>
+    <div class="legend" data-reveal>
+      <span><i class="lv max hud" style="font-size:11px">MAX</i> do it today</span>
+      <span><i class="lv hi hud" style="font-size:11px">HIGH</i> done it, close to your setup</span>
+      <span><i class="lv up hud" style="font-size:11px">LEVELLING UP</i> new for me</span>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="economy">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Economy</p>
+    <h2 class="h2" data-reveal>Sources, sinks, <span>and who pays for the free stuff.</span></h2>
+    <p class="intro" data-reveal>How I'd look at the economy from day one. A sketch from the outside, not a description of Patrianna's games.</p>
+    <div class="eco">
+      <div class="flow" data-reveal>
+        <svg viewBox="0 0 560 300" role="img" aria-label="Diagram: currency sources flow into the player balance, sinks take it out, with CRM bonuses as a controlled source">
+          <defs>
+            <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#858b9b"/></marker>
+            <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0 0L10 5L0 10z" fill="#f5c542"/></marker>
+          </defs>
+          <g font-family="Chakra Petch, monospace" font-size="11" letter-spacing="1.2" fill="#858b9b"><text x="20" y="22">SOURCES</text><text x="440" y="22">SINKS</text></g>
+          <g font-family="Inter, sans-serif" font-size="13" fill="#f1f2f6">
+            <rect x="20" y="38" width="140" height="44" rx="8" fill="#1f232d" stroke="rgba(241,242,246,.12)"/><text x="34" y="65">Purchases</text>
+            <rect x="20" y="94" width="140" height="44" rx="8" fill="#1f232d" stroke="rgba(241,242,246,.12)"/><text x="34" y="121">Daily rewards</text>
+            <rect x="20" y="150" width="140" height="44" rx="8" fill="#1f232d" stroke="rgba(241,242,246,.12)"/><text x="34" y="177">Missions &amp; wins</text>
+            <rect x="20" y="206" width="140" height="56" rx="8" fill="rgba(245,197,66,.1)" stroke="#f5c542"/><text x="34" y="230" fill="#f5c542">CRM bonuses</text><text x="34" y="249" font-size="11" fill="#c1c5d0">priced per segment</text>
+            <rect x="215" y="112" width="130" height="76" rx="12" fill="#13151b" stroke="#19d3c5" stroke-width="1.5"/><text x="246" y="146" font-weight="700">Player</text><text x="238" y="166">balance</text>
+            <rect x="400" y="38" width="140" height="44" rx="8" fill="#1f232d" stroke="rgba(241,242,246,.12)"/><text x="414" y="65">Contest entries</text>
+            <rect x="400" y="94" width="140" height="44" rx="8" fill="#1f232d" stroke="rgba(241,242,246,.12)"/><text x="414" y="121">Shop items</text>
+            <rect x="400" y="150" width="140" height="44" rx="8" fill="#1f232d" stroke="rgba(241,242,246,.12)"/><text x="414" y="177">Boosts &amp; retries</text>
+            <rect x="400" y="206" width="140" height="56" rx="8" fill="#1f232d" stroke="rgba(241,242,246,.12)"/><text x="414" y="230">Progression</text><text x="414" y="249" font-size="11" fill="#c1c5d0">VIP tiers, unlocks</text>
+          </g>
+          <g stroke="#858b9b" stroke-width="1.5" fill="none" marker-end="url(#ah)">
+            <path d="M160 60 C190 60 190 130 213 135"/><path d="M160 116 C185 116 190 142 213 145"/><path d="M160 172 C185 172 190 158 213 156"/>
+            <path d="M345 135 C370 130 370 60 398 60"/><path d="M345 145 C370 145 375 116 398 116"/><path d="M345 158 C370 160 375 172 398 172"/><path d="M345 170 C370 180 370 234 398 234"/>
+          </g>
+          <path d="M160 234 C190 234 190 175 213 168" stroke="#f5c542" stroke-width="2" fill="none" stroke-dasharray="5 4" marker-end="url(#ag)"/>
+          <g font-family="Chakra Petch, monospace" font-size="11" letter-spacing="1" fill="#19d3c5"><text x="226" y="214">WATCH: inflation,</text><text x="226" y="230">liability, liquidity</text></g>
+        </svg>
+        <p class="cap">Made-up sources and sinks. The CRM bonus is the only source I'd treat as a line of cost, with a price per segment.</p>
+      </div>
+      <div class="rules">
+        <div class="rule" data-reveal><b>Rule 01 · Price before you give</b><p>Every bonus gets an expected return by segment before it ships. If I can't forecast it in NGR, it doesn't go out.</p></div>
+        <div class="rule" data-reveal style="--d:.06s"><b>Rule 02 · Missions beat discounts</b><p>For players who aren't price-sensitive, give them something to do rather than something cheaper. It keeps the economy healthy and the margin intact.</p></div>
+        <div class="rule" data-reveal style="--d:.12s"><b>Rule 03 · Liquidity is retention</b><p>An empty contest is a bad session. Reactivation timed to fill the contests that need players helps both sides of the economy.</p></div>
+        <div class="rule" data-reveal style="--d:.18s"><b>Rule 04 · Liability on the dashboard</b><p>Outstanding bonus balance tracked next to NGR, every week, so nobody gets surprised at month end.</p></div>
+      </div>
+    </div>
+
+    <div class="ladder" data-reveal>
+      <p class="hd"><span>Offer ladder · illustration</span><b>anchor in the middle, step up after a win</b></p>
+      <div class="steps">
+        <div class="step"><small>Step 1</small><b>€1.99</b><span>First-purchase starter. Low friction, high value.</span></div>
+        <div class="step"><small>Step 2</small><b>€4.99</b><span>Unlocked after first purchase; mission chain included.</span></div>
+        <div class="step"><small>Step 3</small><b>€9.99</b><span>The anchor most payers should land on.</span><em>Best value</em></div>
+        <div class="step"><small>Step 4</small><b>€19.99</b><span>VIP entry. Shown only to players with the behaviour for it.</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="lifecycle">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Lifecycle</p>
+    <h2 class="h2" data-reveal>Six stages, <span>each with a number to defend.</span></h2>
+    <p class="intro" data-reveal>The stages from your job post, with the commercial metric I'd own for each.</p>
+    <div class="life" data-reveal>
+      <table>
+        <thead><tr><th>Stage</th><th>What I'd do</th><th>Number I'd defend</th></tr></thead>
+        <tbody>
+          <tr><th>Onboarding</th><td>First session that ends in a win; next game suggested by what they enjoyed.</td><td class="k">D1 · D7 retention</td></tr>
+          <tr><th>Activation</th><td>Missions that teach the core loop. No bonus until they've played.</td><td class="k">activated in 72h</td></tr>
+          <tr><th>First purchase</th><td>Starter offer after a moment of value, priced by predicted value.</td><td class="k">conversion · payback</td></tr>
+          <tr><th>Churn prevention</th><td>Risk score triggers the cheapest action that works: mission, content, then bonus.</td><td class="k">saved NGR − bonus cost</td></tr>
+          <tr><th>Reactivation</th><td>Timed to events and contests that need liquidity. Escalating value, then stop.</td><td class="k">reactivated NGR · 30d</td></tr>
+          <tr><th>VIP</th><td>Tiers with clear progression, personal touch at the top, RG checks at every step.</td><td class="k">VIP LTV · retention</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="readout">
+  <div class="wrap">
+    <p class="kicker" data-reveal>How I work</p>
+    <h2 class="h2" data-reveal>Hypothesis in, <span>decision out.</span></h2>
+    <div class="readout">
+      <article class="ro" data-reveal>
+        <p class="lbl">Campaign read-out · illustration</p>
+        <h3>Win-back: mission chain vs deposit bonus</h3>
+        <dl>
+          <dt>Hypothesis</dt><dd>Lapsed mid-value players come back as often for a mission chain as for a bonus, at lower cost.</dd>
+          <dt>Design</dt><dd>3 arms + 10% holdout, sample size fixed before launch, 30-day window.</dd>
+          <dt>Read-out</dt><dd>Measured on <b>incremental NGR minus bonus cost</b>, not reactivation rate alone.</dd>
+          <dt>Decision</dt><dd>Keep, change or stop, and the learning goes into the next brief.</dd>
+        </dl>
+      </article>
+      <article class="ro auto" data-reveal style="--d:.1s">
+        <p class="lbl">Automate by habit</p>
+        <h3>The LiveOps work I wouldn't do by hand</h3>
+        <ul>
+          <li><i>01</i><span><b>Campaign setup</b> from a brief template, with segment and holdout created automatically.</span></li>
+          <li><i>02</i><span><b>Audience syncs</b> checked for size and freshness before every send.</span></li>
+          <li><i>03</i><span><b>Weekly read-outs</b> drafted from the data, with NGR and bonus cost side by side.</span></li>
+          <li><i>04</i><span><b>Competitor watch</b>: new offers and features logged, turned into test ideas.</span></li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="quests">
+  <div class="wrap">
+    <p class="kicker" data-reveal>First 90 days</p>
+    <h2 class="h2" data-reveal>Three levels, <span>one boss: NGR.</span></h2>
+    <p class="intro" data-reveal>Written from the outside, so the order will change once I'm inside.</p>
+    <div class="quests">
+      <article class="q" data-reveal>
+        <p class="lv">LEVEL 1 · DAYS 1–30</p>
+        <h3>Learn the map</h3>
+        <ul><li>Play every game until I understand the loop.</li><li>Audit live journeys, offers and bonus liability.</li><li>Agree KPIs, holdout rules and read-out format with BI.</li><li>Map sources and sinks with Product.</li></ul>
+        <p class="rw">Reward: one-page economy and CRM health check</p>
+      </article>
+      <article class="q" data-reveal style="--d:.1s">
+        <p class="lv">LEVEL 2 · DAYS 31–60</p>
+        <h3>First wins</h3>
+        <ul><li>Re-price the first-purchase offer by segment.</li><li>Launch a churn-prevention test with a holdout.</li><li>Spec the first value and churn models with BI.</li><li>Automate campaign setup and audience checks.</li></ul>
+        <p class="rw">Reward: first read-out in NGR terms</p>
+      </article>
+      <article class="q" data-reveal style="--d:.2s">
+        <p class="lv">LEVEL 3 · DAYS 61–90</p>
+        <h3>Scale what works</h3>
+        <ul><li>Offer ladder and mission chains, prototyped and tested.</li><li>VIP tier proposal, with RG checks built in.</li><li>Reactivation timed to contest liquidity.</li><li>Roadmap for the next two quarters.</li></ul>
+        <p class="rw">Reward: retention and economy roadmap</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Match <span>history.</span></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain<small>iGaming</small></p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lead CRM monetisation and lifecycle strategy for an iGaming brand across European markets, in a high-volume environment.</li>
+            <li>Own revenue-generating campaigns across acquisition, conversion, retention and win-back.</li>
+            <li>Built and scaled A/B testing frameworks on copy, cadence, offers and channels to lift LTV.</li>
+            <li>Automated email, push, in-app and SMS workflows based on behaviour, scoring and RFM segments.</li>
+            <li>Work with Analytics, Product and Tech on data integrations and deliverability.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain<small>iGaming</small></p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul><li>Ran real-time CRM operations across several European brands, above SLA targets, coordinating teams across time zones.</li></ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC<small>Gamified mobile app</small></p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Led mobile CRM, monetisation and growth for an app built on milestones, leaderboards and rewards.</li>
+            <li>Timed paywalls, upsells and renewals to progression and leaderboard moments, using RevenueCat.</li>
+            <li>Defined the event tracking taxonomy and cohorts with Product and Analytics.</li>
+            <li>Ran A/B and multivariate tests on incentives and value propositions to lift trial-to-paid and reduce churn.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="loadout">
+      <div data-reveal>
+        <h3>Loadout</h3>
+        <ul class="inv">
+          <li>Optimove</li><li>Braze</li><li>Customer.io</li><li>Klaviyo</li><li>RevenueCat</li><li>HubSpot</li><li>BI tools</li>
+          <li>RFM &amp; scoring</li><li>Holdouts &amp; incrementality</li><li>NGR · LTV · payback</li><li>Responsible gaming</li><li>Event taxonomy</li>
+        </ul>
+      </div>
+      <div data-reveal style="--d:.1s">
+        <h3>Achievements</h3>
+        <ul class="certs">
+          <li>Triggers &amp; Workflows · Optimove, 2025</li>
+          <li>Lifecycles &amp; Segmentation · Optimove, 2024</li>
+          <li>Marketing &amp; Lifecycle · MiniMBA, 2025</li>
+          <li>Sales with CRM · HubSpot Academy, 2025</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="location">
+  <div class="wrap loc">
+    <div class="strait" data-reveal>
+      <svg viewBox="0 0 460 240" role="img" aria-label="Map sketch of the Strait of Gibraltar with Gibraltar to the north and Ceuta to the south">
+        <rect x="0" y="0" width="460" height="240" rx="12" fill="#101d26"/>
+        <path d="M0 0H460V70C400 82 340 66 290 76C250 84 220 64 180 70C130 78 70 60 0 72Z" fill="#1f232d"/>
+        <path d="M0 240H460V178C410 170 360 186 300 176C260 170 230 186 190 180C140 172 80 188 0 176Z" fill="#1f232d"/>
+        <path d="M268 72 L276 40 L282 72 Z" fill="#2a2f3b"/>
+        <path d="M300 178 C312 168 334 168 344 178 Z" fill="#2a2f3b"/>
+        <circle cx="276" cy="64" r="6" fill="#f5c542"/><circle cx="322" cy="176" r="6" fill="#19d3c5"/>
+        <path d="M280 72 C300 110 312 140 320 168" stroke="#f1f2f6" stroke-width="1.5" stroke-dasharray="4 5" fill="none"/>
+        <g font-family="Chakra Petch, monospace" font-size="12" letter-spacing="1.4">
+          <text x="290" y="56" fill="#f5c542">GIBRALTAR · HQ</text>
+          <text x="336" y="204" fill="#19d3c5">CEUTA · ME</text>
+          <text x="28" y="128" fill="#858b9b">STRAIT OF GIBRALTAR</text>
+        </g>
+      </svg>
+    </div>
+    <div class="txt">
+      <p class="kicker" data-reveal>Location</p>
+      <h2 class="h2" data-reveal>Your HQ is <span>across the water.</span></h2>
+      <p data-reveal>I live in Ceuta, on the other side of the Strait from Gibraltar. I'm used to remote work across time zones, and I can be in the office whenever the team needs me there.</p>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Player 1 ready</p>
+    <h2 class="h2" data-reveal>Happy to talk <span>any time.</span></h2>
+    <p class="intro" data-reveal>Fewer than 20 words, as your job post asks: iGaming CRM, priced in NGR, gamified app background, ready to learn your economy.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-gold" href="mailto:htmelh@gmail.com?subject=CRM%20%26%20Economy%20Manager%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · CRM &amp; Economy</span>
+    <span>Personal application page. Not affiliated with Patrianna.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
