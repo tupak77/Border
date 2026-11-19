@@ -1,0 +1,622 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · Retention</title>
+<meta name="description" content="Haitam El Harchal. Application for Sr Retention Strategist at Prosana." />
+<meta property="og:title" content="Haitam El Harchal · Sr Retention Strategist application" />
+<meta property="og:description" content="Subscription retention, holdouts and offers that don't train customers to wait. My first 90 days, mapped to yours." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#FBFAF7" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23141414'/%3E%3Ctext x='32' y='44' font-family='Arial' font-weight='800' font-size='30' fill='%23FF6B2C' text-anchor='middle'%3EH%3C/text%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Onest:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #fbfaf7;
+  --bg-2: #f2efe8;
+  --card: #ffffff;
+  --ink: #141414;
+  --ink-2: #3e3d3a;
+  --muted: #74716b;
+  --line: rgba(20, 20, 20, 0.12);
+  --orange: #ff6b2c;
+  --orange-2: #ffe8dc;
+  --green: #1f9d55;
+  --green-2: #ddf4e6;
+  --red: #e5484d;
+  --red-2: #fde4e4;
+  --amber: #b7791f;
+  --amber-2: #fdf0d5;
+  --sans: "Onest", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--orange-2); }
+.wrap { width: min(1140px, 100% - 40px); margin-inline: auto; }
+
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(251, 250, 247, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 700 15px/1 var(--sans); white-space: nowrap; }
+.mark i { width: 30px; height: 30px; border-radius: 8px; background: var(--ink); color: var(--orange); display: grid; place-items: center; font: normal 800 14px/1 var(--sans); }
+.nav-links { display: flex; gap: 22px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 10px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; white-space: nowrap; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-or { background: var(--orange); border-color: var(--orange); color: #fff; }
+.btn-line { color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--orange); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(52px, 7vw, 96px) 0 clamp(64px, 9vw, 112px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; width: 700px; height: 700px; right: -220px; top: -280px; border-radius: 50%; background: radial-gradient(circle, rgba(255,107,44,.18), transparent 65%); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.05fr 0.95fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12.5px/1.3 var(--mono); color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--orange); flex: none; }
+.hero h1 { margin-top: 24px; font: 800 clamp(38px, 5.2vw, 68px)/1.03 var(--sans); letter-spacing: -0.035em; }
+.hero h1 span { color: var(--orange); }
+.hero .lead { margin-top: 22px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+.proof { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 8px; }
+.proof span { font: 500 12.5px/1 var(--mono); padding: 8px 11px; border-radius: 8px; background: var(--card); border: 1px solid var(--line); color: var(--ink-2); }
+.who { margin-top: 28px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: 0 4px 14px rgba(20,20,20,.15); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* audit card */
+.audit { justify-self: center; width: min(460px, 100%); background: var(--card); border: 1px solid var(--line); border-radius: 20px; box-shadow: 0 50px 90px -40px rgba(20,20,20,.45); overflow: hidden; }
+.audit .bar { display: flex; justify-content: space-between; gap: 10px; padding: 14px 18px; background: var(--ink); color: #fff; font: 500 12px/1 var(--mono); }
+.audit .bar b { color: var(--orange); font-weight: 500; }
+.audit .body { padding: 18px; }
+.audit h3 { font: 700 19px/1.25 var(--sans); }
+.audit .sub { margin-top: 4px; font-size: 13.5px; color: var(--muted); }
+.curve { margin-top: 12px; }
+.curve svg { display: block; width: 100%; height: auto; }
+.leaks { margin-top: 10px; display: grid; gap: 7px; }
+.leak { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: start; padding: 10px 12px; border-radius: 12px; background: var(--bg); font-size: 13.5px; line-height: 1.4; color: var(--ink-2); opacity: 0; transform: translateY(8px); animation: up .55s var(--ease) forwards; }
+.leak:nth-child(1) { animation-delay: .6s; }
+.leak:nth-child(2) { animation-delay: 1s; }
+.leak:nth-child(3) { animation-delay: 1.4s; }
+.leak b { color: var(--ink); }
+.sev { font: 600 10.5px/1 var(--mono); padding: 5px 7px; border-radius: 5px; white-space: nowrap; margin-top: 1px; }
+.s-hi { background: var(--red-2); color: #a1262b; }
+.s-md { background: var(--amber-2); color: var(--amber); }
+.timer { margin-top: 12px; display: flex; justify-content: space-between; font: 500 12px/1 var(--mono); color: var(--muted); }
+.timer b { color: var(--green); font-weight: 500; }
+@keyframes up { to { opacity: 1; transform: none; } }
+.audit-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 124px) 0; }
+.alt { background: var(--bg-2); }
+.dark { background: var(--ink); color: var(--bg); }
+.kicker { font: 500 12.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--orange); }
+.h2 { margin-top: 14px; font: 800 clamp(30px, 4vw, 50px)/1.06 var(--sans); letter-spacing: -0.03em; max-width: 22ch; }
+.h2 span { color: var(--orange); }
+.intro { margin-top: 18px; max-width: 64ch; color: var(--ink-2); }
+.dark .intro { color: rgba(251,250,247,.72); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* fit */
+.legend { margin-top: 26px; display: flex; flex-wrap: wrap; gap: 16px; font-size: 13px; color: var(--muted); }
+.legend span { display: inline-flex; align-items: center; gap: 8px; }
+.fit { margin-top: 24px; border-top: 1px solid var(--line); }
+.fit li { display: grid; grid-template-columns: 0.9fr 1.4fr; gap: 32px; padding: 22px 0; border-bottom: 1px solid var(--line); }
+.fit .ask { font: 700 18px/1.35 var(--sans); letter-spacing: -.01em; }
+.fit .ans { color: var(--ink-2); }
+.fit .ans strong { color: var(--ink); font-weight: 600; }
+.tag { display: inline-block; margin-top: 10px; padding: 4px 9px; border-radius: 6px; font: 500 11px/1.2 var(--mono); letter-spacing: .03em; text-transform: uppercase; font-style: normal; }
+.legend .tag { margin-top: 0; }
+.t-d { background: var(--green-2); color: #17633a; }
+.t-t { background: var(--amber-2); color: var(--amber); }
+.t-n { background: var(--orange-2); color: #a8420f; }
+
+/* journey */
+.journey { margin-top: 44px; display: grid; grid-template-columns: repeat(7, 1fr); gap: 10px; }
+.js { background: rgba(255,255,255,.05); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 18px 14px; display: flex; flex-direction: column; }
+.js .n { font: 500 11px/1 var(--mono); color: var(--orange); }
+.js h3 { margin-top: 8px; font: 700 16px/1.2 var(--sans); }
+.js p { margin-top: 6px; font-size: 13.5px; color: rgba(251,250,247,.75); line-height: 1.45; }
+.js .k { margin-top: auto; padding-top: 12px; font: 400 11px/1.4 var(--mono); color: rgba(251,250,247,.55); }
+.js.hot { border-color: rgba(255,107,44,.6); background: rgba(255,107,44,.08); }
+
+/* offers */
+.offers { margin-top: 44px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 18px; align-items: start; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+.panel .lbl { font: 500 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.panel h3 { margin-top: 10px; font: 700 21px/1.2 var(--sans); letter-spacing: -.01em; }
+.reasons { margin-top: 16px; display: grid; gap: 8px; }
+.reason { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; padding: 12px 14px; border-radius: 12px; background: var(--bg); font-size: 14px; line-height: 1.45; }
+.reason b { display: block; font: 500 11px/1.4 var(--mono); text-transform: uppercase; letter-spacing: .04em; color: var(--muted); }
+.reason .why { color: var(--ink); font-weight: 600; }
+.reason .fix { color: var(--ink-2); }
+.reason .fix em { font-style: normal; color: var(--green); font-weight: 600; }
+.ladder { margin-top: 16px; display: grid; gap: 8px; }
+.rung { display: grid; grid-template-columns: 64px 1fr; gap: 12px; align-items: center; padding: 12px 14px; border-radius: 12px; border: 1px solid var(--line); font-size: 14.5px; }
+.rung b { font: 700 13px/1 var(--mono); color: var(--orange); }
+.rung:nth-child(1) { margin-left: 0; }
+.rung:nth-child(2) { margin-left: 12px; }
+.rung:nth-child(3) { margin-left: 24px; }
+.rung:nth-child(4) { margin-left: 36px; background: var(--orange-2); border-color: transparent; }
+.rule-note { margin-top: 14px; font-size: 14px; color: var(--ink-2); }
+
+/* testing */
+.test { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+.calc { font-family: var(--mono); font-size: 14px; }
+.calc .row { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-bottom: 1px dashed var(--line); }
+.calc .row span:first-child { color: var(--muted); }
+.calc .row.big { border-bottom: 0; padding-top: 14px; font-size: 16px; }
+.calc .row.big span:last-child { color: var(--orange); font-weight: 600; }
+.panel ul.list { margin-top: 14px; display: grid; gap: 10px; }
+.panel ul.list li { position: relative; padding-left: 20px; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.panel ul.list li::before { content: "→"; position: absolute; left: 0; color: var(--orange); font-family: var(--mono); }
+.panel ul.list li b { color: var(--ink); }
+
+/* weekly audit */
+.wa { margin-top: 44px; overflow-x: auto; -webkit-overflow-scrolling: touch; background: var(--card); border: 1px solid var(--line); border-radius: 16px; }
+.wa table { width: 100%; min-width: 820px; border-collapse: collapse; font-size: 14.5px; }
+.wa th, .wa td { padding: 13px 16px; text-align: left; vertical-align: top; border-bottom: 1px solid var(--line); }
+.wa thead th { font: 500 11.5px/1.3 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); background: var(--bg); }
+.wa td { color: var(--ink-2); line-height: 1.5; }
+.wa td:first-child { color: var(--ink); font-weight: 600; }
+.wa tr:last-child td { border-bottom: 0; }
+.wa .p1 { font: 600 11.5px/1 var(--mono); color: #a1262b; background: var(--red-2); padding: 4px 7px; border-radius: 5px; }
+.wa .p2 { font: 600 11.5px/1 var(--mono); color: var(--amber); background: var(--amber-2); padding: 4px 7px; border-radius: 5px; }
+.wa-note { margin-top: 18px; font-size: 14px; color: var(--muted); }
+
+/* brief + report */
+.two { margin-top: 44px; display: grid; grid-template-columns: 1fr 1fr; gap: 18px; align-items: start; }
+.brief dl { margin: 14px 0 0; display: grid; grid-template-columns: 96px 1fr; gap: 9px 14px; font-size: 14.5px; }
+.brief dt { font: 500 11.5px/1.6 var(--mono); text-transform: uppercase; color: var(--orange); }
+.brief dd { margin: 0; color: var(--ink-2); line-height: 1.5; }
+.fb { margin-top: 14px; padding: 12px 14px; border-radius: 12px; background: var(--bg); font-size: 14px; color: var(--ink-2); line-height: 1.5; }
+.fb b { color: var(--ink); }
+.rep .res { margin-top: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.rep .res div { background: var(--bg); border-radius: 12px; padding: 12px; }
+.rep .res b { display: block; font: 700 20px/1 var(--mono); }
+.rep .res small { display: block; margin-top: 6px; font-size: 12px; color: var(--muted); line-height: 1.35; }
+.rep .next { margin-top: 12px; padding: 14px; border-radius: 12px; background: var(--ink); color: #fff; font-size: 14.5px; line-height: 1.5; }
+.rep .next b { display: block; font: 500 11px/1.4 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--orange); margin-bottom: 4px; }
+
+/* 30/60/90 */
+.plan { margin-top: 44px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.phase { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 26px; }
+.phase .when { font: 500 12.5px/1 var(--mono); color: var(--orange); }
+.phase h3 { margin-top: 12px; font: 800 24px/1.15 var(--sans); letter-spacing: -.02em; }
+.phase .theirs { margin-top: 12px; padding: 10px 12px; border-radius: 10px; background: var(--bg); font-size: 13.5px; color: var(--muted); line-height: 1.45; }
+.phase .theirs b { display: block; font: 500 10.5px/1.4 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--ink-2); }
+.phase ul { margin-top: 14px; display: grid; gap: 9px; }
+.phase li { position: relative; padding-left: 20px; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.phase li::before { content: "✓"; position: absolute; left: 0; color: var(--green); font-weight: 700; }
+
+/* experience */
+.xp { margin-top: 44px; display: grid; gap: 14px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 28px; }
+.job .when { font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.job .co { margin-top: 6px; font: 800 22px/1.2 var(--sans); letter-spacing: -.02em; }
+.job .co small { display: block; margin-top: 4px; font: 500 12.5px/1.3 var(--sans); color: var(--muted); letter-spacing: 0; }
+.job h3 { font: 700 18px/1.3 var(--sans); }
+.job ul { margin-top: 12px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 7px; border-radius: 2px; background: var(--orange); }
+.stack { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.stack li { padding: 7px 12px; border-radius: 8px; background: var(--card); border: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
+
+/* contact */
+.contact { text-align: center; padding: clamp(80px, 12vw, 140px) 0; background: radial-gradient(700px 360px at 50% 0%, rgba(255,107,44,.18), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 18ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 400 14px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 1060px) { .journey { grid-template-columns: repeat(4, 1fr); } }
+@media (max-width: 960px) {
+  .hero .wrap, .offers, .test, .two { grid-template-columns: 1fr; }
+  .plan { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .fit li, .job { grid-template-columns: 1fr; gap: 10px; }
+  .job { padding: 22px; }
+  .journey { grid-template-columns: 1fr 1fr; }
+  .reason { grid-template-columns: 1fr; gap: 6px; }
+  .rung:nth-child(n) { margin-left: 0; }
+  .brief dl { grid-template-columns: 1fr; gap: 2px; }
+  .brief dd { margin-bottom: 8px; }
+}
+@media (max-width: 420px) { .journey, .rep .res { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .leak, [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i>H</i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#fit">The fit</a>
+      <a href="#journey">Journey</a>
+      <a href="#offers">Offers</a>
+      <a href="#testing">Testing</a>
+      <a href="#plan">30 / 60 / 90</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Application · Sr Retention Strategist · Prosana</span>
+      <h1>Open the account. <span>Find the leak.</span> Fix it before the founder asks.</h1>
+      <p class="lead">I've spent 7+ years owning retention for direct-to-consumer subscription and high-volume consumer brands: subscription renewals and churn, offers that don't train people to wait, and tests with holdouts and proper sample sizes. Hands-on in Klaviyo. I write the copy myself when it's faster, and I judge everything on commercial outcomes, not pretty emails.</p>
+      <div class="ctas">
+        <a class="btn btn-or" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal_Retention.pdf" download>Download CV</a>
+      </div>
+      <div class="proof">
+        <span>7+ yrs retention</span><span>Klaviyo · Braze · Optimove</span><span>holdouts &amp; cohorts</span><span>several brands at once</span>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>Retention &amp; Lifecycle · Spain · Remote, full-time</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="audit" aria-label="Illustration: a ten-minute subscription account audit with three leaks found">
+        <p class="bar"><span>account audit · supplement brand</span><b>made-up data</b></p>
+        <div class="body">
+          <h3>Where subscribers leave</h3>
+          <p class="sub">Cohort retention by rebill, last 6 months</p>
+          <div class="curve">
+            <svg viewBox="0 0 400 130" role="img" aria-label="Retention curve dropping sharply before the second rebill">
+              <g stroke="rgba(20,20,20,.08)"><path d="M30 15H390M30 50H390M30 85H390M30 115H390"/></g>
+              <g font-family="JetBrains Mono, monospace" font-size="10" fill="#74716b"><text x="0" y="18">100%</text><text x="6" y="88">50%</text><text x="30" y="128">order 1</text><text x="120" y="128">rebill 1</text><text x="220" y="128">rebill 2</text><text x="320" y="128">rebill 3</text></g>
+              <rect x="140" y="12" width="80" height="104" fill="rgba(229,72,77,.08)"/>
+              <path d="M40 15 L140 40 L220 92 L320 102 L390 106" fill="none" stroke="#141414" stroke-width="2.5"/>
+              <g fill="#ff6b2c"><circle cx="40" cy="15" r="4"/><circle cx="140" cy="40" r="4"/><circle cx="220" cy="92" r="5"/><circle cx="320" cy="102" r="4"/></g>
+              <text x="146" y="28" font-family="JetBrains Mono, monospace" font-size="10" fill="#a1262b">the leak</text>
+            </svg>
+          </div>
+          <div class="leaks">
+            <div class="leak"><span class="sev s-hi">HIGH</span><span><b>No save flow</b> in the cancel portal. Every reason gets the same discount.</span></div>
+            <div class="leak"><span class="sev s-hi">HIGH</span><span><b>Failed payments</b> retried once, email only. No SMS, no card-update nudge.</span></div>
+            <div class="leak"><span class="sev s-md">MED</span><span><b>Nothing between orders 1 and 2.</b> Customers decide before the product has worked.</span></div>
+          </div>
+          <p class="timer"><span>time to find</span><b>~10 minutes</b></p>
+        </div>
+      </div>
+      <p class="audit-cap">Illustration with made-up data. The three places I'd look first in any subscription account.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fit">
+  <div class="wrap">
+    <p class="kicker" data-reveal>The fit</p>
+    <h2 class="h2" data-reveal>Your "who you are", <span>line by line.</span></h2>
+    <p class="intro" data-reveal>What you're asking for, what I've actually done, and where I'd be ramping up on your SOPs and stack.</p>
+    <div class="legend" data-reveal>
+      <span><i class="tag t-d">Direct</i> done it</span>
+      <span><i class="tag t-t">Transferable</i> same skill, different tool or setting</span>
+      <span><i class="tag t-n">Ramp-up</i> I'd learn it in onboarding</span>
+    </div>
+    <ul class="fit">
+      <li data-reveal>
+        <div><p class="ask">Owned retention strategy for DTC brands, and can point to the revenue it moved</p><span class="tag t-d">Direct</span></div>
+        <p class="ans">7+ years setting the plan, not just executing it. At <strong>TOC-TOC</strong>, a direct-to-consumer subscription app, I owned trial-to-paid, renewals and churn. At <strong>Entain</strong> I own revenue-generating retention and win-back for consumer brands, judged on incremental revenue and LTV.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Email fundamentals cold: flow vs campaign revenue, segmentation, deliverability</p><span class="tag t-d">Direct</span></div>
+        <p class="ans">Hands-on in <strong>Klaviyo</strong>, Braze, Customer.io and Optimove. RFM and behavioural segments, high-volume deliverability, list hygiene, and always-on flows doing the heavy lifting so campaigns don't have to.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Cohort or holdout tests with proper sample sizes; validate data before anyone sees it</p><span class="tag t-d">Direct</span></div>
+        <p class="ans">I built and scaled testing frameworks with <strong>holdout groups and cohort reads</strong> on every programme. Sample size and decision rule are set before launch. <a href="#testing">Example below.</a></p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Built and stacked offers without training customers to wait for a discount</p><span class="tag t-d">Direct</span></div>
+        <p class="ans">Win-back, save and upsell offers by segment, priced against what they cost. At TOC-TOC I timed upsells and renewals to moments of value instead of discounting. <a href="#offers">How I'd structure save offers and gift ladders.</a></p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Beyond email: SMS, popups, list growth, portals, cancel flows, payment recovery</p><span class="tag t-t">Transferable</span></div>
+        <p class="ans">SMS, push and in-app are part of my journeys today, and I owned app subscription renewals with <strong>RevenueCat</strong>. Shopify subscription portals and cancel flows are where I'd ramp up fastest in onboarding.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Hands-on and technical: write copy, build, debug data and integrations</p><span class="tag t-d">Direct</span></div>
+        <p class="ans">I write most of my own copy, build and QA my own journeys, and fix data and integration issues with Tech rather than wait in a queue. I defined the event tracking taxonomy at TOC-TOC.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">AI for analysis and reporting, not just subject lines</p><span class="tag t-d">Direct</span></div>
+        <p class="ans">I use AI to read cohort data, draft reports and pressure-test hypotheses before a test goes live. I check every number it gives me against the source.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Seniority: founders trust you fast, you hold your ground under pressure</p><span class="tag t-d">Direct</span></div>
+        <p class="ans">I report retention and revenue to leadership and defend recommendations with data. As <strong>CRM Ops Lead Europe</strong> I ran several brands at once through peak periods.</p>
+      </li>
+      <li data-reveal>
+        <div><p class="ask">Loop, Skio, Recharge, Alia, Zaymo · agency multi-client experience</p><span class="tag t-n">Ramp-up</span></div>
+        <p class="ans">I haven't used these Shopify subscription tools yet, and I've been in-house rather than agency. Your SOPs, consulting and training calls are exactly what I'd use to close that gap in the first 30 days.</p>
+      </li>
+    </ul>
+  </div>
+</section>
+
+<section class="block dark" id="journey">
+  <div class="wrap">
+    <p class="kicker" data-reveal>The full journey</p>
+    <h2 class="h2" data-reveal>From first order <span>to loyalty.</span></h2>
+    <p class="intro" data-reveal>Your job post asks to map the whole journey. This is the map I'd start every account with, and the number I'd watch at each stage.</p>
+    <div class="journey">
+      <div class="js" data-reveal><span class="n">01</span><h3>First purchase</h3><p>Popup and list growth into the first order.</p><p class="k">opt-in → first order</p></div>
+      <div class="js hot" data-reveal style="--d:.04s"><span class="n">02</span><h3>Day zero</h3><p>Confirm, set expectations, show how to get results.</p><p class="k">zero-day churn</p></div>
+      <div class="js hot" data-reveal style="--d:.08s"><span class="n">03</span><h3>Rebill 1–2</h3><p>The danger zone. Education and progress before the charge.</p><p class="k">M1 · M2 retention</p></div>
+      <div class="js" data-reveal style="--d:.12s"><span class="n">04</span><h3>Failed payment</h3><p>Retries, card-update SMS and email, no friction.</p><p class="k">recovered revenue</p></div>
+      <div class="js" data-reveal style="--d:.16s"><span class="n">05</span><h3>Cancel flow</h3><p>Save offer by reason: skip, swap, pause before discount.</p><p class="k">save rate</p></div>
+      <div class="js" data-reveal style="--d:.2s"><span class="n">06</span><h3>Win-back</h3><p>Escalating, time-boxed, then stop.</p><p class="k">reactivated LTV</p></div>
+      <div class="js" data-reveal style="--d:.24s"><span class="n">07</span><h3>Loyalty</h3><p>Gift ladder by rebill count, referrals at the high point.</p><p class="k">cohort LTV</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="offers">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Offers</p>
+    <h2 class="h2" data-reveal>Save the subscriber, <span>not the discount.</span></h2>
+    <p class="intro" data-reveal>Discounts are the last rung, not the first. A sketch of how I'd structure save offers and gift ladders for a supplement subscription.</p>
+    <div class="offers">
+      <div class="panel" data-reveal>
+        <p class="lbl">Cancel flow · save offer by reason</p>
+        <h3>Answer the real reason first</h3>
+        <div class="reasons">
+          <div class="reason"><div><b>Reason</b><span class="why">"I have too much product"</span></div><div class="fix"><b>Offer</b><em>Skip or delay</em> the next order. No discount needed.</div></div>
+          <div class="reason"><div><b>Reason</b><span class="why">"It's too expensive"</span></div><div class="fix"><b>Offer</b><em>Swap</em> to a smaller size or longer interval, then a one-time discount.</div></div>
+          <div class="reason"><div><b>Reason</b><span class="why">"Not seeing results yet"</span></div><div class="fix"><b>Offer</b><em>Education</em> on timing and how to take it, plus one free month to give it a fair try.</div></div>
+          <div class="reason"><div><b>Reason</b><span class="why">"Taking a break"</span></div><div class="fix"><b>Offer</b><em>Pause</em> 30 to 90 days, with a reminder before it restarts.</div></div>
+        </div>
+      </div>
+      <div class="panel" data-reveal style="--d:.1s">
+        <p class="lbl">Gift ladder · by rebill</p>
+        <h3>Reward staying, not leaving</h3>
+        <div class="ladder">
+          <div class="rung"><b>Rebill 2</b><span>Free accessory (shaker, pill case)</span></div>
+          <div class="rung"><b>Rebill 3</b><span>Sample of a new product or flavour</span></div>
+          <div class="rung"><b>Rebill 4</b><span>Early access to launches</span></div>
+          <div class="rung"><b>Rebill 6</b><span>Full-size gift + referral ask</span></div>
+        </div>
+        <p class="rule-note">Announced before rebill 1, so the reason to stay is visible exactly when the risk is highest. Every rung gets a holdout to prove it pays for itself.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="testing">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Testing</p>
+    <h2 class="h2" data-reveal>Hypothesis, sample size, <span>recorded conclusion.</span></h2>
+    <p class="intro" data-reveal>Your rule, and the way I already work. A worked example of how I'd size a cohort test before it launches.</p>
+    <div class="test">
+      <div class="panel" data-reveal>
+        <p class="lbl">Example · sizing a holdout test</p>
+        <h3>Does the new day-zero flow lift month-one retention?</h3>
+        <div class="calc">
+          <div class="row"><span>baseline M1 retention</span><span>60%</span></div>
+          <div class="row"><span>smallest lift worth detecting</span><span>+5 pts</span></div>
+          <div class="row"><span>confidence · power</span><span>95% · 80%</span></div>
+          <div class="row big"><span>subscribers needed per arm</span><span>≈ 1,470</span></div>
+        </div>
+      </div>
+      <div class="panel" data-reveal style="--d:.1s">
+        <p class="lbl">Rules I'd hold every test to</p>
+        <h3>No result without a decision</h3>
+        <ul class="list">
+          <li><b>Hypothesis written first,</b> with the metric that decides it.</li>
+          <li><b>Sized before launch.</b> If an account can't reach the sample, test a bigger change or run it longer.</li>
+          <li><b>Built on the metrics that matter:</b> zero-day churn, M1/M2 retention, rebills and cohort LTV.</li>
+          <li><b>Data validated</b> before the client sees it.</li>
+          <li><b>Conclusion recorded</b> in a shared log, so the next pod doesn't run it again.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="audit">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Weekly audit</p>
+    <h2 class="h2" data-reveal>Every finding gets <span>an owner and a date.</span></h2>
+    <p class="intro" data-reveal>In the exact format your job post describes: owner, priority, action, due date. Example findings only.</p>
+    <div class="wa" data-reveal>
+      <table>
+        <thead><tr><th>Finding</th><th>Priority</th><th>Action</th><th>Owner</th><th>Due</th></tr></thead>
+        <tbody>
+          <tr><td>Cancel portal offers the same 20% to every reason</td><td><span class="p1">P1</span></td><td>Rebuild save flow by reason in Loop</td><td>Strategist + Klaviyo tech</td><td>Fri</td></tr>
+          <tr><td>Failed payments: one retry, email only</td><td><span class="p1">P1</span></td><td>Add retry schedule and SMS card-update</td><td>Klaviyo tech</td><td>Wed</td></tr>
+          <tr><td>Post-purchase flow is two generic emails</td><td><span class="p2">P2</span></td><td>Day-zero education flow + holdout</td><td>Copywriter + designer</td><td>Next Thu</td></tr>
+          <tr><td>Popup shows to returning subscribers</td><td><span class="p2">P2</span></td><td>Suppress subscribers, test new offer</td><td>Klaviyo tech</td><td>Next Mon</td></tr>
+          <tr><td>Profile sync drops subscription status</td><td><span class="p1">P1</span></td><td>Debug integration, flag to vendor</td><td>Strategist</td><td>Today</td></tr>
+        </tbody>
+      </table>
+    </div>
+    <p class="wa-note" data-reveal>Shared in the client's Slack the same day, so founders see the problem and the fix together.</p>
+  </div>
+</section>
+
+<section class="block alt" id="brief">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Leading the pod</p>
+    <h2 class="h2" data-reveal>Decisive briefs, <span>reports that end in a decision.</span></h2>
+    <div class="two">
+      <div class="panel brief" data-reveal>
+        <p class="lbl">Brief to copywriter · example</p>
+        <h3>Rebill-1 education email</h3>
+        <dl>
+          <dt>Objective</dt><dd>Lift M1 retention. Reader decides whether to stay before the product has worked.</dd>
+          <dt>Audience</dt><dd>First-order subscribers, day 18, not opened the last 2 emails.</dd>
+          <dt>Angle</dt><dd>"Week 3 is when most people start to notice." Timeline, not hype.</dd>
+          <dt>Test</dt><dd>vs current email, 10% holdout, read on M1 retention.</dd>
+        </dl>
+        <p class="fb"><b>Feedback on a draft that won't land:</b> "This sells the product again. They already bought it. Tell them what to expect this week and what to do if they don't feel it yet."</p>
+      </div>
+      <div class="panel rep" data-reveal style="--d:.1s">
+        <p class="lbl">Monthly report · made-up numbers</p>
+        <h3>The result, then the next decision</h3>
+        <div class="res">
+          <div><b>+4.8 pts</b><small>M1 retention vs holdout</small></div>
+          <div><b>31%</b><small>save rate in new cancel flow</small></div>
+          <div><b>+£12k</b><small>recovered from failed payments</small></div>
+        </div>
+        <p class="next"><b>Next decision</b>Roll the day-zero flow to all SKUs, and test a gift ladder on rebill 2 against the current discount.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="plan">
+  <div class="wrap">
+    <p class="kicker" data-reveal>30 / 60 / 90</p>
+    <h2 class="h2" data-reveal>Your success criteria, <span>as my plan.</span></h2>
+    <div class="plan">
+      <div class="phase" data-reveal>
+        <p class="when">FIRST 30 DAYS</p>
+        <h3>Learn fast, lead early</h3>
+        <p class="theirs"><b>You asked for</b>SOPs done, first pod audited, running clients in Slack.</p>
+        <ul>
+          <li>SOPs, training calls and the stack, including Loop and Skio, done in weeks one to two.</li>
+          <li>Ten-minute audit on every account in pod one; top opportunity and risk written down.</li>
+          <li>Leading client calls and Slack; the pod works from my briefs.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.1s">
+        <p class="when">FIRST 60 DAYS</p>
+        <h3>Tests and offers live</h3>
+        <p class="theirs"><b>You asked for</b>Zero-day churn and M1 analysed, sized tests live, new offer per account, pod two running.</p>
+        <ul>
+          <li>Zero-day churn and M1 retention read for every account.</li>
+          <li>One sized cohort or holdout test live per account.</li>
+          <li>At least one new or restructured offer per account.</li>
+          <li>Pod two running, vendor intros made where the stack has gaps.</li>
+        </ul>
+      </div>
+      <div class="phase" data-reveal style="--d:.2s">
+        <p class="when">FIRST 90 DAYS</p>
+        <h3>Results and independence</h3>
+        <p class="theirs"><b>You asked for</b>Measurable movement, both pods independent, founders see you as their retention lead.</p>
+        <ul>
+          <li>First test reads show movement in churn, retention or revenue.</li>
+          <li>Both pods run without leadership; only out-of-scope issues escalate.</li>
+          <li>Founders come to me first on retention.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Where I've <span>done the work.</span></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain<small>consumer brands, European markets</small></p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Own the retention and monetisation plan end to end: acquisition, conversion, churn prevention and win-back.</li>
+            <li>Run A/B, multivariate and holdout tests on copy, cadence, offers and channels, with cohort reads on LTV.</li>
+            <li>Design offers and win-back programmes by segment (RFM, behavioural scoring), balancing response against cost.</li>
+            <li>Automate email, SMS, push and in-app journeys; own deliverability, data integrations and audience QA.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain<small>multiple European brands</small></p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul><li>Ran CRM operations for several brands at the same time, above SLA targets, across time zones and peak periods.</li></ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC<small>subscription app, iOS &amp; Android</small></p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Owned subscription retention end to end: onboarding, activation, trial-to-paid, renewals and churn.</li>
+            <li>Timed paywalls, upsells and renewals to moments of value with RevenueCat, instead of discounting.</li>
+            <li>Ran A/B and multivariate tests to lift trial-to-paid and reduce churn; defined the event taxonomy and cohorts.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <ul class="stack" data-reveal>
+      <li>Klaviyo</li><li>Braze</li><li>Customer.io</li><li>Optimove</li><li>RevenueCat</li><li>HubSpot</li><li>Email · SMS · Push · In-app</li><li>Holdouts &amp; cohorts</li><li>RFM segmentation</li><li>AI analysis &amp; reporting</li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Get in touch</p>
+    <h2 class="h2" data-reveal>Give me an account. <span>I'll find the leak.</span></h2>
+    <p class="intro" data-reveal>Based in Spain, remote, full-time and exclusive. Happy to do a live audit of any account you choose as part of the process.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-or" href="mailto:htmelh@gmail.com?subject=Sr%20Retention%20Strategist%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal_Retention.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · Retention &amp; Lifecycle</span>
+    <span>Personal application page. Not affiliated with Prosana.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
