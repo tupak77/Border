@@ -1,0 +1,109 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover, user-scalable=no">
+  <title>Noor · Dhikr diario</title>
+  <meta name="description" content="Tu tasbih diario: 100 Astaghfirullah, 100 La ilaha illa Allah y 100 Salawat.">
+  <meta name="theme-color" content="#070f1c">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Noor">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Cormorant+Garamond:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <canvas id="sky" aria-hidden="true"></canvas>
+
+  <main class="app">
+    <header class="top">
+      <div class="brand">
+        <svg class="moon" id="moon" viewBox="0 0 40 40" aria-hidden="true">
+          <defs>
+            <mask id="moonMask">
+              <rect width="40" height="40" fill="#fff"/>
+              <circle id="moonShadow" cx="28" cy="16" r="14" fill="#000"/>
+            </mask>
+          </defs>
+          <circle cx="20" cy="20" r="14" fill="url(#moonGrad)" mask="url(#moonMask)"/>
+          <linearGradient id="moonGrad" x1="0" y1="0" x2="1" y2="1">
+            <stop offset="0" stop-color="#f6dc9a"/><stop offset="1" stop-color="#c9973f"/>
+          </linearGradient>
+        </svg>
+        <div>
+          <h1>Noor</h1>
+          <p class="date" id="date"></p>
+        </div>
+      </div>
+      <div class="top-actions">
+        <button class="chip" id="streakBtn" aria-label="Racha y calendario">
+          <span class="flame">✦</span><span id="streak">0</span>
+        </button>
+        <button class="icon-btn" id="soundBtn" aria-label="Sonido">
+          <svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path class="wave" d="M16 8.5a5 5 0 0 1 0 7M18.5 6a8.5 8.5 0 0 1 0 12"/></svg>
+        </button>
+      </div>
+    </header>
+
+    <nav class="tabs" id="tabs" role="tablist"></nav>
+
+    <section class="stage" id="stage" aria-live="polite">
+      <div class="ring-wrap">
+        <svg class="ring" id="ring" viewBox="0 0 320 320" aria-hidden="true"></svg>
+        <button class="tap" id="tap" aria-label="Contar">
+          <span class="arabic" id="arabic"></span>
+          <span class="count"><b id="count">0</b><small>/100</small></span>
+          <span class="translit" id="translit"></span>
+        </button>
+      </div>
+      <p class="meaning" id="meaning"></p>
+      <p class="hint" id="hint">Toca en cualquier parte del círculo</p>
+    </section>
+
+    <footer class="bottom">
+      <button class="ghost" id="undoBtn">↶ Deshacer</button>
+      <div class="total"><span id="total">0</span><small> / 300 hoy</small></div>
+      <button class="ghost" id="resetBtn">↺ Reiniciar</button>
+    </footer>
+  </main>
+
+  <!-- History sheet -->
+  <div class="sheet" id="sheet" hidden>
+    <div class="sheet-card" role="dialog" aria-labelledby="sheetTitle">
+      <div class="grab"></div>
+      <h2 id="sheetTitle">Tu constancia</h2>
+      <div class="stats">
+        <div><b id="sStreak">0</b><span>racha actual</span></div>
+        <div><b id="sBest">0</b><span>mejor racha</span></div>
+        <div><b id="sAll">0</b><span>dhikr totales</span></div>
+      </div>
+      <div class="cal-head" id="calHead"></div>
+      <div class="cal" id="cal"></div>
+      <div class="legend"><i class="l0"></i>Nada <i class="l1"></i>Parcial <i class="l3"></i>Completo</div>
+      <p class="quote">«Las obras más amadas por Allah son las más constantes, aunque sean pocas.»<br><span>— Bujari y Muslim</span></p>
+      <button class="primary" id="closeSheet">Cerrar</button>
+    </div>
+  </div>
+
+  <!-- Celebration -->
+  <div class="celebrate" id="celebrate" hidden>
+    <div class="cel-card">
+      <div class="cel-moon"></div>
+      <p class="cel-ar">ٱلْحَمْدُ لِلَّٰهِ</p>
+      <h2>¡Día completado!</h2>
+      <p>300 recuerdos de Allah hoy. Que Él los acepte de ti.</p>
+      <button class="primary" id="closeCel">Amin ✦</button>
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+
+  <script src="app.js"></script>
+</body>
+</html>
