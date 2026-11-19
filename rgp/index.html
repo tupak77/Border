@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · Email</title>
+<meta name="description" content="Haitam El Harchal. Application for Email Marketing Coordinator (0284) via Remote Growth Partners." />
+<meta property="og:title" content="Haitam El Harchal · Email Marketing Coordinator application" />
+<meta property="og:description" content="Hands-on Klaviyo operator. Every send checked before anyone else sees it." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#F7F7F4" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%23111827'/%3E%3Cpath d='M18 33l9 9 19-20' fill='none' stroke='%2334D399' stroke-width='7' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Schibsted+Grotesk:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --bg: #f7f7f4;
+  --bg-2: #eeeee8;
+  --card: #ffffff;
+  --ink: #111827;
+  --ink-2: #374151;
+  --muted: #6b7280;
+  --line: rgba(17, 24, 39, 0.12);
+  --green: #059669;
+  --green-2: #d1fae5;
+  --red: #dc2626;
+  --red-2: #fee2e2;
+  --amber: #b45309;
+  --amber-2: #fef3c7;
+  --blue: #2563eb;
+  --blue-2: #dbeafe;
+  --sans: "Schibsted Grotesk", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--bg); color: var(--ink); font: 400 17px/1.65 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol, dl, dd { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--green-2); }
+.wrap { width: min(1140px, 100% - 40px); margin-inline: auto; }
+
+.nav { position: sticky; top: 0; z-index: 20; background: rgba(247, 247, 244, 0.88); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-bottom: 1px solid transparent; transition: border-color .3s; }
+.nav.solid { border-color: var(--line); }
+.nav .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; height: 68px; }
+.mark { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 700 15px/1 var(--sans); white-space: nowrap; }
+.mark i { width: 30px; height: 30px; border-radius: 8px; background: var(--ink); display: grid; place-items: center; }
+.nav-links { display: flex; gap: 22px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: var(--muted); }
+.nav-links a:hover { color: var(--ink); }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 10px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid var(--ink); transition: transform .25s var(--ease), background .25s, color .25s; white-space: nowrap; }
+.btn:hover { transform: translateY(-2px); }
+.btn-ink { background: var(--ink); color: var(--bg); }
+.btn-line { color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: var(--bg); }
+.btn-sm { padding: 10px 16px; font-size: 14px; }
+a:focus-visible, .btn:focus-visible { outline: 2px solid var(--green); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; padding: clamp(52px, 7vw, 96px) 0 clamp(64px, 9vw, 112px); overflow: hidden; }
+.hero::before { content: ""; position: absolute; inset: 0; background-image: repeating-linear-gradient(0deg, transparent 0 31px, rgba(17,24,39,.045) 31px 32px); mask-image: radial-gradient(ellipse 70% 70% at 75% 40%, #000 25%, transparent 75%); -webkit-mask-image: radial-gradient(ellipse 70% 70% at 75% 40%, #000 25%, transparent 75%); pointer-events: none; }
+.hero .wrap { position: relative; z-index: 1; display: grid; grid-template-columns: 1.02fr 0.98fr; gap: 52px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12.5px/1.3 var(--mono); color: var(--ink-2); background: var(--card); border: 1px solid var(--line); padding: 8px 14px; border-radius: 999px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--green); flex: none; }
+.hero h1 { margin-top: 24px; font: 800 clamp(38px, 5.2vw, 68px)/1.03 var(--sans); letter-spacing: -0.035em; }
+.hero h1 span { color: var(--green); }
+.hero .lead { margin-top: 22px; max-width: 54ch; font-size: clamp(17px, 1.5vw, 19px); color: var(--ink-2); }
+.hero .ctas { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 12px; }
+.who { margin-top: 30px; display: flex; align-items: center; gap: 14px; }
+.who img { width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: 2px solid var(--card); box-shadow: 0 4px 14px rgba(17,24,39,.15); }
+.who p { font-size: 14px; color: var(--muted); line-height: 1.4; }
+.who strong { color: var(--ink); display: block; font-size: 15px; }
+
+/* QA log */
+.log { justify-self: center; width: min(480px, 100%); background: var(--card); border: 1px solid var(--line); border-radius: 18px; box-shadow: 0 50px 90px -40px rgba(17,24,39,.45); overflow: hidden; font-family: var(--mono); }
+.log .bar { display: flex; justify-content: space-between; gap: 10px; padding: 13px 16px; background: var(--ink); color: #e5e7eb; font-size: 12px; }
+.log .bar b { color: #34d399; font-weight: 500; }
+.log .meta { padding: 14px 16px 8px; display: grid; gap: 4px; font-size: 12.5px; color: var(--muted); }
+.log .meta b { color: var(--ink); font-weight: 600; }
+.items { padding: 6px 12px 12px; display: grid; gap: 6px; }
+.it { display: grid; grid-template-columns: 22px 1fr; gap: 10px; padding: 9px 10px; border-radius: 10px; font-size: 12.5px; line-height: 1.45; color: var(--ink-2); opacity: 0; transform: translateY(6px); animation: up .45s var(--ease) forwards; }
+.it i { width: 20px; height: 20px; border-radius: 6px; display: grid; place-items: center; font-style: normal; font-size: 12px; font-weight: 600; }
+.it.ok i { background: var(--green-2); color: var(--green); }
+.it.bad { background: #fff7f7; }
+.it.bad i { background: var(--red-2); color: var(--red); }
+.it.warn { background: #fffbeb; }
+.it.warn i { background: var(--amber-2); color: var(--amber); }
+.it b { color: var(--ink); font-weight: 600; }
+.it em { display: block; font-style: normal; color: var(--green); margin-top: 2px; }
+.items .it:nth-child(1) { animation-delay: .2s; }
+.items .it:nth-child(2) { animation-delay: .45s; }
+.items .it:nth-child(3) { animation-delay: .7s; }
+.items .it:nth-child(4) { animation-delay: .95s; }
+.items .it:nth-child(5) { animation-delay: 1.2s; }
+.items .it:nth-child(6) { animation-delay: 1.45s; }
+.items .it:nth-child(7) { animation-delay: 1.7s; }
+.log .foot { display: flex; justify-content: space-between; gap: 10px; padding: 12px 16px; border-top: 1px solid var(--line); font-size: 12.5px; }
+.log .foot b { color: var(--green); }
+@keyframes up { to { opacity: 1; transform: none; } }
+.log-cap { margin-top: 14px; text-align: center; font-size: 12px; color: var(--muted); }
+
+/* sections */
+section.block { padding: clamp(72px, 10vw, 124px) 0; }
+.alt { background: var(--bg-2); }
+.dark { background: var(--ink); color: var(--bg); }
+.kicker { font: 500 12.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: var(--green); }
+.h2 { margin-top: 14px; font: 800 clamp(30px, 4vw, 50px)/1.06 var(--sans); letter-spacing: -0.03em; max-width: 22ch; }
+.h2 span { color: var(--green); }
+.intro { margin-top: 18px; max-width: 64ch; color: var(--ink-2); }
+.dark .kicker { color: #34d399; }
+.dark .h2 span { color: #34d399; }
+.dark .intro { color: rgba(247,247,244,.72); }
+
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* why execution */
+.why { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.why > div { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+.why .n { font: 600 12px/1 var(--mono); color: var(--green); }
+.why h3 { margin-top: 10px; font: 700 20px/1.25 var(--sans); }
+.why p { margin-top: 10px; font-size: 15.5px; color: var(--ink-2); line-height: 1.6; }
+
+/* fit */
+.fit { margin-top: 36px; border-top: 1px solid var(--line); }
+.fit li { display: grid; grid-template-columns: 24px 0.9fr 1.4fr; gap: 20px; padding: 20px 0; border-bottom: 1px solid var(--line); }
+.fit .chk { width: 22px; height: 22px; border-radius: 6px; display: grid; place-items: center; font-size: 12px; font-weight: 700; margin-top: 2px; }
+.fit .y { background: var(--green-2); color: var(--green); }
+.fit .p { background: var(--amber-2); color: var(--amber); }
+.fit .ask { font: 700 17.5px/1.35 var(--sans); }
+.fit .ans { color: var(--ink-2); font-size: 16px; }
+.fit .ans strong { color: var(--ink); font-weight: 600; }
+
+/* checklist */
+.cl { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+.grp { background: rgba(255,255,255,.04); border: 1px solid rgba(255,255,255,.12); border-radius: 16px; padding: 22px; }
+.grp h3 { font: 600 12.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: #34d399; }
+.grp ul { margin-top: 14px; display: grid; gap: 10px; }
+.grp li { display: grid; grid-template-columns: 18px 1fr; gap: 10px; font-size: 15px; color: rgba(247,247,244,.85); line-height: 1.45; }
+.grp li::before { content: ""; width: 14px; height: 14px; margin-top: 4px; border-radius: 4px; border: 1.5px solid rgba(52,211,153,.7); }
+.cl-note { margin-top: 22px; font-size: 14.5px; color: rgba(247,247,244,.6); max-width: 72ch; }
+
+/* sensitivity */
+.sens { margin-top: 40px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+.case { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 22px; }
+.case .lbl { font: 500 11.5px/1 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--amber); }
+.case h3 { margin-top: 10px; font: 700 18px/1.3 var(--sans); }
+.case .row { margin-top: 12px; padding: 10px 12px; border-radius: 10px; font-size: 14.5px; line-height: 1.5; }
+.case .risk { background: #fff7f7; color: var(--ink-2); }
+.case .do { background: #f0fdf4; color: var(--ink-2); }
+.case .row b { display: block; font: 600 11px/1.4 var(--mono); text-transform: uppercase; letter-spacing: .05em; }
+.case .risk b { color: var(--red); }
+.case .do b { color: var(--green); }
+
+/* report + tools */
+.two { margin-top: 40px; display: grid; grid-template-columns: 1.1fr 0.9fr; gap: 18px; align-items: start; }
+.panel { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 24px; }
+.panel .lbl { font: 500 12px/1 var(--mono); text-transform: uppercase; letter-spacing: .05em; color: var(--muted); }
+.panel h3 { margin-top: 10px; font: 700 21px/1.2 var(--sans); }
+.kpis { margin-top: 14px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 8px; }
+.kpis div { background: var(--bg); border-radius: 10px; padding: 12px; }
+.kpis b { display: block; font: 600 18px/1 var(--mono); }
+.kpis small { display: block; margin-top: 6px; font-size: 12px; color: var(--muted); line-height: 1.35; }
+.kpis .up { color: var(--green); }
+.kpis .dn { color: var(--red); }
+.obs { margin-top: 12px; display: grid; gap: 8px; }
+.obs li { padding: 10px 12px; border-radius: 10px; border: 1px dashed var(--line); font-size: 14.5px; color: var(--ink-2); line-height: 1.5; }
+.obs li b { color: var(--ink); }
+.panel ul.tl { margin-top: 14px; display: grid; gap: 12px; }
+.panel ul.tl li { display: grid; grid-template-columns: 30px 1fr; gap: 12px; font-size: 15px; color: var(--ink-2); line-height: 1.5; }
+.panel ul.tl li i { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; font-style: normal; font: 600 12px/1 var(--mono); background: var(--blue-2); color: var(--blue); }
+.panel ul.tl li b { color: var(--ink); }
+
+/* day */
+.day { margin-top: 40px; display: grid; grid-template-columns: repeat(5, 1fr); gap: 10px; }
+.slot { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px; }
+.slot .t { font: 600 12px/1.4 var(--mono); color: var(--green); }
+.slot .t small { display: block; color: var(--muted); font-weight: 500; }
+.slot h3 { margin-top: 8px; font: 700 16px/1.25 var(--sans); }
+.slot p { margin-top: 6px; font-size: 14px; color: var(--ink-2); line-height: 1.45; }
+.slot.overlap { border-color: rgba(5,150,105,.45); background: #f6fdf9; }
+.day-note { margin-top: 18px; font-size: 14px; color: var(--muted); }
+
+/* experience */
+.xp { margin-top: 40px; display: grid; gap: 14px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 32px; background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 26px; }
+.job .when { font: 400 13px/1.4 var(--mono); color: var(--muted); }
+.job .co { margin-top: 6px; font: 800 22px/1.2 var(--sans); letter-spacing: -.02em; }
+.job h3 { font: 700 18px/1.3 var(--sans); }
+.job ul { margin-top: 12px; display: grid; gap: 8px; }
+.job li { position: relative; padding-left: 18px; color: var(--ink-2); font-size: 15.5px; }
+.job li::before { content: "✓"; position: absolute; left: 0; top: 0; color: var(--green); font-weight: 700; font-size: 13px; }
+.stack { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+.stack li { padding: 7px 12px; border-radius: 8px; background: var(--card); border: 1px solid var(--line); font-size: 14px; color: var(--ink-2); }
+
+.contact { text-align: center; padding: clamp(80px, 12vw, 140px) 0; background: radial-gradient(700px 360px at 50% 0%, rgba(5,150,105,.14), transparent 70%), var(--bg); }
+.contact .h2 { margin-inline: auto; max-width: 18ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 30px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 20px; font: 400 14px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 24px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 1060px) { .day { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 960px) {
+  .hero .wrap, .two { grid-template-columns: 1fr; }
+  .why, .cl, .sens { grid-template-columns: 1fr; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .fit li { grid-template-columns: 24px 1fr; }
+  .fit .ans { grid-column: 2; }
+  .job { grid-template-columns: 1fr; gap: 10px; padding: 22px; }
+  .day { grid-template-columns: 1fr 1fr; }
+}
+@media (max-width: 420px) { .day, .kpis { grid-template-columns: 1fr; } }
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  .it, [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="mark" href="#top"><i><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></i>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#fit">The fit</a>
+      <a href="#qa">Pre-send QA</a>
+      <a href="#sensitive">Sensitive sends</a>
+      <a href="#reporting">Reporting</a>
+      <a href="#day">My day</a>
+    </nav>
+    <a class="btn btn-ink btn-sm" href="#contact">Get in touch</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Application · 0284 · Email Marketing Coordinator</span>
+      <h1>The best send is the one <span>nobody had to fix.</span></h1>
+      <p class="lead">I've run Klaviyo and other ESPs hands-on for 7+ years: building campaigns and flows, defining segments, setting exclusions and frequency, and checking every send before it goes out. You set the strategy. I'll make sure it lands cleanly, on time, with the right audience, and I'll tell you what the data shows.</p>
+      <div class="ctas">
+        <a class="btn btn-ink" href="#contact">Let's talk →</a>
+        <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+      <div class="who">
+        <img src="./haitam.png" alt="Haitam El Harchal" width="52" height="52" />
+        <p><strong>Haitam El Harchal</strong>Email &amp; CRM · Klaviyo · Remote, with daily US Eastern overlap</p>
+      </div>
+    </div>
+
+    <div>
+      <div class="log" aria-label="Illustration: a pre-send QA log where three issues are caught and fixed">
+        <p class="bar"><span>pre-send review · campaign</span><b>illustration</b></p>
+        <div class="meta">
+          <span><b>Spring sale · VIP early access</b></span>
+          <span>segment: VIP · 12,480 profiles · scheduled Thu 10:00</span>
+        </div>
+        <div class="items">
+          <div class="it ok"><i>✓</i><span>Segment logic matches the brief</span></div>
+          <div class="it bad"><i>!</i><span><b>Excludes guest checkouts.</b> 1,240 VIPs missing.<em>→ condition fixed, count re-checked</em></span></div>
+          <div class="it bad"><i>!</i><span><b>Missing first-name fallback.</b> "Hi ," for 8% of profiles.<em>→ default set to "Hi there"</em></span></div>
+          <div class="it ok"><i>✓</i><span>Links, UTMs and discount code tested</span></div>
+          <div class="it warn"><i>!</i><span><b>Scheduled 10:00 UTC</b> = 6:00 ET.<em>→ moved to 10:00 recipient time</em></span></div>
+          <div class="it ok"><i>✓</i><span>Excluded: bought full price in the last 7 days</span></div>
+          <div class="it ok"><i>✓</i><span>Suppressions, frequency cap, mobile render</span></div>
+        </div>
+        <p class="foot"><span>3 caught · 0 sent wrong</span><b>ready for approval</b></p>
+      </div>
+      <p class="log-cap">Illustration with made-up data. The kind of problems I catch before a send reaches the marketing leads.</p>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="why">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Why this role</p>
+    <h2 class="h2" data-reveal>Yes, I've done strategy. <span>I want to master the craft.</span></h2>
+    <p class="intro" data-reveal>You're right to ask why someone with my background wants an execution role. The honest answer:</p>
+    <div class="why">
+      <div data-reveal><span class="n">01</span><h3>The craft is the part I like most</h3><p>Segment logic, exclusions, timing, a clean QA pass. That's where emails go right or wrong, and it's the part of my work I've always been best at.</p></div>
+      <div data-reveal style="--d:.1s"><span class="n">02</span><h3>I know what strategy needs from execution</h3><p>Having sat on the other side, I know what marketing leads need: sends that go out as briefed, no surprises, and data they can act on.</p></div>
+      <div data-reveal style="--d:.2s"><span class="n">03</span><h3>I'm here to stay in the lane</h3><p>I'll raise what I see in the data, clearly and early. I won't try to rewrite the strategy. That's your call, and I'm comfortable with that.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="fit">
+  <div class="wrap">
+    <p class="kicker" data-reveal>The fit</p>
+    <h2 class="h2" data-reveal>Your checklist, <span>checked.</span></h2>
+    <ul class="fit">
+      <li data-reveal><span class="chk y">✓</span><p class="ask">3–6 years hands-on email, with direct ownership of a Klaviyo account</p><p class="ans">7+ years hands-on. I've built and run campaigns and flows myself in <strong>Klaviyo</strong>, Braze, Customer.io and Optimove, not overseen someone else doing it.</p></li>
+      <li data-reveal><span class="chk y">✓</span><p class="ask">Deep Klaviyo segmentation, flows, campaigns and send logic</p><p class="ans">Behavioural and <strong>RFM segments</strong>, triggered flows, timing, exclusions, suppression and frequency rules on high-volume sends.</p></li>
+      <li data-reveal><span class="chk y">✓</span><p class="ask">Catching errors before a send goes out</p><p class="ans">Day-to-day <strong>audience definitions and QA</strong> for high-volume communications is part of my current role. <a href="#qa">My checklist is below.</a></p></li>
+      <li data-reveal><span class="chk y">✓</span><p class="ask">Judgment about audience sensitivity</p><p class="ans">Years in a regulated consumer industry, where the wrong message to the wrong person is a real problem. <a href="#sensitive">Three examples below.</a></p></li>
+      <li data-reveal><span class="chk y">✓</span><p class="ask">Regular email performance reports</p><p class="ans">I report campaign and retention results to leadership regularly, with a short list of observations from the data.</p></li>
+      <li data-reveal><span class="chk y">✓</span><p class="ask">AI tools in daily production</p><p class="ans">I use AI for drafting variants, checking copy and summarising results, and I review everything it produces before it's used.</p></li>
+      <li data-reveal><span class="chk p">~</span><p class="ask">Klaviyo and Slack integrations</p><p class="ans">I've worked with Tech on <strong>data integrations</strong> between our CRM and other systems. Klaviyo's Slack integration is a quick setup I'd own from week one.</p></li>
+      <li data-reveal><span class="chk y">✓</span><p class="ask">Strong written English, clear and prompt communication</p><p class="ans">I work in English every day with teams across Europe and time zones.</p></li>
+      <li data-reveal><span class="chk y">✓</span><p class="ask">Daily overlap with US Eastern time</p><p class="ans">I'm in Spain (6 hours ahead of ET). <a href="#day">My working day is below.</a></p></li>
+      <li data-reveal><span class="chk y">✓</span><p class="ask">Nice to have: QA checklists, deliverability, SMS in Klaviyo, approval chains</p><p class="ans"><strong>Deliverability</strong> (hygiene, suppression, reputation) and <strong>SMS</strong> are part of my current work, I use QA checklists on high-volume sends, and accuracy over speed is how I've always worked.</p></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block dark" id="qa">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Pre-send QA</p>
+    <h2 class="h2" data-reveal>The checklist <span>every send goes through.</span></h2>
+    <p class="intro" data-reveal>Before anything reaches the marketing leads for approval. It takes a few minutes, and it's the reason nobody else has to find the mistakes.</p>
+    <div class="cl">
+      <div class="grp" data-reveal>
+        <h3>Audience</h3>
+        <ul><li>Segment logic matches the brief, condition by condition</li><li>Count checked against last similar send</li><li>Spot-check 10 profiles by hand</li><li>Exclusions and suppressions applied</li><li>Frequency cap: not mailed too recently</li></ul>
+      </div>
+      <div class="grp" data-reveal style="--d:.08s">
+        <h3>Content</h3>
+        <ul><li>Personalisation fallbacks on every tag</li><li>Every link clicked, UTMs correct</li><li>Discount codes tested at checkout</li><li>Preview text, subject, sender name</li><li>Desktop, mobile and dark mode render</li></ul>
+      </div>
+      <div class="grp" data-reveal style="--d:.16s">
+        <h3>Timing &amp; context</h3>
+        <ul><li>Send time in the right time zone</li><li>Smart send / quiet hours as intended</li><li>No clash with flows or other campaigns</li><li>Sensitivity check for the segment</li><li>Approval logged in Slack</li></ul>
+      </div>
+    </div>
+    <p class="cl-note" data-reveal>Kept as a template in the team's docs, so the process doesn't depend on my memory and anyone can pick it up.</p>
+  </div>
+</section>
+
+<section class="block" id="sensitive">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Sensitive sends</p>
+    <h2 class="h2" data-reveal>When a correct email <span>is still the wrong email.</span></h2>
+    <p class="intro" data-reveal>The job post asks for judgment about how a message lands with a specific segment. Three examples of what I'd flag before it goes out.</p>
+    <div class="sens">
+      <article class="case" data-reveal>
+        <p class="lbl">Price</p>
+        <h3>Discount to people who just paid full price</h3>
+        <p class="row risk"><b>Risk</b>A 30% off email the day after someone bought at full price feels like a penalty for buying.</p>
+        <p class="row do"><b>Flag</b>Exclude recent full-price buyers, or ask the leads if they want a separate note for them.</p>
+      </article>
+      <article class="case" data-reveal style="--d:.1s">
+        <p class="lbl">Timing</p>
+        <h3>A cheerful campaign on a hard day</h3>
+        <p class="row risk"><b>Risk</b>A playful send scheduled during a major news event or a sensitive date for part of the audience.</p>
+        <p class="row do"><b>Flag</b>Raise it to the leads with a suggested new time. Their call, made with the facts.</p>
+      </article>
+      <article class="case" data-reveal style="--d:.2s">
+        <p class="lbl">Context</p>
+        <h3>A promo to someone with an open complaint</h3>
+        <p class="row risk"><b>Risk</b>A "we miss you" offer to a customer waiting on a refund or support reply.</p>
+        <p class="row do"><b>Flag</b>Suggest excluding profiles with open tickets, if the data is available in Klaviyo.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="block alt" id="reporting">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Reporting &amp; tools</p>
+    <h2 class="h2" data-reveal>Clear numbers, <span>observations, no surprises.</span></h2>
+    <div class="two">
+      <div class="panel" data-reveal>
+        <p class="lbl">Weekly report · made-up numbers</p>
+        <h3>What happened, and what I noticed</h3>
+        <div class="kpis">
+          <div><b class="up">+6%</b><small>revenue per recipient vs last week</small></div>
+          <div><b>62 / 38</b><small>flow vs campaign revenue split</small></div>
+          <div><b class="dn">0.09%</b><small>spam rate, up from 0.05%</small></div>
+        </div>
+        <ul class="obs">
+          <li><b>Observation:</b> spam complaints rose only in the "inactive 90+ days" segment. Worth reviewing whether it should still get campaigns.</li>
+          <li><b>Observation:</b> the welcome flow's second email converts better on mobile than desktop.</li>
+        </ul>
+      </div>
+      <div class="panel" data-reveal style="--d:.1s">
+        <p class="lbl">Klaviyo · Slack · AI</p>
+        <h3>Keeping the machine running</h3>
+        <ul class="tl">
+          <li><i>01</i><span><b>Slack alerts</b> for flow errors, failed syncs and unusual drops, so problems are seen in minutes.</span></li>
+          <li><i>02</i><span><b>Approvals in Slack</b> with the QA checklist attached, so every send has a clear sign-off.</span></li>
+          <li><i>03</i><span><b>AI for production:</b> subject line variants, copy checks against the brief, report summaries. Always reviewed by me.</span></li>
+          <li><i>04</i><span><b>Integrations checked weekly:</b> data syncs, catalogue feeds and list growth sources.</span></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="day">
+  <div class="wrap">
+    <p class="kicker" data-reveal>My day</p>
+    <h2 class="h2" data-reveal>Builds in the morning, <span>overlap in the afternoon.</span></h2>
+    <p class="intro" data-reveal>From Spain, I'm 6 hours ahead of US Eastern. Builds and QA happen before you wake up, so the overlap hours are for approvals, fixes and questions.</p>
+    <div class="day">
+      <div class="slot" data-reveal><p class="t">10:00<small>4:00 ET</small></p><h3>Check overnight</h3><p>Flow errors, deliverability, yesterday's results.</p></div>
+      <div class="slot" data-reveal style="--d:.05s"><p class="t">11:00<small>5:00 ET</small></p><h3>Build</h3><p>Campaigns and flows for the coming days.</p></div>
+      <div class="slot" data-reveal style="--d:.1s"><p class="t">14:00<small>8:00 ET</small></p><h3>QA</h3><p>Full pre-send review, ready for approval.</p></div>
+      <div class="slot overlap" data-reveal style="--d:.15s"><p class="t">15:00<small>9:00 ET</small></p><h3>Overlap</h3><p>Approvals, fixes, questions in Slack.</p></div>
+      <div class="slot overlap" data-reveal style="--d:.2s"><p class="t">18:00+<small>12:00 ET+</small></p><h3>Sends &amp; reports</h3><p>Watch sends go out; weekly report.</p></div>
+    </div>
+    <p class="day-note" data-reveal>Times in Spain. Flexible to match your team's busiest hours.</p>
+  </div>
+</section>
+
+<section class="block alt" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Where I've done <span>the hands-on work.</span></h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Build and send campaigns and automated flows across email, SMS, push and in-app, in a high-volume environment.</li>
+            <li>Manage day-to-day setup, audience segment definitions and QA for high-volume sends.</li>
+            <li>Run A/B tests on subject lines, copy, cadence and offers, and report results to leadership.</li>
+            <li>Work with Tech and Analytics on deliverability, data integrations and troubleshooting.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul><li>Ran real-time CRM operations across several European brands, above SLA targets, with processes built for accuracy under volume.</li></ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Built and ran email, push and in-app journeys end to end, including segmentation and triggers.</li>
+            <li>Defined the event tracking taxonomy with Product and Analytics.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <ul class="stack" data-reveal>
+      <li>Klaviyo</li><li>Braze</li><li>Customer.io</li><li>Optimove</li><li>HubSpot</li><li>Email · SMS · Push</li><li>Segmentation</li><li>Pre-send QA</li><li>Deliverability</li><li>A/B testing</li><li>Slack</li><li>AI tools</li>
+    </ul>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Get in touch</p>
+    <h2 class="h2" data-reveal>Happy to do a <span>test build.</span></h2>
+    <p class="intro" data-reveal>If it helps, give me a brief and a sandbox account and I'll build and QA a campaign so you can see how I work.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=0284%20Email%20Marketing%20Coordinator%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · Email &amp; CRM</span>
+    <span>Personal application page. Not affiliated with Remote Growth Partners or its client.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
