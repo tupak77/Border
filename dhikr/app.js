@@ -2,17 +2,16 @@
   'use strict';
 
   const GOAL = 100;
+  // Each dhikr gets its own misbaha stone.
   const DHIKR = [
-    { ar: 'أَسْتَغْفِرُ ٱللَّٰهَ', tab: 'أستغفر الله', tr: 'Astaghfirullah', es: '«Pido perdón a Allah»', color: '#8fd3c1' },
-    { ar: 'لَا إِلَٰهَ إِلَّا ٱللَّٰهُ', tab: 'لا إله إلا الله', tr: 'La ilaha illa Allah', es: '«No hay más divinidad que Allah»', color: '#e8c77a' },
-    { ar: 'ٱللَّٰهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ ﷺ', tab: 'صلوات ﷺ', tr: 'Allahumma salli ʿala Muhammad', es: '«Oh Allah, envía Tus bendiciones sobre Muhammad ﷺ»', color: '#c9a8f0' },
+    { ar: 'أَسْتَغْفِرُ ٱللَّٰهَ', short: 'أستغفر الله', tr: 'Astaghfirullah', stone: 'malaquita',
+      c: '#2e7d5b', hi: '#9ad6b4', lo: '#0c3324' },
+    { ar: 'لَا إِلَٰهَ إِلَّا ٱللَّٰهُ', short: 'لا إله إلا الله', tr: 'La ilaha illa Allah', stone: 'lapislázuli',
+      c: '#2d4c9c', hi: '#a3b6ee', lo: '#0f1c4a' },
+    { ar: 'ٱللَّٰهُمَّ صَلِّ عَلَىٰ مُحَمَّدٍ', short: 'صلوات على النبي ﷺ', tr: 'Salawat <span class="saw" lang="ar">ﷺ</span>', stone: 'ámbar',
+      c: '#c07a1e', hi: '#f6d08a', lo: '#5e3206' },
   ];
-  const MILESTONES = {
-    33: 'Un tercio · sigue así',
-    50: 'La mitad · Masha’Allah',
-    66: 'Dos tercios',
-    90: '¡Solo quedan 10!',
-  };
+  const MILESTONES = { 33: 'Un tercio', 50: 'La mitad', 66: 'Dos tercios', 90: 'Quedan diez' };
 
   const $ = (id) => document.getElementById(id);
   const KEY = 'noor:v1';
@@ -28,99 +27,76 @@
   };
   let today = dayKey();
   const counts = () => (state.days[today] ||= [0, 0, 0]);
-  const isComplete = (arr) => arr && arr.every((n) => n >= GOAL);
+  const sum = (arr) => (arr || []).reduce((a, b) => a + Math.min(b, GOAL), 0);
+  const isComplete = (arr) => !!arr && arr.every((n) => n >= GOAL);
 
   let current = counts().findIndex((n) => n < GOAL);
   if (current < 0) current = 0;
 
-  // ---------- ring ----------
-  const ring = $('ring');
-  const NS = 'http://www.w3.org/2000/svg';
-  const beads = [];
-  (() => {
-    const cx = 160, cy = 160, R = 148;
-    const g = document.createElementNS(NS, 'circle');
-    g.setAttribute('cx', cx); g.setAttribute('cy', cy); g.setAttribute('r', R);
-    g.setAttribute('class', 'glow');
-    ring.appendChild(g);
-    for (let i = 0; i < GOAL; i++) {
-      const a = (i / GOAL) * Math.PI * 2 - Math.PI / 2;
-      const c = document.createElementNS(NS, 'circle');
-      const big = i === 32 || i === 65 || i === 99;
-      c.setAttribute('cx', (cx + R * Math.cos(a)).toFixed(2));
-      c.setAttribute('cy', (cy + R * Math.sin(a)).toFixed(2));
-      c.setAttribute('r', big ? 5.6 : 4);
-      c.setAttribute('class', 'bead' + (big ? ' big' : ''));
-      ring.appendChild(c);
-      beads.push(c);
-    }
-  })();
-
-  // ---------- tabs ----------
-  const tabs = $('tabs');
+  // ---------- ledger ----------
+  const list = $('list');
   DHIKR.forEach((d, i) => {
-    const b = document.createElement('button');
-    b.className = 'tab';
-    b.setAttribute('role', 'tab');
-    b.style.setProperty('--c', d.color);
-    b.innerHTML = `<span class="t-ar">${d.tab}</span><span class="t-n"></span><span class="bar"></span>`;
-    b.addEventListener('click', () => { select(i); tick(4); });
-    tabs.appendChild(b);
+    const li = document.createElement('li');
+    li.innerHTML = `<button class="row" style="--c:${d.c};--hi:${d.hi};--lo:${d.lo}">
+      <span class="gem" aria-hidden="true"></span>
+      <span class="name"><span class="ar" lang="ar" dir="rtl">${d.short}</span><span class="lat">${d.tr} · ${d.stone}</span></span>
+      <span class="n"><b>0</b> / ${GOAL}</span>
+      <span class="bar" aria-hidden="true"></span>
+    </button>`;
+    li.firstElementChild.addEventListener('click', () => { if (i !== current) { select(i); vibrate(6); } });
+    list.appendChild(li);
   });
+  const rows = [...list.querySelectorAll('.row')];
 
   // ---------- render ----------
-  function render(popIndex = -1) {
+  function render() {
     const c = counts();
-    const n = c[current];
     const d = DHIKR[current];
-    document.body.dataset.d = current;
-    document.querySelector('meta[name=theme-color]').content = '#070f1c';
-
-    $('arabic').textContent = d.ar;
-    $('translit').textContent = d.tr;
-    $('meaning').textContent = d.es;
-    $('count').textContent = n;
-    $('tap').classList.toggle('complete', n >= GOAL);
-
-    beads.forEach((b, i) => {
-      b.classList.toggle('on', i < n);
-      b.classList.toggle('next', i === n);
-      if (i === popIndex) { b.classList.remove('pop'); void b.getBBox(); b.classList.add('pop'); }
+    document.documentElement.style.setProperty('--stone', d.c);
+    document.documentElement.style.setProperty('--stone-hi', d.hi);
+    $('phrase').textContent = d.ar;
+    $('count').textContent = c[current];
+    rows.forEach((r, i) => {
+      r.setAttribute('aria-current', i === current);
+      r.classList.toggle('full', c[i] >= GOAL);
+      r.querySelector('b').textContent = c[i];
+      r.querySelector('.bar').style.width = Math.min(100, c[i]) + '%';
     });
-
-    [...tabs.children].forEach((t, i) => {
-      t.classList.toggle('active', i === current);
-      t.classList.toggle('done', c[i] >= GOAL);
-      t.setAttribute('aria-selected', i === current);
-      t.querySelector('.t-n').textContent = `${c[i]}/${GOAL}`;
-      t.querySelector('.bar').style.width = `${Math.min(100, c[i])}%`;
-    });
-
-    const total = c.reduce((a, b) => a + Math.min(b, GOAL), 0);
-    $('total').textContent = total;
+    $('total').textContent = sum(c);
     $('streak').textContent = streak().current;
-
-    // Moon waxes as the day fills: crescent → full
-    const p = total / (GOAL * 3);
-    $('moonShadow').setAttribute('cx', (26 + p * 26).toFixed(1));
+    beads.target(c[current]);
   }
-
   function select(i) {
     current = i;
+    beads.setStone(DHIKR[i]);
+    setNote();
     render();
   }
 
-  // ---------- date ----------
+  let noteT;
+  function setNote(msg) {
+    const n = $('note');
+    clearTimeout(noteT);
+    if (msg) {
+      n.textContent = msg; n.classList.add('flash');
+      noteT = setTimeout(() => setNote(), 2200);
+    } else {
+      const left = GOAL - counts()[current];
+      n.textContent = left > 0 ? `de ${GOAL}` : 'completo';
+      n.classList.remove('flash');
+    }
+  }
+
+  // ---------- dates ----------
   function renderDate() {
     const now = new Date();
-    let s = now.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'short' }).replace('.', '');
-    s = s[0].toUpperCase() + s.slice(1);
+    let g = now.toLocaleDateString('es-ES', { weekday: 'long', day: 'numeric', month: 'short' }).replace('.', '');
+    $('dateG').textContent = g.charAt(0).toUpperCase() + g.slice(1);
     try {
-      const h = new Intl.DateTimeFormat('es-u-ca-islamic-umalqura', { day: 'numeric', month: 'long', year: 'numeric' }).formatToParts(now);
-      const get = (t) => (h.find((p) => p.type === t) || {}).value;
-      if (get('month')) s += ` · ${get('day')} ${get('month')} ${String(get('year')).replace(/\D/g, '')} H`;
-    } catch (_) {}
-    $('date').textContent = s;
+      const p = new Intl.DateTimeFormat('es-u-ca-islamic-umalqura', { day: 'numeric', month: 'long', year: 'numeric' }).formatToParts(now);
+      const get = (t) => (p.find((x) => x.type === t) || {}).value || '';
+      $('dateH').textContent = `${get('day')} ${get('month')} ${get('year').replace(/\D/g, '')} H`;
+    } catch (_) { $('dateH').textContent = ''; }
   }
 
   // ---------- streaks ----------
@@ -129,255 +105,272 @@
     let cur = 0;
     if (!isComplete(state.days[dayKey(d)])) d.setDate(d.getDate() - 1);
     while (isComplete(state.days[dayKey(d)])) { cur++; d.setDate(d.getDate() - 1); }
-    // best
     const keys = Object.keys(state.days).filter((k) => isComplete(state.days[k])).sort();
     let best = 0, run = 0, prev = null;
     for (const k of keys) {
       const t = new Date(k + 'T12:00:00');
-      if (prev && Math.round((t - prev) / 864e5) === 1) run++; else run = 1;
+      run = prev && Math.round((t - prev) / 864e5) === 1 ? run + 1 : 1;
       best = Math.max(best, run); prev = t;
     }
-    return { current: cur, best };
+    state.best = Math.max(state.best || 0, best);
+    return { current: cur, best: state.best };
   }
 
-  // ---------- feedback ----------
-  let ac;
-  function tone(freq, dur = 0.12, vol = 0.08, type = 'sine', delay = 0) {
-    if (!state.sound) return;
+  // ---------- sound & touch ----------
+  let ac, noise;
+  function audio() {
+    if (!state.sound) return null;
     try {
       ac ||= new (window.AudioContext || window.webkitAudioContext)();
       if (ac.state === 'suspended') ac.resume();
-      const t = ac.currentTime + delay;
-      const o = ac.createOscillator(), g = ac.createGain();
-      o.type = type; o.frequency.setValueAtTime(freq, t);
-      g.gain.setValueAtTime(0.0001, t);
-      g.gain.exponentialRampToValueAtTime(vol, t + 0.005);
-      g.gain.exponentialRampToValueAtTime(0.0001, t + dur);
-      o.connect(g).connect(ac.destination);
-      o.start(t); o.stop(t + dur + 0.02);
-    } catch (_) {}
+      if (!noise) {
+        noise = ac.createBuffer(1, ac.sampleRate * 0.05, ac.sampleRate);
+        const ch = noise.getChannelData(0);
+        for (let i = 0; i < ch.length; i++) ch[i] = (Math.random() * 2 - 1) * Math.pow(1 - i / ch.length, 6);
+      }
+      return ac;
+    } catch (_) { return null; }
+  }
+  // Two stones knocking: a filtered noise transient plus a short resonant body.
+  function clack(pitch = 1) {
+    const a = audio(); if (!a) return;
+    const t = a.currentTime;
+    [0, 0.045].forEach((dt, k) => {
+      const s = a.createBufferSource(); s.buffer = noise;
+      const f = a.createBiquadFilter(); f.type = 'bandpass'; f.frequency.value = (k ? 2600 : 3400) * pitch; f.Q.value = 6;
+      const g = a.createGain(); g.gain.value = k ? 0.35 : 0.6;
+      s.connect(f).connect(g).connect(a.destination); s.start(t + dt);
+    });
+  }
+  function bell(freqs) {
+    const a = audio(); if (!a) return;
+    freqs.forEach((fr, i) => {
+      const t = a.currentTime + i * 0.12;
+      const o = a.createOscillator(), g = a.createGain();
+      o.type = 'sine'; o.frequency.value = fr;
+      g.gain.setValueAtTime(0.0001, t); g.gain.exponentialRampToValueAtTime(0.07, t + 0.01); g.gain.exponentialRampToValueAtTime(0.0001, t + 1.4);
+      o.connect(g).connect(a.destination); o.start(t); o.stop(t + 1.5);
+    });
   }
   const vibrate = (p) => { try { navigator.vibrate && navigator.vibrate(p); } catch (_) {} };
-  const tick = (v = 8) => vibrate(v);
-
-  // Pentatonic-ish bead clicks so a round of 100 sounds like a soft melody
-  const SCALE = [523.25, 587.33, 659.25, 783.99, 880, 1046.5];
-  function beadSound(n) {
-    tone(SCALE[n % SCALE.length] * (current === 0 ? 0.75 : current === 2 ? 1.12 : 1), 0.16, 0.05, 'triangle');
-    tone(2400, 0.02, 0.015, 'square');
-  }
-  function chime() { [659.25, 783.99, 987.77, 1318.5].forEach((f, i) => tone(f, 0.9, 0.06, 'sine', i * 0.11)); }
-
-  let toastT;
-  function toast(msg) {
-    const t = $('toast');
-    t.textContent = msg; t.classList.add('show');
-    clearTimeout(toastT); toastT = setTimeout(() => t.classList.remove('show'), 1800);
-  }
-
-  function floatPlus(x, y) {
-    const el = document.createElement('div');
-    el.className = 'plus'; el.textContent = '+1';
-    el.style.left = x + 'px'; el.style.top = y + 'px';
-    document.body.appendChild(el);
-    setTimeout(() => el.remove(), 900);
-  }
 
   // ---------- counting ----------
-  let firstTap = true;
-  function increment(x, y) {
+  function increment() {
     rollover();
     const c = counts();
     if (c[current] >= GOAL) {
       const next = c.findIndex((n) => n < GOAL);
-      if (next >= 0) { select(next); toast('Seguimos con ' + DHIKR[next].tr); }
-      else toast('Ya completaste hoy ✦');
+      if (next >= 0) select(next); else setNote('Hoy ya está completo');
       return;
     }
-    c[current]++;
-    const n = c[current];
+    const n = ++c[current];
     save();
-    render(n - 1);
-
-    const cb = $('count'); cb.classList.remove('bump'); void cb.offsetWidth; cb.classList.add('bump');
-    if (firstTap) { firstTap = false; $('hint').classList.add('gone'); }
-    if (x != null) { floatPlus(x, y); sky.burst(x, y, 6, DHIKR[current].color); }
-
-    // bead burst on the ring
-    const r = beads[n - 1].getBoundingClientRect();
-    sky.burst(r.left + r.width / 2, r.top + r.height / 2, 4, DHIKR[current].color);
+    render();
+    const el = $('count'); el.classList.remove('tick'); void el.offsetWidth; el.classList.add('tick');
 
     if (n === GOAL) {
-      vibrate([30, 50, 30, 50, 90]);
-      chime();
-      const rr = $('tap').getBoundingClientRect();
-      sky.burst(rr.left + rr.width / 2, rr.top + rr.height / 2, 70, DHIKR[current].color, 1.6);
+      vibrate([30, 60, 30, 60, 100]);
+      bell([523.25, 659.25, 783.99]);
       if (isComplete(c)) {
-        render();
-        if (!state.celebrated[today]) {
-          state.celebrated[today] = true; save();
-          setTimeout(celebrate, 900);
-        }
+        setNote('completo');
+        if (!state.celebrated[today]) { state.celebrated[today] = true; save(); setTimeout(showDone, 1000); }
       } else {
-        toast('Masha’Allah · ' + DHIKR[current].tr + ' completo');
+        setNote('Masha’Allah');
         const next = c.findIndex((v) => v < GOAL);
-        setTimeout(() => select(next), 1100);
+        setTimeout(() => select(next), 1300);
       }
     } else if (MILESTONES[n]) {
-      vibrate([15, 40, 15]);
-      tone(1046.5, 0.4, 0.05); tone(1318.5, 0.5, 0.04, 'sine', 0.08);
-      toast(MILESTONES[n]);
+      vibrate([18, 50, 18]);
+      clack(0.8); bell([880]);
+      setNote(MILESTONES[n]);
     } else {
-      tick(9);
-      beadSound(n);
+      vibrate(8);
+      clack(1 + current * 0.08);
     }
   }
 
-  const wrap = document.querySelector('.ring-wrap');
-  wrap.addEventListener('pointerdown', (e) => {
+  const misbaha = $('misbaha');
+  misbaha.addEventListener('pointerdown', (e) => {
+    if (e.button > 0) return;
     e.preventDefault();
-    $('tap').classList.add('press');
-    increment(e.clientX, e.clientY);
+    misbaha.classList.add('press');
+    increment();
   });
-  const unpress = () => $('tap').classList.remove('press');
-  wrap.addEventListener('pointerup', unpress);
-  wrap.addEventListener('pointercancel', unpress);
-  wrap.addEventListener('pointerleave', unpress);
-  $('tap').addEventListener('click', (e) => { if (e.detail === 0) increment(); }); // keyboard
+  ['pointerup', 'pointercancel', 'pointerleave'].forEach((ev) => misbaha.addEventListener(ev, () => misbaha.classList.remove('press')));
   document.addEventListener('keydown', (e) => {
-    if (!$('sheet').hidden || !$('celebrate').hidden) return;
-    if (e.code === 'Space' || e.code === 'Enter') { e.preventDefault(); increment(); }
-    if (e.key === 'ArrowRight') select((current + 1) % 3);
-    if (e.key === 'ArrowLeft') select((current + 2) % 3);
-    if (e.key === 'Backspace') $('undoBtn').click();
+    if (!$('sheet').hidden || !$('done').hidden) { if (e.key === 'Escape') { $('sheet').hidden = true; $('done').hidden = true; } return; }
+    if ((e.code === 'Space' || e.code === 'Enter') && (e.target === misbaha || e.target === document.body)) { e.preventDefault(); increment(); }
+    if (e.key === 'ArrowDown') select((current + 1) % 3);
+    if (e.key === 'ArrowUp') select((current + 2) % 3);
   });
 
   $('undoBtn').addEventListener('click', () => {
     const c = counts();
-    if (c[current] > 0) { c[current]--; save(); render(); tick(5); }
-  });
-  $('resetBtn').addEventListener('click', () => {
-    if (confirm(`¿Reiniciar ${DHIKR[current].tr} a 0?`)) {
-      counts()[current] = 0; delete state.celebrated[today]; save(); render(); tick(20);
-    }
+    if (c[current] > 0) { c[current]--; if (!isComplete(c)) delete state.celebrated[today]; save(); render(); setNote(); vibrate(5); }
   });
 
   const soundBtn = $('soundBtn');
-  const syncSound = () => soundBtn.classList.toggle('off', !state.sound);
-  soundBtn.addEventListener('click', () => {
-    state.sound = !state.sound; save(); syncSound();
-    toast(state.sound ? 'Sonido activado' : 'Silencio');
-    if (state.sound) tone(880, 0.15, 0.05);
-  });
+  const syncSound = () => {
+    soundBtn.setAttribute('aria-pressed', state.sound);
+    soundBtn.setAttribute('aria-label', state.sound ? 'Sonido activado' : 'Sonido desactivado');
+  };
+  soundBtn.addEventListener('click', () => { state.sound = !state.sound; save(); syncSound(); if (state.sound) clack(); });
   syncSound();
 
-  // ---------- history sheet ----------
+  // ---------- constancia sheet ----------
   function openSheet() {
     const s = streak();
-    state.best = Math.max(state.best || 0, s.best);
-    $('sStreak').textContent = s.current;
-    $('sBest').textContent = state.best;
-    $('sAll').textContent = Object.values(state.days).reduce((a, arr) => a + arr.reduce((x, y) => x + Math.min(y, GOAL), 0), 0).toLocaleString('es-ES');
+    const days = (v) => `${v} ${v === 1 ? 'día' : 'días'}`;
+    $('sStreak').textContent = days(s.current);
+    $('sBest').textContent = days(s.best);
+    $('sAll').textContent = Object.values(state.days).reduce((a, arr) => a + sum(arr), 0).toLocaleString('es-ES');
+    $('resetName').textContent = DHIKR[current].tr;
+    $('resetConfirm').hidden = true;
 
     $('calHead').innerHTML = ['L', 'M', 'X', 'J', 'V', 'S', 'D'].map((d) => `<span>${d}</span>`).join('');
     const cal = $('cal'); cal.innerHTML = '';
     const now = new Date();
-    const start = new Date(); start.setDate(now.getDate() - ((now.getDay() + 6) % 7) - 28); // Monday, 4 weeks back
+    const start = new Date(); start.setDate(now.getDate() - ((now.getDay() + 6) % 7) - 28);
     for (let d = new Date(start), i = 0; i < 35; i++, d.setDate(d.getDate() + 1)) {
-      if (d > now) { cal.insertAdjacentHTML('beforeend', '<i class="empty"></i>'); continue; }
-      const k = dayKey(d);
-      const arr = state.days[k];
-      const tot = arr ? arr.reduce((a, b) => a + Math.min(b, GOAL), 0) : 0;
+      if (d > now) { cal.insertAdjacentHTML('beforeend', '<i class="x"></i>'); continue; }
+      const k = dayKey(d), tot = sum(state.days[k]);
       const lvl = tot === 0 ? 0 : tot >= 300 ? 3 : tot >= 150 ? 2 : 1;
-      cal.insertAdjacentHTML('beforeend', `<i class="l${lvl}${k === today ? ' today' : ''}" title="${k}: ${tot}/300">${d.getDate()}</i>`);
+      cal.insertAdjacentHTML('beforeend', `<i class="k${lvl}${k === today ? ' today' : ''}" title="${k}: ${tot}/300">${d.getDate()}</i>`);
     }
     $('sheet').hidden = false;
   }
   $('streakBtn').addEventListener('click', openSheet);
   $('closeSheet').addEventListener('click', () => ($('sheet').hidden = true));
   $('sheet').addEventListener('click', (e) => { if (e.target.id === 'sheet') $('sheet').hidden = true; });
+  $('resetBtn').addEventListener('click', () => ($('resetConfirm').hidden = false));
+  $('resetNo').addEventListener('click', () => ($('resetConfirm').hidden = true));
+  $('resetYes').addEventListener('click', () => {
+    counts()[current] = 0; delete state.celebrated[today]; save();
+    $('sheet').hidden = true; render(); setNote(); vibrate(20);
+  });
 
-  function celebrate() {
-    $('celebrate').hidden = false;
-    const w = innerWidth, h = innerHeight;
-    for (let i = 0; i < 6; i++) setTimeout(() => sky.burst(Math.random() * w, Math.random() * h * 0.6, 40, ['#e8c77a', '#8fd3c1', '#c9a8f0'][i % 3], 1.8), i * 250);
+  function showDone() {
+    const s = streak().current;
+    $('doneStreak').textContent = s;
+    $('doneDays').textContent = s === 1 ? 'día' : 'días';
+    $('done').hidden = false;
   }
-  $('closeCel').addEventListener('click', () => ($('celebrate').hidden = true));
+  $('closeDone').addEventListener('click', () => ($('done').hidden = true));
 
   // ---------- day rollover ----------
   function rollover() {
     const k = dayKey();
-    if (k !== today) {
-      today = k; current = 0; renderDate(); render();
-      toast('Nuevo día · Bismillah');
-    }
+    if (k !== today) { today = k; renderDate(); select(0); }
   }
   document.addEventListener('visibilitychange', () => { if (!document.hidden) rollover(); });
   setInterval(rollover, 60_000);
 
-  // ---------- sky (stars + particles) ----------
-  const sky = (() => {
-    const cv = $('sky'), ctx = cv.getContext('2d');
-    let W, H, dpr, stars = [], parts = [];
+  // ---------- the misbaha ----------
+  // 100 beads packed on a loop of string. Counted beads sit on one side, the
+  // rest on the other; one free gap travels around the loop as you count, the
+  // way a thumb pushes beads along a real misbaha.
+  const beads = (() => {
+    const cv = $('beads'), ctx = cv.getContext('2d');
+    const GAP = 3.2;          // free space on the string, in bead widths
+    const TASSEL = 0.26;      // radians left open at the bottom for the knot
+    const off = new Float32Array(GOAL).fill(GAP);
+    let n = 0, W = 0, H = 0, dpr = 1, stone = DHIKR[current], sprite = {}, raf = 0, sway = 0;
     const reduce = matchMedia('(prefers-reduced-motion: reduce)').matches;
-    function resize() {
-      dpr = Math.min(devicePixelRatio || 1, 2);
-      W = innerWidth; H = innerHeight;
-      cv.width = W * dpr; cv.height = H * dpr;
-      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
-      stars = Array.from({ length: Math.round((W * H) / 5200) }, () => ({
-        x: Math.random() * W, y: Math.random() * H * 0.9,
-        r: Math.random() * 1.1 + 0.2, p: Math.random() * Math.PI * 2, s: 0.4 + Math.random() * 1.2,
-      }));
-    }
-    addEventListener('resize', resize); resize();
 
-    let shoot = null, nextShoot = performance.now() + 4000;
-    function frame(t) {
-      ctx.clearRect(0, 0, W, H);
-      for (const s of stars) {
-        const a = reduce ? 0.6 : 0.35 + 0.45 * (0.5 + 0.5 * Math.sin(t / 1000 * s.s + s.p));
-        ctx.globalAlpha = a; ctx.fillStyle = '#f3ead6';
-        ctx.beginPath(); ctx.arc(s.x, s.y, s.r, 0, 6.283); ctx.fill();
-      }
-      // shooting star
-      if (!reduce && !shoot && t > nextShoot) {
-        shoot = { x: Math.random() * W * 0.7 + W * 0.3, y: Math.random() * H * 0.3, life: 1 };
-      }
-      if (shoot) {
-        shoot.x -= 9; shoot.y += 4; shoot.life -= 0.02;
-        const g = ctx.createLinearGradient(shoot.x, shoot.y, shoot.x + 90, shoot.y - 40);
-        g.addColorStop(0, `rgba(246,220,154,${shoot.life})`); g.addColorStop(1, 'rgba(246,220,154,0)');
-        ctx.globalAlpha = 1; ctx.strokeStyle = g; ctx.lineWidth = 1.5;
-        ctx.beginPath(); ctx.moveTo(shoot.x, shoot.y); ctx.lineTo(shoot.x + 90, shoot.y - 40); ctx.stroke();
-        if (shoot.life <= 0) { shoot = null; nextShoot = t + 6000 + Math.random() * 12000; }
-      }
-      // particles
-      for (let i = parts.length - 1; i >= 0; i--) {
-        const p = parts[i];
-        p.x += p.vx; p.y += p.vy; p.vy += 0.04; p.vx *= 0.985; p.life -= p.decay;
-        if (p.life <= 0) { parts.splice(i, 1); continue; }
-        ctx.globalAlpha = p.life; ctx.fillStyle = p.c;
-        ctx.beginPath(); ctx.arc(p.x, p.y, p.r * p.life + 0.3, 0, 6.283); ctx.fill();
-      }
-      ctx.globalAlpha = 1;
-      requestAnimationFrame(frame);
+    function resize() {
+      const r = cv.getBoundingClientRect();
+      dpr = Math.min(devicePixelRatio || 1, 3);
+      W = r.width; H = r.height;
+      cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr);
+      buildSprites(); kick();
     }
-    requestAnimationFrame(frame);
+    function geometry() {
+      const R = W * 0.43;
+      const cx = W / 2, cy = W / 2;
+      const span = Math.PI * 2 - TASSEL;
+      const step = span / (GOAL + GAP);
+      const br = Math.min(R * step * 0.5, 9);
+      return { R, cx, cy, step, br, a0: Math.PI / 2 + TASSEL / 2 };
+    }
+    function bead(rad, hi, mid, lo, alpha = 1) {
+      const s = Math.ceil(rad * 2 * dpr + 4);
+      const c = document.createElement('canvas'); c.width = c.height = s;
+      const x = c.getContext('2d'); const m = s / 2, r = rad * dpr;
+      x.globalAlpha = alpha;
+      const g = x.createRadialGradient(m - r * 0.35, m - r * 0.4, r * 0.1, m, m, r);
+      g.addColorStop(0, hi); g.addColorStop(0.55, mid); g.addColorStop(1, lo);
+      x.fillStyle = g; x.beginPath(); x.arc(m, m, r, 0, 7); x.fill();
+      x.globalAlpha = alpha * 0.85; x.fillStyle = 'rgba(255,255,255,.75)';
+      x.beginPath(); x.ellipse(m - r * 0.32, m - r * 0.38, r * 0.22, r * 0.13, -0.6, 0, 7); x.fill();
+      return c;
+    }
+    function buildSprites() {
+      const { br } = geometry();
+      const dark = matchMedia('(prefers-color-scheme: dark)').matches;
+      sprite.on = bead(br, stone.hi, stone.c, stone.lo);
+      sprite.off = bead(br * 0.94, stone.hi, stone.c, stone.lo, dark ? 0.42 : 0.26);
+      sprite.brass = bead(br * 0.78, '#f3dc9e', '#b88a35', '#5a3f0e');
+      sprite.imam = bead(br * 1.45, stone.hi, stone.c, stone.lo);
+    }
+
+    function draw(t) {
+      const ink = getComputedStyle(document.documentElement).getPropertyValue('--ink').trim() || '#14211c';
+      const { R, cx, cy, step, br, a0 } = geometry();
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      ctx.clearRect(0, 0, W, H);
+
+      // string
+      ctx.strokeStyle = ink; ctx.globalAlpha = 0.28; ctx.lineWidth = 1;
+      ctx.beginPath(); ctx.arc(cx, cy, R, a0 - step * 0.5, a0 + Math.PI * 2 - TASSEL + step * 0.5); ctx.stroke();
+
+      // knot, imam bead and tassel hanging from the bottom
+      const bx = cx, by = cy + R;
+      const swing = reduce ? 0 : Math.sin(t / 900) * 0.035 + sway;
+      ctx.save(); ctx.translate(bx, by); ctx.rotate(swing);
+      ctx.globalAlpha = 0.5; ctx.beginPath(); ctx.moveTo(0, 0); ctx.lineTo(0, br * 5); ctx.stroke();
+      const im = sprite.imam; ctx.globalAlpha = 1;
+      ctx.drawImage(im, -im.width / dpr / 2, br * 1.2, im.width / dpr, im.height / dpr * 1.35);
+      const ty = br * 5.2, tl = Math.min(H - by - ty - 4, W * 0.13);
+      ctx.strokeStyle = stone.c; ctx.lineWidth = 0.9; ctx.globalAlpha = 0.75;
+      for (let i = -7; i <= 7; i++) {
+        ctx.beginPath(); ctx.moveTo(i * 0.25, ty);
+        ctx.quadraticCurveTo(i * 0.9, ty + tl * 0.5, i * 1.6 + Math.sin(t / 700 + i) * (reduce ? 0 : 0.6), ty + tl);
+        ctx.stroke();
+      }
+      ctx.fillStyle = '#b88a35'; ctx.globalAlpha = 1;
+      ctx.fillRect(-br * 0.75, ty - 1, br * 1.5, br * 0.9);
+      ctx.restore();
+
+      // beads
+      let moving = false;
+      for (let i = 0; i < GOAL; i++) {
+        const tgt = i < n ? 0 : GAP;
+        const d = tgt - off[i];
+        if (Math.abs(d) > 0.002) { off[i] += reduce ? d : d * 0.22; moving = true; } else off[i] = tgt;
+        const a = a0 + (i + 0.5 + off[i]) * step;
+        const x = cx + R * Math.cos(a), y = cy + R * Math.sin(a);
+        const spacer = i === 32 || i === 65;
+        const sp = spacer ? sprite.brass : i < n ? sprite.on : sprite.off;
+        const s = sp.width / dpr;
+        ctx.globalAlpha = 1;
+        ctx.drawImage(sp, x - s / 2, y - s / 2, s, s);
+      }
+      sway *= 0.92;
+      if (moving || !reduce) raf = requestAnimationFrame(draw); else raf = 0;
+    }
+    function kick() { if (!raf) raf = requestAnimationFrame(draw); }
+
+    new ResizeObserver(resize).observe(cv);
+    matchMedia('(prefers-color-scheme: dark)').addEventListener?.('change', () => { buildSprites(); kick(); });
     return {
-      burst(x, y, n, c, power = 1) {
-        if (reduce) return;
-        for (let i = 0; i < n; i++) {
-          const a = Math.random() * 6.283, v = (0.6 + Math.random() * 2.4) * power;
-          parts.push({ x, y, vx: Math.cos(a) * v, vy: Math.sin(a) * v - 0.8, r: 1 + Math.random() * 2, life: 1, decay: 0.012 + Math.random() * 0.02, c });
-        }
-      },
+      target(v) { if (v > n) sway = 0.06; n = v; kick(); },
+      setStone(s) { stone = s; buildSprites(); off.fill(GAP); kick(); },
     };
   })();
 
   // ---------- boot ----------
   renderDate();
-  render();
+  select(current);
   if ('serviceWorker' in navigator) {
     addEventListener('load', () => navigator.serviceWorker.register('sw.js').catch(() => {}));
   }
