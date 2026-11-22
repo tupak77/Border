@@ -1,6 +1,7 @@
 import { useSyncExternalStore } from 'react';
 import { SCHEDULE, WORKOUTS, TOTAL_DAYS } from './data/program.js';
 import { EXERCISES } from './data/exercises.js';
+import { WEEK_MEALS, SLOTS } from './data/recipes.js';
 
 const KEY = 'forja:v1';
 
@@ -13,6 +14,9 @@ const initial = {
   weights: {}, // { 'YYYY-MM-DD': kg }
   habits: {}, // { date: { liss: true, ... } }
   meals: {}, // { date: { breakfast: true } }
+  mealPick: {}, // { date: { lunch: 'recipe-id' } }
+  water: {}, // { date: vasos }
+  shop: {}, // { 'ingrediente|unidad': true }
 };
 
 function load() {
@@ -251,4 +255,34 @@ export function logWeight(date, kg) {
     else weights[date] = kg;
     return { weights };
   });
+}
+
+// ───────── Nutrición ─────────
+
+/** Recetas planificadas para una fecha (plan semanal + cambios del usuario) */
+export function mealsFor(s, date) {
+  const idx = s.profile ? diffDays(s.profile.start, date) : 0;
+  const base = WEEK_MEALS[((idx % 7) + 7) % 7];
+  const picks = s.mealPick?.[date] || {};
+  return Object.fromEntries(SLOTS.map((sl) => [sl.id, picks[sl.id] || base[sl.id]]));
+}
+
+export function pickMeal(date, slot, id) {
+  setState((s) => ({ mealPick: { ...s.mealPick, [date]: { ...(s.mealPick?.[date] || {}), [slot]: id } } }));
+}
+
+export function setWater(date, n) {
+  setState((s) => ({ water: { ...s.water, [date]: Math.max(0, Math.min(16, n)) } }));
+}
+
+export function toggleShop(key) {
+  setState((s) => ({ shop: { ...s.shop, [key]: !s.shop?.[key] } }));
+}
+
+export function clearShop() {
+  setState({ shop: {} });
+}
+
+export function setTargets(targets) {
+  setState((s) => ({ profile: { ...s.profile, targets } }));
 }

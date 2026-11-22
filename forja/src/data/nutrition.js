@@ -1,40 +1,5 @@
 export const TARGETS = { kcal: 1800, protein: 190 };
 
-export const MEALS = [
-  {
-    id: 'breakfast',
-    name: 'Desayuno',
-    tag: 'Pre-entreno',
-    items: '2 bagels finos + 2 huevos y 2 lonchas de bacon de pavo + salsa a elegir',
-    kcal: 400,
-    protein: 40,
-  },
-  {
-    id: 'lunch',
-    name: 'Comida',
-    tag: 'Post-entreno',
-    items: '250 g de pechuga de pollo, 2 tortillas de trigo, ensalada + 1 scoop de clear whey',
-    kcal: 800,
-    protein: 90,
-  },
-  {
-    id: 'snack',
-    name: 'Merienda',
-    tag: 'Snack',
-    items: '1 lata de atún, ensalada y pan de pita',
-    kcal: 300,
-    protein: 30,
-  },
-  {
-    id: 'dinner',
-    name: 'Cena',
-    tag: 'Noche',
-    items: '150 g de skyr + granola alta en proteína, fruta y miel',
-    kcal: 300,
-    protein: 30,
-  },
-];
-
 export const HABITS = [
   { id: 'train', label: 'Entreno', hint: 'Sesión del día' },
   { id: 'liss', label: 'LISS', hint: '30–60 min' },
@@ -76,3 +41,13 @@ export const TRACKING = [
   'Medidas una vez al mes',
   'Registra tu rendimiento en el gym',
 ];
+
+export const ACTIVITY = [
+  { f: 1.2, label: 'Sedentario', hint: 'Trabajo sentado, sin entrenar' },
+  { f: 1.375, label: 'Ligero', hint: '1–3 entrenos por semana' },
+  { f: 1.55, label: 'Moderado', hint: '4 entrenos + LISS diario (este plan)' },
+  { f: 1.725, label: 'Alto', hint: 'Trabajo físico + entreno' },
+];
+
+export const WATER_GLASS_ML = 250;
+export const WATER_GOAL = 12; // 3 L

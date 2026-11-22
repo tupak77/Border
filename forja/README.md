@@ -9,7 +9,7 @@ PWA para seguir el programa **The Aggressive Cut Blueprint: 30 Days**: split de 
 - **Modo entreno**: registro de kg × reps por serie, lo que hiciste la última vez, temporizador de descanso con vibración y sonido, superserie de abdomen, LISS en minutos, récords (e1RM) y resumen al terminar.
 - **Ejercicios**: 25 ejercicios con vídeo de técnica de YouTube, pasos en español, tu historial y tu mejor marca.
 - **Progreso**: peso con media móvil de 7 días y línea de objetivo, volumen por sesión, récords e historial.
-- **Nutrición**: plan de 1800 kcal / 190 g de proteína con checklist de comidas, suplementos y consejos.
+- **Nutrición**: plan de comidas semanal (1800 kcal / 190 g), 16 recetas con ingredientes y pasos (las 4 del PDF marcadas), cambio de comidas, agua, lista de la compra automática y calculadora de TDEE/objetivo.
 - **PWA**: instalable, funciona offline (los vídeos necesitan conexión). Datos en el dispositivo, con exportar/importar en Ajustes.
 
 ## Desarrollo
@@ -32,6 +32,7 @@ Despliega `dist/` en cualquier hosting estático con HTTPS (Vercel, Netlify, Git
 
 - `src/data/program.js` — rutinas y calendario sacados del PDF
 - `src/data/exercises.js` — biblioteca de ejercicios + ID de vídeo de YouTube
-- `src/data/nutrition.js` — plan de comidas, suplementos y consejos
+- `src/data/recipes.js` — recetas, plan semanal de comidas y lista de la compra
+- `src/data/nutrition.js` — objetivos, suplementos y consejos
 - `src/store.js` — estado y persistencia (localStorage)
 - `src/screens/*` — pantallas
