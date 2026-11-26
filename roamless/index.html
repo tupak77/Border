@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Haitam El Harchal · CRM & Lifecycle</title>
+<meta name="description" content="Haitam El Harchal, CRM & Lifecycle. Application for the CRM & Lifecycle Marketing Specialist role at Roamless." />
+<meta property="og:title" content="Haitam El Harchal · CRM & Lifecycle" />
+<meta property="og:description" content="Hands-on lifecycle across email, push and in-app. Braze experience. Application for Roamless." />
+<meta property="og:image" content="./haitam.png" />
+<meta name="theme-color" content="#0F1320" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='16' fill='%230F1320'/%3E%3Crect x='14' y='38' width='7' height='12' rx='2' fill='%23FF5B2E'/%3E%3Crect x='25' y='30' width='7' height='20' rx='2' fill='%23FF5B2E'/%3E%3Crect x='36' y='22' width='7' height='28' rx='2' fill='%23FF5B2E'/%3E%3Crect x='47' y='14' width='7' height='36' rx='2' fill='%23FF5B2E'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet" />
+<style>
+:root {
+  --night: #0f1320;
+  --night-2: #181d2e;
+  --paper: #f6f4ef;
+  --card: #ffffff;
+  --ink: #12151f;
+  --ink-2: #444b5c;
+  --muted: #7d8496;
+  --line: rgba(18, 21, 31, 0.1);
+  --line-d: rgba(255, 255, 255, 0.12);
+  --signal: #ff5b2e;
+  --signal-soft: #ffe3d9;
+  --sky: #3d6bff;
+  --mint: #2ec4a0;
+  --display: "Space Grotesk", system-ui, sans-serif;
+  --sans: "Inter", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --mono: "JetBrains Mono", ui-monospace, monospace;
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body { margin: 0; background: var(--paper); color: var(--ink); font: 400 16.5px/1.6 var(--sans); -webkit-font-smoothing: antialiased; overflow-x: hidden; }
+h1, h2, h3, p, ul, ol, dl, dd { margin: 0; }
+ul, ol { padding: 0; list-style: none; }
+a { color: inherit; }
+img { display: block; max-width: 100%; }
+::selection { background: var(--signal); color: #fff; }
+.wrap { width: min(1160px, 100% - 40px); margin-inline: auto; }
+.mono { font-family: var(--mono); }
+
+/* nav */
+.nav { position: fixed; inset: 0 0 auto; z-index: 30; transition: background .3s, border-color .3s; border-bottom: 1px solid transparent; }
+.nav.solid { background: rgba(15, 19, 32, 0.85); backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px); border-color: var(--line-d); }
+.nav .wrap { height: 68px; display: flex; align-items: center; justify-content: space-between; color: #fff; }
+.logo { display: flex; align-items: center; gap: 10px; text-decoration: none; font: 600 15px/1 var(--display); }
+.bars { display: flex; align-items: flex-end; gap: 2.5px; height: 18px; }
+.bars i { width: 4px; border-radius: 1.5px; background: var(--signal); animation: bar 2.4s ease-in-out infinite; }
+.bars i:nth-child(1) { height: 30%; }
+.bars i:nth-child(2) { height: 55%; animation-delay: .15s; }
+.bars i:nth-child(3) { height: 80%; animation-delay: .3s; }
+.bars i:nth-child(4) { height: 100%; animation-delay: .45s; }
+@keyframes bar { 0%, 100% { opacity: 1; } 50% { opacity: .35; } }
+.nav-links { display: flex; gap: 26px; font-size: 14px; }
+.nav-links a { text-decoration: none; color: rgba(255,255,255,.65); }
+.nav-links a:hover { color: #fff; }
+
+.btn { display: inline-flex; align-items: center; gap: 8px; padding: 14px 22px; border-radius: 12px; font: 600 15px/1 var(--sans); text-decoration: none; border: 1.5px solid transparent; transition: transform .25s var(--ease), background .25s, color .25s, border-color .25s; }
+.btn:hover { transform: translateY(-2px); }
+.btn-signal { background: var(--signal); color: #fff; }
+.btn-signal:hover { background: #ff7048; }
+.btn-ghost { border-color: rgba(255,255,255,.3); color: #fff; }
+.btn-ghost:hover { border-color: #fff; }
+.btn-ink { background: var(--ink); color: #fff; }
+.btn-line { border-color: var(--ink); color: var(--ink); }
+.btn-line:hover { background: var(--ink); color: #fff; }
+.btn-sm { padding: 10px 16px; font-size: 14px; border-radius: 10px; }
+a:focus-visible { outline: 2px solid var(--signal); outline-offset: 3px; }
+
+/* hero */
+.hero { position: relative; background: var(--night); color: #fff; padding: 140px 0 110px; overflow: hidden; }
+.globe { position: absolute; right: -240px; top: 50%; width: 900px; height: 900px; transform: translateY(-50%); opacity: .55; pointer-events: none; }
+.globe circle, .globe ellipse, .globe line { fill: none; stroke: rgba(255,255,255,.08); stroke-width: 1; }
+.globe .route { stroke: var(--signal); stroke-width: 1.6; stroke-dasharray: 6 8; animation: dash 30s linear infinite; opacity: .8; }
+@keyframes dash { to { stroke-dashoffset: -600; } }
+.globe .pin { fill: var(--signal); stroke: none; }
+.hero .wrap { position: relative; display: grid; grid-template-columns: 1.1fr .9fr; gap: 56px; align-items: center; }
+.eyebrow { display: inline-flex; align-items: center; gap: 10px; font: 500 12.5px/1 var(--mono); letter-spacing: .06em; text-transform: uppercase; color: rgba(255,255,255,.75); border: 1px solid var(--line-d); border-radius: 999px; padding: 9px 14px; }
+.eyebrow b { width: 8px; height: 8px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(46,196,160,.2); }
+.hero h1 { margin-top: 26px; font: 700 clamp(40px, 6vw, 76px)/1.02 var(--display); letter-spacing: -0.03em; }
+.hero h1 span { color: var(--signal); }
+.hero .lead { margin-top: 22px; max-width: 52ch; font-size: clamp(16.5px, 1.4vw, 18.5px); color: rgba(255,255,255,.7); }
+.hero .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px; }
+
+/* boarding pass */
+.pass { position: relative; display: grid; grid-template-columns: 1fr 120px; background: var(--card); color: var(--ink); border-radius: 22px; box-shadow: 0 40px 80px -30px rgba(0,0,0,.6); transform: rotate(-2deg); animation: in 1s .2s var(--ease) both; }
+@keyframes in { from { opacity: 0; transform: translateY(30px) rotate(-2deg); } to { opacity: 1; transform: rotate(-2deg); } }
+.pass-main { padding: 24px 24px 22px; border-right: 2px dashed var(--line); }
+.pass-stub { padding: 24px 16px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
+.pass::before, .pass::after { content: ""; position: absolute; right: 111px; width: 18px; height: 18px; border-radius: 50%; background: var(--night); }
+.pass::before { top: -9px; }
+.pass::after { bottom: -9px; }
+.pass-top { display: flex; justify-content: space-between; align-items: center; font: 500 11px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.pass-top b { color: var(--signal); }
+.route-row { margin-top: 20px; display: grid; grid-template-columns: 1fr auto 1fr; align-items: center; gap: 10px; }
+.route-row .code { font: 700 34px/1 var(--display); letter-spacing: -0.02em; }
+.route-row .city { margin-top: 6px; font-size: 12px; color: var(--muted); }
+.route-row .to { text-align: right; }
+.plane { color: var(--signal); display: flex; align-items: center; gap: 6px; }
+.plane::before, .plane::after { content: ""; width: 22px; border-top: 1.5px dashed var(--muted); }
+.fields { margin-top: 20px; display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px 12px; padding-top: 18px; border-top: 1px solid var(--line); }
+.fields dt { font: 500 10px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+.fields dd { margin-top: 5px; font: 600 14px/1.25 var(--sans); }
+.fields .wide { grid-column: span 2; }
+.passenger { margin-top: 18px; display: flex; align-items: center; gap: 12px; padding-top: 16px; border-top: 1px solid var(--line); }
+.passenger img { width: 44px; height: 44px; border-radius: 10px; object-fit: cover; }
+.passenger p { font: 600 15px/1.2 var(--display); }
+.passenger small { display: block; font: 500 11px/1 var(--mono); color: var(--muted); letter-spacing: .06em; margin-top: 4px; }
+.stub-code { writing-mode: vertical-rl; transform: rotate(180deg); font: 700 13px/1 var(--mono); letter-spacing: .18em; color: var(--ink-2); }
+.barcode { width: 72px; height: 120px; background: repeating-linear-gradient(90deg, var(--ink) 0 2px, transparent 2px 4px, var(--ink) 4px 5px, transparent 5px 8px, var(--ink) 8px 11px, transparent 11px 12px); border-radius: 2px; }
+
+/* sections */
+section.block { padding: clamp(80px, 10vw, 130px) 0; }
+.dark { background: var(--night); color: #fff; }
+.soft { background: #eeebe4; }
+.kicker { display: flex; align-items: center; gap: 10px; font: 500 12.5px/1 var(--mono); letter-spacing: .1em; text-transform: uppercase; color: var(--signal); }
+.kicker::before { content: ""; width: 24px; height: 2px; background: var(--signal); }
+.h2 { margin-top: 16px; font: 700 clamp(32px, 4.4vw, 54px)/1.05 var(--display); letter-spacing: -0.025em; max-width: 20ch; }
+.intro { margin-top: 16px; max-width: 62ch; color: var(--ink-2); font-size: 17px; }
+.dark .intro { color: rgba(255,255,255,.65); }
+[data-reveal] { opacity: 0; transform: translateY(22px); transition: opacity .8s var(--ease) var(--d, 0s), transform .8s var(--ease) var(--d, 0s); }
+[data-reveal].in { opacity: 1; transform: none; }
+
+/* journey */
+.journey { margin-top: 56px; position: relative; display: grid; grid-template-columns: repeat(6, 1fr); gap: 14px; }
+.journey::before { content: ""; position: absolute; left: 4%; right: 4%; top: 22px; border-top: 2px dashed rgba(255,255,255,.18); }
+.stop { position: relative; }
+.stop .dot { position: relative; z-index: 1; width: 46px; height: 46px; border-radius: 50%; display: grid; place-items: center; background: var(--night-2); border: 2px solid rgba(255,255,255,.18); font: 700 13px/1 var(--mono); color: #fff; transition: background .3s, border-color .3s; }
+.stop:hover .dot { background: var(--signal); border-color: var(--signal); }
+.stop h3 { margin-top: 18px; font: 600 18px/1.2 var(--display); }
+.stop .trig { margin-top: 10px; font: 500 11px/1.4 var(--mono); color: var(--signal); letter-spacing: .02em; }
+.stop p { margin-top: 8px; font-size: 14px; color: rgba(255,255,255,.68); line-height: 1.5; }
+.stop .ch { margin-top: 10px; display: flex; flex-wrap: wrap; gap: 5px; }
+.stop .ch span { font: 500 10.5px/1 var(--mono); padding: 5px 7px; border-radius: 6px; background: rgba(255,255,255,.08); color: rgba(255,255,255,.8); }
+.note { margin-top: 40px; font-size: 14px; color: rgba(255,255,255,.5); }
+
+/* fit */
+.fit { margin-top: 48px; display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+.fit li { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px 24px 22px; display: grid; grid-template-columns: 30px 1fr; gap: 14px; }
+.check { width: 30px; height: 30px; border-radius: 9px; background: var(--signal-soft); color: var(--signal); display: grid; place-items: center; }
+.fit h3 { font: 600 17px/1.3 var(--display); }
+.fit p { margin-top: 6px; font-size: 15px; color: var(--ink-2); }
+
+/* braze plan */
+.plan { margin-top: 52px; display: grid; grid-template-columns: repeat(4, 1fr); gap: 14px; counter-reset: p; }
+.step { background: var(--card); border: 1px solid var(--line); border-radius: 18px; padding: 24px; }
+.step .n { font: 700 12px/1 var(--mono); color: var(--signal); letter-spacing: .08em; }
+.step h3 { margin-top: 12px; font: 600 20px/1.2 var(--display); }
+.step ul { margin-top: 14px; display: grid; gap: 8px; }
+.step li { position: relative; padding-left: 16px; font-size: 14.5px; color: var(--ink-2); line-height: 1.5; }
+.step li::before { content: ""; position: absolute; left: 0; top: .62em; width: 7px; height: 2px; background: var(--signal); }
+
+/* qa */
+.qa-wrap { display: grid; grid-template-columns: .9fr 1.1fr; gap: 56px; align-items: center; }
+.qa { background: var(--card); border: 1px solid var(--line); border-radius: 20px; padding: 10px; box-shadow: 0 30px 60px -40px rgba(18,21,31,.4); }
+.qa-head { display: flex; justify-content: space-between; align-items: center; padding: 14px 16px; font: 500 12px/1 var(--mono); color: var(--muted); letter-spacing: .06em; text-transform: uppercase; }
+.qa-head b { color: var(--mint); }
+.qa label { display: flex; align-items: center; gap: 14px; padding: 13px 16px; border-top: 1px solid var(--line); cursor: pointer; font-size: 15px; }
+.qa input { appearance: none; -webkit-appearance: none; flex: none; width: 22px; height: 22px; border-radius: 7px; border: 1.5px solid #c9ccd5; display: grid; place-items: center; margin: 0; cursor: pointer; transition: background .2s, border-color .2s; }
+.qa input:checked { background: var(--mint); border-color: var(--mint); }
+.qa input:checked::after { content: ""; width: 6px; height: 11px; border: solid #fff; border-width: 0 2px 2px 0; transform: rotate(45deg) translate(-1px, -1px); }
+.qa input:focus-visible { outline: 2px solid var(--signal); outline-offset: 2px; }
+.qa label span { flex: 1; }
+.qa label small { font: 500 11px/1 var(--mono); color: var(--muted); }
+.qa-foot { padding: 14px 16px; border-top: 1px solid var(--line); display: flex; justify-content: space-between; align-items: center; font-size: 14px; }
+.qa-foot .go { font: 700 12px/1 var(--mono); letter-spacing: .08em; padding: 8px 12px; border-radius: 8px; background: #eceef3; color: var(--muted); transition: background .3s, color .3s; }
+.qa-foot .go.ready { background: var(--signal); color: #fff; }
+
+/* experience */
+.xp { margin-top: 48px; display: grid; gap: 14px; }
+.job { display: grid; grid-template-columns: 220px 1fr; gap: 28px; padding: 28px; border-radius: 18px; background: rgba(255,255,255,.04); border: 1px solid var(--line-d); }
+.job .when { font: 500 13px/1.4 var(--mono); color: var(--signal); }
+.job .co { margin-top: 6px; font: 600 20px/1.2 var(--display); }
+.job h3 { font: 600 17px/1.3 var(--sans); }
+.job ul { margin-top: 12px; display: grid; gap: 7px; }
+.job li { position: relative; padding-left: 16px; font-size: 15px; color: rgba(255,255,255,.72); }
+.job li::before { content: ""; position: absolute; left: 0; top: .7em; width: 7px; height: 2px; background: var(--signal); }
+.tools { margin-top: 28px; display: flex; flex-wrap: wrap; gap: 8px; }
+.tools span { font: 500 13px/1 var(--mono); padding: 9px 12px; border-radius: 8px; border: 1px solid var(--line-d); color: rgba(255,255,255,.85); }
+.tools span.hl { background: var(--signal); border-color: var(--signal); color: #fff; }
+
+/* contact */
+.contact { padding: clamp(90px, 12vw, 150px) 0; text-align: center; }
+.contact .h2 { margin-inline: auto; max-width: 18ch; }
+.contact .intro { margin-inline: auto; }
+.contact .ctas { margin-top: 32px; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; }
+.contact .mail { margin-top: 18px; font: 500 14px/1 var(--mono); color: var(--muted); }
+footer { border-top: 1px solid var(--line); padding: 22px 0; font-size: 13px; color: var(--muted); }
+footer .wrap { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 10px; }
+
+@media (max-width: 1000px) {
+  .hero .wrap, .qa-wrap { grid-template-columns: 1fr; }
+  .journey { grid-template-columns: repeat(3, 1fr); row-gap: 36px; }
+  .journey::before { display: none; }
+  .plan { grid-template-columns: repeat(2, 1fr); }
+  .pass { max-width: 480px; }
+}
+@media (max-width: 720px) {
+  .wrap { width: calc(100% - 32px); }
+  .nav-links { display: none; }
+  .hero { padding-top: 110px; }
+  .journey, .plan, .fit { grid-template-columns: 1fr; }
+  .job { grid-template-columns: 1fr; gap: 10px; padding: 22px; }
+  .pass { grid-template-columns: 1fr 76px; transform: none; animation: none; }
+  .pass::before, .pass::after { right: 67px; }
+  .pass-stub { padding: 18px 8px; }
+  .barcode { width: 48px; height: 90px; }
+  .route-row .code { font-size: 28px; }
+  .fields { grid-template-columns: repeat(2, 1fr); }
+  .fields .wide { grid-column: span 2; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation: none !important; transition: none !important; }
+  [data-reveal] { opacity: 1; transform: none; }
+}
+</style>
+</head>
+<body>
+
+<header class="nav" id="nav">
+  <div class="wrap">
+    <a class="logo" href="#top"><span class="bars"><i></i><i></i><i></i><i></i></span>Haitam El Harchal</a>
+    <nav class="nav-links">
+      <a href="#journey">Journey</a>
+      <a href="#fit">The fit</a>
+      <a href="#braze">Braze</a>
+      <a href="#qa">QA</a>
+      <a href="#experience">Experience</a>
+    </nav>
+    <a class="btn btn-signal btn-sm" href="#contact">Contact</a>
+  </div>
+</header>
+
+<main id="top">
+
+<section class="hero">
+  <svg class="globe" viewBox="0 0 900 900" aria-hidden="true">
+    <circle cx="450" cy="450" r="400" />
+    <ellipse cx="450" cy="450" rx="400" ry="140" />
+    <ellipse cx="450" cy="450" rx="400" ry="280" />
+    <ellipse cx="450" cy="450" rx="140" ry="400" />
+    <ellipse cx="450" cy="450" rx="280" ry="400" />
+    <line x1="50" y1="450" x2="850" y2="450" />
+    <line x1="450" y1="50" x2="450" y2="850" />
+    <path class="route" d="M210 560 C 300 330, 520 260, 640 340 S 720 560, 600 640" />
+    <circle class="pin" cx="210" cy="560" r="6" />
+    <circle class="pin" cx="640" cy="340" r="6" />
+    <circle class="pin" cx="600" cy="640" r="6" />
+  </svg>
+  <div class="wrap">
+    <div>
+      <span class="eyebrow"><b></b>Application · CRM &amp; Lifecycle Marketing Specialist · Roamless</span>
+      <h1>From signup to <span>every next trip.</span></h1>
+      <p class="lead">I'm Haitam. I build CRM campaigns and automated journeys across email, push and in-app, hands-on in Braze. I'd love to help Roamless move from one-off pushes to real lifecycle.</p>
+      <div class="ctas">
+        <a class="btn btn-signal" href="#contact">Get in touch →</a>
+        <a class="btn btn-ghost" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+      </div>
+    </div>
+
+    <article class="pass" aria-label="Boarding pass: Haitam El Harchal, from one-off pushes to lifecycle">
+      <div class="pass-main">
+        <div class="pass-top"><span>Boarding pass</span><b>CRM 007</b></div>
+        <div class="route-row">
+          <div><p class="code">PSH</p><p class="city">One-off pushes</p></div>
+          <span class="plane"><svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M21 16v-2l-8-5V3.5a1.5 1.5 0 0 0-3 0V9l-8 5v2l8-2.5V19l-2 1.5V22l3.5-1 3.5 1v-1.5L13 19v-5.5z"/></svg></span>
+          <div class="to"><p class="code">LCM</p><p class="city">Real lifecycle</p></div>
+        </div>
+        <dl class="fields">
+          <div><dt>Gate</dt><dd>Braze</dd></div>
+          <div><dt>Seat</dt><dd>CRM &amp; Lifecycle</dd></div>
+          <div><dt>Base</dt><dd>Spain · Remote</dd></div>
+          <div class="wide"><dt>Channels</dt><dd>Email · Push · In-app</dd></div>
+          <div><dt>Status</dt><dd style="color:var(--mint)">Ready</dd></div>
+        </dl>
+        <div class="passenger">
+          <img src="./haitam.png" alt="Haitam El Harchal" width="44" height="44" />
+          <p>Haitam El Harchal<small>7+ YRS · HANDS-ON CRM</small></p>
+        </div>
+      </div>
+      <div class="pass-stub">
+        <span class="stub-code">HEH·CRM·007</span>
+        <span class="barcode" aria-hidden="true"></span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section class="block dark" id="journey">
+  <div class="wrap">
+    <p class="kicker" data-reveal>The journey</p>
+    <h2 class="h2" data-reveal>How I'd map the Roamless traveller.</h2>
+    <p class="intro" data-reveal>A first draft from the outside. Every stage is a Braze journey with its own trigger, channels and control group.</p>
+    <ol class="journey">
+      <li class="stop" data-reveal>
+        <span class="dot">01</span>
+        <h3>Signup</h3>
+        <p class="trig">No purchase in 24h</p>
+        <p>Explain the one-eSIM idea in a line. Show what a typical trip costs vs roaming.</p>
+        <div class="ch"><span>email</span><span>push</span></div>
+      </li>
+      <li class="stop" data-reveal style="--d:.06s">
+        <span class="dot">02</span>
+        <h3>First purchase</h3>
+        <p class="trig">First top-up</p>
+        <p>Step-by-step eSIM setup before the trip, so day one just works.</p>
+        <div class="ch"><span>email</span><span>in-app</span></div>
+      </li>
+      <li class="stop" data-reveal style="--d:.12s">
+        <span class="dot">03</span>
+        <h3>Activation</h3>
+        <p class="trig">First data used abroad</p>
+        <p>"You're connected." Short, useful, with a tip on checking balance.</p>
+        <div class="ch"><span>push</span></div>
+      </li>
+      <li class="stop" data-reveal style="--d:.18s">
+        <span class="dot">04</span>
+        <h3>Repeat</h3>
+        <p class="trig">Trip ends, balance left</p>
+        <p>"Your balance never expires." Remind them it's ready for the next trip.</p>
+        <div class="ch"><span>email</span><span>in-app</span></div>
+      </li>
+      <li class="stop" data-reveal style="--d:.24s">
+        <span class="dot">05</span>
+        <h3>Loyalty</h3>
+        <p class="trig">3+ trips</p>
+        <p>Referral and perks for frequent travellers. Ask for a review at a happy moment.</p>
+        <div class="ch"><span>email</span><span>push</span></div>
+      </li>
+      <li class="stop" data-reveal style="--d:.3s">
+        <span class="dot">06</span>
+        <h3>Reactivation</h3>
+        <p class="trig">No activity in 6 months</p>
+        <p>Seasonal travel moments. Offer an incentive only if the first touch doesn't work.</p>
+        <div class="ch"><span>email</span><span>push</span></div>
+      </li>
+    </ol>
+    <p class="note" data-reveal>Hypotheses to test, not answers. Measured on first purchase, repeat purchase and retention, not opens.</p>
+  </div>
+</section>
+
+<section class="block" id="fit">
+  <div class="wrap">
+    <p class="kicker" data-reveal>The fit</p>
+    <h2 class="h2" data-reveal>What you need, what I've done.</h2>
+    <ul class="fit">
+      <li data-reveal><span class="check"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Automated lifecycle journeys</h3><p>Onboarding, activation, retention and win-back journeys across email, push, in-app and SMS at Entain and TOC-TOC.</p></div></li>
+      <li data-reveal style="--d:.06s"><span class="check"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Braze, hands-on</h3><p>Segments from behavioural events and attributes, multi-channel journeys, A/B tests and QA. Also Customer.io, Optimove and HubSpot.</p></div></li>
+      <li data-reveal><span class="check"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Signup to first purchase</h3><p>At TOC-TOC, a mobile app, I ran paywalls and upsells at key moments to lift trial-to-paid, using RevenueCat.</p></div></li>
+      <li data-reveal style="--d:.06s"><span class="check"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Attention to detail</h3><p>I own audience definitions and QA for high-volume sends: exclusions, personalisation, links and tracking, every time.</p></div></li>
+      <li data-reveal><span class="check"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Analytical</h3><p>A/B and multivariate tests, holdout groups, cohort and RFM analysis. I read my own results.</p></div></li>
+      <li data-reveal style="--d:.06s"><span class="check"><svg width="14" height="14" viewBox="0 0 16 16" aria-hidden="true"><path d="M3 8.5l3 3 7-7" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg></span><div><h3>Ownership</h3><p>From brief to setup, QA, launch and reporting. Campaign calendars, naming conventions and documentation included.</p></div></li>
+    </ul>
+  </div>
+</section>
+
+<section class="block soft" id="braze">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Braze migration</p>
+    <h2 class="h2" data-reveal>How I'd help with the move.</h2>
+    <p class="intro" data-reveal>Migrations go wrong in the details. This is the order I'd follow, with your team setting the priorities.</p>
+    <div class="plan">
+      <div class="step" data-reveal><p class="n">STEP 01</p><h3>Inventory</h3><ul><li>List every live campaign, template and segment.</li><li>Keep, merge or retire each one.</li><li>Agree naming conventions first.</li></ul></div>
+      <div class="step" data-reveal style="--d:.06s"><p class="n">STEP 02</p><h3>Data &amp; segments</h3><ul><li>Check events and attributes arrive correctly.</li><li>Rebuild segments by lifecycle stage and behaviour.</li><li>Set up control groups.</li></ul></div>
+      <div class="step" data-reveal style="--d:.12s"><p class="n">STEP 03</p><h3>Templates &amp; journeys</h3><ul><li>Reusable HTML email templates.</li><li>Rebuild onboarding and first-purchase journeys first.</li><li>Translations and personalisation checked.</li></ul></div>
+      <div class="step" data-reveal style="--d:.18s"><p class="n">STEP 04</p><h3>QA &amp; go-live</h3><ul><li>Test sends for every variant.</li><li>Compare results with the old setup.</li><li>Document everything for the team.</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section class="block" id="qa">
+  <div class="wrap qa-wrap">
+    <div>
+      <p class="kicker" data-reveal>QA</p>
+      <h2 class="h2" data-reveal>Nothing goes out until this is green.</h2>
+      <p class="intro" data-reveal>The checklist I run before every launch. Try ticking it.</p>
+    </div>
+    <div class="qa" data-reveal id="qaList">
+      <div class="qa-head"><span>Pre-launch check</span><b id="qaCount">0/7</b></div>
+      <label><input type="checkbox" /><span>Audience and segment size</span><small>AUD</small></label>
+      <label><input type="checkbox" /><span>Exclusions and frequency caps</span><small>EXC</small></label>
+      <label><input type="checkbox" /><span>Journey logic and delays</span><small>FLOW</small></label>
+      <label><input type="checkbox" /><span>Personalisation and fallbacks</span><small>PERS</small></label>
+      <label><input type="checkbox" /><span>Translations</span><small>LANG</small></label>
+      <label><input type="checkbox" /><span>Links and UTM tracking</span><small>LINK</small></label>
+      <label><input type="checkbox" /><span>Test sends on iOS, Android and email</span><small>TEST</small></label>
+      <div class="qa-foot"><span>Ready to launch?</span><span class="go" id="qaGo">HOLD</span></div>
+    </div>
+  </div>
+</section>
+
+<section class="block dark" id="experience">
+  <div class="wrap">
+    <p class="kicker" data-reveal>Experience</p>
+    <h2 class="h2" data-reveal>Where I've done this.</h2>
+    <div class="xp">
+      <article class="job" data-reveal>
+        <div><p class="when">Aug 2022 – Present</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM &amp; Lifecycle Marketing Manager</h3>
+          <ul>
+            <li>Lifecycle campaigns across acquisition, conversion, retention and win-back for European markets.</li>
+            <li>Automated email, push, in-app and SMS workflows based on behaviour and RFM segments.</li>
+            <li>A/B testing on copy, cadence, offers and channels to lift LTV.</li>
+            <li>Audience definitions and QA for high-volume sends.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Oct 2021 – Aug 2022</p><p class="co">Entain</p></div>
+        <div>
+          <h3>CRM Ops Lead Europe</h3>
+          <ul>
+            <li>Real-time CRM operations across several European brands, above SLA targets.</li>
+          </ul>
+        </div>
+      </article>
+      <article class="job" data-reveal>
+        <div><p class="when">Sep 2019 – Oct 2021</p><p class="co">TOC-TOC Mobile App</p></div>
+        <div>
+          <h3>Marketing &amp; CRM Manager</h3>
+          <ul>
+            <li>Push, in-app and email journeys that turned daily use into habits and grew DAU.</li>
+            <li>Paywalls, upsells and renewals at key moments, with RevenueCat.</li>
+            <li>Event tracking taxonomy with Product and Analytics.</li>
+          </ul>
+        </div>
+      </article>
+    </div>
+    <div class="tools" data-reveal>
+      <span class="hl">Braze</span><span>Customer.io</span><span>Optimove</span><span>HubSpot</span><span>Mailchimp</span><span>RevenueCat</span><span>HTML / CSS</span><span>A/B testing</span><span>Holdout groups</span><span>RFM</span>
+    </div>
+  </div>
+</section>
+
+<section class="contact" id="contact">
+  <div class="wrap">
+    <p class="kicker" style="justify-content:center" data-reveal>Contact</p>
+    <h2 class="h2" data-reveal>Ready to board.</h2>
+    <p class="intro" data-reveal>Based in Spain, used to working remotely across time zones.</p>
+    <div class="ctas" data-reveal>
+      <a class="btn btn-ink" href="mailto:htmelh@gmail.com?subject=CRM%20%26%20Lifecycle%20Specialist%20%C2%B7%20Haitam%20El%20Harchal">Email me →</a>
+      <a class="btn btn-line" href="https://www.linkedin.com/in/haitam-el-harchal-902338211/" target="_blank" rel="noreferrer">LinkedIn</a>
+      <a class="btn btn-line" href="./CV_Haitam_El_Harchal.pdf" download>Download CV</a>
+    </div>
+    <p class="mail">htmelh@gmail.com</p>
+  </div>
+</section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Haitam El Harchal · CRM &amp; Lifecycle</span>
+    <span>Personal application page. Not affiliated with Roamless.</span>
+  </div>
+</footer>
+
+<script>
+(function () {
+  var nav = document.getElementById('nav');
+  var onScroll = function () { nav.classList.toggle('solid', window.scrollY > 10); };
+  onScroll();
+  window.addEventListener('scroll', onScroll, { passive: true });
+
+  var boxes = document.querySelectorAll('#qaList input');
+  var count = document.getElementById('qaCount');
+  var go = document.getElementById('qaGo');
+  boxes.forEach(function (b) {
+    b.addEventListener('change', function () {
+      var n = Array.prototype.filter.call(boxes, function (x) { return x.checked; }).length;
+      count.textContent = n + '/' + boxes.length;
+      var ready = n === boxes.length;
+      go.textContent = ready ? 'GO' : 'HOLD';
+      go.classList.toggle('ready', ready);
+    });
+  });
+
+  var els = document.querySelectorAll('[data-reveal]');
+  if (!('IntersectionObserver' in window)) { els.forEach(function (e) { e.classList.add('in'); }); return; }
+  var io = new IntersectionObserver(function (entries) {
+    entries.forEach(function (e) { if (e.isIntersecting) { e.target.classList.add('in'); io.unobserve(e.target); } });
+  }, { threshold: 0.1, rootMargin: '0px 0px -30px 0px' });
+  els.forEach(function (e) { io.observe(e); });
+})();
+</script>
+</body>
+</html>
